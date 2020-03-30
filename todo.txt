@@ -1,0 +1,9 @@
+# 4. Add a request for a given resource
+# 5. Announce the availability of a resource.
+# 6. Reserve or purchase a resource. Free resources are reserved. Otherwise, they are purchased.
+# 7. Browse resources being requested
+# 8. Browse resources available
+# 9. See detail of resources, including location on a Google Map
+# 10. Keyword search resources being requested, with sorting by resource name
+# 11. Keyword search resources available, with sorting by resource name
+# 12. Show dashboard page with daily statistics on a. Resources in need b. Resources available c. Matching between need and availability
