@@ -1,9 +1,17 @@
 from flask import Flask, jsonify, request
-from handler.parts import PartHandler
-from handler.supplier import SupplierHandler
-# Import Cross-Origin Resource Sharing to enable
-# services on other ports on this machine or on other
-# machines to access this app
+from handler.food import FoodHandler
+from handler.medication import MedicationHandler
+from handler.batteries import BatteryHandler
+from handler.clothing import ClothingHandler
+from handler.heavyequipment import HeavyEquipmentHandler
+from handler.ice import IceHandler
+from handler.powertools import PowerToolsHandler
+from handler.fuel import FuelHandler
+
+
+
+
+
 from flask_cors import CORS, cross_origin
 
 # Activate
@@ -13,67 +21,108 @@ CORS(app)
 
 @app.route('/')
 def greeting():
-    return 'Hello, this is the parts DB App!'
+    return 'Hello, this is the almacenespr App!'
 
-@app.route('/PartApp/parts', methods=['GET', 'POST'])
-def getAllParts():
+@app.route('/almacenespr/resource/food', methods=['GET', 'PUT'])
+def searchFood():
     if request.method == 'POST':
-        # cambie a request.json pq el form no estaba bregando
-        # parece q estaba poseido por satanas ...
-        # DEBUG a ver q trae el json q manda el cliente con la nueva pieza
+
         print("REQUEST: ", request.json)
-        return PartHandler().insertPartJson(request.json)
+        return UserHandler().insertUserJson(request.json)
     else:
         if not request.args:
-            return PartHandler().getAllParts()
+            return FoodHandler().getAllFood()
         else:
             return PartHandler().searchParts(request.args)
 
-@app.route('/PartApp/parts/<int:pid>', methods=['GET', 'PUT', 'DELETE'])
-def getPartById(pid):
-    if request.method == 'GET':
-        return PartHandler().getPartById(pid)
-    elif request.method == 'PUT':
-        return PartHandler().updatePart(pid, request.form)
-    elif request.method == 'DELETE':
-        return PartHandler().deletePart(pid)
-    else:
-        return jsonify(Error="Method not allowed."), 405
 
-@app.route('/PartApp/parts/<int:pid>/suppliers')
-def getSuppliersByPartId(pid):
-    return PartHandler().getSuppliersByPartId(pid)
-
-@app.route('/PartApp/suppliers', methods=['GET', 'POST'])
-def getAllSuppliers():
+@app.route('/almacenespr/resource/medication', methods=['GET', 'PUT'])
+def searchMedication():
     if request.method == 'POST':
-        return SupplierHandler().insertSupplier(request.form)
-    else :
-        if not request.args:
-            return SupplierHandler().getAllSuppliers()
-        else:
-            return SupplierHandler().searchSuppliers(request.args)
 
-@app.route('/PartApp/suppliers/<int:sid>',
-           methods=['GET', 'PUT', 'DELETE'])
-def getSupplierById(sid):
-    if request.method == 'GET':
-        return SupplierHandler().getSupplierById(sid)
-    elif request.method == 'PUT':
-        pass
-    elif request.method == 'DELETE':
-        pass
+        print("REQUEST: ", request.json)
+        return UserHandler().insertUserJson(request.json)
     else:
-        return jsonify(Error = "Method not allowed"), 405
+        if not request.args:
+            return MedicationHandler().getAllMedication()
+        else:
+            return PartHandler().searchParts(request.args)
+
+@app.route('/almacenespr/resource/batteries', methods=['GET', 'PUT'])
+def searchBatteries():
+    if request.method == 'POST':
+
+        print("REQUEST: ", request.json)
+        return UserHandler().insertUserJson(request.json)
+    else:
+        if not request.args:
+            return BatteryHandler().getAllbattery()
+        else:
+            return PartHandler().searchParts(request.args)
+
+@app.route('/almacenespr/resource/clothes', methods=['GET', 'PUT'])
+def searchClothing():
+    if request.method == 'POST':
+
+        print("REQUEST: ", requegetAllHeavyEquipmentst.json)
+        return UserHandler().insertUserJson(request.json)
+    else:
+        if not request.args:
+            return ClothingHandler().getAllClothes()
+        else:
+            return PartHandler().searchParts(request.args)
+
+@app.route('/almacenespr/resource/heavyequipment', methods=['GET', 'PUT'])
+def searchHeavyEquipment():
+    if request.method == 'POST':
+
+        print("REQUEST: ", request.json)
+        return UserHandler().insertUserJson(request.json)
+    else:
+        if not request.args:
+            return HeavyEquipmentHandler().getAllHeavyEquipment()
+        else:
+            return PartHandler().searchParts(request.args)
+
+@app.route('/almacenespr/resource/ice', methods=['GET', 'PUT'])
+def searchIce():
+    if request.method == 'POST':
+
+        print("REQUEST: ", request.json)
+        return UserHandler().insertUserJson(request.json)
+    else:
+        if not request.args:
+            return IceHandler().getAllIce()
+        else:
+            return PartHandler().searchParts(request.args)
+
+@app.route('/almacenespr/resource/tools', methods=['GET', 'PUT'])
+def searchTools():
+    if request.method == 'POST':
+
+        print("REQUEST: ", request.json)
+        return UserHandler().insertUserJson(request.json)
+    else:
+        if not request.args:
+            return PowerToolsHandler().getAllTools()
+        else:
+            return PartHandler().searchParts(request.args)
+
+@app.route('/almacenespr/resource/fuel', methods=['GET', 'PUT'])
+def searchFuel():
+    if request.method == 'POST':
+
+        print("REQUEST: ", request.json)
+        return UserHandler().insertUserJson(request.json)
+    else:
+        if not request.args:
+            return FuelHandler().getAllFuel()
+        else:
+            return PartHandler().searchParts(request.args)
 
 
-@app.route('/PartApp/suppliers/<int:sid>/parts')
-def getPartsBySuplierId(sid):
-    return SupplierHandler().getPartsBySupplierId(sid)
 
-@app.route('/PartApp/parts/countbypartid')
-def getCountByPartId():
-    return PartHandler().getCountByPartId()
+
 
 if __name__ == '__main__':
-    app.run()
+     app.run()
