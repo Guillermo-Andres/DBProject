@@ -7,11 +7,6 @@ from handler.heavyequipment import HeavyEquipmentHandler
 from handler.ice import IceHandler
 from handler.powertools import PowerToolsHandler
 from handler.fuel import FuelHandler
-
-
-
-
-
 from flask_cors import CORS, cross_origin
 
 # Activate
@@ -29,6 +24,7 @@ def searchFood():
 
         print("REQUEST: ", request.json)
         return UserHandler().insertUserJson(request.json)
+        return None
     else:
         if not request.args:
             return FoodHandler().getAllFood()
