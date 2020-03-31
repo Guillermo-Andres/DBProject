@@ -64,7 +64,7 @@ class BatteryHandler:
             result_list.append(result)
         return jsonify(battery=result_list)
 
-    def insert(self, pname, pcolor, pmaterial, pprice):
+    def insert(self, pname):
         dao = BatteryDAO()
         battery_list = dao.getAllBatteries()
         result_list = []
@@ -83,11 +83,11 @@ class BatteryHandler:
             result_list.append(result)
         return jsonify(battery=result_list)
 
-    def update(self, pid, pname, pcolor, pmaterial, pprice):
+    def update(self, pid):
         dao = BatteryDAO()
         battery_list = dao.getAllBatteries()
         result_list = []
         for row in battery_list:
             result = self.build_battery_dict(row)
             result_list.append(result)
-        return jsonify(battery=result_list)        
+        return jsonify(battery=result_list)

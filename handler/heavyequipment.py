@@ -53,7 +53,7 @@ class HeavyEquipmentHandler:
             result_list.append(result)
         return jsonify(Heavy_Equipment=result_list)
 
-    def insert(self, sname, scity, sphone):
+    def insert(self, sname):
         dao = HeavyEquipmentDAO()
         HE_list = dao.getAllHeavyEquipment()
         result_list = []
@@ -62,7 +62,7 @@ class HeavyEquipmentHandler:
             result_list.append(result)
         return jsonify(Heavy_Equipment=result_list)
 
-    def update(self):
+    def update(self,update):
         dao = HeavyEquipmentDAO()
         HE_list = dao.getAllHeavyEquipment()
         result_list = []
@@ -71,7 +71,7 @@ class HeavyEquipmentHandler:
             result_list.append(result)
         return jsonify(Heavy_Equipment=result_list)
 
-    def delete(self):
+    def delete(self,delete):
         dao = HeavyEquipmentDAO()
         HE_list = dao.getAllHeavyEquipment()
         result_list = []
