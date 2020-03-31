@@ -10,6 +10,22 @@ class IceDAO:
     #                                                         pg_config['passwd'])
     #     self.conn = psycopg2._connect(connection_url)
 
+
+    def build_ice_dict(self , row):
+        iceDict = {}
+
+        iceDict['iid'] = row[0]
+        iceDict['size'] = row[1]
+        iceDict['unit_size'] = row[2]
+        iceDict['description'] = row[3]
+
+        return iceDict
+
+
+
+
+
+
     def getAllIce(self):
 
         result = [[1,'8 Oz',1, '8 Oz bag of ice',0,'Guayanilla'],[2,'6 Oz',1, '6 Oz bag of ice',4.99,'Humacao'],[3,'12 Oz',6, '12 Oz bag of ice',0,'Coamo',0]]
