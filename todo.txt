@@ -7,3 +7,26 @@
 # 10. Keyword search resources being requested, with sorting by resource name
 # 11. Keyword search resources available, with sorting by resource name
 # 12. Show dashboard page with daily statistics on a. Resources in need b. Resources available c. Matching between need and availability
+
+4.)almacenespr/user<id>/orders
+5.)almacenespr/suppllier<id>/newresource
+6.)almacenespr/user<id>/orders (aqui mismo el front end se encarga de split entre reserved y eso) 
+7.) almacenespr/requested/
+8.) almacenespr/available/
+9.)almacenespr/resource<type>/resource<id> (todos los attributos de a given reource) 
+10.) almacenespr/requested/resource<type>/search<keyword>
+11.)almacenespr/available/resource<type> /search<keyword>
+12.)almacenespr/dashboard/statistics/daily/<type>
+13.)almacenespr/dashboard/statistics/weekly/<type>
+14.)almacenespr/dashboard/statistics/region<type>
+
+
+4.)POST de ORDER
+5.) POST de resource , PUT de order
+6.)POST de  ORDER
+7.) GET de order
+8.) GET de resource
+9.)GET de resource
+10.)GET  de order
+11.) get resource
+12.) get resources y order by date
