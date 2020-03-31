@@ -32,7 +32,7 @@ CORS(app)
 @app.route('/almacenespr/user/<int:user_id>/orders', methods = ['POST'])
 def orderResources(user_id):
     #orders specify if we are requesting, reserving or purchasing depending on its status
-    return FoodHandmaterialler().getAllFood()
+    return FoodHandler().getAllFood()
 
 @app.route('/almacenespr/supplier/<int:sid>/newresource', methods = ['POST'])
 def newResource(sid):

@@ -10,7 +10,7 @@ class BatteryDAO:
     #     self.conn = psycopg2._connect(connection_url)
 
     def getAllBatteries(self):
-        result = [[1,'AA',12,3.99,'bayamon'1],[2,'DD',4,5.99,'carolina', 5],[3,'AAA',12,6.99,'ponce',24]]
+        result = [[1,'AA',12,3.99,'bayamon',1],[2,'DD',4,5.99,'carolina', 5],[3,'AAA',12,6.99,'ponce',24]]
         return result
 
     def getBatteryById(self, id):
