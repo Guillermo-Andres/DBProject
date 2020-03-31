@@ -9,6 +9,22 @@ class IceDAO:
     #                                                         pg_config['passwd'])
     #     self.conn = psycopg2._connect(connection_url)
 
+
+    def build_ice_dict(self , row):
+        iceDict = {}
+
+        iceDict['iid'] = row[0]
+        iceDict['size'] = row[1]
+        iceDict['unit_size'] = row[2]
+        iceDict['description'] = row[3]
+
+        return iceDict
+
+
+
+
+
+
     def getAllIce(self):
         #cursor = self.conn.cursor()
         #query = "select pid, pname, pmaterial, pcolor, pprice from parts;"
@@ -18,6 +34,27 @@ class IceDAO:
     #        result.append(row)
         return result
 
+
+    def getIceByID(self , id):
+        return self.getAllIce()
+    
+    def getIceBySize(self , size):
+        return self.getAllIce()
+    
+    def getIceByUnitSize(self , unit_size):
+        return self.getAllIce()
+
+    def getIceByDescription(self , description):
+        return self.getAllIce()
+
+    def insert(self , item):
+        return 1
+    def delete(self , id):
+        return 1
+    def update(self , item):
+        return 1
+
+    
     # def getIceById(self, pid):
     #     cursor = self.conn.cursor()
     #     query = "select pid, pname, pmaterial, pcolor, pprice from parts where pid = %s;"
