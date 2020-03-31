@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request , redirect , url_for
 from handler.food import FoodHandler
 from handler.medication import MedicationHandler
 from handler.batteries import BatteryHandler
@@ -29,30 +29,69 @@ app = Flask(__name__)
 # Apply CORS to this app
 CORS(app)
 
+@app.route('/')
+def sendtToLogin():
+    return redirect(url_for('registerconsumer'))
+
+
+
 @app.route('/almacenespr/register/consumer', methods = ['POST','GET'])
 def registerconsumer():
     #orders specify if we are requesting, reserving or purchasing depending on its status
-    return ConsumerHandler().insert()
+    if request.method == 'GET':
+        return ConsumerHandler().getAllConsumers()
+    
+    elif request.method == 'POST':
+        return ConsumerHandler.insert(request.__dict__) 
 
 @app.route('/almacenespr/register/admin', methods = ['POST','GET'])
 def registerAdmin():
     #orders specify if we are requesting, reserving or purchasing depending on its status
-    return AdminHandler().getAdminByAddress('lol')
+
+    if request.method == 'GET':
+        return AdminHandler().getAllAdmins()
+    
+    elif request.method == 'POST':
+        return AdminHandler.insert(request.__dict__) 
+
 
 @app.route('/almacenespr/register/supplier', methods = ['POST','GET'])
 def registerSupplier():
     #orders specify if we are requesting, reserving or purchasing depending on its status
-    return SupplierHandler.insert(3)
+
+    if request.method == 'GET':
+        return SupplierHandler().getAllSuppliers()
+    
+    elif request.method == 'POST':
+        return SupplierHandler.insert(request.__dict__) 
+
 
 @app.route('/almacenespr/consumer/<int:consumer_id>/orders', methods = ['GET','POST','PUT'])
 def orderResources(consumer_id):
     #orders specify if we are requesting, reserving or purchasing depending on its status
-    return FoodHandler().getAllFood()
-    #return PlacesAnOrderHandler().insert(3)
+
+    if request.method == 'GET':
+        return OrdersHandler().getAllOrders()
+    
+    elif request.method == 'POST':
+        #TODO aqui en el futuero hay que llamar varios inserts (orden , contains  , etc...)
+        return OrderHandler.insert(request.__dict__) 
+    
+    elif request.method == 'PUT':
+        return OrderHandler.update(request.__dict__)
 
 @app.route('/almacenespr/supplier/<int:sid>/newresource', methods = ['POST','PUT','GET'])
 def newResource(sid):
-    return suppliesHandler().insert(3)
+    #TODO otros resources aqui es donde seria bueno tener un "ResourceHandler" que se encarge de la logica internamente
+  
+    if request.method == 'GET':
+        return FoodHandler().getAllFoods()
+    
+    elif request.method == 'POST':
+        return FoodHandler.insert(request.__dict__) 
+    
+    elif request.method == 'PUT':
+        return FoodHandler.update(request.__dict__)
 
 @app.route('/almacenespr/requested', methods = ['GET'])
 def viewRequested():

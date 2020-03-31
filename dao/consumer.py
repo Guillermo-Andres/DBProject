@@ -1,11 +1,11 @@
 from config.dbconfig import pg_config
 import psycopg2
 class ConsumerDAO:
-    def __init__(self):
-        connection_url = "dbname=%s user=%s password=%s host=127.0.0.1" % (pg_config['dbname'],
-                                                                           pg_config['user'],
-                                                                           pg_config['passwd'])
-        self.conn = psycopg2._connect(connection_url)
+    # def __init__(self):
+        # connection_url = "dbname=%s user=%s password=%s host=127.0.0.1" % (pg_config['dbname'],
+        #                                                                    pg_config['user'],
+        #                                                                    pg_config['passwd'])
+        # self.conn = psycopg2._connect(connection_url)
 
     # consumer attributes: consumer_id, consumer_first_name, consumer_last_name, consumer_dob, consumer_address, consumer_phone_number, consumer_email_address, consumer_severity
 
