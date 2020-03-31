@@ -7,6 +7,21 @@ from handler.heavyequipment import HeavyEquipmentHandler
 from handler.ice import IceHandler
 from handler.powertools import PowerToolsHandler
 from handler.fuel import FuelHandler
+from handler.admin import AdminHandler
+from handler.supplier import SupplierHandler
+from handler.company import CompanyHandler
+from handler.consumer import ConsumerHandler
+from handler.contains import ContainsHandler
+from handler.diapers import DiapersHandler
+from handler.femenine_hygiene import FemenineHygieneHandler
+from handler.hygiene import HygieneHandler
+from handler.order import OrderHandler
+from handler.payment_method import PaymentMethodHandler
+from handler.paysFor import PaysForHandler
+from handler.placesAnOrder import PlacesAnOrderHandler
+from handler.supplier import SupplierHandler
+from handler.supplies import suppliesHandler
+from handler.worksFor import WorksForHandler
 from flask_cors import CORS, cross_origin
 
 # Activate
@@ -14,44 +29,44 @@ app = Flask(__name__)
 # Apply CORS to this app
 CORS(app)
 
-
-#4. Add a request for a given resource   4.)almacenespr/user<id>/orders   4.)POST de ORDER
-#5.)almacenespr/supplier<id>/newresource
-#6. Reserve or purchase a resource. Free resources are reserved. Otherwise, they are purchased. 6.)almacenespr/user<id>/orders (aqui mismo el front end se encarga de split entre reserved y eso) 
-#7.) almacenespr/requested/  7.) GET de order    7.) almacenespr/requested/
-#8.) almacenespr/available/  8.) GET de resource 8.) almacenespr/available/
-# 9. See detail of resources, including location on a Google Map    9.)almacenespr/resource<type>/resource<id> (todos los attributos de a given reource) 9.)GET de resource
-# 10. Keyword search resources being requested, with sorting by resource name             10.) almacenespr/requested/resource<type>/search<keyword>            10.)GET  de order
-# 11. Keyword search resources available, with sorting by resource name               11.)almacenespr/available/resource<type> /search<keyword>                11.) get resource
-
-
-# 12.)almacenespr/dashboard/statistics/daily/<type>
-# 13.)almacenespr/dashboard/statistics/weekly/<type>
-# 14.)almacenespr/dashboard/statistics/region<type>
-
-@app.route('/almacenespr/user/<int:user_id>/orders', methods = ['POST'])
-def orderResources(user_id):
+@app.route('/almacenespr/register/consumer', methods = ['POST','GET'])
+def registerconsumer():
     #orders specify if we are requesting, reserving or purchasing depending on its status
-    return FoodHandmaterialler().getAllFood()
+    return ConsumerHandler().insert()
 
-@app.route('/almacenespr/supplier/<int:sid>/newresource', methods = ['POST'])
+@app.route('/almacenespr/register/admin', methods = ['POST','GET'])
+def registerAdmin():
+    #orders specify if we are requesting, reserving or purchasing depending on its status
+    return AdminHandler().insert(3)
+
+@app.route('/almacenespr/register/supplier', methods = ['POST','GET'])
+def registerSupplier():
+    #orders specify if we are requesting, reserving or purchasing depending on its status
+    return SupplierHandler.insert()
+
+@app.route('/almacenespr/consumer/<int:consumer_id>/orders', methods = ['POST','PUT'])
+def orderResources(consumer_id):
+    #orders specify if we are requesting, reserving or purchasing depending on its status
+    return PlacesAnOrderHandler().insert(3)
+
+@app.route('/almacenespr/supplier/<int:sid>/newresource', methods = ['POST','PUT'])
 def newResource(sid):
-    return FoodHandler().getAllFood()
+    return suppliesHandler().insert(3)
 
 @app.route('/almacenespr/requested', methods = ['GET'])
 def viewRequested():
-    return FoodHandler().getAllFood()
+    return OrderHandler().getOrderByStatus('pending')
 
 @app.route('/almacenespr/available', methods = ['GET'])
 def viewAvailable():
+    return AdminHandler.getAllAdmins()
+
+@app.route('/almacenespr/requested/<string:resource_type>/<string:search_keyword>', methods = ['GET'])
+def searchRequested(resource_type,search_keyword):
     return FoodHandler().getAllFood()
 
 @app.route('/almacenespr/<string:resource_type>/', methods = ['GET'])
 def getAllResources(resource_type):
-    return FoodHandler().getAllFood()
-
-@app.route('/almacenespr/requested/<string:resource_type>/<string:search_keyword>', methods = ['GET'])
-def searchRequested(resource_type,search_keyword):
     return FoodHandler().getAllFood()
 
 @app.route('/almacenespr/available/<string:resource_type>/<string:search_keyword>', methods = ['GET'])
@@ -60,15 +75,38 @@ def searchAvailable(resource_type,search_keyword):
 
 @app.route('/almacenespr/dashboard/statistics/daily/<int:type>', methods = ['GET'])
 def dailyStatistics(type):
-    return FoodHandler().getAllFood()
+    if type == 0:
+        #return stats for in need
+        return FoodHandler().getAllFood()
+    elif type == 1 :
+        #return stats for available
+        return FoodHandler().getAllFood()
+    else :
+        #return stats for match
+        return FoodHandler().getAllFood()
 
 @app.route('/almacenespr/dashboard/statistics/weekly/<int:type>', methods = ['GET'])
 def weeklyStatistics(type):
-    return FoodHandler().getAllFood()
-
+    if type == 0:
+        #return stats for in need
+        return FoodHandler().getAllFood()
+    elif type == 1 :
+        #return stats for available
+        return FoodHandler().getAllFood()
+    else :
+        #return stats for match
+        return FoodHandler().getAllFood()
 @app.route('/almacenespr/dashboard/statistics/region/<int:type>', methods = ['GET'])
 def regionStatistics(type):
-    return FoodHandler().getAllFood()
+    if type == 0:
+        #return stats for in need
+        return FoodHandler().getAllFood()
+    elif type == 1 :
+        #return stats for available
+        return FoodHandler().getAllFood()
+    else :
+        #return stats for match
+        return FoodHandler().getAllFood()
 
 @app.route('/almacenespr/food', methods=['GET', 'PUT'])
 def searchFood():

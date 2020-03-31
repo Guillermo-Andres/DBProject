@@ -1,25 +1,40 @@
-# 4. Add a request for a given resource
-# 5. Announce the availability of a resource.
-# 6. Reserve or purchase a resource. Free resources are reserved. Otherwise, they are purchased.
-# 7. Browse resources being requested
-# 8. Browse resources available
-# 9. See detail of resources, including location on a Google Map
-# 10. Keyword search resources being requested, with sorting by resource name
-# 11. Keyword search resources available, with sorting by resource name
-# 12. Show dashboard page with daily statistics on a. Resources in need b. Resources available c. Matching between need and availability
+1. Register as a system administrator.
+2. Register as a person in need of resources.
+3. Register as a person that supplies resources.
+4. Add a request for a given resource
+5. Announce the availability of a resource.
+6. Reserve or purchase a resource. Free resources are reserved. Otherwise, they are purchased.
+7. Browse resources being requested
+8. Browse resources available
+9. See detail of resources, including location on a Google Map
+10. Keyword search resources being requested, with sorting by resource name
+11. Keyword search resources available, with sorting by resource name
+12. Show dashboard page with daily statistics on a. Resources in need b. Resources available c. Matching between need and availability
+13. Show dashboard page with trending statics (7 day period) on a. Resources in need b. Resources available c. Matching between need and availability
+14. Show dashboard page with trending statics (8 Senate Regions in PR) on a. Resources in need b. Resources available c. Matching between need and availability
 
-4.)almacenespr/user<id>/orders
-5.)almacenespr/suppllier<id>/newresource
-6.)almacenespr/user<id>/orders (aqui mismo el front end se encarga de split entre reserved y eso) 
-7.) almacenespr/requested/
-8.) almacenespr/available/
-9.)almacenespr/resource<type>/resource<id> (todos los attributos de a given reource) 
-10.) almacenespr/requested/resource<type>/search<keyword>
+
+
+
+
+routes:
+
+
+
+
+8.) almacenespr/available/  GET de resource
+9.)almacenespr/resource<type>/resource<id> (todos los attributos de a given reource) mis tablas esta hechas
+10.)almacenespr/requested/resource<type>/search<keyword>
 11.)almacenespr/available/resource<type> /search<keyword>
-12.)almacenespr/dashboard/statistics/daily/<type>
-13.)almacenespr/dashboard/statistics/weekly/<type>
-14.)almacenespr/dashboard/statistics/region<type>
+    *19 cases cada uno con sus varios key words
+    *todos los handlers de los recursos
 
+
+
+
+
+
+Rest methods API
 
 4.)POST de ORDER
 5.) POST de resource , PUT de order
@@ -30,3 +45,5 @@
 10.)GET  de order
 11.) get resource
 12.) get resources y order by date
+13.)get resources y order by date
+14.) get resources y order by location
