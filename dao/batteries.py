@@ -14,29 +14,29 @@ class BatteryDAO:
         return result
 
     def getBatteryById(self, id):
-        result = [[1,'AA',12,3.99,'bayamon'1],[2,'DD',4,5.99,'carolina', 5],[3,'AAA',12,6.99,'ponce',24]]
+        result = [[1,'AA',12,3.99,'bayamon',1],[2,'DD',4,5.99,'carolina', 5],[3,'AAA',12,6.99,'ponce',24]]
         return result
 
     def getBatteryByType(self, type):
-        result = [[1,'AA',12,3.99,'bayamon'1],[2,'DD',4,5.99,'carolina', 5],[3,'AAA',12,6.99,'ponce',24]]
+        result = [[1,'AA',12,3.99,'bayamon',1],[2,'DD',4,5.99,'carolina', 5],[3,'AAA',12,6.99,'ponce',24]]
         return result
 
     def getBatteryByPrice(self,prince):
-        result = [[1,'AA',12,3.99,'bayamon'1],[2,'DD',4,5.99,'carolina', 5],[3,'AAA',12,6.99,'ponce',24]]
+        result = [[1,'AA',12,3.99,'bayamon',1],[2,'DD',4,5.99,'carolina', 5],[3,'AAA',12,6.99,'ponce',24]]
         return result
 
     def getBatteryByLocaion(self,location):
-        result = [[1,'AA',12,3.99,'bayamon'1],[2,'DD',4,5.99,'carolina', 5],[3,'AAA',12,6.99,'ponce',24]]
+        result = [[1,'AA',12,3.99,'bayamon',1],[2,'DD',4,5.99,'carolina', 5],[3,'AAA',12,6.99,'ponce',24]]
         return result
 
     def insert(self, pname, pcolor, pmaterial, pprice):
-        result = [[1,'AA',12,3.99,'bayamon'1],[2,'DD',4,5.99,'carolina', 5],[3,'AAA',12,6.99,'ponce',24]]
+        result = [[1,'AA',12,3.99,'bayamon',1],[2,'DD',4,5.99,'carolina', 5],[3,'AAA',12,6.99,'ponce',24]]
         return result
 
     def delete(self, pid):
-        result = [[1,'AA',12,3.99,'bayamon'1],[2,'DD',4,5.99,'carolina', 5],[3,'AAA',12,6.99,'ponce',24]]
+        result = [[1,'AA',12,3.99,'bayamon',1],[2,'DD',4,5.99,'carolina', 5],[3,'AAA',12,6.99,'ponce',24]]
         return result
 
     def update(self, pid, pname, pcolor, pmaterial, pprice):
-        result = [[1,'AA',12,3.99,'bayamon'1],[2,'DD',4,5.99,'carolina', 5],[3,'AAA',12,6.99,'ponce',24]]
+        result = [[1,'AA',12,3.99,'bayamon',1],[2,'DD',4,5.99,'carolina', 5],[3,'AAA',12,6.99,'ponce',24]]
         return result
