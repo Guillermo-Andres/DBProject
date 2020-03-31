@@ -42,11 +42,11 @@ class ConsumerDAO:
     def getConsumerBySeverity(self, severity):
         return self.getAllConsumers()
 
-    def insert(self):
-        return "This inserts a new record to the Consumer table"
+    def insert(self, item):
+        return self.getAllConsumers()
 
     def delete(self, cid):
-        return "This will delete the record with the specified cid"
+        return self.getAllConsumers()
 
     def update(self, payment_method_id):
-        return "This updates an existing record from the PaymentMethod table"
+        return self.getAllConsumers()

@@ -42,7 +42,7 @@ def registerconsumer():
         return ConsumerHandler().getAllConsumers()
     
     elif request.method == 'POST':
-        return ConsumerHandler().insert(request.get_data() )
+        return ConsumerHandler().insert(request.get_data())
 
 @app.route('/almacenespr/register/admin', methods = ['POST','GET'])
 def registerAdmin():
@@ -53,7 +53,7 @@ def registerAdmin():
         return AdminHandler().getAllAdmins()
     
     elif request.method == 'POST':
-        return AdminHandler().insert(request.get_json())
+        return AdminHandler().insert(request.get_data())
 
 
 @app.route('/almacenespr/register/supplier', methods = ['POST','GET'])
@@ -64,7 +64,7 @@ def registerSupplier():
         return SupplierHandler().getAllSuppliers()
     
     elif request.method == 'POST':
-        return SupplierHandler().insert(request.get_data()) 
+        return SupplierHandler().insert(request.get_data())
 
 
 @app.route('/almacenespr/consumer/<int:consumer_id>/orders', methods = ['GET','POST','PUT'])
