@@ -9,16 +9,78 @@ class PowerToolsHandler:
         result['tool_id'] = row[0]
         result['type'] = row[1]
         result['description'] = row[2]
-
-
-
-
+        result['price'] = row[3]
+        result['location'] = row[4]
+        result['quantity'] = row[5]
 
         return result
 
 
 
     def getAllTools(self):
+        dao = ToolsDAO()
+        tools_list = dao.getAllTools()
+        result_list = []
+        for row in tools_list:
+            result = self.build_Tools_dict(row)
+            result_list.append(result)
+        return jsonify(Tools=result_list)
+
+    def getToolById(self, pid):
+        dao = ToolsDAO()
+        tools_list = dao.getAllTools()
+        result_list = []
+        for row in tools_list:
+            result = self.build_Tools_dict(row)
+            result_list.append(result)
+        return jsonify(Tools=result_list)
+
+    def getToolByType(self, color):
+        dao = ToolsDAO()
+        tools_list = dao.getAllTools()
+        result_list = []
+        for row in tools_list:
+            result = self.build_Tools_dict(row)
+            result_list.append(result)
+        return jsonify(Tools=result_list)
+
+    def getToolByPrice(self, color):
+        dao = ToolsDAO()
+        tools_list = dao.getAllTools()
+        result_list = []
+        for row in tools_list:
+            result = self.build_Tools_dict(row)
+            result_list.append(result)
+        return jsonify(Tools=result_list)
+
+    def getToolByLocation(self, color):
+        dao = ToolsDAO()
+        tools_list = dao.getAllTools()
+        result_list = []
+        for row in tools_list:
+            result = self.build_Tools_dict(row)
+            result_list.append(result)
+        return jsonify(Tools=result_list)
+
+    def insert(self, pname, pcolor, pmaterial, pprice):
+        dao = ToolsDAO()
+        tools_list = dao.getAllTools()
+        result_list = []
+        for row in tools_list:
+            result = self.build_Tools_dict(row)
+            result_list.append(result)
+        return jsonify(Tools=result_list)
+
+    def delete(self, pid):
+        dao = ToolsDAO()
+        tools_list = dao.getAllTools()
+        result_list = []
+        for row in tools_list:
+            result = self.build_Tools_dict(row)
+            result_list.append(result)
+        return jsonify(Tools=result_list)
+
+    def update(self, pid, pname, pcolor, pmaterial, pprice):
         dao = ToolsDAO()
         tools_list = dao.getAllTools()
         result_list = []

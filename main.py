@@ -9,8 +9,6 @@ from handler.powertools import PowerToolsHandler
 from handler.fuel import FuelHandler
 from flask_cors import CORS, cross_origin
 
-
-
 # Activate
 app = Flask(__name__)
 # Apply CORS to this app
@@ -25,6 +23,8 @@ CORS(app)
 # 9. See detail of resources, including location on a Google Map    9.)almacenespr/resource<type>/resource<id> (todos los attributos de a given reource) 9.)GET de resource
 # 10. Keyword search resources being requested, with sorting by resource name             10.) almacenespr/requested/resource<type>/search<keyword>            10.)GET  de order
 # 11. Keyword search resources available, with sorting by resource name               11.)almacenespr/available/resource<type> /search<keyword>                11.) get resource
+
+
 # 12.)almacenespr/dashboard/statistics/daily/<type>
 # 13.)almacenespr/dashboard/statistics/weekly/<type>
 # 14.)almacenespr/dashboard/statistics/region<type>
@@ -32,7 +32,7 @@ CORS(app)
 @app.route('/almacenespr/user/<int:user_id>/orders', methods = ['POST'])
 def orderResources(user_id):
     #orders specify if we are requesting, reserving or purchasing depending on its status
-    return FoodHandler().getAllFood()
+    return FoodHandmaterialler().getAllFood()
 
 @app.route('/almacenespr/supplier/<int:sid>/newresource', methods = ['POST'])
 def newResource(sid):
@@ -76,7 +76,6 @@ def searchFood():
 
         print("REQUEST: ", request.json)
         return UserHandler().insertUserJson(request.json)
-        return None
     else:
         if not request.args:
             return FoodHandler().getAllFood()
