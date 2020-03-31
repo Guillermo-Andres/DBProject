@@ -58,11 +58,11 @@ class ConsumerHandler:
     def getConsumerBySeverity(self, severity):
         return self.getAllConsumers()
 
-    def insert(self):
-        return self.getAllDiapers()
+    def insert(self , item):
+        return self.getAllConsumers()
 
-    def delete(self):
-        return self.getAllDiapers()
+    def delete(self , item):
+        return self.getAllConsumers()
 
-    def update(self):
-        return self.getAllDiapers()
+    def update(self , item):
+        return self.getAllConsumers()
