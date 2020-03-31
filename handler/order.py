@@ -41,7 +41,7 @@ class OrderHandler:
     def getOrderByStatus(self, status):
         return self.getAllOrders()
 
-    def insert(self):
+    def insert(self  , item):
         return self.getAllOrders()
 
     def delete(self):

@@ -22,6 +22,7 @@ from handler.placesAnOrder import PlacesAnOrderHandler
 from handler.supplier import SupplierHandler
 from handler.supplies import suppliesHandler
 from handler.worksFor import WorksForHandler
+from handler.ResourceHandler import ResourceHandler
 from flask_cors import CORS, cross_origin
 
 # Activate
@@ -98,21 +99,23 @@ def newResource(sid):
 def viewRequested():
     return OrderHandler().getOrderByStatus('pending')
 
-@app.route('/almacenespr/available', methods = ['GET'])
+@app.route('/almacenespr/all', methods = ['GET'])
 def viewAvailable():
-    return AdminHandler().getAllAdmins()
+    return ResourceHandler().getAll()
 
 @app.route('/almacenespr/requested/<string:resource_type>/<string:search_keyword>', methods = ['GET'])
 def searchRequested(resource_type,search_keyword):
-    return FoodHandler().getAllFood()
+
+    return ResourceHandler().getAllByType(resource_type)
 
 @app.route('/almacenespr/<string:resource_type>/', methods = ['GET'])
 def getAllResources(resource_type):
-    return FoodHandler().getAllFood()
+   
+    return ResourceHandler().getAllByType(resource_type)
 
 @app.route('/almacenespr/available/<string:resource_type>/<string:search_keyword>', methods = ['GET'])
 def searchAvailable(resource_type,search_keyword):
-    return FoodHandler().getAllFood()
+    return ResourceHandler().getAllByType(resource_type)
 
 @app.route('/almacenespr/dashboard/statistics/daily/<int:type>', methods = ['GET'])
 def dailyStatistics(type):
