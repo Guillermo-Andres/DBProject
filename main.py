@@ -37,17 +37,17 @@ def registerconsumer():
 @app.route('/almacenespr/register/admin', methods = ['POST','GET'])
 def registerAdmin():
     #orders specify if we are requesting, reserving or purchasing depending on its status
-    return AdminHandler().insert(3)
+    return AdminHandler().getAdminByAddress('lol')
 
 @app.route('/almacenespr/register/supplier', methods = ['POST','GET'])
 def registerSupplier():
     #orders specify if we are requesting, reserving or purchasing depending on its status
-    return SupplierHandler.insert()
+    return SupplierHandler.insert(3)
 
 @app.route('/almacenespr/consumer/<int:consumer_id>/orders', methods = ['POST','PUT'])
 def orderResources(consumer_id):
     #orders specify if we are requesting, reserving or purchasing depending on its status
-    return PlacesAnOrderHandler().insert(3)
+    return {PlacesAnOrderHandler().insert(3)}
 
 @app.route('/almacenespr/supplier/<int:sid>/newresource', methods = ['POST','PUT'])
 def newResource(sid):
@@ -59,7 +59,7 @@ def viewRequested():
 
 @app.route('/almacenespr/available', methods = ['GET'])
 def viewAvailable():
-    return AdminHandler.getAllAdmins()
+    return AdminHandler().getAllAdmins()
 
 @app.route('/almacenespr/requested/<string:resource_type>/<string:search_keyword>', methods = ['GET'])
 def searchRequested(resource_type,search_keyword):
