@@ -36,7 +36,7 @@ class FuelHandler:
             result_list.append(result)
         return jsonify(Fuel=result_list)
 
-     def getFuelByType(self, type):
+    def getFuelByType(self, type):
          dao = FuelDAO()
          fuel_list = dao.getAllFuel()
          result_list = []

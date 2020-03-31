@@ -105,13 +105,7 @@ def searchBatteries():
 
 @app.route('/almacenespr/clothes', methods=['GET', 'PUT'])
 def searchClothing():
-    if request.method == 'POST':
-
-        print("REQUEST: ", requegetAllHeavyEquipmentst.json)
-
-    else:
-        if not request.args:
-            return ClothingHandler().getAllClothes()
+    return ClothingHandler().getAllClothes()
 
 
 @app.route('/almacenespr/heavyequipment', methods=['GET', 'PUT'])
