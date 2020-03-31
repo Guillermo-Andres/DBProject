@@ -153,10 +153,5 @@ def regionStatistics(type):
         #return stats for match
         return FoodHandler().getAllFood()
 
-
-
-
-
-
 if __name__ == '__main__':
      app.run()
