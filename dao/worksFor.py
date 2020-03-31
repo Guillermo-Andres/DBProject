@@ -13,3 +13,9 @@ class WorksForDAO:
             if(contains[0] == pfid):
                 return contains
         return None
+
+    def getWorksForByCompanyID(self , cid):
+        return [[1,1,1] , [1,2,3]]
+    
+    def getWorksForBySupplierID(self ,sid):
+        return [[1,1,1] , [1,2,3]]

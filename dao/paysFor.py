@@ -13,3 +13,10 @@ class PaysForDAO:
             if(contains[0] == pfid):
                 return contains
         return None
+
+    def getPaysForByPaymentID(self , pid):
+        return [[1,1,1] , [1,2,3]]
+    
+    
+    def getPaysForByOrderID(self , oid):
+        return [[1,1,1] , [1,2,3]]

@@ -11,3 +11,12 @@ class ContainsDAO:
             if(contains[0] == cid):
                 return contains
         return None
+
+    def getContainsByResourceID(self , rid):
+        return [[1,1,1] , [1,2,3]]
+
+   
+    def getContainsByOrderID(self , oid):
+        return [[1,1,1] , [1,2,3]]
+
+    

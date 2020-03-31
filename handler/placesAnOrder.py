@@ -22,3 +22,10 @@ class PlacesAnOrderHandler:
             pao.append(result)
         
         return jsonify(PlacesAnOrder = pao)
+
+    def insert(self , placesAnOrder_list:
+        placesAnOrder_dict = build_placesAnOrder_dict(placesAnOrder_list)
+        dao = PlacesDAO()
+        return dao.insert(placesAnOrder_dict['pid'] , placesAnOrder_dict['cid'] , placesAnOrder_dict['oid'])
+
+    

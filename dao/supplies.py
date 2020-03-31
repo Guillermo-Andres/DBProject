@@ -3,7 +3,7 @@ import psycopg2
 class SuppliesDAO:
 
 
-    #supid , sid , id
+    #supid , sid , rid
     def getAllSupplies(self):
         return [[1,1,1] , [1,2,3]]
     
@@ -13,3 +13,9 @@ class SuppliesDAO:
             if(contains[0] == supid):
                 return contains
         return None
+
+    def getSuppliesBySupplierID(self , sid):
+        return [[1,1,1] , [1,2,3]]
+
+    def getSuppliesByResourceID(self , rid):
+        return [[1,1,1] , [1,2,3]]

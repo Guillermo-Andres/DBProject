@@ -11,3 +11,15 @@ class CompanyDAO:
             if(Company[0] == cid):
                 return Company
         return None
+
+    def getCompanyByDes(self , des):
+        for Company in self.getAllCompanies():
+            if(Company[2] == des):
+                return Company
+        return None
+
+    def getCompanyByName(self , name):
+        for Company in self.getAllCompanies():
+            if(Company[1] == name):
+                return Company
+        return None

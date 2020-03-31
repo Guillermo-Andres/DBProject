@@ -11,3 +11,40 @@ class UserDAO:
             if(user[0] == uid):
                 return user
         return None
+
+
+    def getUserByName(self  , name):
+        for user in self.getAllUsers():
+            if(user[1] == name):
+                return user
+        
+        return None
+
+    def getUserByDOB(self  , DOB):
+        for user in self.getAllUsers():
+            if(user[2] == DOB):
+                    return user
+        
+        return None
+
+    
+    def getUserByLocation(self  , location):
+        for user in self.getAllUsers():
+            if(user[3] == location):
+                    return user
+        
+        return None
+
+    def getUserByPhone(self  , phone):
+        for user in self.getAllUsers():
+            if(user[4] == phone):
+                    return user
+        
+        return None
+
+    def getUserByEmail(self  , email):
+        for user in self.getAllUsers():
+            if(user[4] == email):
+                    return user
+        
+        return None
