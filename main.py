@@ -41,7 +41,7 @@ def registerconsumer():
     #orders specify if we are requesting, reserving or purchasing depending on its status
     if request.method == 'GET':
         return ConsumerHandler().getAllConsumers()
-    
+
     elif request.method == 'POST':
         return ConsumerHandler().insert(request.get_json())
 
@@ -52,7 +52,7 @@ def registerAdmin():
     print("============== ===================== " + str(arg))
     if request.method == 'GET':
         return AdminHandler().getAllAdmins()
-    
+
     elif request.method == 'POST':
         return AdminHandler().insert(request.get_json())
 
@@ -63,7 +63,7 @@ def registerSupplier():
 
     if request.method == 'GET':
         return SupplierHandler().getAllSuppliers()
-    
+
     elif request.method == 'POST':
         return SupplierHandler().insert(request.get_json())
 
@@ -74,24 +74,24 @@ def orderResources(consumer_id):
 
     if request.method == 'GET':
         return OrderHandler().getAllOrders()
-    
+
     elif request.method == 'POST':
         #TODO aqui en el futuero hay que llamar varios inserts (orden , contains  , etc...)
-        return OrderHandler().insert(request.get_json()) 
-    
+        return OrderHandler().insert(request.get_json())
+
     elif request.method == 'PUT':
         return OrderHandler().update(request.get_json())
 
 @app.route('/almacenespr/supplier/<int:sid>/newresource', methods = ['POST','PUT','GET'])
 def newResource(sid):
     #TODO otros resources aqui es donde seria bueno tener un "ResourceHandler" que se encarge de la logica internamente
-  
+
     if request.method == 'GET':
         return FoodHandler().getAllFood()
-    
+
     elif request.method == 'POST':
-        return FoodHandler().insert(request.get_json()()) 
-    
+        return FoodHandler().insert(request.get_json()())
+
     elif request.method == 'PUT':
         return FoodHandler().update(request.get_json()())
 
@@ -99,7 +99,7 @@ def newResource(sid):
 def viewRequested():
     return OrderHandler().getOrderByStatus('pending')
 
-@app.route('/almacenespr/allo', methods = ['GET'])
+@app.route('/almacenespr/available', methods = ['GET'])
 def viewAvailable():
     return ResourceHandler().getAll()
 
@@ -110,7 +110,7 @@ def searchRequested(resource_type,search_keyword):
 
 @app.route('/almacenespr/<string:resource_type>/', methods = ['GET'])
 def getAllResources(resource_type):
-   
+
     return ResourceHandler().getAllByType(resource_type)
 
 @app.route('/almacenespr/available/<string:resource_type>/<string:search_keyword>', methods = ['GET'])
@@ -152,85 +152,6 @@ def regionStatistics(type):
     else :
         #return stats for match
         return FoodHandler().getAllFood()
-
-@app.route('/almacenespr/food', methods=['GET', 'PUT'])
-def searchFood():
-    if request.method == 'POST':
-
-        print("REQUEST: ", request.json)
-
-    else:
-        if not request.args:
-            return FoodHandler().getAllFood()
-
-
-
-@app.route('/almacenespr/medication', methods=['GET', 'PUT'])
-def searchMedication():
-    if request.method == 'POST':
-
-        print("REQUEST: ", request.json)
-
-    else:
-        if not request.args:
-            return MedicationHandler().getAllMedication()
-
-
-@app.route('/almacenespr/batteries', methods=['GET', 'PUT'])
-def searchBatteries():
-    if request.method == 'POST':
-
-        print("REQUEST: ", request.json)
-
-    else:
-        if not request.args:
-            return BatteryHandler().getAllbattery()
-
-@app.route('/almacenespr/clothes', methods=['GET', 'PUT'])
-def searchClothing():
-    return ClothingHandler().getAllClothes()
-
-
-@app.route('/almacenespr/heavyequipment', methods=['GET', 'PUT'])
-def searchHeavyEquipment():
-    if request.method == 'POST':
-
-        print("REQUEST: ", request.json)
-
-    else:
-        if not request.args:
-            return HeavyEquipmentHandler().getAllHeavyEquipment()
-
-@app.route('/almacenespr/ice', methods=['GET', 'PUT'])
-def searchIce():
-    if request.method == 'POST':
-
-        print("REQUEST: ", request.json)
-
-    else:
-        if not request.args:
-            return IceHandler().getAllIce()
-
-
-@app.route('/almacenespr/tools', methods=['GET', 'PUT'])
-def searchTools():
-    if request.method == 'POST':
-
-        print("REQUEST: ", request.json)
-
-    else:
-        if not request.args:
-            return PowerToolsHandler().getAllTools()
-
-@app.route('/almacenespr/fuel', methods=['GET', 'PUT'])
-def searchFuel():
-    if request.method == 'POST':
-
-        print("REQUEST: ", request.json)
-
-    else:
-        if not request.args:
-            return FuelHandler().getAllFuel()
 
 
 
