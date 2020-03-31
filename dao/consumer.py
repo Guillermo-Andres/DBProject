@@ -21,22 +21,26 @@ class ConsumerDAO:
         return result
 
 
-    def getConsumerById(self, cid):
-        cursor = self.conn.cursor()
-        query = "select cid, cseverity from consumer where cid = %s;"
-        cursor.execute(query, (cid,))
-        result = cursor.fetchone()
-        return result
+    def getConsumerById(self, id):
+        return self.getAllConsumers()
 
-    def getConsumerBySeverity(self, cseverity):
-        cursor = self.conn.cursor()
-        query = "selects * from consumer where cseverity = %s;"
-        cursor.execute(query, (cseverity,))
-        result = []
-        for row in cursor:
-            result.append(row)
-        # return result
-        return "This will return all consumers by cseverity"
+    def getConsumerByName(self, consumer_first_name, consumer_last_name):
+        return self.getAllConsumers()
+
+    def getConsumerByDOB(self, dob):
+        return self.getAllConsumers()
+
+    def getConsumerByAddress(self, address):
+        return self.getAllConsumers()
+
+    def getConsumerByPhoneNumber(self, phone_number):
+        return self.getAllConsumers()
+
+    def getConsumerByEmail(self, email):
+        return self.getAllConsumers()
+
+    def getConsumerBySeverity(self, severity):
+        return self.getAllConsumers()
 
     def insert(self):
         return "This inserts a new record to the Consumer table"

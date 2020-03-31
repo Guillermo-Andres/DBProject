@@ -35,61 +35,29 @@ class SupplierHandler:
             result_list.append(result)
         return jsonify(Suppliers=result_list)
 
-    # def getSupplierById(self, sid):
-    #
-    #     dao = SupplierDAO()
-    #
-    #     row = dao.getSupplierById(sid)
-    #     if not row:
-    #         return jsonify(Error="Supplier Not Found"), 404
-    #     else:
-    #         part = self.build_supplier_dict(row)
-    #     return jsonify(Part=part)
-    #
-    # def getPartsBySupplierId(self, sid):
-    #     dao = SupplierDAO()
-    #     if not dao.getSupplierById(sid):
-    #         return jsonify(Error="Supplier Not Found"), 404
-    #     parts_list = dao.getPartsBySupplierId(sid)
-    #     result_list = []
-    #     for row in parts_list:
-    #         result = self.build_part_dict(row)
-    #         result_list.append(result)
-    #     return jsonify(PartsSupply=result_list)
-    #
-    # def searchSuppliers(self, args):
-    #     if len(args) > 1:
-    #         return jsonify(Error = "Malformed search string."), 400
-    #     else:
-    #         city = args.get("city")
-    #         if city:
-    #             dao = SupplierDAO()
-    #             supplier_list = dao.getSuppliersByCity(city)
-    #             result_list = []
-    #             for row in supplier_list:
-    #                 result = self.build_supplier_dict(row)
-    #                 result_list.append(row)
-    #             return jsonify(Suppliers=result_list)
-    #         else:
-    #             return jsonify(Error="Malformed search string."), 400
-    #
-    # def insertSupplier(self, form):
-    #     if form and len(form) == 3:
-    #         sname = form['sname']
-    #         scity = form['scity']
-    #         sphone = form['sphone']
-    #         if sname and scity and sphone:
-    #             dao = SupplierDAO()
-    #             sid = dao.insert(sname, scity, sphone)
-    #             result = {}
-    #             result["sid"] = sid
-    #             result["sname"] = sname
-    #             result["scity"] = scity
-    #             result["sphone"] = sphone
-    #             return jsonify(Supplier=result), 201
-    #         else:
-    #             return jsonify(Error="Malformed post request")
-    #     else:
-    #         return jsonify(Error="Malformed post request")
+    def getSupplierById(self, id):
+        return self.getAllSuppliers()
 
+    def getSupplierByName(self, first_name, last_name):
+        return self.getAllSuppliers()
 
+    def getSupplierByDOB(self, dob):
+        return self.getAllSuppliers()
+
+    def getSupplierByAddress(self, address):
+        return self.getAllSuppliers()
+
+    def getSupplierByPhone(self, phone):
+        return self.getAllSuppliers()
+
+    def getSupplierByEmail(self, email):
+        return self.getAllSuppliers()
+
+    def insert(self):
+        return self.getAllSuppliers()
+
+    def delete(self):
+        return self.getAllSuppliers()
+
+    def update(self):
+        return self.getAllSuppliers()

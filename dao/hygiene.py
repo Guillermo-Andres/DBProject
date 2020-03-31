@@ -21,3 +21,36 @@ class HygieneDAO:
         # for row in cursor: # find efficient way to return values from the DB
         #     result.append(row)
         return result
+
+    def getHygieneById(self, id):
+        return self.getAllHygiene()
+
+    def getHygieneByExpirationDate(self, expiration_date):
+        return self.getAllHygiene()
+
+    def getHygieneByPrice(self, price):
+        return self.getAllHygiene()
+
+    def getHygieneByLocation(self, location):
+        return self.getAllHygiene()
+
+    def getHygieneByUnits(self, units):
+        return self.getAllHygiene()
+
+    def getHygieneByDescription(self, description):
+        return self.getAllHygiene()
+
+    def getHygieneByQuantityPerUnit(self, quantity_per_unit):
+        return self.getAllHygiene()
+
+    def getHygieneByBrand(self, brand):
+        return self.getAllHygiene()
+
+    def insert(self):
+        return self.getAllHygiene()
+
+    def delete(self):
+        return self.getAllHygiene()
+
+    def update(self):
+        return self.getAllHygiene()

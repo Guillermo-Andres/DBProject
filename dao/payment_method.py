@@ -20,20 +20,10 @@ class PaymentMethodDAO:
         return result
 
     def getPaymentMethodById(self, payment_method_id):
-        cursor = self.conn.cursor()
-        query = "select * from payment_method where payment_method_id = %s;"
-        cursor.execute(query, (payment_method_id,))
-        result = cursor.fetchone()
-        return "This will return payment methods by id"
+        return self.getAllPaymentMethods()
 
     def getPaymentMethodByType(self, type):
-        cursor = self.conn.cursor()
-        query = "select * from payment_method;"
-        cursor.execute(query)
-        result = []
-        for row in cursor:  # find efficient way to return values from the DB
-            result.append(row)
-        return "This will return payment methods by type"
+        return self.getAllPaymentMethods()
 
     def insert(self):
         return "This inserts a new record to the PaymentMethod table"
@@ -43,3 +33,12 @@ class PaymentMethodDAO:
 
     def update(self, payment_method_id):
         return "This updates an existing record from the PaymentMethod table"
+
+    def insert(self):
+        return self.getAllPaymentMethods()
+
+    def delete(self):
+        return self.getAllPaymentMethods()
+
+    def update(self):
+        return self.getAllPaymentMethods()

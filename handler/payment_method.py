@@ -26,25 +26,19 @@ class PaymentMethodHandler:
 
 
     def getPaymentMethodById(self, payment_method_id):
-        dao = PaymentMethodDAO()
-        row = dao.getPaymentMethodById(payment_method_id)
-        if not row:
-            return jsonify(Error = "Payment Method not found"), 404
-        else:
-            payment_method = self.build_payment_method_dict(row)
-            return jsonify(PaymentMethod = payment_method)
-        return "This will create dao for the get payment methods by id operation"
+        return self.getAllPaymentMethods()
 
     def getPaymentMethodByType(self, type):
-        dao = PaymentMethodDAO()
-        payment_method_list = []
-        payment_method_list = dao.getPaymentMethodByType(type)
-        result_list = []
-        for row in payment_method_list:
-            result = self.build_payment_method_dict(row)
-            result_list.append(result)
-        # return jsonify(PaymentMethod = result_list)
-        return "This will create dao for the get payment methods by type operation"
+        return self.getAllPaymentMethods()
+
+    def insert(self):
+        return self.getAllPaymentMethods()
+
+    def delete(self):
+        return self.getAllPaymentMethods()
+
+    def update(self):
+        return self.getAllPaymentMethods()
 
     def insertPaymentMethodJson(self, json):
         payment_method_type = json['type']

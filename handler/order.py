@@ -29,3 +29,23 @@ class OrderHandler:
             result_list.append(result)
         return jsonify(Order=result_list)
 
+    def getOrderById(self, id):
+        return self.getAllOrders()
+
+    def getOrderByAmount(self, amount):
+        return self.getAllOrders()
+
+    def getOrderByDate(self, date):
+        return self.getAllOrders()
+
+    def getOrderByStatus(self, status):
+        return self.getAllOrders()
+
+    def insert(self):
+        return self.getAllOrders()
+
+    def delete(self):
+        return self.getAllOrders()
+
+    def update(self):
+        return self.getAllOrders()

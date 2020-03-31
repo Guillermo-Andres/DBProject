@@ -21,4 +21,29 @@ class SupplierDAO:
         #     result.append(row)
         return result
 
+    def getSupplierById(self, id):
+        return self.getAllSuppliers()
 
+    def getSupplierByName(self, first_name, last_name):
+        return self.getAllSuppliers()
+
+    def getSupplierByDOB(self, dob):
+        return self.getAllSuppliers()
+
+    def getSupplierByAddress(self, address):
+        return self.getAllSuppliers()
+
+    def getSupplierByPhone(self, phone):
+        return self.getAllSuppliers()
+
+    def getSupplierByEmail(self, email):
+        return self.getAllSuppliers()
+
+    def insert(self):
+        return self.getAllSuppliers()
+
+    def delete(self):
+        return self.getAllSuppliers()
+
+    def update(self):
+        return self.getAllSuppliers()

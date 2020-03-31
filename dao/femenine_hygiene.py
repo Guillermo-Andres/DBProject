@@ -21,3 +21,36 @@ class FemenineHygieneDAO:
         # for row in cursor: # find efficient way to return values from the DB
         #     result.append(row)
         return result
+
+    def getFemenineHygieneById(self, id):
+        return self.getAllFemenineHygiene()
+
+    def getFemenineHygieneByPrice(self, price):
+        return self.getAllFemenineHygiene()
+
+    def getFemenineHygieneByLocation(self, location):
+        return self.getAllFemenineHygiene()
+
+    def getFemenineHygieneByQuantity(self, quantity):
+        return self.getAllFemenineHygiene()
+
+    def getFemenineHygieneByType(self, type):
+        return self.getAllFemenineHygiene()
+
+    def getFemenineHygieneByFlow(self, flow):
+        return self.getAllFemenineHygiene()
+
+    def getFemenineHygieneByBrand(self, brand):
+        return self.getAllFemenineHygiene()
+
+    def getFemenineHygieneByQuantityPerUnit(self, quantity_per_unit):
+        return self.getAllFemenineHygiene()
+
+    def insert(self):
+        return self.getAllFemenineHygiene()
+
+    def delete(self):
+        return self.getAllFemenineHygiene()
+
+    def update(self):
+        return self.getAllFemenineHygiene()

@@ -34,3 +34,33 @@ class DiapersHandler:
             result = self.build_diapers_dict(row)
             result_list.append(result)
         return jsonify(Diapers=result_list)
+
+    def getDiapersById(self, id):
+        return self.getAllDiapers()
+
+    def getDiapersByPrice(self, price):
+        return self.getAllDiapers()
+
+    def getDiapersByLocation(self, location):
+        return self.getAllDiapers()
+
+    def getDiapersByQuantity(self, quantity):
+        return self.getAllDiapers()
+
+    def getDiapersBySize(self, size):
+        return self.getAllDiapers()
+
+    def getDiapersByMaterial(self, material):
+        return self.getAllDiapers()
+
+    def getDiapersByBrand(self, brand):
+        return self.getAllDiapers()
+
+    def insert(self):
+        return self.getAllDiapers()
+
+    def delete(self):
+        return self.getAllDiapers()
+
+    def update(self):
+        return self.getAllDiapers()

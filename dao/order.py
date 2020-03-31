@@ -20,3 +20,24 @@ class OrderDAO:
         # for row in cursor: # find efficient way to return values from the DB
         #     result.append(row)
         return result
+
+    def getOrderById(self, id):
+        return self.getAllOrders()
+
+    def getOrderByAmount(self, amount):
+        return self.getAllOrders()
+
+    def getOrderByDate(self, date):
+        return self.getAllOrders()
+
+    def getOrderByStatus(self, status):
+        return self.getAllOrders()
+
+    def insert(self):
+        return self.getAllOrders()
+
+    def delete(self):
+        return self.getAllOrders()
+
+    def update(self):
+        return self.getAllOrders()

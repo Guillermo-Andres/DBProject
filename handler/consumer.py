@@ -37,3 +37,32 @@ class ConsumerHandler:
             result_list.append(result)
         return jsonify(Consumer=result_list)
 
+    def getConsumerById(self, id):
+        return self.getAllConsumers()
+
+    def getConsumerByName(self, consumer_first_name, consumer_last_name):
+        return self.getAllConsumers()
+
+    def getConsumerByDOB(self, dob):
+        return self.getAllConsumers()
+
+    def getConsumerByAddress(self, address):
+        return self.getAllConsumers()
+
+    def getConsumerByPhoneNumber(self, phone_number):
+        return self.getAllConsumers()
+
+    def getConsumerByEmail(self, email):
+        return self.getAllConsumers()
+
+    def getConsumerBySeverity(self, severity):
+        return self.getAllConsumers()
+
+    def insert(self):
+        return self.getAllDiapers()
+
+    def delete(self):
+        return self.getAllDiapers()
+
+    def update(self):
+        return self.getAllDiapers()
