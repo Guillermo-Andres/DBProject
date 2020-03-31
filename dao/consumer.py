@@ -1,11 +1,11 @@
 from config.dbconfig import pg_config
 import psycopg2
 class ConsumerDAO:
-    def __init__(self):
-        connection_url = "dbname=%s user=%s password=%s host=127.0.0.1" % (pg_config['dbname'],
-                                                                           pg_config['user'],
-                                                                           pg_config['passwd'])
-        self.conn = psycopg2._connect(connection_url)
+    # def __init__(self):
+        # connection_url = "dbname=%s user=%s password=%s host=127.0.0.1" % (pg_config['dbname'],
+        #                                                                    pg_config['user'],
+        #                                                                    pg_config['passwd'])
+        # self.conn = psycopg2._connect(connection_url)
 
     # consumer attributes: consumer_id, consumer_first_name, consumer_last_name, consumer_dob, consumer_address, consumer_phone_number, consumer_email_address, consumer_severity
 
@@ -42,11 +42,11 @@ class ConsumerDAO:
     def getConsumerBySeverity(self, severity):
         return self.getAllConsumers()
 
-    def insert(self):
-        return "This inserts a new record to the Consumer table"
+    def insert(self, item):
+        return self.getAllConsumers()
 
     def delete(self, cid):
-        return "This will delete the record with the specified cid"
+        return self.getAllConsumers()
 
     def update(self, payment_method_id):
-        return "This updates an existing record from the PaymentMethod table"
+        return self.getAllConsumers()

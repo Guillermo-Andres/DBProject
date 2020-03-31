@@ -60,8 +60,8 @@ class suppliesHandler:
 
 
     def insert(self , item):
-        return 1
+        return jsonify(Supplies= item) ,200
     def delete(self , id):
-        return 1
+        return jsonify(Supplies= id) ,200
     def update(self , item):
-        return 1
+        return jsonify(Supplies= item) ,200
