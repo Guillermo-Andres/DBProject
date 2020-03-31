@@ -23,3 +23,10 @@ class WorksForHandler:
             WorksFor.append(result)
         
         return jsonify(WorksFor = WorksFor)
+
+    def insert(self , item):
+        return 1
+    def delete(self , id):
+        return 1
+    def update(self , item):
+        return 1

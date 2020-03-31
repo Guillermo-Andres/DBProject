@@ -23,3 +23,44 @@ class CompanyHandler:
             cms.append(result)
         
         return jsonify(Companies = cms)
+
+    def getCompanyByID(self , cid):
+        dao = CompanyDAO()
+        cms = []
+        items = dao.getCompanyByID(cid)
+
+        for i in items:
+            result = self.build_company_dict(i)
+            cms.append(result)
+        
+        return jsonify(Companies = cms)
+
+    def getCompanyByName(self , name):
+        dao = CompanyDAO()
+        cms = []
+        items = dao.getCompanyByName(name)
+
+        for i in items:
+            result = self.build_company_dict(i)
+            cms.append(result)
+        
+        return jsonify(Companies = cms)
+
+
+    def getCompanyByDes(self , name):
+        dao = CompanyDAO()
+        cms = []
+        items = dao.getCompanyByDes(name)
+
+        for i in items:
+            result = self.build_company_dict(i)
+            cms.append(result)
+        
+        return jsonify(Companies = cms)
+
+    def insert(self , item):
+        return 1
+    def delete(self , id):
+        return 1
+    def update(self , item):
+        return 1

@@ -23,3 +23,44 @@ class PaysForHandler:
             PaysFor.append(result)
         
         return jsonify(PaysFor = PaysFor)
+
+
+    def getPaysForByID(self , id):
+        dao = PaysForDAO()
+        PaysFor = []
+        items = dao.getPaysForByID(id)
+
+        for i in items:
+            result = self.build_PaysFor_dict(i)
+            PaysFor.append(result)
+        
+        return jsonify(PaysFor = PaysFor)
+
+    def getPaysForByPaymentMethod(self , id):
+        dao = PaysForDAO()
+        PaysFor = []
+        items = dao.getPaysForByPaymentID(id)
+
+        for i in items:
+            result = self.build_PaysFor_dict(i)
+            PaysFor.append(result)
+        
+        return jsonify(PaysFor = PaysFor)
+
+    def getPaysForByOrder(self , id):
+        dao = PaysForDAO()
+        PaysFor = []
+        items = dao.getPaysForByOrderID(id)
+
+        for i in items:
+            result = self.build_PaysFor_dict(i)
+            PaysFor.append(result)
+        
+        return jsonify(PaysFor = PaysFor)
+
+    def insert(self , item):
+        return 1
+    def delete(self , id):
+        return 1
+    def update(self , item):
+        return 1

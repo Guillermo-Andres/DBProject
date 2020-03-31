@@ -23,3 +23,10 @@ class ContainsHandler:
             contains.append(result)
         
         return jsonify(contain = contains)
+  
+    def insert(self , item):
+        return 1
+    def delete(self , id):
+        return 1
+    def update(self , item):
+        return 1

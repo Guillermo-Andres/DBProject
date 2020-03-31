@@ -23,3 +23,45 @@ class suppliesHandler:
             supplies.append(result)
         
         return jsonify(supplies = supplies)
+
+    
+    def getSuppliesByID(self , id):
+        dao = SuppliesDAO()
+        supplies = []
+        items = dao.getSuppliesByID(id)
+
+        for i in items:
+            result = self.build_supplies_dict(i)
+            supplies.append(result)
+        
+        return jsonify(supplies = supplies)
+
+    def getSuppliesBySupplierID(self , sid):
+        dao = SuppliesDAO()
+        supplies = []
+        items = dao.getSuppliesBySupplierID(sid)
+
+        for i in items:
+            result = self.build_supplies_dict(i)
+            supplies.append(result)
+        
+        return jsonify(supplies = supplies)
+
+    def getSuppliesByResourceID(self , rid):
+        dao = SuppliesDAO()
+        supplies = []
+        items = dao.getSuppliesByResourceID(rid)
+
+        for i in items:
+            result = self.build_supplies_dict(i)
+            supplies.append(result)
+        
+        return jsonify(supplies = supplies)
+
+
+    def insert(self , item):
+        return 1
+    def delete(self , id):
+        return 1
+    def update(self , item):
+        return 1

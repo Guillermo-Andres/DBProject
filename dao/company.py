@@ -23,3 +23,10 @@ class CompanyDAO:
             if(Company[1] == name):
                 return Company
         return None
+
+    def insert(self , item):
+        return 1
+    def delete(self , id):
+        return 1
+    def update(self , item):
+        return 1
