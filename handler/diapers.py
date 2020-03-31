@@ -56,11 +56,12 @@ class DiapersHandler:
     def getDiapersByBrand(self, brand):
         return self.getAllDiapers()
 
-    def insert(self):
-        return self.getAllDiapers()
+    def insert(self, item):
+        return jsonify(Diapers= item) ,200
 
-    def delete(self):
-        return self.getAllDiapers()
+    def delete(self,item):
+        return jsonify(Diapers= item) ,200
 
-    def update(self):
-        return self.getAllDiapers()
+
+    def update(self,item):
+        return jsonify(Diapers= item) ,200

@@ -59,10 +59,10 @@ class ConsumerHandler:
         return self.getAllConsumers()
 
     def insert(self , item):
-        return self.getAllConsumers()
+        return jsonify(Consumer= item) ,200
 
     def delete(self , item):
-        return self.getAllConsumers()
+        return jsonify(Consumer= item) ,200
 
     def update(self , item):
-        return self.getAllConsumers()
+        return jsonify(Consumer= item) ,200

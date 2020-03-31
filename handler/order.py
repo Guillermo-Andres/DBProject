@@ -41,11 +41,12 @@ class OrderHandler:
     def getOrderByStatus(self, status):
         return self.getAllOrders()
 
-    def insert(self):
-        return self.getAllOrders()
+    def insert(self,item):
+        return jsonify(Order= item) ,200
 
-    def delete(self):
-        return self.getAllOrders()
+    def delete(self,item):
+        return jsonify(Order= item) ,200
 
-    def update(self):
-        return self.getAllOrders()
+
+    def update(self,item):
+        return jsonify(Order= item) ,200

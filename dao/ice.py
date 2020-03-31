@@ -16,8 +16,12 @@ class IceDAO:
 
         iceDict['iid'] = row[0]
         iceDict['size'] = row[1]
-        iceDict['unit_size'] = row[2]
+        iceDict['quantity'] = row[2]
         iceDict['description'] = row[3]
+        iceDict['price'] = row[4]
+        iceDict['location'] = row[5]
+
+
 
         return iceDict
 

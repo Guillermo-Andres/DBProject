@@ -61,11 +61,12 @@ class HygieneHandler:
     def getHygieneByBrand(self, brand):
         return self.getAllHygiene()
 
-    def insert(self):
-        return self.getAllHygiene()
+    def insert(self,item):
+        return jsonify(Hygiene= item) ,200
 
-    def delete(self):
-        return self.getAllHygiene()
+    def delete(self,item):
+        return jsonify(Hygiene= item) ,200
 
-    def update(self):
-        return self.getAllHygiene()
+
+    def update(self,item):
+        return jsonify(Hygiene= item) ,200

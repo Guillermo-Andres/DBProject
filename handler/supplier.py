@@ -53,11 +53,12 @@ class SupplierHandler:
     def getSupplierByEmail(self, email):
         return self.getAllSuppliers()
 
-    def insert(self, item):
-        return self.getAllSuppliers()
+    def insert(self,item):
+        return jsonify(Supplier= item) ,200
 
-    def delete(self):
-        return self.getAllSuppliers()
+    def delete(self,item):
+        return jsonify(Supplier= item) ,200
 
-    def update(self):
-        return self.getAllSuppliers()
+
+    def update(self,item):
+        return jsonify(Supplier= item) ,200

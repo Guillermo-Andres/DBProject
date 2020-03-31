@@ -62,29 +62,12 @@ class PowerToolsHandler:
             result_list.append(result)
         return jsonify(Tools=result_list)
 
-    def insert(self, pname):
-        dao = ToolsDAO()
-        tools_list = dao.getAllTools()
-        result_list = []
-        for row in tools_list:
-            result = self.build_Tools_dict(row)
-            result_list.append(result)
-        return jsonify(Tools=result_list)
+    def insert(self,item):
+        return jsonify(Tools= item) ,200
 
-    def delete(self, pid):
-        dao = ToolsDAO()
-        tools_list = dao.getAllTools()
-        result_list = []
-        for row in tools_list:
-            result = self.build_Tools_dict(row)
-            result_list.append(result)
-        return jsonify(Tools=result_list)
+    def delete(self,item):
+        return jsonify(Tools= item) ,200
 
-    def update(self, pid):
-        dao = ToolsDAO()
-        tools_list = dao.getAllTools()
-        result_list = []
-        for row in tools_list:
-            result = self.build_Tools_dict(row)
-            result_list.append(result)
-        return jsonify(Tools=result_list)
+
+    def update(self,item):
+        return jsonify(Tools= item) ,200

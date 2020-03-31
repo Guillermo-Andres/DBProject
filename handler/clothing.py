@@ -106,28 +106,11 @@ class ClothingHandler:
         return jsonify(Clothes=result_list)
 
     def insert(self, pname):
-        dao = ClothingDAO()
-        clothes_list = dao.getAllClothes()
-        result_list = []
-        for row in clothes_list:
-            result = self.build_Clothes_dict(row)
-            result_list.append(result)
-        return jsonify(Clothes=result_list)
+        return jsonify(Clothes= item) ,200
 
-    def delete(self, pid):
-        dao = ClothingDAO()
-        clothes_list = dao.getAllClothes()
-        result_list = []
-        for row in clothes_list:
-            result = self.build_Clothes_dict(row)
-            result_list.append(result)
-        return jsonify(Clothes=result_list)
 
-    def update(self, pid):
-        dao = ClothingDAO()
-        clothes_list = dao.getAllClothes()
-        result_list = []
-        for row in clothes_list:
-            result = self.build_Clothes_dict(row)
-            result_list.append(result)
-        return jsonify(Clothes=result_list)
+    def delete(self, item):
+        return jsonify(Clothes= item) ,200
+
+    def update(self, item):
+        return jsonify(Clothes= item) ,200
