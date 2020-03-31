@@ -8,9 +8,9 @@ class HeavyEquipmentHandler:
         result = {}
         result['heavy_id'] = row[0]
         result['description'] = row[1]
-        result['price'] = row[1]
-        result['location'] = row[1]
-        result['quantity'] = row[1]
+        result['price'] = row[2]
+        result['location'] = row[3]
+        result['quantity'] = row[4]
 
 
         return result

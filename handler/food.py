@@ -11,10 +11,10 @@ class FoodHandler:
         result['ingredientlist'] = row[3]
         result['unit_size'] = row[4]
         result['description'] = row[5]
-        result['Expiration_date'] = row[5]
-        result['price'] = row[5]
-        result['location'] = row[5]
-        result['quantity'] = row[5]
+        result['Expiration_date'] = row[6]
+        result['price'] = row[7]
+        result['location'] = row[8]
+        result['quantity'] = row[9]
 
         return result
 
