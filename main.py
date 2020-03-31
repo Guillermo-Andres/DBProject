@@ -44,12 +44,13 @@ def registerSupplier():
     #orders specify if we are requesting, reserving or purchasing depending on its status
     return SupplierHandler.insert(3)
 
-@app.route('/almacenespr/consumer/<int:consumer_id>/orders', methods = ['POST','PUT'])
+@app.route('/almacenespr/consumer/<int:consumer_id>/orders', methods = ['GET','POST','PUT'])
 def orderResources(consumer_id):
     #orders specify if we are requesting, reserving or purchasing depending on its status
-    return {PlacesAnOrderHandler().insert(3)}
+    return FoodHandler().getAllFood()
+    #return PlacesAnOrderHandler().insert(3)
 
-@app.route('/almacenespr/supplier/<int:sid>/newresource', methods = ['POST','PUT'])
+@app.route('/almacenespr/supplier/<int:sid>/newresource', methods = ['POST','PUT','GET'])
 def newResource(sid):
     return suppliesHandler().insert(3)
 
