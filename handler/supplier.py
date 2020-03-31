@@ -53,7 +53,7 @@ class SupplierHandler:
     def getSupplierByEmail(self, email):
         return self.getAllSuppliers()
 
-    def insert(self):
+    def insert(self, item):
         return self.getAllSuppliers()
 
     def delete(self):
