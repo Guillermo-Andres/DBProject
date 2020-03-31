@@ -96,31 +96,15 @@ class FoodHandler:
 
 
 
-    def insert(self, pname):
-        dao = FoodDAO()
-        food_list = dao.getAllFood()
-        result_list = []
-        for row in food_list:
-            result = self.build_food_dict(row)
-            result_list.append(result)
-        return jsonify(Food=result_list)
+    def insert(self, item):
+        return jsonify(Food= item) ,200
+
 
 
     def delete(self, pid):
-        dao = FoodDAO()
-        food_list = dao.getAllFood()
-        result_list = []
-        for row in food_list:
-            result = self.build_food_dict(row)
-            result_list.append(result)
-        return jsonify(Food=result_list)
+        return jsonify(Food= item) ,200
+
 
 
     def update(self, pid):
-        dao = FoodDAO()
-        food_list = dao.getAllFood()
-        result_list = []
-        for row in food_list:
-            result = self.build_food_dict(row)
-            result_list.append(result)
-        return jsonify(Food=result_list)
+        return jsonify(Food= item) ,200

@@ -31,14 +31,15 @@ class PaymentMethodHandler:
     def getPaymentMethodByType(self, type):
         return self.getAllPaymentMethods()
 
-    def insert(self):
-        return self.getAllPaymentMethods()
+    def insert(self,item):
+        return jsonify(Payment_Method= item) ,200
 
-    def delete(self):
-        return self.getAllPaymentMethods()
+    def delete(self,item):
+        return jsonify(Payment_Method= item) ,200
 
-    def update(self):
-        return self.getAllPaymentMethods()
+
+    def update(self,item):
+        return jsonify(Payment_Method= item) ,200
 
     def insertPaymentMethodJson(self, json):
         payment_method_type = json['type']
@@ -49,6 +50,3 @@ class PaymentMethodHandler:
             return jsonify(PaymentMethod=result), 201
         else:
             return jsonify(Error="Unexpected attributes in post request"), 400
-
-
-

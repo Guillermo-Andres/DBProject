@@ -9,17 +9,18 @@ from handler.fuel import FuelHandler
 from handler.diapers import DiapersHandler
 from handler.femenine_hygiene import FemenineHygieneHandler
 from handler.hygiene import HygieneHandler
+from handler.water import WaterHandler
 
 
 class ResourceHandler:
 
     def getAllByType(self , type):
         if(type == 'food'):
-            return FoodHandler().getAllFood() 
+            return FoodHandler().getAllFood()
         elif(type == 'medication'):
             return MedicationHandler().getAllMedication()
         elif(type == 'batteries'):
-            return BatteryHandler().getAllbattery() 
+            return BatteryHandler().getAllbattery()
         elif(type == 'clothing'):
             return ClothingHandler().getAllClothes()
         elif(type == 'heavyequipment'):
@@ -36,10 +37,11 @@ class ResourceHandler:
             return FemenineHygieneHandler().getAllFemenineHygiene()
         elif(type == 'hygiene'):
             return HygieneHandler().getAllHygiene()
+        elif(type == 'water'):
+            return WaterHandler().getAllWater()
 
         else:
             return MedicationHandler().getAllMedication()
-        
+
         def getAll(self):
             return [HygieneHandler().getAllHygiene() , FoodHandler().getAllFood()]
-            
