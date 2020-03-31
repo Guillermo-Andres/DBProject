@@ -64,7 +64,7 @@ def registerSupplier():
         return SupplierHandler().getAllSuppliers()
     
     elif request.method == 'POST':
-        return SupplierHandler().insert(arg) 
+        return SupplierHandler().insert(request.get_data()) 
 
 
 @app.route('/almacenespr/consumer/<int:consumer_id>/orders', methods = ['GET','POST','PUT'])
@@ -120,7 +120,8 @@ def dailyStatistics(type):
         #return stats for in need
         return FoodHandler().getAllFood()
     elif type == 1 :
-        #return stats for available
+        #return sta
+        # ts for available
         return FoodHandler().getAllFood()
     else :
         #return stats for match
