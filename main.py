@@ -32,7 +32,7 @@ CORS(app)
 @app.route('/almacenespr/user/<int:user_id>/orders', methods = ['POST'])
 def orderResources(user_id):
     #orders specify if we are requesting, reserving or purchasing depending on its status
-    return FoodHandler().getAllFood()
+    return FoodHandmaterialler().getAllFood()
 
 @app.route('/almacenespr/supplier/<int:sid>/newresource', methods = ['POST'])
 def newResource(sid):
@@ -75,11 +75,12 @@ def searchFood():
     if request.method == 'POST':
 
         print("REQUEST: ", request.json)
-
+        return UserHandler().insertUserJson(request.json)
     else:
         if not request.args:
             return FoodHandler().getAllFood()
-
+        else:
+            return PartHandler().searchParts(request.args)
 
 
 @app.route('/almacenespr/medication', methods=['GET', 'PUT'])
@@ -87,68 +88,84 @@ def searchMedication():
     if request.method == 'POST':
 
         print("REQUEST: ", request.json)
-
+        return UserHandler().insertUserJson(request.json)
     else:
         if not request.args:
             return MedicationHandler().getAllMedication()
-
+        else:
+            return PartHandler().searchParts(request.args)
 
 @app.route('/almacenespr/batteries', methods=['GET', 'PUT'])
 def searchBatteries():
     if request.method == 'POST':
 
         print("REQUEST: ", request.json)
-
+        return UserHandler().insertUserJson(request.json)
     else:
         if not request.args:
             return BatteryHandler().getAllbattery()
+        else:
+            return PartHandler().searchParts(request.args)
 
 @app.route('/almacenespr/clothes', methods=['GET', 'PUT'])
 def searchClothing():
-    return ClothingHandler().getAllClothes()
+    if request.method == 'POST':
 
+        print("REQUEST: ", requegetAllHeavyEquipmentst.json)
+        return UserHandler().insertUserJson(request.json)
+    else:
+        if not request.args:
+            return ClothingHandler().getAllClothes()
+        else:
+            return PartHandler().searchParts(request.args)
 
 @app.route('/almacenespr/heavyequipment', methods=['GET', 'PUT'])
 def searchHeavyEquipment():
     if request.method == 'POST':
 
         print("REQUEST: ", request.json)
-
+        return UserHandler().insertUserJson(request.json)
     else:
         if not request.args:
             return HeavyEquipmentHandler().getAllHeavyEquipment()
+        else:
+            return PartHandler().searchParts(request.args)
 
 @app.route('/almacenespr/ice', methods=['GET', 'PUT'])
 def searchIce():
     if request.method == 'POST':
 
         print("REQUEST: ", request.json)
-
+        return UserHandler().insertUserJson(request.json)
     else:
         if not request.args:
             return IceHandler().getAllIce()
-
+        else:
+            return PartHandler().searchParts(request.args)
 
 @app.route('/almacenespr/tools', methods=['GET', 'PUT'])
 def searchTools():
     if request.method == 'POST':
 
         print("REQUEST: ", request.json)
-
+        return UserHandler().insertUserJson(request.json)
     else:
         if not request.args:
             return PowerToolsHandler().getAllTools()
+        else:
+            return PartHandler().searchParts(request.args)
 
 @app.route('/almacenespr/fuel', methods=['GET', 'PUT'])
 def searchFuel():
     if request.method == 'POST':
 
         print("REQUEST: ", request.json)
-
+        return UserHandler().insertUserJson(request.json)
     else:
         if not request.args:
             return FuelHandler().getAllFuel()
-
+        else:
+            return PartHandler().searchParts(request.args)
 
 
 
