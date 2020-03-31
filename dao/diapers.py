@@ -5,11 +5,11 @@ class DiapersDAO:
 
     # diapers attributes: diaper_id, diaper_price, diaper_location, diaper_quantity, diaper_size, diaper_material, diaper_brand
 
-    def __init__(self):
-        connection_url = "dbname=%s user=%s password=%s host=127.0.0.1" % (pg_config['dbname'],
-                                                                           pg_config['user'],
-                                                                           pg_config['passwd'])
-        self.conn = psycopg2._connect(connection_url)
+    # def __init__(self):
+    #     connection_url = "dbname=%s user=%s password=%s host=127.0.0.1" % (pg_config['dbname'],
+    #                                                                        pg_config['user'],
+    #                                                                        pg_config['passwd'])
+    #     self.conn = psycopg2._connect(connection_url)
 
     def getAllDiapers(self):
         # cursor = self.conn.cursor()
