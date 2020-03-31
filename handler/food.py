@@ -96,7 +96,7 @@ class FoodHandler:
 
 
 
-    def insert(self, pname, pcolor, pmaterial, pprice):
+    def insert(self, pname):
         dao = FoodDAO()
         food_list = dao.getAllFood()
         result_list = []
@@ -116,7 +116,7 @@ class FoodHandler:
         return jsonify(Food=result_list)
 
 
-    def update(self, pid, pname, pcolor, pmaterial, pprice):
+    def update(self, pid):
         dao = FoodDAO()
         food_list = dao.getAllFood()
         result_list = []

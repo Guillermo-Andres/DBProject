@@ -1,6 +1,6 @@
 from flask import jsonify
 from dao.ice import IceDAO
-    #ICE ATTTRIBUTES iid, size,unit_size,description
+    #ICE ATTTRIBUTES iid, size,unit_size,description,price,location,quantity
 
 
 class IceHandler:
@@ -15,6 +15,42 @@ class IceHandler:
 
     def getAllIce(self):
 
+        dao = IceDAO()
+        ice_list = dao.getAllIce()
+        result_list = []
+        for row in ice_list:
+            result = self.build_Ice_dict(row)
+            result_list.append(result)
+        return jsonify(Ice=result_list)
+
+    def getIceByUnitSize(self, id):
+        dao = IceDAO()
+        ice_list = dao.getAllIce()
+        result_list = []
+        for row in ice_list:
+            result = self.build_Ice_dict(row)
+            result_list.append(result)
+        return jsonify(Ice=result_list)
+
+    def getIceBySize(self,size):
+        dao = IceDAO()
+        ice_list = dao.getAllIce()
+        result_list = []
+        for row in ice_list:
+            result = self.build_Ice_dict(row)
+            result_list.append(result)
+        return jsonify(Ice=result_list)
+
+    def getIceByPrice(self,price):
+        dao = IceDAO()
+        ice_list = dao.getAllIce()
+        result_list = []
+        for row in ice_list:
+            result = self.build_Ice_dict(row)
+            result_list.append(result)
+        return jsonify(Ice=result_list)
+
+    def getIceByLocation(self,location):
         dao = IceDAO()
         ice_list = dao.getAllIce()
         result_list = []

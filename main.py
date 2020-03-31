@@ -43,18 +43,18 @@ def registerconsumer():
         return ConsumerHandler().getAllConsumers()
     
     elif request.method == 'POST':
-        return ConsumerHandler().insert(request.get_data())
+        return ConsumerHandler().insert(request.get_json())
 
 @app.route('/almacenespr/register/admin', methods = ['POST','GET'])
 def registerAdmin():
     #orders specify if we are requesting, reserving or purchasing depending on its status
-    arg = request.get_data()
+    arg = request.get_json()
     print("============== ===================== " + str(arg))
     if request.method == 'GET':
         return AdminHandler().getAllAdmins()
     
     elif request.method == 'POST':
-        return AdminHandler().insert(request.get_data())
+        return AdminHandler().insert(request.get_json())
 
 
 @app.route('/almacenespr/register/supplier', methods = ['POST','GET'])
@@ -65,7 +65,7 @@ def registerSupplier():
         return SupplierHandler().getAllSuppliers()
     
     elif request.method == 'POST':
-        return SupplierHandler().insert(request.get_data())
+        return SupplierHandler().insert(request.get_json())
 
 
 @app.route('/almacenespr/consumer/<int:consumer_id>/orders', methods = ['GET','POST','PUT'])
@@ -77,10 +77,10 @@ def orderResources(consumer_id):
     
     elif request.method == 'POST':
         #TODO aqui en el futuero hay que llamar varios inserts (orden , contains  , etc...)
-        return OrderHandler().insert(request.get_data()) 
+        return OrderHandler().insert(request.get_json()) 
     
     elif request.method == 'PUT':
-        return OrderHandler().update(request.get_data())
+        return OrderHandler().update(request.get_json())
 
 @app.route('/almacenespr/supplier/<int:sid>/newresource', methods = ['POST','PUT','GET'])
 def newResource(sid):
@@ -90,16 +90,16 @@ def newResource(sid):
         return FoodHandler().getAllFood()
     
     elif request.method == 'POST':
-        return FoodHandler().insert(request.get_data()()) 
+        return FoodHandler().insert(request.get_json()()) 
     
     elif request.method == 'PUT':
-        return FoodHandler().update(request.get_data()())
+        return FoodHandler().update(request.get_json()())
 
 @app.route('/almacenespr/requested', methods = ['GET'])
 def viewRequested():
     return OrderHandler().getOrderByStatus('pending')
 
-@app.route('/almacenespr/all', methods = ['GET'])
+@app.route('/almacenespr/allo', methods = ['GET'])
 def viewAvailable():
     return ResourceHandler().getAll()
 

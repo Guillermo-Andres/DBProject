@@ -105,7 +105,7 @@ class ClothingHandler:
             result_list.append(result)
         return jsonify(Clothes=result_list)
 
-    def insert(self, pname, pcolor, pmaterial, pprice):
+    def insert(self, pname):
         dao = ClothingDAO()
         clothes_list = dao.getAllClothes()
         result_list = []
@@ -123,7 +123,7 @@ class ClothingHandler:
             result_list.append(result)
         return jsonify(Clothes=result_list)
 
-    def update(self, pid, pname, pcolor, pmaterial, pprice):
+    def update(self, pid):
         dao = ClothingDAO()
         clothes_list = dao.getAllClothes()
         result_list = []

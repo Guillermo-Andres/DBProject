@@ -62,7 +62,7 @@ class PowerToolsHandler:
             result_list.append(result)
         return jsonify(Tools=result_list)
 
-    def insert(self, pname, pcolor, pmaterial, pprice):
+    def insert(self, pname):
         dao = ToolsDAO()
         tools_list = dao.getAllTools()
         result_list = []
@@ -80,7 +80,7 @@ class PowerToolsHandler:
             result_list.append(result)
         return jsonify(Tools=result_list)
 
-    def update(self, pid, pname, pcolor, pmaterial, pprice):
+    def update(self, pid):
         dao = ToolsDAO()
         tools_list = dao.getAllTools()
         result_list = []
