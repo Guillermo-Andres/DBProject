@@ -43,5 +43,18 @@ class ResourceHandler:
         else:
             return MedicationHandler().getAllMedication()
 
-        def getAll(self):
-            return [HygieneHandler().getAllHygiene() , FoodHandler().getAllFood()]
+    def getAll(self):
+        return {
+            'hygiene':HygieneHandler().getAllHygiene().get_json(),
+            'food':FoodHandler().getAllFood().get_json(),
+            'batteries':BatteryHandler().getAllbattery().get_json(),
+            'clothing':ClothingHandler().getAllClothes().get_json(),
+            'heavyEquipment':HeavyEquipmentHandler().getAllHeavyEquipment().get_json(),
+            'ice':IceHandler().getAllIce().get_json(),
+            'powertools':PowerToolsHandler().getAllTools().get_json(),
+            'fuel':FuelHandler().getAllFuel().get_json(),
+            'diapers':DiapersHandler().getAllDiapers().get_json(),
+            'femenineHygiene':FemenineHygieneHandler().getAllFemenineHygiene().get_json(),
+            'hygiene':HygieneHandler().getAllHygiene().get_json(),
+            'water':WaterHandler().getAllWater().get_json()
+        }
