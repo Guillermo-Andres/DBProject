@@ -2,6 +2,7 @@ from config.dbconfig import pg_config
 import psycopg2
 class ToolsDAO:
     #powertools ATTTRIBUTES tool id, type, description,price,location,quantity
+
     # def __init__(self):
     #
     #     connection_url = "dbname=%s user=%s password=%s" % (pg_config['dbname'],
