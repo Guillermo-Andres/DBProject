@@ -25,8 +25,8 @@ class ContainsHandler:
         return jsonify(contain = contains)
   
     def insert(self , item):
-        return 1
+        return jsonify(Contains= item) ,200
     def delete(self , id):
-        return 1
+        return jsonify(Contains= id) ,200
     def update(self , item):
-        return 1
+        return jsonify(Contains= item) ,200

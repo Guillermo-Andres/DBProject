@@ -65,8 +65,8 @@ class PlacesAnOrderHandler:
     #     return dao.insert([placesAnOrder_dict['pid'] , placesAnOrder_dict['cid'] , placesAnOrder_dict['oid']])
 
     def insert(self , item):
-        return 1
+        return jsonify(PlacesAnOrder= item) ,200
     def delete(self , id):
-        return 1
+        return jsonify(PlacesAnOrder= id) ,200
     def update(self , item):
-        return 1
+        return jsonify(PlacesAnOrder= item) ,200

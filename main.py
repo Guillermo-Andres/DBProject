@@ -42,17 +42,18 @@ def registerconsumer():
         return ConsumerHandler().getAllConsumers()
     
     elif request.method == 'POST':
-        return ConsumerHandler.insert(request.__dict__) 
+        return ConsumerHandler().insert(request.get_data() )
 
 @app.route('/almacenespr/register/admin', methods = ['POST','GET'])
 def registerAdmin():
     #orders specify if we are requesting, reserving or purchasing depending on its status
-
+    arg = request.get_data()
+    print("============== ===================== " + str(arg))
     if request.method == 'GET':
         return AdminHandler().getAllAdmins()
     
     elif request.method == 'POST':
-        return AdminHandler.insert(request.__dict__) 
+        return AdminHandler().insert(request.get_json())
 
 
 @app.route('/almacenespr/register/supplier', methods = ['POST','GET'])
@@ -63,7 +64,7 @@ def registerSupplier():
         return SupplierHandler().getAllSuppliers()
     
     elif request.method == 'POST':
-        return SupplierHandler.insert(request.__dict__) 
+        return SupplierHandler().insert(arg) 
 
 
 @app.route('/almacenespr/consumer/<int:consumer_id>/orders', methods = ['GET','POST','PUT'])
@@ -71,27 +72,27 @@ def orderResources(consumer_id):
     #orders specify if we are requesting, reserving or purchasing depending on its status
 
     if request.method == 'GET':
-        return OrdersHandler().getAllOrders()
+        return OrderHandler().getAllOrders()
     
     elif request.method == 'POST':
         #TODO aqui en el futuero hay que llamar varios inserts (orden , contains  , etc...)
-        return OrderHandler.insert(request.__dict__) 
+        return OrderHandler().insert(request.get_data()) 
     
     elif request.method == 'PUT':
-        return OrderHandler.update(request.__dict__)
+        return OrderHandler().update(request.get_data())
 
 @app.route('/almacenespr/supplier/<int:sid>/newresource', methods = ['POST','PUT','GET'])
 def newResource(sid):
     #TODO otros resources aqui es donde seria bueno tener un "ResourceHandler" que se encarge de la logica internamente
   
     if request.method == 'GET':
-        return FoodHandler().getAllFoods()
+        return FoodHandler().getAllFood()
     
     elif request.method == 'POST':
-        return FoodHandler.insert(request.__dict__) 
+        return FoodHandler().insert(request.get_data()()) 
     
     elif request.method == 'PUT':
-        return FoodHandler.update(request.__dict__)
+        return FoodHandler().update(request.get_data()())
 
 @app.route('/almacenespr/requested', methods = ['GET'])
 def viewRequested():

@@ -25,8 +25,8 @@ class WorksForHandler:
         return jsonify(WorksFor = WorksFor)
 
     def insert(self , item):
-        return 1
+        return jsonify(WorksFor= item) ,200
     def delete(self , id):
-        return 1
+        return jsonify(WorksFor= id) ,200
     def update(self , item):
-        return 1
+        return jsonify(WorksFor= item) ,200

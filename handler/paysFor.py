@@ -59,8 +59,8 @@ class PaysForHandler:
         return jsonify(PaysFor = PaysFor)
 
     def insert(self , item):
-        return 1
+        return jsonify(PaysFor= item) ,200
     def delete(self , id):
-        return 1
+        return jsonify(PaysFor= id) ,200
     def update(self , item):
-        return 1
+        return jsonify(PaysFor= item) ,200
