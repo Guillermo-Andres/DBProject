@@ -1,20 +1,13 @@
-# PartsApp
-Parts Demo App for Database access.
-![Image of ER ]https://github.com/Guillermo-Andres/DBProject/blob/master/Blank%20Diagram.png
+# AlmacenesPR
 
-Universidad de Puerto Rico
-Recinto Universitario de Mayagüez
-Departamento de Ciencia e Ingeniería de Computación
-CIIC 4060 Sistemas de Bases de Datos
-
-Project Phase I - Warehouse Management System: A Case Study
-By: Fabiola Badillo, Guillermo Betancourt and Pablo Santiago
-
-
-Introduction
+#Introduction
 A database application consists of many different areas within the realm of software. Applications are interconnected by various frameworks that allow for quick database management systems to easily provide information to a client. A client is usually a barebones application that can make requests to a server that hosts the database to query the required information. To begin our journey in the realm of database systems we were tasked to employ a mock warehouse management system web application with the help of the python FLASK web framework and a POSTGRESQL database to house the required information.  To begin the preliminary design of the application we were given a list of resources and required operations our system needed to support. From there we needed to develop an E-R diagram of the logical model of our database and develop mock operation handlers to begin the preliminary design of our application. 
 
-ER-Diagram
+#ER-Diagram
+
+
+![Image of ER ](https://github.com/Guillermo-Andres/DBProject/blob/master/Blank%20Diagram.png)
+
 ##Entities
 ###User
 Generalization for all the different users our app will support. It contains contact information such as: name, date-of-birth, address, phone number and email address
@@ -101,6 +94,15 @@ As stated previously the application is built with the FLASK web framework on to
 
 
 
+
+
+Universidad de Puerto Rico
+Recinto Universitario de Mayagüez
+Departamento de Ciencia e Ingeniería de Computación
+CIIC 4060 Sistemas de Bases de Datos
+
+Project Phase I - Warehouse Management System: A Case Study
+By: Fabiola Badillo, Guillermo Betancourt and Pablo Santiago
 
 
 ## Requirements
