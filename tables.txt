@@ -1,0 +1,2 @@
+create table consumer(cid serial primary key);
+create table places_an_order(placesID serial primary key , cid integer references consumer (cid))

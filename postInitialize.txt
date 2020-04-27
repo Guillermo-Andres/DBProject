@@ -1,0 +1,9 @@
+echo ;
+echo Creating user:alma , give it a password ;
+echo;
+createuser alma -e -P ;
+createdb almacen ;
+echo grant all privileges on database almacen to alma | psql almacen  > /dev/null 2>&1;
+cd / ;
+cd etc/postgresql/10/main ;
+sed -i 's/localhost/*/' postgresql.conf ;
