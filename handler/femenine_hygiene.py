@@ -61,11 +61,11 @@ class FemenineHygieneHandler:
     def getFemenineHygieneByQuantityPerUnit(self, quantity_per_unit):
         return self.getAllFemenineHygiene()
 
-    def insert(self):
+    def insert(self,item):
         return self.getAllFemenineHygiene()
 
-    def delete(self):
+    def delete(self,item):
         return self.getAllFemenineHygiene()
 
-    def update(self):
+    def update(self,item):
         return self.getAllFemenineHygiene()

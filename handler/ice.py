@@ -58,3 +58,13 @@ class IceHandler:
             result = self.build_Ice_dict(row)
             result_list.append(result)
         return jsonify(Ice=result_list)
+
+    def insert(self,item):
+        return jsonify(Ice= item) ,200
+
+    def delete(self,item):
+        return jsonify(Ice= item) ,200
+
+
+    def update(self,item):
+        return jsonify(Ice= item) ,200

@@ -51,29 +51,12 @@ class MedicationHandler:
     def getMedicationByQuantity(self, quantity):
         return self.getAllMedication()
 
-    def insert(self, id):
-        dao = MedicationDAO()
-        medication_list = dao.getAllMedication()
-        result_list = []
-        for row in medication_list:
-            result = self.build_Medication_dict(row)
-            result_list.append(result)
-        return jsonify(Medication=result_list)
+    def insert(self,item):
+        return jsonify(Medication= item) ,200
 
-    def delete(self,id):
-        dao = MedicationDAO()
-        medication_list = dao.getAllMedication()
-        result_list = []
-        for row in medication_list:
-            result = self.build_Medication_dict(row)
-            result_list.append(result)
-        return jsonify(Medication=result_list)
+    def delete(self,item):
+        return jsonify(Medication= item) ,200
 
-    def update(self,id):
-        dao = MedicationDAO()
-        medication_list = dao.getAllMedication()
-        result_list = []
-        for row in medication_list:
-            result = self.build_Medication_dict(row)
-            result_list.append(result)
-        return jsonify(Medication=result_list)
+
+    def update(self,item):
+        return jsonify(Medication= item) ,200

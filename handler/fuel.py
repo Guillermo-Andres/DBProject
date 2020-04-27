@@ -72,29 +72,12 @@ class FuelHandler:
             result_list.append(result)
         return jsonify(Fuel=result_list)
 
-    def insert(self, pname):
-        dao = FuelDAO()
-        fuel_list = dao.getAllFuel()
-        result_list = []
-        for row in fuel_list:
-            result = self.build_Fuel_dict(row)
-            result_list.append(result)
-        return jsonify(Fuel=result_list)
+    def insert(self, item):
+        return jsonify(Fuel= item) ,200
 
     def delete(self, pid):
-         dao = FuelDAO()
-         fuel_list = dao.getAllFuel()
-         result_list = []
-         for row in fuel_list:
-             result = self.build_Fuel_dict(row)
-             result_list.append(result)
-         return jsonify(Fuel=result_list)
+        return jsonify(Fuel= item) ,200
+
 
     def update(self, pid):
-        dao = FuelDAO()
-        fuel_list = dao.getAllFuel()
-        result_list = []
-        for row in fuel_list:
-            result = self.build_Fuel_dict(row)
-            result_list.append(result)
-        return jsonify(Fuel=result_list)
+        return jsonify(Fuel= item) ,200
