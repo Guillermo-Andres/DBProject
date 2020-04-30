@@ -107,4 +107,4 @@ class FoodHandler:
 
 
     def update(self, pid):
-        return jsonify(Food= item) ,200
+        return jsonify(Food= pid) ,200

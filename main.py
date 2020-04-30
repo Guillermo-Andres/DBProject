@@ -90,10 +90,10 @@ def newResource(sid):
         return FoodHandler().getAllFood()
 
     elif request.method == 'POST':
-        return FoodHandler().insert(request.get_json()())
+        return FoodHandler().insert(request.get_json())
 
     elif request.method == 'PUT':
-        return FoodHandler().update(request.get_json()())
+        return FoodHandler().update(request.get_json())
 
 @app.route('/almacenespr/requested', methods = ['GET'])
 def viewRequested():
@@ -108,7 +108,7 @@ def searchRequested(resource_type,search_keyword):
 
     return ResourceHandler().getAllByType(resource_type)
 
-@app.route('/almacenespr/<string:resource_type>/', methods = ['GET'])
+@app.route('/almacenespr/type/<string:resource_type>/', methods = ['GET'])
 def getAllResources(resource_type):
 
     return ResourceHandler().getAllByType(resource_type)
@@ -152,11 +152,6 @@ def regionStatistics(type):
     else :
         #return stats for match
         return FoodHandler().getAllFood()
-
-
-
-
-
 
 if __name__ == '__main__':
      app.run()
