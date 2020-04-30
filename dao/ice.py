@@ -26,10 +26,6 @@ class IceDAO:
         return iceDict
 
 
-
-
-
-
     def getAllIce(self):
 
         result = [[1,'8 Oz',1, '8 Oz bag of ice',0,'Guayanilla'],[2,'6 Oz',1, '6 Oz bag of ice',4.99,'Humacao'],[3,'12 Oz',6, '12 Oz bag of ice',0,'Coamo',0]]
