@@ -62,10 +62,10 @@ class FemenineHygieneHandler:
         return self.getAllFemenineHygiene()
 
     def insert(self,item):
-        return self.getAllFemenineHygiene()
+        return jsonify(Feminine= item) ,200
 
     def delete(self,item):
-        return self.getAllFemenineHygiene()
+        return jsonify(Feminine= item) ,200
 
     def update(self,item):
-        return self.getAllFemenineHygiene()
+        return jsonify(Feminine= item) ,200
