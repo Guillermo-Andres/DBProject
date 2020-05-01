@@ -24,14 +24,16 @@ class OrderDAO:
         # cursor = self.conn.cursor()
         # query = "select * from payment_method;"
         # cursor.execute(query)
-        result = [[1, 12.36, "02/05/2017", "in process"],
-                  [2, 26.99, "12/16/2018", "delivered"],
-                  [3, 5.00, "05/06/2020", "pending confirmation"]]
+        
         # for row in cursor: # find efficient way to return values from the DB
         #     result.append(row)
         cursor = self.conn.cursor()
-        query = "select * from request where request_id = %s;"
-        result = cursor.execute(query, (id,))
+        query = "select * from request;"
+        cursor.execute(query)
+        result = []
+        for row in cursor:
+            result.append(row)
+        print(result)
         return result
 
     def getOrderById(self, id):

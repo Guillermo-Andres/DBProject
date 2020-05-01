@@ -23,6 +23,7 @@ class OrderHandler:
     def getAllOrders(self):
         dao = OrderDAO()
         order_list = dao.getAllOrders()
+
         result_list = []
         for row in order_list:
             result = self.build_order_dict(row)
