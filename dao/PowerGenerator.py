@@ -1,7 +1,7 @@
 from config.dbconfig import pg_config
 import psycopg2
 
-class PowerGeneratorsDAO:
+class PowerGeneratorDAO:
 
     # femenine hygiene attributes: fh_id, fh_price, rh_location, rh_quantity, fh_type (pads, liners, tampons, cup), fh_flow (light, medium, heavy), fh_brand, fh_quantity_per_unit
 

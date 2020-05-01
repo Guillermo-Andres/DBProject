@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9f142b09-0bfa-4960-8a7e-d3939131f741" name="Default Changelist" comment="wtf">
+    <list default="true" id="9f142b09-0bfa-4960-8a7e-d3939131f741" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/diapers.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/medicalDevices.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/femenine_hygiene.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/PowerGenerator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/payment_method.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/payment_method.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/supplier.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/supplier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/PowerGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/PowerGenerator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/consumer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handler/ResourceHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/handler/ResourceHandler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/diapers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handler/medicalDevices.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler/femenine_hygiene.py" beforeDir="false" afterPath="$PROJECT_DIR$/handler/femenine_hygiene.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/handler/consumer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/femenine_hygiene.py" beforeDir="false" afterPath="$PROJECT_DIR$/handler/powerGenerator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -140,7 +137,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585687510807</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="get operations initial implementation">
+      <created>1588292019213</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1588292019213</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -163,41 +167,42 @@
     <MESSAGE value="delay login for future phases" />
     <MESSAGE value="additional fixes" />
     <MESSAGE value="wtf" />
-    <option name="LAST_COMMIT_MESSAGE" value="wtf" />
+    <MESSAGE value="get operations initial implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="get operations initial implementation" />
   </component>
   <component name="WindowStateProjectService">
     <state x="451" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585617563028">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="451" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1585617563028" />
-    <state x="600" y="101" width="1078" height="847" key="CommitChangelistDialog2" timestamp="1585689573682">
-      <screen x="67" y="27" width="1853" height="997" />
+    <state x="600" y="105" width="1078" height="847" key="CommitChangelistDialog2" timestamp="1588292018089">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="600" y="105" width="1078" height="847" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1585687510058" />
+    <state x="600" y="105" width="1078" height="847" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1588292018089" />
     <state x="600" y="101" width="777" height="847" key="CommitChangelistDialog2/67.27.1853.997@67.27.1853.997" timestamp="1585689573682" />
     <state x="782" y="301" width="424" height="484" key="FileChooserDialogImpl" timestamp="1588283948847">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="782" y="301" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1588283948847" />
-    <state width="1830" height="300" key="GridCell.Tab.0.bottom" timestamp="1585689462637">
-      <screen x="67" y="27" width="1853" height="997" />
+    <state width="915" height="321" key="GridCell.Tab.0.bottom" timestamp="1588293599367">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1830" height="300" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1585687974502" />
+    <state width="915" height="321" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1588293599367" />
     <state width="1830" height="300" key="GridCell.Tab.0.bottom/67.27.1853.997@67.27.1853.997" timestamp="1585689462637" />
-    <state width="1830" height="300" key="GridCell.Tab.0.center" timestamp="1585689462637">
-      <screen x="67" y="27" width="1853" height="997" />
+    <state width="915" height="321" key="GridCell.Tab.0.center" timestamp="1588293599366">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1830" height="300" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1585687974489" />
+    <state width="915" height="321" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1588293599366" />
     <state width="1830" height="300" key="GridCell.Tab.0.center/67.27.1853.997@67.27.1853.997" timestamp="1585689462637" />
-    <state width="1830" height="300" key="GridCell.Tab.0.left" timestamp="1585689462636">
-      <screen x="67" y="27" width="1853" height="997" />
+    <state width="915" height="321" key="GridCell.Tab.0.left" timestamp="1588293599364">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1830" height="300" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1585687974488" />
+    <state width="915" height="321" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1588293599364" />
     <state width="1830" height="300" key="GridCell.Tab.0.left/67.27.1853.997@67.27.1853.997" timestamp="1585689462636" />
-    <state width="1830" height="300" key="GridCell.Tab.0.right" timestamp="1585689462637">
-      <screen x="67" y="27" width="1853" height="997" />
+    <state width="915" height="321" key="GridCell.Tab.0.right" timestamp="1588293599367">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1830" height="300" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1585687974492" />
+    <state width="915" height="321" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1588293599367" />
     <state width="1830" height="300" key="GridCell.Tab.0.right/67.27.1853.997@67.27.1853.997" timestamp="1585689462637" />
     <state x="482" y="178" key="SettingsEditor" timestamp="1585688696492">
       <screen x="67" y="27" width="1853" height="997" />
@@ -221,10 +226,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="750" y="346" width="477" height="413" key="git4idea.merge.GitMergeDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1585687280999" />
-    <state x="1105" y="346" width="692" height="413" key="git4idea.merge.GitPullDialog" timestamp="1588291952387">
+    <state x="1105" y="346" width="692" height="413" key="git4idea.merge.GitPullDialog" timestamp="1588292032513">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="1105" y="346" width="692" height="413" key="git4idea.merge.GitPullDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1588291952387" />
+    <state x="1105" y="346" width="692" height="413" key="git4idea.merge.GitPullDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1588292032513" />
     <state x="1105" y="329" key="git4idea.merge.GitPullDialog/67.27.1853.997@67.27.1853.997" timestamp="1585689406666" />
   </component>
 </project>

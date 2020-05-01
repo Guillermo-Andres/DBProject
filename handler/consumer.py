@@ -8,13 +8,8 @@ class ConsumerHandler:
     def build_consumer_dictionary(self, row):
         result = {}
         result['consumer_id'] = row[0]
-        result['consumer_first_name'] = row[1]
-        result['consumer_last_name'] = row[2]
-        result['consumer_dob'] = row[3]
-        result['consumer_address'] = row[4]
-        result['consumer_phone_number'] = row[5]
-        result['consumer_email_address'] = row[6]
-        result['consumer_severity'] = row[7]
+        result['person_id'] = row[1]
+        result['consumer_severity'] = row[2]
         return result
 
     def build_payment_method_attributes(self, consumer_id, consumer_first_name, consumer_last_name, consumer_dob, consumer_address, consumer_phone_number, consumer_email_address, consumer_severity):

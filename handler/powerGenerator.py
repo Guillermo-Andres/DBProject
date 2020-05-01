@@ -1,5 +1,5 @@
 from flask import jsonify
-from dao.PowerGenerator import FemenineHygieneDAO
+from dao.PowerGenerator import PowerGeneratorDAO
 
 # femenine hygiene attributes: fh_id, fh_price, rh_location, rh_quantity, fh_type (pads, liners, tampons, cup), fh_flow (light, medium, heavy), fh_brand, fh_quantity_per_unit
 
@@ -29,7 +29,7 @@ class FemenineHygieneHandler:
         return result
 
     def getAllFemenineHygiene(self):
-        dao = FemenineHygieneDAO()
+        dao = PowerGeneratorDAO()
         resource_list = dao.getAllFemenineHygiene()
         result_list = []
         for row in resource_list:

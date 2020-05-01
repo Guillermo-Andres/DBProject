@@ -9,22 +9,32 @@ class ConsumerDAO:
 
 
     def getAllConsumers(self):
-        # cursor = self.conn.cursor()
-        # query = "select * from consumer;"
-        # cursor.execute(query)
-        result = [[1, "Fabiola", "Badillo", "05/14/1998", "Quebradillas, PR", "787-555-5555", "fbr@gmail.com", "high"],
-                  [2, "Pablo", "Santiago", "12/12/1997", "Ponce, PR", "787-666-6666","psu@hotmail.com", "low"],
-                  [3, "Guillermo", "Betancourt", "01/28/1998", "Trujillo Alto, PR", "787-111-1111", "gbs@yahoo.com", "medium"]]
-        # for row in cursor:
-        #     result.append(row)
+        cursor = self.conn.cursor()
+        query = "select * from consumer;"
+        cursor.execute(query)
+        result = []
+        for row in cursor:
+            result.append(row)
         return result
 
 
     def getConsumerById(self, id):
-        return self.getAllConsumers()
+        cursor = self.conn.cursor()
+        query = "select * from consumer where consumer_id = %s;"
+        result = cursor.execute(query, (id,))
+        return result
 
-    def getConsumerByName(self, consumer_first_name, consumer_last_name):
-        return self.getAllConsumers()
+    def getConsumerByName(self, consumer_firstname, consumer_lastname):
+        cursor = self.conn.cursor()
+        query = "select * " \
+                "from consumer inner join person " \
+                "where person.person_firstname = %s " \
+                "and person.person_lastname = %s;"
+        cursor.execute(query, (consumer_firstname,consumer_lastname,))
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
 
     def getConsumerByDOB(self, dob):
         return self.getAllConsumers()

@@ -7,7 +7,7 @@ from handler.ice import IceHandler
 from handler.powertools import PowerToolsHandler
 from handler.fuel import FuelHandler
 from handler.medicalDevices import DiapersHandler
-from handler.femenine_hygiene import FemenineHygieneHandler
+from handler.powerGenerator import FemenineHygieneHandler
 from handler.hygiene import HygieneHandler
 from handler.water import WaterHandler
 
