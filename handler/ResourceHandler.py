@@ -6,7 +6,7 @@ from handler.heavyequipment import HeavyEquipmentHandler
 from handler.ice import IceHandler
 from handler.powertools import PowerToolsHandler
 from handler.fuel import FuelHandler
-from handler.diapers import DiapersHandler
+from handler.medicalDevices import DiapersHandler
 from handler.femenine_hygiene import FemenineHygieneHandler
 from handler.hygiene import HygieneHandler
 from handler.water import WaterHandler

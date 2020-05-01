@@ -1,17 +1,17 @@
 from config.dbconfig import pg_config
 import psycopg2
 
-class FemenineHygieneDAO:
+class PowerGeneratorsDAO:
 
     # femenine hygiene attributes: fh_id, fh_price, rh_location, rh_quantity, fh_type (pads, liners, tampons, cup), fh_flow (light, medium, heavy), fh_brand, fh_quantity_per_unit
 
-    # def __init__(self):
-    #     connection_url = "dbname=%s user=%s password=%s host=127.0.0.1" % (pg_config['dbname'],
-    #                                                                        pg_config['user'],
-    #                                                                        pg_config['passwd'])
-    #     self.conn = psycopg2._connect(connection_url)
+    def __init__(self):
+        connection_url = "dbname=%s user=%s password=%s host=127.0.0.1" % (pg_config['dbname'],
+                                                                           pg_config['user'],
+                                                                           pg_config['passwd'])
+        self.conn = psycopg2._connect(connection_url)
 
-    def getAllFemenineHygiene(self):
+    def getAllPowerGenerators(self):
         # cursor = self.conn.cursor()
         # query = "select * from payment_method;"
         # cursor.execute(query)
@@ -22,28 +22,28 @@ class FemenineHygieneDAO:
         #     result.append(row)
         return result
 
-    def getFemenineHygieneById(self, id):
+    def getPowerGeneratorsById(self, id):
         return self.getAllFemenineHygiene()
 
-    def getFemenineHygieneByPrice(self, price):
+    def getPowerGeneratorsByPrice(self, price):
         return self.getAllFemenineHygiene()
 
-    def getFemenineHygieneByLocation(self, location):
+    def getPowerGeneratorsByLocation(self, location):
         return self.getAllFemenineHygiene()
 
-    def getFemenineHygieneByQuantity(self, quantity):
+    def getPowerGeneratorsByQuantity(self, quantity):
         return self.getAllFemenineHygiene()
 
-    def getFemenineHygieneByType(self, type):
+    def getPowerGeneratorsByType(self, type):
         return self.getAllFemenineHygiene()
 
-    def getFemenineHygieneByFlow(self, flow):
+    def getPowerGeneratorsByFlow(self, flow):
         return self.getAllFemenineHygiene()
 
-    def getFemenineHygieneByBrand(self, brand):
+    def getPowerGeneratorsByBrand(self, brand):
         return self.getAllFemenineHygiene()
 
-    def getFemenineHygieneByQuantityPerUnit(self, quantity_per_unit):
+    def getPowerGeneratorsByQuantityPerUnit(self, quantity_per_unit):
         return self.getAllFemenineHygiene()
 
     def insert(self):

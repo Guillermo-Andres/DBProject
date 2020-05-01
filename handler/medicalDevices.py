@@ -1,5 +1,5 @@
 from flask import jsonify
-from dao.diapers import DiapersDAO
+from dao.medicalDevices import MedicalDevicesDAO
 
 # diapers attributes: diaper_id, diaper_price, diaper_location, diaper_quantity, diaper_size, diaper_material, diaper_brand
 

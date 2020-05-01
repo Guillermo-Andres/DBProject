@@ -12,7 +12,7 @@ from handler.supplier import SupplierHandler
 from handler.company import CompanyHandler
 from handler.consumer import ConsumerHandler
 from handler.contains import ContainsHandler
-from handler.diapers import DiapersHandler
+from handler.medicalDevices import DiapersHandler
 from handler.femenine_hygiene import FemenineHygieneHandler
 from handler.hygiene import HygieneHandler
 from handler.order import OrderHandler
