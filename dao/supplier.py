@@ -39,8 +39,19 @@ class SupplierDAO:
     def getSupplierByEmail(self, email):
         return self.getAllSuppliers()
 
-    def insert(self):
-        return self.getAllSuppliers()
+    def insert(self , first_name , last_name , dob , address ,phone_number , email):
+        cursor = self.conn.cursor()
+        query = "insert into person(person_firstname, person_lastname , person_dob , person_address , person_phone_number, person_email ) values(%s , %s , %s , %s , %s , %s);" 
+        cursor.execute(query , (first_name ,last_name , dob , address , phone_number ,email,))
+        user_id = cursor.fetchone()[0]
+        self.conn.commit()
+        cursor = self.conn.cursor()
+        query = "insert into supplier(person_id) values(%s)"
+        cursor.execute(query ,(user_id , ))
+        self.conn.commit()
+        return user_id 
+
+
 
     def delete(self):
         return self.getAllSuppliers()
