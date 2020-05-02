@@ -3,7 +3,7 @@ from dao.medicalDevices import MedicalDevicesDAO
 
 # medicalDevices attributes: medicalDevices_id, resource_id, medicalDevices_type, medicalDevices_description
 
-class medicalDevicesHandler:
+class MedicalDevicesHandler:
     def build_medicalDevices_dict(self, row):
         result = {'medicalDevices_id': row[0],
                   'resource_id': row[1],

@@ -6,8 +6,8 @@ from handler.heavyequipment import HeavyEquipmentHandler
 from handler.ice import IceHandler
 from handler.powertools import PowerToolsHandler
 from handler.fuel import FuelHandler
-from handler.medicalDevices import DiapersHandler
-from handler.powerGenerator import FemenineHygieneHandler
+from handler.medicalDevices import MedicalDevicesHandler
+from handler.powerGenerator import PowerGeneratorHandler
 from handler.hygiene import HygieneHandler
 from handler.water import WaterHandler
 
@@ -32,9 +32,9 @@ class ResourceHandler:
         elif(type == 'fuel'):
             return FuelHandler().getAllFuel()
         elif(type == 'diapers'):
-            return DiapersHandler().getAllDiapers()
+            return MedicalDevicesHandler().getAllMedicalDevices()
         elif(type == 'femeninehygiene'):
-            return FemenineHygieneHandler().getAllFemenineHygiene()
+            return PowerGeneratorHandler().getAllPowerGenerator()
         elif(type == 'hygiene'):
             return HygieneHandler().getAllHygiene()
         elif(type == 'water'):
@@ -53,8 +53,8 @@ class ResourceHandler:
             'ice':IceHandler().getAllIce().get_json(),
             'powertools':PowerToolsHandler().getAllTools().get_json(),
             'fuel':FuelHandler().getAllFuel().get_json(),
-            'diapers':DiapersHandler().getAllDiapers().get_json(),
-            'femenineHygiene':FemenineHygieneHandler().getAllFemenineHygiene().get_json(),
+            'medicalDevices':MedicalDevicesHandler().getAllMedicalDevices().get_json(),
+            'powerGenerator':PowerGeneratorHandler().getAllPowerGenerator().get_json(),
             'hygiene':HygieneHandler().getAllHygiene().get_json(),
             'water':WaterHandler().getAllWater().get_json()
         }
