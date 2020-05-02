@@ -26,7 +26,7 @@ echo "create table person(person_id serial primary key, person_firstname varchar
       create table supplier(supplier_id serial primary key, person_id integer references person(person_id));
       create table supplies(supplier_id integer references supplier(supplier_id), resource_id integer references resource(resource_id), primary key (supplier_id, resource_id));
       create table admin(admin_id serial primary key, person_id integer references person(person_id));
-      create table consumer(consumer_id serial primary key, person_id integer references person(person_id), person_severety varchar(20));
+      create table consumer(consumer_id serial primary key, person_id integer references person(person_id), consumer_severety varchar(20));
       create table company(company_id serial primary key, company_name varchar(15), company_description varchar(20));
       create table worksFor(company_id integer references company(company_id), supplier_id integer references supplier(supplier_id), primary key (company_id, supplier_id));
       create table order(order_id serial primary key, order_amount float, order_date varchar(10), order_status varchar(10));
