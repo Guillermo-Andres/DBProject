@@ -29,8 +29,14 @@ class OrderHandler:
             result_list.append(result)
         return jsonify(Order=result_list)
 
-    def getOrderById(self, id):
-        return self.getAllOrders()
+    def getOrderById(self, order_id):
+        dao = OrderDAO()
+        row = dao.getOrderById(order_id)
+        if not row:
+            return jsonify(Error="Order not found"), 404
+        else:
+            order = self.build_order_dict(row)
+            return jsonify(Order=order)
 
     def getOrderByAmount(self, amount):
         return self.getAllOrders()

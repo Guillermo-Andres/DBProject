@@ -5,13 +5,13 @@ from dao.powerGenerator import PowerGeneratorDAO
 # power generator attributes: powerGenerator_id, resource_id, powerGenerator_type
 
 class PowerGeneratorHandler:
-    def build_femenine_hygiene_dict(self, row):
+    def build_powerGenerator_dict(self, row):
         result = {'powerGenerator_id': row[0],
                   'resource_id': row[1],
                   'powerGenerator_type': row[2]}
         return result
 
-    def build_femenine_hygiene_attributes(self, powerGenerator_id, resource_id, powerGenerator_type):
+    def build_powerGenerator_attributes(self, powerGenerator_id, resource_id, powerGenerator_type):
         result = {'powerGenerator_id': powerGenerator_id,
                   'resource_id': resource_id,
                   'powerGenerator_type': powerGenerator_type}
@@ -26,8 +26,14 @@ class PowerGeneratorHandler:
             result_list.append(result)
         return jsonify(powerGenerator=result_list)
 
-    def getPowerGeneratorById(self, id):
-        return self.getAllPowerGenerator()
+    def getPowerGeneratorById(self, powerGenerator_id):
+        dao = PowerGeneratorDAO()
+        row = dao.getPowerGeneratorsById(powerGenerator_id)
+        if not row:
+            return jsonify(Error='Power Generator not found'), 404
+        else:
+            powerGen = self.build_powerGenerator_dict(row)
+            return powerGen
 
     def insert(self, item):
         return jsonify(powerGenerator=item), 200

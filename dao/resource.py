@@ -26,22 +26,22 @@ class ResourceDAO:
         result = cursor.execute(query, (resource_id,))
         return result
 
-    def getResourceByName(self, consumer_first_name, consumer_last_name):
+    def getResourceByName(self, resource_first_name, resource_last_name):
         return self.getAllResource()
 
-    def getConsumerByDOB(self, dob):
+    def getResourceByDOB(self, dob):
         return self.getAllResource()
 
-    def getConsumerByAddress(self, address):
+    def getResourceByAddress(self, address):
         return self.getAllResource()
 
-    def getConsumerByPhoneNumber(self, phone_number):
+    def getResourceByPhoneNumber(self, phone_number):
         return self.getAllResource()
 
-    def getConsumerByEmail(self, email):
+    def getResourceByEmail(self, email):
         return self.getAllResource()
 
-    def getConsumerBySeverity(self, severity):
+    def getResourceBySeverity(self, severity):
         return self.getAllResource()
 
     def insert(self, item):

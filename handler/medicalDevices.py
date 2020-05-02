@@ -27,8 +27,14 @@ class MedicalDevicesHandler:
             result_list.append(result)
         return jsonify(MedicalDevices=result_list)
 
-    def getMedicalDevicesById(self, id):
-        return self.getAllmedicalDevices()
+    def getMedicalDevicesById(self, medicalDevices_id):
+        dao = MedicalDevicesDAO()
+        row = dao.getMedicalDevicesById(medicalDevices_id)
+        if not row:
+            return jsonify(Error="Medical Device not found"), 404
+        else:
+            medDevice = self.build_medicalDevices_dict(row)
+            return medDevice
 
     def getMedicalDevicesByPrice(self, price):
         return self.getAllmedicalDevices()

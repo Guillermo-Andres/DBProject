@@ -25,8 +25,14 @@ class HygieneHandler:
             result_list.append(result)
         return jsonify(Hygiene=result_list)
 
-    def getHygieneById(self, id):
-        return self.getAllHygiene()
+    def getHygieneById(self, hygiene_id):
+        dao = HygieneHandler()
+        row = dao.getHygieneById(hygiene_id)
+        if not row:
+            return jsonify(Error='Hygiene not found'), 404
+        else:
+            hygiene = self. build_hygiene_dict(row)
+            return jsonify(Hygiene=hygiene)
 
     def getHygieneByExpirationDate(self, expiration_date):
         return self.getAllHygiene()

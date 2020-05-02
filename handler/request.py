@@ -31,6 +31,13 @@ class RequestHandler:
             result_list.append(result)
         return jsonify(requests=result_list)
 
+    def getRequestById(self, request_id):
+        dao = RequestDAO()
+        row = dao.getRequestById(request_id)
+        if not row:
+            request = jsonify(Error="Request not found"), 404
+            return request
+
     def insert(self, item):
         return jsonify(request=item), 200
 

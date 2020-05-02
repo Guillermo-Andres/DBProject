@@ -29,7 +29,7 @@ echo "create table person(person_id serial primary key, person_firstname varchar
       create table consumer(consumer_id serial primary key, person_id integer references person(person_id), consumer_severety varchar(20));
       create table company(company_id serial primary key, company_name varchar(15), company_description varchar(20));
       create table worksFor(company_id integer references company(company_id), supplier_id integer references supplier(supplier_id), primary key (company_id, supplier_id));
-      create table order(order_id serial primary key, order_amount float, order_date varchar(10), order_status varchar(10));
+      create table orders(order_id serial primary key, order_amount float, order_date varchar(10), order_status varchar(10));
       create table places_an_order(consumer_id integer references consumer(consumer_id), order_id integer references order(order_id), primary key (consumer_id, order_id));
       create table paymentMethod(paymentMethod_id serial primary key, paymentMethod_type varchar(10), consumer_id integer references consumer(consumer_id));
       create table paysFor(paymentMethod_id integer references paymentMethod(paymentMethod_id), order_id integer references order(order_id), primary key (paymentMethod_id, order_id));

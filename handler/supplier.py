@@ -23,8 +23,14 @@ class SupplierHandler:
             result_list.append(result)
         return jsonify(Suppliers=result_list)
 
-    def getSupplierById(self, id):
-        return self.getAllSuppliers()
+    def getSupplierById(self, supplier_id):
+        dao = SupplierDAO()
+        row = dao.getSupplierById(supplier_id)
+        if not row:
+            return jsonify(Error="Supplier not Found"), 404
+        else:
+            supplier = self.build_supplier_dict(row)
+            return jsonify(Supplier=supplier)
 
     def getSupplierByName(self, first_name, last_name):
         return self.getAllSuppliers()

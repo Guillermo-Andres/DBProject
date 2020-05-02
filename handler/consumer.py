@@ -31,8 +31,14 @@ class ConsumerHandler:
             result_list.append(result)
         return jsonify(Consumer=result_list)
 
-    def getConsumerById(self, id):
-        return self.getAllConsumers()
+    def getConsumerById(self, consumer_id):
+        dao = ConsumerDAO()
+        row = dao.getConsumerById(consumer_id)
+        if not row:
+            return jsonify(Error="Consumer not found")
+        else:
+            consumer = self.build_consumer_dictionary(row)
+            return consumer
 
     def getConsumerByName(self, consumer_first_name, consumer_last_name):
         return self.getAllConsumers()
