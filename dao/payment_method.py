@@ -26,7 +26,9 @@ class PaymentMethodDAO:
         query = "select *" \
                 "from paymentMethod" \
                 "where paymentMethod_id = %s;"
-        result = cursor.execute(query, (paymentMethod_id,))
+        cursor.execute(query, (paymentMethod_id,))
+        result = cursor.fetchone()
+        return result
 
     def getPaymentMethodByType(self, type):
         return self.getAllPaymentMethods()

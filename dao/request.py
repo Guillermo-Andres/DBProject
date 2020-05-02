@@ -23,7 +23,8 @@ class RequestDAO:
         query = "select *" \
                 "from request" \
                 "where request_id = %s;"
-        result = cursor.execute(query, (request_id,))
+        cursor.execute(query, (request_id,))
+        result = cursor.fetchone()
         return result
 
     def insert(self, item):

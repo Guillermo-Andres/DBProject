@@ -25,7 +25,8 @@ class PowerGeneratorDAO:
         query = "select * " \
                 "from powerGenerator natural inner join resource" \
                 "where powerGenerator_id = %s;"
-        result = cursor.execute(query, (powerGenerator_id,))
+        cursor.execute(query, (powerGenerator_id,))
+        result = cursor.fetchone()
         return result
 
     def getPowerGeneratorsByPrice(self, price):

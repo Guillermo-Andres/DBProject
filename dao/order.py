@@ -12,7 +12,7 @@ class OrderDAO:
 
     def getAllOrders(self):
         cursor = self.conn.cursor()
-        query = "select * from order;"
+        query = "select * from orders;"
         cursor.execute(query)
         result = []
         for row in cursor:
@@ -22,9 +22,10 @@ class OrderDAO:
     def getOrderById(self, order_id):
         cursor = self.conn.cursor()
         query = "select * " \
-                "from request " \
+                "from orders " \
                 "where order_id = %s;"
-        result = cursor.execute(query, (order_id,))
+        cursor.execute(query, (order_id,))
+        result = cursor.fetchone()
         return result
 
     def getOrderByAmount(self, amount):

@@ -26,7 +26,8 @@ class MedicalDevicesDAO:
                 "from medicalDevices natural inner join resource" \
                 "where medicalDevices_id = %s;"
         # TODO - check joins
-        result = cursor.execute(query, (medicalDevices_id,))
+        cursor.execute(query, (medicalDevices_id,))
+        result = cursor.fetchone()
         return result
 
     def getMedicalDevicesByPrice(self, price):

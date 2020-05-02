@@ -28,7 +28,8 @@ class HygieneDAO:
         query = "select * " \
                 "from hygiene natural inner join resource" \
                 "where hygiene_id = %s;"
-        result = cursor.execute(query, (hygiene_id,))
+        cursor.execute(query, (hygiene_id,))
+        result = cursor.fetchone()
         return result
 
     def getHygieneByExpirationDate(self, expiration_date):

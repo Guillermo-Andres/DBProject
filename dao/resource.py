@@ -23,7 +23,8 @@ class ResourceDAO:
         query = "select *" \
                 "from resource" \
                 "where resource_id = %s;"
-        result = cursor.execute(query, (resource_id,))
+        cursor.execute(query, (resource_id,))
+        result = cursor.fetchone()
         return result
 
     def getResourceByName(self, resource_first_name, resource_last_name):

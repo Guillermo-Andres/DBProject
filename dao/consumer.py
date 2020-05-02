@@ -24,7 +24,8 @@ class ConsumerDAO:
         query = "select * " \
                 "from consumer natural inner join person" \
                 "where consumer_id = %s;"
-        result = cursor.execute(query, (consumer_id,))
+        cursor.execute(query, (consumer_id,))
+        result = cursor.fetchone()
         return result
 
     def getConsumerByName(self, consumer_firstname, consumer_lastname):
