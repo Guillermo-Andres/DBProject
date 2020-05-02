@@ -16,15 +16,11 @@ class ConsumerHandler:
     def build_payment_method_attributes(self, consumer_id, consumer_first_name, consumer_last_name, consumer_dob,
                                         consumer_address, consumer_phone_number, consumer_email_address,
                                         consumer_severity):
-        result = {}
-        result['consumer_id'] = consumer_id
-        result['consumer_first_name'] = consumer_first_name
-        result['consumer_last_name'] = consumer_last_name
-        result['consumer_dob'] = consumer_dob
-        result['consumer_address'] = consumer_address
-        result['consumer_phone_number'] = consumer_phone_number
-        result['consumer_email_address'] = consumer_email_address
-        result['consumer_severity'] = consumer_severity
+        result = {'consumer_id': consumer_id, 'consumer_first_name': consumer_first_name,
+                  'consumer_last_name': consumer_last_name, 'consumer_dob': consumer_dob,
+                  'consumer_address': consumer_address, 'consumer_phone_number': consumer_phone_number,
+                  'consumer_email_address': consumer_email_address, 'consumer_severity': consumer_severity}
+        return result
 
     def getAllConsumers(self):
         dao = ConsumerDAO()
