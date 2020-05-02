@@ -1,32 +1,26 @@
 from flask import jsonify
 from dao.consumer import ConsumerDAO
 
+
 class ConsumerHandler:
 
-    # consumer attributes: consumer_id, consumer_first_name, consumer_last_name, consumer_dob, consumer_address, consumer_phone_number, consumer_email_address, consumer_severity
+    # consumer attributes: consumer_id, consumer_first_name, consumer_last_name, consumer_dob, consumer_address,
+    # consumer_phone_number, consumer_email_address, consumer_severity
 
     def build_consumer_dictionary(self, row):
-        result = {}
-        result['consumer_id'] = row[0]
-        result['consumer_first_name'] = row[1]
-        result['consumer_last_name'] = row[2]
-        result['consumer_dob'] = row[3]
-        result['consumer_address'] = row[4]
-        result['consumer_phone_number'] = row[5]
-        result['consumer_email_address'] = row[6]
-        result['consumer_severity'] = row[7]
+        result = {'consumer_id': row[0],
+                  'person_id': row[1],
+                  'consumer_severity': row[2]}
         return result
 
-    def build_payment_method_attributes(self, consumer_id, consumer_first_name, consumer_last_name, consumer_dob, consumer_address, consumer_phone_number, consumer_email_address, consumer_severity):
-        result = {}
-        result['consumer_id'] = consumer_id
-        result['consumer_first_name'] = consumer_first_name
-        result['consumer_last_name'] = consumer_last_name
-        result['consumer_dob'] = consumer_dob
-        result['consumer_address'] = consumer_address
-        result['consumer_phone_number'] = consumer_phone_number
-        result['consumer_email_address'] = consumer_email_address
-        result['consumer_severity'] = consumer_severity
+    def build_payment_method_attributes(self, consumer_id, consumer_first_name, consumer_last_name, consumer_dob,
+                                        consumer_address, consumer_phone_number, consumer_email_address,
+                                        consumer_severity):
+        result = {'consumer_id': consumer_id, 'consumer_first_name': consumer_first_name,
+                  'consumer_last_name': consumer_last_name, 'consumer_dob': consumer_dob,
+                  'consumer_address': consumer_address, 'consumer_phone_number': consumer_phone_number,
+                  'consumer_email_address': consumer_email_address, 'consumer_severity': consumer_severity}
+        return result
 
     def getAllConsumers(self):
         dao = ConsumerDAO()
@@ -37,8 +31,14 @@ class ConsumerHandler:
             result_list.append(result)
         return jsonify(Consumer=result_list)
 
-    def getConsumerById(self, id):
-        return self.getAllConsumers()
+    def getConsumerById(self, consumer_id):
+        dao = ConsumerDAO()
+        row = dao.getConsumerById(consumer_id)
+        if not row:
+            return jsonify(Error="Consumer not found")
+        else:
+            consumer = self.build_consumer_dictionary(row)
+            return consumer
 
     def getConsumerByName(self, consumer_first_name, consumer_last_name):
         return self.getAllConsumers()
@@ -58,11 +58,11 @@ class ConsumerHandler:
     def getConsumerBySeverity(self, severity):
         return self.getAllConsumers()
 
-    def insert(self , item):
-        return jsonify(Consumer= item) ,200
+    def insert(self, item):
+        return jsonify(Consumer=item), 200
 
-    def delete(self , item):
-        return jsonify(Consumer= item) ,200
+    def delete(self, item):
+        return jsonify(Consumer=item), 200
 
-    def update(self , item):
-        return jsonify(Consumer= item) ,200
+    def update(self, item):
+        return jsonify(Consumer=item), 200

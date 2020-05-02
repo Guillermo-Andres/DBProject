@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9f142b09-0bfa-4960-8a7e-d3939131f741" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/consumer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/hygiene.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/hygiene.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/medicalDevices.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/medicalDevices.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/order.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/payment_method.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/payment_method.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/powerGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/powerGenerator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/resource.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/resource.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/supplier.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/supplier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="fabiola-badillo &lt;fabiola.badillo@upr.edu&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1ZdlbYyU1nAujU8qjsh2Ggy4XeL" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/handler" />
+      <recent name="$PROJECT_DIR$/dao" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="DBProject" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9f142b09-0bfa-4960-8a7e-d3939131f741" name="Default Changelist" comment="" />
+      <created>1585176923221</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585176923221</updated>
+    </task>
+    <task id="LOCAL-00001" summary="fabs">
+      <created>1585177044673</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1585177044673</updated>
+    </task>
+    <task id="LOCAL-00002" summary="DAO and handler for consumer, supplier, order, payment_method, diapers, hygiene, femenine hygiene tables">
+      <created>1585610869745</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1585610869745</updated>
+    </task>
+    <task id="LOCAL-00003" summary="additional operations for consumer, supplier, order, payment_method, diapers, hygiene, femenine hygiene tables">
+      <created>1585616567307</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1585616567307</updated>
+    </task>
+    <task id="LOCAL-00004" summary="handler for medication">
+      <created>1585617429154</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1585617429155</updated>
+    </task>
+    <task id="LOCAL-00005" summary="delay login for future phases">
+      <created>1585684462705</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1585684462705</updated>
+    </task>
+    <task id="LOCAL-00006" summary="additional fixes">
+      <created>1585684903528</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1585684903528</updated>
+    </task>
+    <task id="LOCAL-00007" summary="wtf">
+      <created>1585687510807</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1585687510807</updated>
+    </task>
+    <task id="LOCAL-00008" summary="get operations initial implementation">
+      <created>1588292019213</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1588292019213</updated>
+    </task>
+    <task id="LOCAL-00009" summary="get by id for some of the tables on the DAOs">
+      <created>1588445887052</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1588445887066</updated>
+    </task>
+    <task id="LOCAL-00010" summary="created DAO and handler for request table">
+      <created>1588445958871</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1588445958872</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fixes to the schema">
+      <created>1588448001247</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1588448001247</updated>
+    </task>
+    <task id="LOCAL-00012" summary="fixes to the schema">
+      <created>1588448462525</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1588448462525</updated>
+    </task>
+    <task id="LOCAL-00013" summary="reflect schema changes on the handlers">
+      <created>1588450440260</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1588450440260</updated>
+    </task>
+    <task id="LOCAL-00014" summary="reflect schema changes on the resource handler">
+      <created>1588450780504</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1588450780504</updated>
+    </task>
+    <task id="LOCAL-00015" summary="add resource handler">
+      <created>1588450824640</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1588450824640</updated>
+    </task>
+    <task id="LOCAL-00016" summary="add resource handler">
+      <created>1588457546184</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1588457546184</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fabs" />
+    <MESSAGE value="DAO and handler for consumer, supplier, order, payment_method, diapers, hygiene, femenine hygiene tables" />
+    <MESSAGE value="additional operations for consumer, supplier, order, payment_method, diapers, hygiene, femenine hygiene tables" />
+    <MESSAGE value="handler for medication" />
+    <MESSAGE value="delay login for future phases" />
+    <MESSAGE value="additional fixes" />
+    <MESSAGE value="wtf" />
+    <MESSAGE value="get operations initial implementation" />
+    <MESSAGE value="get by id for some of the tables on the DAOs" />
+    <MESSAGE value="created DAO and handler for request table" />
+    <MESSAGE value="fixes to the schema" />
+    <MESSAGE value="reflect schema changes on the handlers" />
+    <MESSAGE value="reflect schema changes on the resource handler" />
+    <MESSAGE value="add resource handler" />
+    <option name="LAST_COMMIT_MESSAGE" value="add resource handler" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="451" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585617563028">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="451" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1585617563028" />
+    <state x="693" y="354" width="590" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588448819967">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="693" y="354" width="590" height="396" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1588448819967" />
+    <state x="600" y="105" width="1078" height="847" key="CommitChangelistDialog2" timestamp="1588457545806">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="600" y="105" width="1078" height="847" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1588457545806" />
+    <state x="600" y="101" width="777" height="847" key="CommitChangelistDialog2/67.27.1853.997@67.27.1853.997" timestamp="1585689573682" />
+    <state x="782" y="301" width="424" height="484" key="FileChooserDialogImpl" timestamp="1588283948847">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="782" y="301" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1588283948847" />
+    <state width="1830" height="321" key="GridCell.Tab.0.bottom" timestamp="1588460683550">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1830" height="321" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1588460683550" />
+    <state width="1830" height="300" key="GridCell.Tab.0.bottom/67.27.1853.997@67.27.1853.997" timestamp="1585689462637" />
+    <state width="1830" height="321" key="GridCell.Tab.0.center" timestamp="1588460683543">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1830" height="321" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1588460683543" />
+    <state width="1830" height="300" key="GridCell.Tab.0.center/67.27.1853.997@67.27.1853.997" timestamp="1585689462637" />
+    <state width="1830" height="321" key="GridCell.Tab.0.left" timestamp="1588460683539">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1830" height="321" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1588460683539" />
+    <state width="1830" height="300" key="GridCell.Tab.0.left/67.27.1853.997@67.27.1853.997" timestamp="1585689462636" />
+    <state width="1830" height="321" key="GridCell.Tab.0.right" timestamp="1588460683548">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1830" height="321" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1588460683548" />
+    <state width="1830" height="300" key="GridCell.Tab.0.right/67.27.1853.997@67.27.1853.997" timestamp="1585689462637" />
+    <state x="482" y="187" key="SettingsEditor" timestamp="1588442620719">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="482" y="187" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1588442620719" />
+    <state x="482" y="178" key="SettingsEditor/67.27.1853.997@67.27.1853.997" timestamp="1585688696492" />
+    <state x="727" y="310" width="522" height="484" key="VCS.ChangeListViewerDialog" timestamp="1585687582572">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="727" y="310" width="522" height="484" key="VCS.ChangeListViewerDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1585687582572" />
+    <state x="588" y="273" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1588457553766">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="588" y="273" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1588457553766" />
+    <state x="588" y="260" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.997@67.27.1853.997" timestamp="1585177059856" />
+    <state x="649" y="352" key="com.intellij.ide.util.TipDialog" timestamp="1585517160584">
+      <screen x="67" y="27" width="1853" height="997" />
+    </state>
+    <state x="649" y="352" key="com.intellij.ide.util.TipDialog/67.27.1853.997@67.27.1853.997" timestamp="1585517160584" />
+    <state x="750" y="346" width="477" height="413" key="git4idea.merge.GitMergeDialog" timestamp="1585687280999">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="750" y="346" width="477" height="413" key="git4idea.merge.GitMergeDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1585687280999" />
+    <state x="1105" y="346" width="692" height="413" key="git4idea.merge.GitPullDialog" timestamp="1588442167818">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="1105" y="346" width="692" height="413" key="git4idea.merge.GitPullDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1588442167818" />
+    <state x="1105" y="329" key="git4idea.merge.GitPullDialog/67.27.1853.997@67.27.1853.997" timestamp="1585689406666" />
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1588452294642">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1588452294642" />
+  </component>
+</project>
