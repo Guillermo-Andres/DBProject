@@ -33,7 +33,6 @@ class OrderDAO:
         result = []
         for row in cursor:
             result.append(row)
-        print(result)
         return result
 
     def getOrderById(self, id):
