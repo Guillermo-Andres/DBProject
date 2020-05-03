@@ -2,15 +2,37 @@ from config.dbconfig import pg_config
 import psycopg2
 class AdminDAO:
 
+
+    def __init__(self):
+
+        connection_url = "dbname=%s user=%s password=%s host=127.0.0.1" % (pg_config['dbname'],
+                                                            pg_config['user'],
+                                                            pg_config['passwd'])
+        self.conn = psycopg2._connect(connection_url)
+
+
+
     def getAllAdmins(self):
-        return [[666 , "Pablito El Admin" , "6\6\6" , "Infierno" ,  "787-666-0420" , "pablito666@hell.edu" ]]
-    
+        cursor = self.conn.cursor()
+        query = "select * from admin natural join person;"
+        cursor.execute(query)
+        result = []
+
+        for row in cursor:
+            result.append(row)
+        return result
 
     def getAdminByID(self , aid):
-        for user in self.getAllAdmins():
-            if(user[0] == aid):
-                return user
-        return None
+        cursor = self.conn.cursor()
+        query = "select * from supplies natural join person where person_id = %s;"
+        cursor.execute(query , (supid))
+        result = []
+        result.append(row)
+        
+        for row in cursor:
+            result.append(row)
+        return result
+
 
 
     def getAdminByName(self  , name):

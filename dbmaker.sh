@@ -22,7 +22,7 @@ echo created person:"alma"  db:"almacen" and granted db to usr  ;
 cd /;
 sudo etc/init.d/postgresql restart ;
 echo "create table person(person_id serial primary key, person_firstname varchar(15), person_lastname varchar(15), person_dob varchar(10), person_address varchar(30), person_phone_number varchar(15), person_email varchar(30));
-      create table resource(resource_id serial primary key, resource_price float, resource_location varchar(30), resource_quantity integer);
+      create table resource(resource_id serial primary key, resource_name , resource_price float, resource_location varchar(30), resource_quantity integer , available boolean);
       create table supplier(supplier_id serial primary key, person_id integer references person(person_id));
       create table supplies(supplier_id integer references supplier(supplier_id), resource_id integer references resource(resource_id), primary key (supplier_id, resource_id));
       create table admin(admin_id serial primary key, person_id integer references person(person_id));

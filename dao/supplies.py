@@ -29,7 +29,11 @@ class SuppliesDAO:
         query = "select * from supplies where supplies_id = %s;"
         cursor.execute(query , (supid))
         result = []
-        result.append
+        result.append(row)
+        
+        for row in cursor:
+            result.append(row)
+        return result
 
     def getSuppliesBySupplierID(self , sid):
         cursor = self.conn.cursor()
