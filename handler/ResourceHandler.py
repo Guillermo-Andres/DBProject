@@ -1,4 +1,4 @@
-from handler.food import FoodHandler
+from handler.babyFood import babyFoodHandler
 from handler.medication import MedicationHandler
 from handler.batteries import BatteryHandler
 from handler.clothing import ClothingHandler
@@ -16,7 +16,7 @@ class ResourceHandler:
 
     def getAllByType(self , type):
         if(type == 'food'):
-            return FoodHandler().getAllFood()
+            return babyFoodHandler().getAllFood()
         elif(type == 'medication'):
             return MedicationHandler().getAllMedication()
         elif(type == 'batteries'):

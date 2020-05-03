@@ -5,16 +5,17 @@ from dao.babyFood import babyFoodDAO
 class babyFoodHandler:
     def build_babyFood_dict(self, row):
         result = {}
-        result['fid'] = row[0]
-        result['type'] = row[1]
-        result['is_perishable?'] = row[2]
-        result['ingredientlist'] = row[3]
-        result['unit_size'] = row[4]
-        result['description'] = row[5]
-        result['Expiration_date'] = row[6]
-        result['price'] = row[7]
-        result['location'] = row[8]
-        result['quantity'] = row[9]
+        result['resource id'] = row[0]
+        result['baby_food_id'] = row[1]
+        result['babyfood_type'] = row[2]
+        result['is_perishable?'] = row[3]
+        result['ingredientlist'] = row[4]
+        result['unit_size'] = row[5]
+        result['description'] = row[6]
+        result['Expiration_date'] = row[7]
+        result['price'] = row[8]
+        result['location'] = row[9]
+        result['quantity'] = row[10]
 
         return result
 
@@ -29,14 +30,6 @@ class babyFoodHandler:
             result_list.append(result)
         return jsonify(babyFood=result_list)
 
-    def getAllbabyFood(self):
-        dao = babyFoodDAO()
-        babyFood_list = dao.getAllbabyFood()
-        result_list = []
-        for row in babyFood_list:
-            result = self.build_babyFood_dict(row)
-            result_list.append(result)
-        return jsonify(babyFood=result_list)
 
     def getbabyFoodById(self, pid):
         dao = babyFoodDAO()
@@ -47,47 +40,47 @@ class babyFoodHandler:
             result_list.append(result)
         return jsonify(babyFood=result_list)
 
-    def getbabyFoodByType(self, color):
-        dao = babyFoodDAO()
-        babyFood_list = dao.getAllbabyFood()
-        result_list = []
-        for row in babyFood_list:
-            result = self.build_babyFood_dict(row)
-            result_list.append(result)
-        return jsonify(babyFood=result_list)
-
-    def getbabyFoodByIngredient(self, material):
-        dao = babyFoodDAO()
-        babyFood_list = dao.getAllbabyFood()
-        result_list = []
-        for row in babyFood_list:
-            result = self.build_babyFood_dict(row)
-            result_list.append(result)
-        return jsonify(babyFood=result_list)
-
-    def getbabyFoodByEXP(self,date):
-        dao = babyFoodDAO()
-        babyFood_list = dao.getAllbabyFood()
-        result_list = []
-        for row in babyFood_list:
-            result = self.build_babyFood_dict(row)
-            result_list.append(result)
-        return jsonify(babyFood=result_list)
-
-
-    def getbabyFoodByPrice(self,price):
-        dao = babyFoodDAO()
-        babyFood_list = dao.getAllbabyFood()
-        result_list = []
-        for row in babyFood_list:
-            result = self.build_babyFood_dict(row)
-            result_list.append(result)
-        return jsonify(babyFood=result_list)
+    # def getbabyFoodByType(self, color):
+    #     dao = babyFoodDAO()
+    #     babyFood_list = dao.getAllbabyFood()
+    #     result_list = []
+    #     for row in babyFood_list:
+    #         result = self.build_babyFood_dict(row)
+    #         result_list.append(result)
+    #     return jsonify(babyFood=result_list)
+    #
+    # def getbabyFoodByIngredient(self, material):
+    #     dao = babyFoodDAO()
+    #     babyFood_list = dao.getAllbabyFood()
+    #     result_list = []
+    #     for row in babyFood_list:
+    #         result = self.build_babyFood_dict(row)
+    #         result_list.append(result)
+    #     return jsonify(babyFood=result_list)
+    #
+    # def getbabyFoodByEXP(self,date):
+    #     dao = babyFoodDAO()
+    #     babyFood_list = dao.getAllbabyFood()
+    #     result_list = []
+    #     for row in babyFood_list:
+    #         result = self.build_babyFood_dict(row)
+    #         result_list.append(result)
+    #     return jsonify(babyFood=result_list)
+    #
+    #
+    # def getbabyFoodByPrice(self,price):
+    #     dao = babyFoodDAO()
+    #     babyFood_list = dao.getAllbabyFood()
+    #     result_list = []
+    #     for row in babyFood_list:
+    #         result = self.build_babyFood_dict(row)
+    #         result_list.append(result)
+    #     return jsonify(babyFood=result_list)
 
 
     def getbabyFoodByLocation(self,location):
         dao = babyFoodDAO()
-        babyFood_list = dao.getAllbabyFood()
+        babyFood_list = dao.getbabyFoodByLocation(location)
         result_list = []
         for row in babyFood_list:
             result = self.build_babyFood_dict(row)

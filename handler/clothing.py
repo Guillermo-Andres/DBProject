@@ -6,23 +6,20 @@ from dao.clothing import ClothingDAO
 class ClothingHandler:
     def build_Clothes_dict(self, row):
         result = {}
-        result['clothing_id'] = row[0]
-        result['size'] = row[1]
-        result['color'] = row[2]
-        result['gender'] = row[3]
-        result['material'] = row[4]
-        result['description'] = row[5]
-        result['price'] = row[6]
-        result['location'] = row[7]
-        result['quantity'] = row[8]
-
-
-
+        result['resource_id'] = row[0]
+        result['clothing_id'] = row[1]
+        result['size'] = row[2]
+        result['color'] = row[3]
+        result['gender'] = row[4]
+        result['material'] = row[5]
+        result['description'] = row[6]
+        result['price'] = row[7]
+        result['location'] = row[8]
+        result['quantity'] = row[9]
 
         return result
 
 
-
     def getAllClothes(self):
         dao = ClothingDAO()
         clothes_list = dao.getAllClothes()
@@ -32,18 +29,9 @@ class ClothingHandler:
             result_list.append(result)
         return jsonify(Clothes=result_list)
 
-    def getAllClothes(self):
+    def getClothesgById(self, id):
         dao = ClothingDAO()
-        clothes_list = dao.getAllClothes()
-        result_list = []
-        for row in clothes_list:
-            result = self.build_Clothes_dict(row)
-            result_list.append(result)
-        return jsonify(Clothes=result_list)
-
-    def getClothesgById(self, pid):
-        dao = ClothingDAO()
-        clothes_list = dao.getAllClothes()
+        clothes_list = dao.getClothesgById(id)
         result_list = []
         for row in clothes_list:
             result = self.build_Clothes_dict(row)
@@ -98,7 +86,7 @@ class ClothingHandler:
 
     def getClothesByLocation(self,location):
         dao = ClothingDAO()
-        clothes_list = dao.getAllClothes()
+        clothes_list = dao.getClothesByLocation(location)
         result_list = []
         for row in clothes_list:
             result = self.build_Clothes_dict(row)
