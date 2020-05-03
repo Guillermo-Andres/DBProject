@@ -1,7 +1,7 @@
 from config.dbconfig import pg_config
 import psycopg2
-class FoodDAO:
-    #FOOD ATTTRIBUTES fid, type, isperishable,ingredientlist,unit_size,description, expiration, price , location , quantity
+class dryFoodDAO:
+    #dryFood ATTTRIBUTES fid, type, isperishable,ingredientlist,unit_size,description, expiration, price , location , quantity
     #def __init__(self):
 
         #connection_url = "dbname=%s user=%s password=%s" % (pg_config['dbname'],
@@ -9,30 +9,30 @@ class FoodDAO:
                                                             #pg_config['passwd'])
         #self.conn = psycopg2._connect(connection_url)
 
-    def getAllFood(self):
+    def getAlldryFood(self):
         result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat','yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]]
         return result
 
-    def getFoodById(self, pid):
+    def getdryFoodById(self, pid):
         result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat','yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]]
         return result
-    def getFoodByType(self, color):
-        result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat','yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]]
-        return result
-
-    def getFoodByIngredient(self, material):
+    def getdryFoodByType(self, color):
         result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat','yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]]
         return result
 
-    def getFoodByEXP(self,date):
+    def getdryFoodByIngredient(self, material):
         result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat','yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]]
         return result
 
-    def getFoodByPrice(self,price):
+    def getdryFoodByEXP(self,date):
         result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat','yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]]
         return result
 
-    def getFoodByLocation(self,location):
+    def getdryFoodByPrice(self,price):
+        result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat','yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]]
+        return result
+
+    def getdryFoodByLocation(self,location):
         result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat','yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]]
         return result
 

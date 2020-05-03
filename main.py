@@ -12,8 +12,8 @@ from handler.supplier import SupplierHandler
 from handler.company import CompanyHandler
 from handler.consumer import ConsumerHandler
 from handler.contains import ContainsHandler
-from handler.diapers import DiapersHandler
-from handler.femenine_hygiene import FemenineHygieneHandler
+from handler.medicalDevices import MedicalDevicesHandler
+from handler.powerGenerator import PowerGeneratorHandler
 from handler.hygiene import HygieneHandler
 from handler.order import OrderHandler
 from handler.payment_method import PaymentMethodHandler

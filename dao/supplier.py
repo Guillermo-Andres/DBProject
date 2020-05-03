@@ -1,7 +1,9 @@
 from config.dbconfig import pg_config
 import psycopg2
 
-    # supplier attributes: supplier_id supplier_first_name, supplier_last_name, supplier_dob, supplier_address, supplier_phone_number, supplier_email_address,
+
+# supplier attributes: supplier_id supplier_first_name, supplier_last_name, supplier_dob, supplier_address,
+# supplier_phone_number, supplier_email_address,
 
 class SupplierDAO:
     def __init__(self):
@@ -11,18 +13,24 @@ class SupplierDAO:
         self.conn = psycopg2._connect(connection_url)
 
     def getAllSuppliers(self):
-        # cursor = self.conn.cursor()
-        # query = "select * from supplier;"
-        # cursor.execute(query)
-        result = [[1, "Antonio", "Matos", "12/04/1970", "Arroyo, PR", "787-123-4567", "antonio.matos@walmart.com"],
-                  [2, "Juan", "Del Pueblo", "06/16/1982", "Humacao, PR", "787-444-4444", "juandelpueblo@sams.com"],
-                  [3, "Maria", "Magdalena", "07/17/1992", "Orocovis, PR", "939-333-3333", "mariamagdalena@econo.com"]]
-        # for row in cursor:
-        #     result.append(row)
+        cursor = self.conn.cursor()
+        query = "select * " \
+                "from supplier natural inner join person;"
+        cursor.execute(query)
+        result = []
+        for row in cursor:
+            result.append(row)
         return result
 
-    def getSupplierById(self, id):
-        return self.getAllSuppliers()
+    # TODO - check joins
+    def getSupplierById(self, supplier_id):
+        cursor = self.conn.cursor()
+        query = "select *" \
+                "from supplier natural inner join person" \
+                "where supplier_id = %s;"
+        cursor.execute(query, (supplier_id,))
+        result = cursor.fetchone()
+        return result
 
     def getSupplierByName(self, first_name, last_name):
         return self.getAllSuppliers()
@@ -39,19 +47,18 @@ class SupplierDAO:
     def getSupplierByEmail(self, email):
         return self.getAllSuppliers()
 
-    def insert(self , first_name , last_name , dob , address ,phone_number , email):
+    def insert(self, first_name, last_name, dob, address, phone_number, email):
         cursor = self.conn.cursor()
-        query = "insert into person(person_firstname, person_lastname , person_dob , person_address , person_phone_number, person_email ) values(%s , %s , %s , %s , %s , %s);" 
-        cursor.execute(query , (first_name ,last_name , dob , address , phone_number ,email,))
+        query = "insert into person(person_firstname, person_lastname , person_dob , person_address , " \
+                "person_phone_number, person_email ) values(%s , %s , %s , %s , %s , %s); "
+        cursor.execute(query, (first_name, last_name, dob, address, phone_number, email,))
         user_id = cursor.fetchone()[0]
         self.conn.commit()
         cursor = self.conn.cursor()
         query = "insert into supplier(person_id) values(%s)"
-        cursor.execute(query ,(user_id , ))
+        cursor.execute(query, (user_id,))
         self.conn.commit()
-        return user_id 
-
-
+        return user_id
 
     def delete(self):
         return self.getAllSuppliers()

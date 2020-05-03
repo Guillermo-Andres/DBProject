@@ -1,31 +1,19 @@
 from flask import jsonify
 from dao.hygiene import HygieneDAO
 
-# hygiene attributes: hygiene_id, hygiene_expiration_date, hygiene_price, hygiene_location, hygiene_units, hygiene_description, hygiene_quantity_per_unit, hygiene_brand
+
+# hygiene attributes: hygiene_id, resource_id, hygiene_description, hygiene_quantityPerUnit, hygiene_brand
 
 class HygieneHandler:
     def build_hygiene_dict(self, row):
-        result = {}
-        result['hygiene_id'] = row[0]
-        result['hygiene_expiration_date'] = row[1]
-        result['hygiene_price'] = row[2]
-        result['hygiene_location'] = row[3]
-        result['hygiene_units'] = row[4]
-        result['hygiene_description'] = row[5]
-        result['hygiene_quantity_per_unit'] = row[6]
-        result['hygiene_brand'] = row[7]
+        result = {'hygiene_id': row[0], 'resource_id': row[1], 'hygiene_description': row[2],
+                  'hygiene_quantityPerUnit': row[3], 'hygiene_brand': row[4]}
         return result
 
-    def build_hygiene_attributes(self, hygiene_id, hygiene_expiration_date, hygiene_price, hygiene_location, hygiene_units, hygiene_description, hygiene_quantity_per_unit, hygiene_brand):
-        result = {}
-        result['hygiene_id'] = hygiene_id
-        result['hygiene_expiration_date'] = hygiene_expiration_date
-        result['hygiene_price'] = hygiene_price
-        result['hygiene_location'] = hygiene_location
-        result['hygiene_units'] = hygiene_units
-        result['hygiene_description'] = hygiene_description
-        result['hygiene_quantity_per_unit'] = hygiene_quantity_per_unit
-        result['hygiene_brand'] = hygiene_brand
+    def build_hygiene_attributes(self, hygiene_id, resource_id, hygiene_description, hygiene_quantityPerUnit,
+                                 hygiene_brand):
+        result = {'hygiene_id': hygiene_id, 'resource_id': resource_id, 'hygiene_description': hygiene_description,
+                  'hygiene_quantityPerUnit': hygiene_quantityPerUnit, 'hygiene_brand': hygiene_brand}
         return result
 
     def getAllHygiene(self):
@@ -37,8 +25,14 @@ class HygieneHandler:
             result_list.append(result)
         return jsonify(Hygiene=result_list)
 
-    def getHygieneById(self, id):
-        return self.getAllHygiene()
+    def getHygieneById(self, hygiene_id):
+        dao = HygieneHandler()
+        row = dao.getHygieneById(hygiene_id)
+        if not row:
+            return jsonify(Error='Hygiene not found'), 404
+        else:
+            hygiene = self. build_hygiene_dict(row)
+            return jsonify(Hygiene=hygiene)
 
     def getHygieneByExpirationDate(self, expiration_date):
         return self.getAllHygiene()
@@ -61,12 +55,11 @@ class HygieneHandler:
     def getHygieneByBrand(self, brand):
         return self.getAllHygiene()
 
-    def insert(self,item):
-        return jsonify(Hygiene= item) ,200
+    def insert(self, item):
+        return jsonify(Hygiene=item), 200
 
-    def delete(self,item):
-        return jsonify(Hygiene= item) ,200
+    def delete(self, item):
+        return jsonify(Hygiene=item), 200
 
-
-    def update(self,item):
-        return jsonify(Hygiene= item) ,200
+    def update(self, item):
+        return jsonify(Hygiene=item), 200

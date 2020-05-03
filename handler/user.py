@@ -13,7 +13,7 @@ class UserHandler:
         result['uEmail'] = row[4]
 
         return result
-    
+
     def getAllUsers(self):
         dao = UserDAO()
         users = []
@@ -22,7 +22,7 @@ class UserHandler:
         for i in items:
             result = self.build_user_dict(i)
             users.append(result)
-        
+
         return jsonify(User = users)
 
     def getUserByID(self , aid ):
@@ -33,10 +33,10 @@ class UserHandler:
         for i in items:
             result = self.build_user_dict(i)
             users.append(result)
-        
+
         return jsonify(User = users)
 
-    
+
     def getUserByName(self , name ):
         dao = UserDAO()
         users = []
@@ -45,7 +45,7 @@ class UserHandler:
         for i in items:
             result = self.build_user_dict(i)
             users.append(result)
-        
+
         return jsonify(User = users)
 
     def getUserByAddress(self ,  location):
@@ -56,7 +56,7 @@ class UserHandler:
         for i in items:
             result = self.build_user_dict(i)
             users.append(result)
-        
+
         return jsonify(User = users)
 
     def getUserByPhone(self , phone ):
@@ -67,7 +67,7 @@ class UserHandler:
         for i in items:
             result = self.build_user_dict(i)
             users.append(result)
-        
+
         return jsonify(User = users)
 
     def getUserByEmail(self , email):
@@ -78,7 +78,7 @@ class UserHandler:
         for i in items:
             result = self.build_user_dict(i)
             users.append(result)
-        
+
         return jsonify(User = users)
 
 

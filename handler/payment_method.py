@@ -1,19 +1,19 @@
 from flask import jsonify
 from dao.payment_method import PaymentMethodDAO
 
+
 class PaymentMethodHandler:
+
     def build_payment_method_dict(self, row):
-        result = {}
-        result['payment_method_id'] = row[0]
-        result['payment_method_type'] = row[1]
+        result = {'paymentMethod_id': row[0],
+                  'paymentMethod_type': row[1],
+                  'consumer_id': row[2]}
         return result
 
     def build_payment_method_attributes(self, payment_method_id, payment_method_type):
-        result = {}
-        result['payment_method_id'] = payment_method_id
-        result['payment_method_type'] = payment_method_type
+        result = {'payment_method_id': payment_method_id,
+                  'payment_method_type': payment_method_type}
         return result
-
 
     def getAllPaymentMethods(self):
         dao = PaymentMethodDAO()
@@ -24,22 +24,26 @@ class PaymentMethodHandler:
             result_list.append(result)
         return jsonify(PaymentMethod=result_list)
 
-
-    def getPaymentMethodById(self, payment_method_id):
-        return self.getAllPaymentMethods()
+    def getPaymentMethodById(self, paymentMethod_id):
+        dao = PaymentMethodDAO()
+        row = dao.getPaymentMethodById(paymentMethod_id)
+        if not row:
+            return jsonify(Error="Payment Method not found"), 404
+        else:
+            paymentMethod = self.build_payment_method_dict(row)
+            return paymentMethod
 
     def getPaymentMethodByType(self, type):
         return self.getAllPaymentMethods()
 
-    def insert(self,item):
-        return jsonify(Payment_Method= item) ,200
+    def insert(self, item):
+        return jsonify(Payment_Method=item), 200
 
-    def delete(self,item):
-        return jsonify(Payment_Method= item) ,200
+    def delete(self, item):
+        return jsonify(Payment_Method=item), 200
 
-
-    def update(self,item):
-        return jsonify(Payment_Method= item) ,200
+    def update(self, item):
+        return jsonify(Payment_Method=item), 200
 
     def insertPaymentMethodJson(self, json):
         payment_method_type = json['type']
