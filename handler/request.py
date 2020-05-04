@@ -13,6 +13,22 @@ class RequestHandler:
                   'request_date': row[2]}
         return result
 
+    def build_request_and_resource_and_consumer_dict(self, row):
+        result = {'resource_id': row[0],
+                  'request_id': row[1],
+                  'request_date': row[2],
+                  'resource_name': row[3],
+                  'resource_price': row[4],
+                  'resource_location': row[5],
+                  'resource_quantity': row[6],
+                  'available': row[7],
+                  'resource_description': row[8],
+                  'consumer_id': row[9],
+                  'person_id': row[10],
+                  'consumer_severety': row[11]
+                  }
+        return result
+
     def build_request_attributes(self, request_id, request_price, request_location, request_quantity):
         result = {'request_id': request_id,
                   'request_price': request_price,
@@ -25,7 +41,7 @@ class RequestHandler:
         requests_list = dao.getAllRequest()
         result_list = []
         for row in requests_list:
-            result = self.build_request_dict(row)
+            result = self.build_request_and_resource_and_consumer_dict(row)
             result_list.append(result)
         return jsonify(requests=result_list)
 
@@ -35,7 +51,7 @@ class RequestHandler:
         if not row:
             return jsonify(Error="Request not found"), 404
         else:
-            request = self.build_request_dict(row)
+            request = self.build_request_and_resource_and_consumer_dict(row)
             return request
 
     def insert(self, item):
