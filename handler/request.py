@@ -22,7 +22,7 @@ class RequestHandler:
 
     def getAllRequests(self):
         dao = RequestDAO()
-        requests_list = dao.getAllrequest()
+        requests_list = dao.getAllRequest()
         result_list = []
         for row in requests_list:
             result = self.build_request_dict(row)
@@ -33,7 +33,9 @@ class RequestHandler:
         dao = RequestDAO()
         row = dao.getRequestById(request_id)
         if not row:
-            request = jsonify(Error="Request not found"), 404
+            return jsonify(Error="Request not found"), 404
+        else:
+            request = self.build_request_dict(row)
             return request
 
     def insert(self, item):

@@ -20,11 +20,12 @@ class RequestDAO:
 
     def getRequestById(self, request_id):
         cursor = self.conn.cursor()
-        query = "select *" \
-                "from request" \
+        query = "select * " \
+                "from request " \
                 "where request_id = %s;"
         cursor.execute(query, (request_id,))
         result = cursor.fetchone()
+        print(result)
         return result
 
     def insert(self, item):
