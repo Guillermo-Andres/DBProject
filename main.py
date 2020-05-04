@@ -35,9 +35,9 @@ def sendtToLogin():
     return redirect(url_for('registerconsumer'))
 
 
-
+#Register user route Unused for phase 2
 @app.route('/almacenespr/register/consumer', methods = ['POST','GET'])
-def registerconsumer():
+def registerConsumer():
     #orders specify if we are requesting, reserving or purchasing depending on its status
     if request.method == 'GET':
         return ConsumerHandler().getAllConsumers()
@@ -45,19 +45,53 @@ def registerconsumer():
     elif request.method == 'POST':
         return ConsumerHandler().insert(request.get_json())
 
+#Get consumer by ID
+@app.route('/almacenespr/consumer/<int:consumer_id>', methods = ['GET'])
+def getConsumerbyId(consumer_id):
+    #orders specify if we are requesting, reserving or purchasing depending on its status
+    if request.method == 'GET':
+        return ConsumerHandler().getConsumerById(consumer_id)
+
+#view all consumers
+@app.route('/almacenespr/consumer', methods = ['GET'])
+def getAllconsumer():
+    #orders specify if we are requesting, reserving or purchasing depending on its status
+    if request.method == 'GET':
+        return ConsumerHandler().getAllConsumers()
+
+
 @app.route('/almacenespr/register/admin', methods = ['POST','GET'])
 def registerAdmin():
     #orders specify if we are requesting, reserving or purchasing depending on its status
     arg = request.get_json()
-    print("============== ===================== " + str(arg))
     if request.method == 'GET':
         return AdminHandler().getAllAdmins()
 
     elif request.method == 'POST':
         return AdminHandler().insert(request.get_json())
 
+@app.route('/almacenespr/admin', methods = ['POST','GET'])
+def getAllAdmin():
+    #orders specify if we are requesting, reserving or purchasing depending on its status
+    arg = request.get_json()
 
-@app.route('/almacenespr/register/supplier', methods = ['POST','GET'])
+    if request.method == 'GET':
+        return AdminHandler().getAllAdmins()
+
+    elif request.method == 'POST':
+        return AdminHandler().insert(request.get_json())
+
+#search admin by id
+@app.route('/almacenespr/admin/<int:admin_id>', methods = ['GET'])
+def getAdminById(admin_id):
+    #orders specify if we are requesting, reserving or purchasing depending on its status
+    arg = request.get_json()
+
+    if request.method == 'GET':
+        return AdminHandler().getAdminByID(admin_id)
+
+
+@app.route('/almacenespr/supplier', methods = ['POST','GET'])
 def registerSupplier():
     #orders specify if we are requesting, reserving or purchasing depending on its status
 
@@ -66,6 +100,22 @@ def registerSupplier():
 
     elif request.method == 'POST':
         return SupplierHandler().insert(request.get_json())
+
+#get supplier by id
+@app.route('/almacenespr/supplier/<int:supplier_id>', methods = ['GET'])
+def getSupplierById(supplier_id):
+    #orders specify if we are requesting, reserving or purchasing depending on its status
+    if request.method == 'GET':
+        return SupplierHandler().getSupplierById(supplier_id)
+
+#get all suppliers
+@app.route('/almacenespr/supplier', methods = ['GET'])
+def getAllSuppliers():
+    #orders specify if we are requesting, reserving or purchasing depending on its status
+
+    if request.method == 'GET':
+        return SupplierHandler().getAllSuppliers()
+
 
 
 @app.route('/almacenespr/consumer/<int:consumer_id>/orders', methods = ['GET','POST','PUT'])

@@ -2,7 +2,7 @@
 echo "aaaaa"
 echo -n "Do you wish to reinstall postgresql for better perfmance ? [y/n] " ;
 read ans
-if [[ "y" == "$ans" ]]; then 
+if [[ "y" == "$ans" ]]; then
 
     echo "Unistalling postgresqsl for fresh install "
     echo "y" | sudo apt remove --purge postgresql*  > /dev/null 2>&1
@@ -16,24 +16,24 @@ fi
 
 
 cat postInitialize.txt | sudo -i -u postgres ;
-echo 
+echo
 echo
 echo created person:"alma"  db:"almacen" and granted db to usr  ;
 cd /;
 sudo etc/init.d/postgresql restart ;
 echo "create table person(person_id serial primary key, person_firstname varchar(15), person_lastname varchar(15), person_dob varchar(10), person_address varchar(30), person_phone_number varchar(15), person_email varchar(30));
-      create table resource(resource_id serial primary key, resource_name , resource_price float, resource_location varchar(30), resource_quantity integer , available boolean);
+      create table resource(resource_id serial primary key, resource_name varchar(15), resource_price float, resource_location varchar(30), resource_quantity integer , available boolean);
+      create table request(request_id serial primary key, resource_id integer references resource(resource_id), request_date varchar(10));
+      create table makesRequest(consumer_id integer references consumer(consumer_id), request_id references request(request_id), primary key (request_id,consumer_id));
       create table supplier(supplier_id serial primary key, person_id integer references person(person_id));
       create table supplies(supplier_id integer references supplier(supplier_id), resource_id integer references resource(resource_id), primary key (supplier_id, resource_id));
       create table admin(admin_id serial primary key, person_id integer references person(person_id));
       create table consumer(consumer_id serial primary key, person_id integer references person(person_id), consumer_severety varchar(20));
       create table company(company_id serial primary key, company_name varchar(15), company_description varchar(20));
       create table worksFor(company_id integer references company(company_id), supplier_id integer references supplier(supplier_id), primary key (company_id, supplier_id));
-      create table orders(order_id serial primary key, order_amount float, order_date varchar(10), order_status varchar(10));
-      create table places_an_order(consumer_id integer references consumer(consumer_id), order_id integer references order(order_id), primary key (consumer_id, order_id));
+      create table orders(order_id serial primary key, order_amount float, order_date varchar(10), order_status varchar(10), supplier_id integer references supplier(supplier_id));
       create table paymentMethod(paymentMethod_id serial primary key, paymentMethod_type varchar(10), consumer_id integer references consumer(consumer_id));
       create table paysFor(paymentMethod_id integer references paymentMethod(paymentMethod_id), order_id integer references order(order_id), primary key (paymentMethod_id, order_id));
-      create table contains(order_id integer references order(order_id), resource_id integer references resource(resource_id), primary key (order_id, resource_id));
       create table water(water_id serial primary key, resource_id integer references resource(resource_id), water_size varchar(10), water_brand varchar(10), water_type varchar(10), water_unitSize varchar(10));
       create table hygiene(hygiene_id serial primary key, resource_id integer references resource (resource_id), hygiene_description varchar(30), hygiene_quantityPerUnit integer, hygiene_brand varchar(10));
       create table babyFood(babyFood_id serial primary key, resource_id integer references resource(resource_id), babyFood_type varchar(10), babyFood_is_perishable boolean, babyFood_ingrendients varchar(50), babyFood_unitSize varchar(10), babyFood_description varchar(20), babyFood_expDate varchar(10));
@@ -50,8 +50,3 @@ echo "create table person(person_id serial primary key, person_firstname varchar
       create table clothing(clothing_id serial primary key, resource_id integer references resource(resource_id), clothing_size varchar(5), clothing_color varchar(10), clothing_gender varchar(3), clothing_material varchar(10), clothing_description varchar(20));
       "| psql almacen -U alma -W -h 127.0.0.1 ;
 echo "finished db, added table of tables.txt";
-
-
-
-
-
