@@ -3,16 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="9f142b09-0bfa-4960-8a7e-d3939131f741" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/consumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/hygiene.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/hygiene.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/medicalDevices.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/medicalDevices.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/payment_method.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/payment_method.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/powerGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/powerGenerator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/resource.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/resource.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/supplier.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/supplier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/handler/consumer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/hygiene.py" beforeDir="false" afterPath="$PROJECT_DIR$/handler/hygiene.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/medicalDevices.py" beforeDir="false" afterPath="$PROJECT_DIR$/handler/medicalDevices.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/handler/order.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/powerGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/handler/powerGenerator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/handler/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/resource.py" beforeDir="false" afterPath="$PROJECT_DIR$/handler/resource.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/supplier.py" beforeDir="false" afterPath="$PROJECT_DIR$/handler/supplier.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +43,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RecentsManager">
@@ -204,7 +203,21 @@
       <option name="project" value="LOCAL" />
       <updated>1588457546184</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="fix dao get by id">
+      <created>1588461267281</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1588461267281</updated>
+    </task>
+    <task id="LOCAL-00018" summary="fml">
+      <created>1588607300605</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1588607300605</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -234,7 +247,9 @@
     <MESSAGE value="reflect schema changes on the handlers" />
     <MESSAGE value="reflect schema changes on the resource handler" />
     <MESSAGE value="add resource handler" />
-    <option name="LAST_COMMIT_MESSAGE" value="add resource handler" />
+    <MESSAGE value="fix dao get by id" />
+    <MESSAGE value="fml" />
+    <option name="LAST_COMMIT_MESSAGE" value="fml" />
   </component>
   <component name="WindowStateProjectService">
     <state x="451" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585617563028">
@@ -245,48 +260,52 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="693" y="354" width="590" height="396" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1588448819967" />
-    <state x="600" y="105" width="1078" height="847" key="CommitChangelistDialog2" timestamp="1588457545806">
+    <state x="600" y="105" width="1078" height="847" key="CommitChangelistDialog2" timestamp="1588607299874">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="600" y="105" width="1078" height="847" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1588457545806" />
+    <state x="600" y="105" width="1078" height="847" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1588607299874" />
     <state x="600" y="101" width="777" height="847" key="CommitChangelistDialog2/67.27.1853.997@67.27.1853.997" timestamp="1585689573682" />
+    <state x="243" y="116" width="1482" height="872" key="DiffContextDialog" timestamp="1588549121647">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="243" y="116" width="1482" height="872" key="DiffContextDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1588549121647" />
     <state x="782" y="301" width="424" height="484" key="FileChooserDialogImpl" timestamp="1588283948847">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="782" y="301" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1588283948847" />
-    <state width="1830" height="321" key="GridCell.Tab.0.bottom" timestamp="1588460683550">
+    <state width="1830" height="321" key="GridCell.Tab.0.bottom" timestamp="1588461393236">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1830" height="321" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1588460683550" />
+    <state width="1830" height="321" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1588461393236" />
     <state width="1830" height="300" key="GridCell.Tab.0.bottom/67.27.1853.997@67.27.1853.997" timestamp="1585689462637" />
-    <state width="1830" height="321" key="GridCell.Tab.0.center" timestamp="1588460683543">
+    <state width="1830" height="321" key="GridCell.Tab.0.center" timestamp="1588461393236">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1830" height="321" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1588460683543" />
+    <state width="1830" height="321" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1588461393236" />
     <state width="1830" height="300" key="GridCell.Tab.0.center/67.27.1853.997@67.27.1853.997" timestamp="1585689462637" />
-    <state width="1830" height="321" key="GridCell.Tab.0.left" timestamp="1588460683539">
+    <state width="1830" height="321" key="GridCell.Tab.0.left" timestamp="1588461393235">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1830" height="321" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1588460683539" />
+    <state width="1830" height="321" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1588461393235" />
     <state width="1830" height="300" key="GridCell.Tab.0.left/67.27.1853.997@67.27.1853.997" timestamp="1585689462636" />
-    <state width="1830" height="321" key="GridCell.Tab.0.right" timestamp="1588460683548">
+    <state width="1830" height="321" key="GridCell.Tab.0.right" timestamp="1588461393236">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1830" height="321" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1588460683548" />
+    <state width="1830" height="321" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1588461393236" />
     <state width="1830" height="300" key="GridCell.Tab.0.right/67.27.1853.997@67.27.1853.997" timestamp="1585689462637" />
-    <state x="482" y="187" key="SettingsEditor" timestamp="1588442620719">
+    <state x="482" y="187" key="SettingsEditor" timestamp="1588607695613">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="482" y="187" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1588442620719" />
+    <state x="482" y="187" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1588607695613" />
     <state x="482" y="178" key="SettingsEditor/67.27.1853.997@67.27.1853.997" timestamp="1585688696492" />
     <state x="727" y="310" width="522" height="484" key="VCS.ChangeListViewerDialog" timestamp="1585687582572">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="727" y="310" width="522" height="484" key="VCS.ChangeListViewerDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1585687582572" />
-    <state x="588" y="273" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1588457553766">
+    <state x="588" y="273" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1588461274178">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="588" y="273" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1588457553766" />
+    <state x="588" y="273" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1588461274178" />
     <state x="588" y="260" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.997@67.27.1853.997" timestamp="1585177059856" />
     <state x="649" y="352" key="com.intellij.ide.util.TipDialog" timestamp="1585517160584">
       <screen x="67" y="27" width="1853" height="997" />
@@ -296,11 +315,15 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="750" y="346" width="477" height="413" key="git4idea.merge.GitMergeDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1585687280999" />
-    <state x="1105" y="346" width="692" height="413" key="git4idea.merge.GitPullDialog" timestamp="1588442167818">
+    <state x="1105" y="346" width="692" height="413" key="git4idea.merge.GitPullDialog" timestamp="1588607501063">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="1105" y="346" width="692" height="413" key="git4idea.merge.GitPullDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1588442167818" />
+    <state x="1105" y="346" width="692" height="413" key="git4idea.merge.GitPullDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1588607501063" />
     <state x="1105" y="329" key="git4idea.merge.GitPullDialog/67.27.1853.997@67.27.1853.997" timestamp="1585689406666" />
+    <state x="762" y="449" width="453" height="207" key="git4idea.ui.GitResetDialog" timestamp="1588607358897">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="762" y="449" width="453" height="207" key="git4idea.ui.GitResetDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1588607358897" />
     <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1588452294642">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>

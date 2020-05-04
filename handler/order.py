@@ -10,7 +10,8 @@ class OrderHandler:
         result = {'order_id': row[0],
                   'order_amount': row[1],
                   'order_date': row[2],
-                  'order_status': row[3]}
+                  'order_status': row[3],
+                  'supplier_id': row[4]}
         return result
 
     def build_order_attributes(self, order_id, order_amount, order_date, order_status):

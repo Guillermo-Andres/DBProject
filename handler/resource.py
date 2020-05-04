@@ -7,10 +7,11 @@ from dao.resource import ResourceDAO
 class ResourceHandler:
     def build_resource_dict(self, row):
         result = {'resource_id': row[0],
-                  'resource_id': row[1],
+                  'resource_name': row[1],
                   'resource_price': row[2],
                   'resource_location': row[3],
-                  'resource_quantity': row[4]}
+                  'resource_quantity': row[4],
+                  'available': row[5]}
         return result
 
     def build_resource_attributes(self, resource_id, resource_price, resource_location, resource_quantity):

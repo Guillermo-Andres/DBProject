@@ -6,14 +6,33 @@ from dao.hygiene import HygieneDAO
 
 class HygieneHandler:
     def build_hygiene_dict(self, row):
-        result = {'hygiene_id': row[0], 'resource_id': row[1], 'hygiene_description': row[2],
-                  'hygiene_quantityPerUnit': row[3], 'hygiene_brand': row[4]}
+        result = {'resource_id': row[0],
+                  'hygiene_id': row[1],
+                  'hygiene_description': row[2],
+                  'hygiene_quantityPerUnit': row[3],
+                  'hygiene_brand': row[4],
+                  'hygiene_name': row[5],
+                  'hygiene_price': row[6],
+                  'hygiene_location': row[7],
+                  'resource_quantity': row[8],
+                  'available': row[9]
+                  }
         return result
 
-    def build_hygiene_attributes(self, hygiene_id, resource_id, hygiene_description, hygiene_quantityPerUnit,
-                                 hygiene_brand):
-        result = {'hygiene_id': hygiene_id, 'resource_id': resource_id, 'hygiene_description': hygiene_description,
-                  'hygiene_quantityPerUnit': hygiene_quantityPerUnit, 'hygiene_brand': hygiene_brand}
+    def build_hygiene_attributes(self, resource_id, hygiene_id, hygiene_description, hygiene_quantityPerUnit,
+                                 hygiene_brand, hygiene_name, hygiene_price, hygiene_location, resource_quantity,
+                                 available):
+        result = {'resource_id': resource_id,
+                  'hygiene_id': hygiene_id,
+                  'hygiene_description': hygiene_description,
+                  'hygiene_quantityPerUnit': hygiene_quantityPerUnit,
+                  'hygiene_brand': hygiene_brand,
+                  'hygiene_name': hygiene_name,
+                  'hygiene_price': hygiene_price,
+                  'hygiene_location': hygiene_location,
+                  'resource_quantity': resource_quantity,
+                  'available': available
+                  }
         return result
 
     def getAllHygiene(self):
@@ -31,7 +50,7 @@ class HygieneHandler:
         if not row:
             return jsonify(Error='Hygiene not found'), 404
         else:
-            hygiene = self. build_hygiene_dict(row)
+            hygiene = self.build_hygiene_dict(row)
             return jsonify(Hygiene=hygiene)
 
     def getHygieneByExpirationDate(self, expiration_date):

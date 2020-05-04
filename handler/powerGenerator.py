@@ -6,9 +6,15 @@ from dao.powerGenerator import PowerGeneratorDAO
 
 class PowerGeneratorHandler:
     def build_powerGenerator_dict(self, row):
-        result = {'powerGenerator_id': row[0],
-                  'resource_id': row[1],
-                  'powerGenerator_type': row[2]}
+        result = {'resource_id': row[0],
+                  'powerGenerator_id': row[1],
+                  'powerGenerator_type': row[2],
+                  'resource_name': row[3],
+                  'resource_price': row[4],
+                  'resource_location': row[5],
+                  'resource_quantity': row[6],
+                  'available': row[7]
+                  }
         return result
 
     def build_powerGenerator_attributes(self, powerGenerator_id, resource_id, powerGenerator_type):

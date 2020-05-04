@@ -6,8 +6,14 @@ from dao.supplier import SupplierDAO
 
 class SupplierHandler:
     def build_supplier_dict(self, row):
-        result = {'supplier_id': row[0],
-                  'person_id': row[1]}
+        result = {'person_id': row[0],
+                  'supplier_id': row[1],
+                  'person_firstname': row[2],
+                  'person_lastname': row[3],
+                  'person_dob': row[4],
+                  'person_address': row[5],
+                  'person_phone_number': row[6],
+                  'person_email': row[7]}
         return result
 
     def build_supplier_attributes(self, supplier_id, person_id):

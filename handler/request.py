@@ -9,10 +9,8 @@ from dao.request import RequestDAO
 class RequestHandler:
     def build_request_dict(self, row):
         result = {'request_id': row[0],
-                  'request_id': row[1],
-                  'request_price': row[2],
-                  'request_location': row[3],
-                  'request_quantity': row[4]}
+                  'resource_id': row[1],
+                  'request_date': row[2]}
         return result
 
     def build_request_attributes(self, request_id, request_price, request_location, request_quantity):
