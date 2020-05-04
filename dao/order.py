@@ -12,7 +12,7 @@ class OrderDAO:
 
     def getAllOrders(self):
         cursor = self.conn.cursor()
-        query = "select * from orders natural join request natural join supplier;"
+        query = "select * from orders natural join request natural join supplier natural join paysFor;"
         cursor.execute(query)
         result = []
         for row in cursor:
@@ -26,6 +26,17 @@ class OrderDAO:
                 "where order_id = %s;"
         cursor.execute(query, (order_id,))
         result = cursor.fetchone()
+        return result
+
+    def getOrderByConsumerId(self , consumer_id):
+        cursor = self.conn.cursor()
+        query = "select * " \
+                "from orders natural join request natural join supplier natural join consumer " \
+                "where consumer_id = %s;"
+        cursor.execute(query,(consumer_id ,))
+        result = []
+        for row in cursor:
+            result.append(row)
         return result
 
     def getOrderByAmount(self, amount):

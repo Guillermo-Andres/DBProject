@@ -8,10 +8,16 @@ class OrderHandler:
 
     def build_order_dict(self, row):
         result = {'order_id': row[0],
-                  'order_amount': row[1],
-                  'order_date': row[2],
-                  'order_status': row[3],
-                  'supplier_id': row[4]}
+                  'supplier_id' :row[1],
+                  'order_amount': row[2],
+                  'order_date': row[3],
+                  'order_status': row[4],
+                  'request_id': row[5],
+                  'resource_id': row[6],
+                  'request_date': row[7],
+                  'person_id' : row[8],
+                  'paymentmethod_id':row[9]
+                  }
         return result
 
     def build_order_attributes(self, order_id, order_amount, order_date, order_status):
@@ -24,6 +30,15 @@ class OrderHandler:
     def getAllOrders(self):
         dao = OrderDAO()
         order_list = dao.getAllOrders()
+        result_list = []
+        for row in order_list:
+            result = self.build_order_dict(row)
+            result_list.append(result)
+        return jsonify(Order=result_list)
+
+    def geOrdersByConsumerID(self , consumer_id):
+        dao = OrderDAO()
+        order_list = dao.getOrderByConsumerId(consumer_id)
         result_list = []
         for row in order_list:
             result = self.build_order_dict(row)

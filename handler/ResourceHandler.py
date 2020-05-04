@@ -10,9 +10,24 @@ from handler.medicalDevices import MedicalDevicesHandler
 from handler.powerGenerator import PowerGeneratorHandler
 from handler.hygiene import HygieneHandler
 from handler.water import WaterHandler
+from dao.resource import ResourceDAO
+from flask import jsonify
 
 
 class ResourceHandler:
+
+
+    def build_resource_dict(self , row):
+        result = {} 
+        result['resource_i'] = row[0]
+        result['resource_name'] = row[1]
+        result['resource_price'] = row[2]
+        result['resource_location'] = row[3]
+        result['resource_quantity'] = row[4]
+        result['resource_available'] = row[5]
+        result['resource_description'] = row[7]
+
+        return result
 
     def getAllByType(self , type):
         if(type == 'food'):
@@ -44,17 +59,10 @@ class ResourceHandler:
             return MedicationHandler().getAllMedication()
 
     def getAll(self):
-        return {
-            'hygiene':HygieneHandler().getAllHygiene().get_json(),
-            'food':FoodHandler().getAllFood().get_json(),
-            'batteries':BatteryHandler().getAllbattery().get_json(),
-            'clothing':ClothingHandler().getAllClothes().get_json(),
-            'heavyEquipment':HeavyEquipmentHandler().getAllHeavyEquipment().get_json(),
-            'ice':IceHandler().getAllIce().get_json(),
-            'powertools':PowerToolsHandler().getAllTools().get_json(),
-            'fuel':FuelHandler().getAllFuel().get_json(),
-            'medicalDevices':MedicalDevicesHandler().getAllMedicalDevices().get_json(),
-            'powerGenerator':PowerGeneratorHandler().getAllPowerGenerator().get_json(),
-            'hygiene':HygieneHandler().getAllHygiene().get_json(),
-            'water':WaterHandler().getAllWater().get_json()
-        }
+        items = ResourceDAO().getAllResource()
+        result = []
+        for i in items:
+            toAdd = self.build_resource_dict(i)
+            result.append(toAdd)
+
+        return jsonify(Resources = result)
