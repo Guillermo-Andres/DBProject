@@ -24,8 +24,8 @@ class SupplierDAO:
 
     def getSupplierById(self, supplier_id):
         cursor = self.conn.cursor()
-        query = "select *" \
-                "from supplier natural join person" \
+        query = "select * " \
+                "from supplier natural join person " \
                 "where supplier_id = %s;"
         cursor.execute(query, (supplier_id,))
         result = cursor.fetchone()
