@@ -6,11 +6,14 @@ class AdminHandler:
     def build_admin_dict(self , row ):
         result = {}
 
-        result['aid']  = row[0]
-        result['aname'] = row[1]
-        result['aAddress'] = row[2]
-        result['aPhone'] = row[3]
-        result['aEmail'] = row[4]
+        result['person_id']  = row[0]
+        result['person_firstname'] = row[1]
+        result['person_lastname'] = row[2]
+        result['person_dob'] = row[3]
+        result['person_address'] = row[4]
+        result['person_phone'] = row[5]
+        result['person_email'] = row[6]
+        result['admin_id'] = row[7]
 
         return result
     
@@ -26,10 +29,10 @@ class AdminHandler:
         return jsonify(User = users)
 
 
-    def getAdminByID(self , aid ):
+    def getAdminByID(self , person_id ):
         dao = AdminDAO()
         users = []
-        items = dao.getAdminByID(aid)
+        items = dao.getAdminByID(person_id)
 
         for i in items:
             result = self.build_admin_dict(i)

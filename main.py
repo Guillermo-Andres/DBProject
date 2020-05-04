@@ -32,7 +32,7 @@ CORS(app)
 
 @app.route('/')
 def sendtToLogin():
-    return redirect(url_for('registerconsumer'))
+    return redirect(url_for('registerConsumer'))
 
 
 #Register user route Unused for phase 2

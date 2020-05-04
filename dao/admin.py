@@ -14,7 +14,7 @@ class AdminDAO:
 
     def getAllAdmins(self):
         cursor = self.conn.cursor()
-        query = "select * from admin natural join person;"
+        query = "select * from person natural join admin;"
         cursor.execute(query)
         result = []
 
@@ -22,12 +22,11 @@ class AdminDAO:
             result.append(row)
         return result
 
-    def getAdminByID(self , aid):
+    def getAdminByID(self , person_id):
         cursor = self.conn.cursor()
-        query = "select * from supplies natural join person where person_id = %s;"
-        cursor.execute(query , (supid))
+        query = "select * from person natural join admin where person_id = %s;"
+        cursor.execute(query , (person_id,))
         result = []
-        result.append(row)
         
         for row in cursor:
             result.append(row)
