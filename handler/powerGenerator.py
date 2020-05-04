@@ -13,7 +13,8 @@ class PowerGeneratorHandler:
                   'resource_price': row[4],
                   'resource_location': row[5],
                   'resource_quantity': row[6],
-                  'available': row[7]
+                  'available': row[7],
+                  'resource_description': row[8]
                   }
         return result
 

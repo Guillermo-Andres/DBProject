@@ -8,14 +8,14 @@ class HygieneHandler:
     def build_hygiene_dict(self, row):
         result = {'resource_id': row[0],
                   'hygiene_id': row[1],
-                  'hygiene_description': row[2],
-                  'hygiene_quantityPerUnit': row[3],
-                  'hygiene_brand': row[4],
-                  'hygiene_name': row[5],
-                  'hygiene_price': row[6],
-                  'hygiene_location': row[7],
-                  'resource_quantity': row[8],
-                  'available': row[9]
+                  'hygiene_quantityPerUnit': row[2],
+                  'hygiene_brand': row[3],
+                  'hygiene_name': row[4],
+                  'hygiene_price': row[5],
+                  'hygiene_location': row[6],
+                  'resource_quantity': row[7],
+                  'available': row[8],
+                  'resource_description': row[9]
                   }
         return result
 

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9f142b09-0bfa-4960-8a7e-d3939131f741" name="Default Changelist" comment="s">
+    <list default="true" id="9f142b09-0bfa-4960-8a7e-d3939131f741" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/consumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/supplier.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/supplier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/hygiene.py" beforeDir="false" afterPath="$PROJECT_DIR$/handler/hygiene.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/medicalDevices.py" beforeDir="false" afterPath="$PROJECT_DIR$/handler/medicalDevices.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handler/powerGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/handler/powerGenerator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,7 +236,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588613141686</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="fix queries">
+      <created>1588620367854</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1588620367855</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -270,7 +278,8 @@
     <MESSAGE value="reflect schema changes in dictionaries" />
     <MESSAGE value="fix joins in gets" />
     <MESSAGE value="s" />
-    <option name="LAST_COMMIT_MESSAGE" value="s" />
+    <MESSAGE value="fix queries" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix queries" />
   </component>
   <component name="WindowStateProjectService">
     <state x="451" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585617563028">
@@ -281,10 +290,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="693" y="354" width="590" height="396" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1588448819967" />
-    <state x="600" y="105" width="1078" height="847" key="CommitChangelistDialog2" timestamp="1588619739532">
+    <state x="600" y="105" width="1078" height="847" key="CommitChangelistDialog2" timestamp="1588620367592">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="600" y="105" width="1078" height="847" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1588619739532" />
+    <state x="600" y="105" width="1078" height="847" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1588620367592" />
     <state x="600" y="101" width="777" height="847" key="CommitChangelistDialog2/67.27.1853.997@67.27.1853.997" timestamp="1585689573682" />
     <state x="243" y="116" width="1482" height="872" key="DiffContextDialog" timestamp="1588549121647">
       <screen x="67" y="27" width="1853" height="1053" />
@@ -323,10 +332,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="727" y="310" width="522" height="484" key="VCS.ChangeListViewerDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1585687582572" />
-    <state x="588" y="273" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1588612645297">
+    <state x="588" y="273" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1588620374638">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="588" y="273" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1588612645297" />
+    <state x="588" y="273" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1588620374638" />
     <state x="588" y="260" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.997@67.27.1853.997" timestamp="1585177059856" />
     <state x="649" y="352" key="com.intellij.ide.util.TipDialog" timestamp="1585517160584">
       <screen x="67" y="27" width="1853" height="997" />
