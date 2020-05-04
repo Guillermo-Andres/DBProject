@@ -15,18 +15,17 @@ class SupplierDAO:
     def getAllSuppliers(self):
         cursor = self.conn.cursor()
         query = "select * " \
-                "from supplier natural inner join person;"
+                "from supplier natural join person;"
         cursor.execute(query)
         result = []
         for row in cursor:
             result.append(row)
         return result
 
-    # TODO - check joins
     def getSupplierById(self, supplier_id):
         cursor = self.conn.cursor()
         query = "select *" \
-                "from supplier natural inner join person" \
+                "from supplier natural join person" \
                 "where supplier_id = %s;"
         cursor.execute(query, (supplier_id,))
         result = cursor.fetchone()

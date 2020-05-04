@@ -16,7 +16,7 @@ class HygieneDAO:
     def getAllHygiene(self):
         cursor = self.conn.cursor()
         query = "select * " \
-                "from hygiene natural inner join resource;"
+                "from hygiene natural join resource;"
         cursor.execute(query)
         result = []
         for row in cursor:
@@ -26,7 +26,7 @@ class HygieneDAO:
     def getHygieneById(self, hygiene_id):
         cursor = self.conn.cursor()
         query = "select * " \
-                "from hygiene natural inner join resource" \
+                "from hygiene natural join resource" \
                 "where hygiene_id = %s;"
         cursor.execute(query, (hygiene_id,))
         result = cursor.fetchone()

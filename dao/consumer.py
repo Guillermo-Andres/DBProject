@@ -12,7 +12,7 @@ class ConsumerDAO:
     def getAllConsumers(self):
         cursor = self.conn.cursor()
         query = "select * " \
-                "from consumer natural inner join person;"
+                "from consumer natural join person;"
         cursor.execute(query)
         result = []
         for row in cursor:
@@ -22,7 +22,7 @@ class ConsumerDAO:
     def getConsumerById(self, consumer_id):
         cursor = self.conn.cursor()
         query = "select * " \
-                "from consumer natural inner join person" \
+                "from consumer natural join person" \
                 "where consumer_id = %s;"
         cursor.execute(query, (consumer_id,))
         result = cursor.fetchone()
