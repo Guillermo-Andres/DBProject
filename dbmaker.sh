@@ -33,7 +33,7 @@ echo "create table person(person_id serial primary key, person_firstname varchar
       create table worksFor(company_id integer references company(company_id), supplier_id integer references supplier(supplier_id), primary key (company_id, supplier_id));
       create table orders(order_id serial primary key, order_amount float, order_date varchar(10), order_status varchar(10), supplier_id integer references supplier(supplier_id));
       create table paymentMethod(paymentMethod_id serial primary key, paymentMethod_type varchar(10), consumer_id integer references consumer(consumer_id));
-      create table paysFor(paymentMethod_id integer references paymentMethod(paymentMethod_id), order_id integer references order(order_id), primary key (paymentMethod_id, order_id));
+      create table paysFor(paymentMethod_id integer references paymentMethod(paymentMethod_id), order_id integer references orders(order_id), primary key (paymentMethod_id, order_id));
       create table water(water_id serial primary key, resource_id integer references resource(resource_id), water_size varchar(10), water_brand varchar(10), water_type varchar(10), water_unitSize varchar(10));
       create table hygiene(hygiene_id serial primary key, resource_id integer references resource (resource_id), hygiene_description varchar(30), hygiene_quantityPerUnit integer, hygiene_brand varchar(10));
       create table babyFood(babyFood_id serial primary key, resource_id integer references resource(resource_id), babyFood_type varchar(10), babyFood_is_perishable boolean, babyFood_ingrendients varchar(50), babyFood_unitSize varchar(10), babyFood_description varchar(20), babyFood_expDate varchar(10));
