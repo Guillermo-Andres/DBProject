@@ -24,6 +24,7 @@ from handler.supplies import suppliesHandler
 from handler.worksFor import WorksForHandler
 from handler.ResourceHandler import ResourceHandler
 from handler.water import WaterHandler
+from handler.request import RequestHandler
 from flask_cors import CORS, cross_origin
 
 # Activate
@@ -148,16 +149,26 @@ def newResource(sid):
 
 @app.route('/almacenespr/requested', methods = ['GET'])
 def viewRequested():
-    return ResourceHandler.getAll()
+    return RequestHandler().getAllRequestsAll()
 
 @app.route('/almacenespr/available', methods = ['GET'])
 def viewAvailable():
     return ResourceHandler().getAll()
 
-@app.route('/almacenespr/requested/<string:resource_type>', methods = ['GET'])
-def searchRequested(resource_type,search_keyword):
+# @app.route('/almacenespr/requested/<string:resource_type>', methods = ['GET'])
+# def searchRequested(resource_type,search_keyword):
+#
+#     return RequestHandler().getAllByType(resource_type)
 
-    return ResourceHandler().getAllByType(resource_type)
+@app.route('/almacenespr/requested/<int:request_id>', methods = ['GET'])
+def searchRequestedById(request_id):
+
+    return RequestHandler().getRequestById(request_id)
+
+@app.route('/almacenespr/resource/<int:resource_id>', methods = ['GET'])
+def getResourcesbyId(resource_id):
+    return ResourceHandler().getResourceById(resource_id)
+
 
 @app.route('/almacenespr/resource/<string:resource_type>/<int:resource_type_id>', methods = ['GET'])
 def getResourcesbyTypeId(resource_type, resource_type_id):
