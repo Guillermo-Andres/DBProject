@@ -151,6 +151,10 @@ def newResource(sid):
 def viewRequested():
     return RequestHandler().getAllRequestsAll()
 
+@app.route('/almacenespr/requested/<string:keyword>', methods = ['GET'])
+def viewRequestedByKeyword(keyword):
+    return RequestHandler().getAllRequestByKeyword(keyword)
+
 @app.route('/almacenespr/available', methods = ['GET'])
 def viewAvailable():
     return ResourceHandler().getAll()

@@ -45,6 +45,16 @@ class RequestHandler:
             result_list.append(result)
         return jsonify(requests=result_list)
 
+    def getAllRequestByKeyword(self , keyword):
+        dao = RequestDAO()
+        requests_list = dao.getRequestByKeyWord(keyword)
+        result_list = []
+        for row in requests_list:
+            result = self.build_request_and_resource_and_consumer_dict(row)
+            result_list.append(result)
+        return jsonify(requests=result_list)
+
+
     def getRequestById(self, request_id):
         dao = RequestDAO()
         row = dao.getRequestById(request_id)
