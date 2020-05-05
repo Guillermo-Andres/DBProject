@@ -8,15 +8,23 @@ class OrderHandler:
 
     def build_order_dict(self, row):
         result = {'order_id': row[0],
-                  'supplier_id' :row[1],
-                  'order_amount': row[2],
-                  'order_date': row[3],
-                  'order_status': row[4],
-                  'request_id': row[5],
-                  'resource_id': row[6],
-                  'request_date': row[7],
-                  'person_id' : row[8],
-                  'paymentmethod_id':row[9]
+                  'supplier_id' :row[5],
+                  'order_amount': row[6],
+                  'order_date': row[7],
+                  'order_status': row[8],
+                  'request_id': row[3],
+                  'resource_id': row[4],
+                  'resource_name':row[10],
+                  'resource_price':row[11],
+                  'resource_location':row[12],
+                  'resource_quantity':row[13],
+                  'resource_description':row[14],
+                  'request_date': row[15],
+                  'supplier_person_id' : row[9],
+                  'paymentmethod_id':row[1],
+                  'consumer_id':row[2],
+                  'consumer_severity':row[16],
+                  'paymentmethod_type':row[17]
                   }
         return result
 

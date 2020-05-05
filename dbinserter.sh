@@ -129,5 +129,10 @@ Insert into resource (resource_name,resource_price,resource_location,resource_qu
 insert into hygiene (resource_id,hygiene_quantityperunit,hygiene_brand) values((select resource_id from resource where resource_id='15'),13,'Nosotras');
 Insert into resource (resource_name,resource_price,resource_location,resource_quantity,resource_description) values('Paneles',150.00,'Tokyo', 45, 'bueno');
 insert into powerGenerator (resource_id,powerGenerator_type) values ((SELECT resource_id from resource where resource_id = '16'),'Planta');
-
+insert into request(resource_id , request_date) values (4 ,'12/12/1997');
+insert into makesRequest(consumer_id , request_id) values (3 , 1);
+insert into supplies(supplier_id , resource_id) values(5,2);
+insert into paymentMethod (paymentMethod_type , consumer_id) values ('cash' , 3);
+insert into orders(order_amount ,  order_date , order_status , supplier_id) values((select resource_price from resource where resource_id = 4) , '12/12/2020', 'complete' , 5);
+insert into paysFor(paymentmethod_id , order_id) values (1,1);
       "|psql almacen -U alma -W -h 127.0.0.1 ;

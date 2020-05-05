@@ -13,16 +13,16 @@ class RequestHandler:
                   'request_date': row[2]}
         return result
 
-    def build_request_and_resource_and_consumer_and_makesRequest_dict(self, row):
-        result = {'resource_id': row[0],
-                  'request_id': row[1],
-                  'request_date': row[2],
-                  'resource_name': row[3],
-                  'resource_price': row[4],
-                  'resource_location': row[5],
-                  'resource_quantity': row[6],
-                  'resource_description': row[7],
-                  'consumer_id': row[8],
+    def build_request_and_resource_and_consumer_makesRequest_dict(self, row):
+        result = {'request_id': row[0],
+                  'request_date': row[3],
+                  'resource_id': row[2],
+                  'resource_name': row[4],
+                  'resource_price': row[5],
+                  'resource_location': row[6],
+                  'resource_quantity': row[7],
+                  'resource_description': row[8],
+                  'consumer_id': row[1],
                   'person_id': row[9],
                   'consumer_severety': row[10]
                   }
@@ -40,7 +40,7 @@ class RequestHandler:
         requests_list = dao.getAllRequest()
         result_list = []
         for row in requests_list:
-            result = self.build_request_and_resource_and_consumer_dict(row)
+            result = self.build_request_and_resource_and_consumer_makesRequest_dict(row)
             result_list.append(result)
         return jsonify(requests=result_list)
 
@@ -49,7 +49,7 @@ class RequestHandler:
         requests_list = dao.getRequestByKeyWord(keyword)
         result_list = []
         for row in requests_list:
-            result = self.build_request_and_resource_and_consumer_dict(row)
+            result = self.build_request_and_resource_and_consumer_makesRequest_dict(row)
             result_list.append(result)
         return jsonify(requests=result_list)
 
@@ -63,7 +63,7 @@ class RequestHandler:
         if not row:
             return jsonify(Error="Request not found"), 404
         else:
-            request = self.build_request_and_resource_and_consumer_dict(row)
+            request = self.build_request_and_resource_and_consumer_makesRequest_dict(row)
             return request
 
     def insert(self, item):

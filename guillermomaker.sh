@@ -24,5 +24,5 @@ Insert into resource (resource_name,resource_price,resource_location,resource_qu
 insert into batteries (resource_id,batteries_type,batteries_quantityPerUnit) values((SELECT resource_id from resource where resource_id=’9’),'AA',8);
 Insert into resource (resource_name,resource_price,resource_location,resource_quantity,resource_description) values('Camisa linda',15.00,'Ponce', 45, 'buena tela');
 insert into clothing (resource_id,clothing_size,clothing_color,clothing_gender,clothing_material) values ((SELECT resource_id from resource where resource_id =’10’), 'M','Blue','M','Cotton');
-insert into request()
+
       "|psql almacen -U alma -W -h 127.0.0.1 ;
