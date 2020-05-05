@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 echo "
+insert into person (person_firstname, person_lastname, person_dob, person_address, person_phone_number, person_email) values ('Fabi', 'Bad', '14may98', 'quebra', '123456', 'fbr@yahoo.com');
+insert into supplier(person_id) values (1);
+
 insert into person (person_firstname, person_lastname, person_dob, person_address, person_phone_number, person_email) values ('Alma', 'Colon', '19ene89', 'ciales', '78787878', 'alma@hotmail.com');
 insert into supplier(person_id) values (2);
 
