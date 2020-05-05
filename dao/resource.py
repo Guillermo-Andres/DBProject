@@ -31,7 +31,7 @@ class ResourceDAO:
         cursor = self.conn.cursor()
         query = "select * " \
                 "from resource " \
-                "where resource_price > 0;"
+                "where resource_quantity > 0;"
         cursor.execute(query)
         result = []
         for row in cursor:
