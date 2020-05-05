@@ -11,7 +11,8 @@ class RequestDAO:
 
     def getAllRequest(self):
         cursor = self.conn.cursor()
-        query = "select * from request;"
+        query = "select * " \
+                "from request natural join resource natural join consumer; "
         cursor.execute(query)
         result = []
         for row in cursor:
@@ -20,11 +21,12 @@ class RequestDAO:
 
     def getRequestById(self, request_id):
         cursor = self.conn.cursor()
-        query = "select *" \
-                "from request" \
+        query = "select * " \
+                "from request natural join resource natural join consumer " \
                 "where request_id = %s;"
         cursor.execute(query, (request_id,))
         result = cursor.fetchone()
+        print(result)
         return result
 
     def insert(self, item):

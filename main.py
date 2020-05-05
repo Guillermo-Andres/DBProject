@@ -124,7 +124,7 @@ def orderResources(consumer_id):
     #orders specify if we are requesting, reserving or purchasing depending on its status
 
     if request.method == 'GET':
-        return OrderHandler().getAllOrders()
+        return OrderHandler().geOrdersByConsumerID(consumer_id)
 
     elif request.method == 'POST':
         #TODO aqui en el futuero hay que llamar varios inserts (orden , contains  , etc...)
@@ -148,7 +148,7 @@ def newResource(sid):
 
 @app.route('/almacenespr/requested', methods = ['GET'])
 def viewRequested():
-    return OrderHandler().getOrderByStatus('pending')
+    return ResourceHandler.getAll()
 
 @app.route('/almacenespr/available', methods = ['GET'])
 def viewAvailable():

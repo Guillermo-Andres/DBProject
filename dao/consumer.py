@@ -22,7 +22,7 @@ class ConsumerDAO:
     def getConsumerById(self, consumer_id):
         cursor = self.conn.cursor()
         query = "select * " \
-                "from consumer natural join person" \
+                "from consumer natural join person " \
                 "where consumer_id = %s;"
         cursor.execute(query, (consumer_id,))
         result = cursor.fetchone()
