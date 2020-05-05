@@ -61,7 +61,6 @@ def getAllconsumer():
     if request.method == 'GET':
         return ConsumerHandler().getAllConsumers()
 
-
 @app.route('/almacenespr/register/admin', methods = ['POST','GET'])
 def registerAdmin():
     #orders specify if we are requesting, reserving or purchasing depending on its status
@@ -118,8 +117,6 @@ def getAllSuppliers():
     if request.method == 'GET':
         return SupplierHandler().getAllSuppliers()
 
-
-
 @app.route('/almacenespr/consumer/<int:consumer_id>/orders', methods = ['GET','POST','PUT'])
 def orderResources(consumer_id):
     #orders specify if we are requesting, reserving or purchasing depending on its status
@@ -149,15 +146,19 @@ def newResource(sid):
 
 @app.route('/almacenespr/requested', methods = ['GET'])
 def viewRequested():
-    return RequestHandler().getAllRequestsAll()
+    return RequestHandler().getAllRequests()
 
 @app.route('/almacenespr/requested/<string:keyword>', methods = ['GET'])
 def viewRequestedByKeyword(keyword):
     return RequestHandler().getAllRequestByKeyword(keyword)
 
+@app.route('/almacenespr/resource/<string:keyword>', methods = ['GET'])
+def viewResourceByKeyword(keyword):
+    return ResourceHandler().getAllResourceByKeyword(keyword)
+
 @app.route('/almacenespr/available', methods = ['GET'])
 def viewAvailable():
-    return ResourceHandler().getAllResources()
+    return ResourceHandler().getAll()
 
 @app.route('/almacenespr/instock', methods = ['GET'])
 def viewInStock():
@@ -176,8 +177,6 @@ def searchRequestedById(request_id):
 @app.route('/almacenespr/resource/<int:resource_id>', methods = ['GET'])
 def getResourcesbyId(resource_id):
     return ResourceHandler().getResourceById(resource_id)
-
-
 
 @app.route('/almacenespr/resource/<string:resource_type>/<int:resource_type_id>', methods = ['GET'])
 def getResourcesbyTypeId(resource_type, resource_type_id):
@@ -239,6 +238,7 @@ def weeklyStatistics(type):
     else :
         #return stats for match
         return babyFoodHandler().getAllFood()
+
 @app.route('/almacenespr/dashboard/statistics/region/<int:type>', methods = ['GET'])
 def regionStatistics(type):
     if type == 0:
