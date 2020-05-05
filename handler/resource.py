@@ -48,6 +48,15 @@ class ResourceHandler:
             result_list.append(result)
         return jsonify(Resources=result_list)
 
+    def getAllResourceByKeyword(self , keyword):
+        dao = ResourceDAO()
+        Resources_list = dao.getResourceByKeyWord(keyword)
+        result_list = []
+        for row in Resources_list:
+            result = self.build_Resource_and_resource_and_consumer_dict(row)
+            result_list.append(result)
+        return jsonify(Resources=result_list)
+
     def insert(self, item):
         return jsonify(Resource=item), 200
 

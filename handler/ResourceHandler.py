@@ -135,6 +135,7 @@ class ResourceHandler:
             result_list.append(result)
         return jsonify(Resources=result_list)
 
+
     def getResourceInRequest(self, request_id):
         dao = RequestDAO()
         row = dao.getResourceInRequest(request_id)
@@ -143,3 +144,13 @@ class ResourceHandler:
         else:
             resource = self.build_resource_dict(row)
             return jsonify(Resource=resource)
+
+    def getAllResourceByKeyword(self , keyword):
+        dao = ResourceDAO()
+        Resources_list = dao.getResourceByKeyWord(keyword)
+        result_list = []
+        for row in Resources_list:
+            result = self.build_resource_dict(row)
+            result_list.append(result)
+        return jsonify(Resources=result_list)
+

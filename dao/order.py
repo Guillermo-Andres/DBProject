@@ -28,6 +28,30 @@ class OrderDAO:
         result = cursor.fetchone()
         return result
 
+
+    def getReserved(self):
+        cursor = self.conn.cursor()
+        query = "select * " \
+                "from orders natural join request natural join supplier natural join consumer " \
+                "where order_amount = 0;"
+        cursor.execute(query,)
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
+
+
+    def getPurchased(self):
+        cursor = self.conn.cursor()
+        query = "select * " \
+                "from orders natural join request natural join supplier natural join consumer " \
+                "where order_amount <> 0;"
+        cursor.execute(query,)
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
+
     def getOrderByConsumerId(self , consumer_id):
         cursor = self.conn.cursor()
         query = "select * " \
