@@ -12,7 +12,7 @@ class babyFoodDAO:
     def getAllbabyFood(self):
         cursor = self.conn.cursor()
         query = "select * " \
-                "from babyFood natural inner join resource;"
+                "from babyFood natural  join resource;"
         cursor.execute(query)
         result = []
         for row in cursor:
@@ -21,7 +21,7 @@ class babyFoodDAO:
 
     def getbabyFoodById(self, pid):
         cursor = self.conn.cursor()
-        query = "select * from babyFood natural inner join resource where ice_id = %s;"
+        query = "select * from babyFood natural join resource where ice_id = %s;"
         cursor.execute(query, (id,))
         result = []
         for row in cursor:

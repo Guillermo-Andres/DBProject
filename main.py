@@ -153,7 +153,11 @@ def viewRequested():
 
 @app.route('/almacenespr/available', methods = ['GET'])
 def viewAvailable():
-    return ResourceHandler().getAll()
+    return ResourceHandler().getAllResources()
+
+@app.route('/almacenespr/instock', methods = ['GET'])
+def viewInStock():
+    return ResourceHandler().getResourcesInStock()
 
 # @app.route('/almacenespr/requested/<string:resource_type>', methods = ['GET'])
 # def searchRequested(resource_type,search_keyword):
@@ -168,6 +172,7 @@ def searchRequestedById(request_id):
 @app.route('/almacenespr/resource/<int:resource_id>', methods = ['GET'])
 def getResourcesbyId(resource_id):
     return ResourceHandler().getResourceById(resource_id)
+
 
 
 @app.route('/almacenespr/resource/<string:resource_type>/<int:resource_type_id>', methods = ['GET'])
