@@ -84,15 +84,6 @@ def getAdminById(admin_id):
         return AdminHandler().getAdminByID(admin_id)
 
 
-@app.route('/almacenespr/supplier', methods=['POST', 'GET'])
-def registerSupplier():
-    # orders specify if we are requesting, reserving or purchasing depending on its status
-    if request.method == 'GET':
-        return SupplierHandler().getAllSuppliers()
-    elif request.method == 'POST':
-        return SupplierHandler().insert(request.get_json())
-
-
 # get supplier by id
 @app.route('/almacenespr/supplier/<int:supplier_id>', methods=['GET'])
 def getSupplierById(supplier_id):
