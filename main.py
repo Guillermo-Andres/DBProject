@@ -152,12 +152,10 @@ def viewRequested():
 def viewRequestedByKeyword(keyword):
     return RequestHandler().getAllRequestByKeyword(keyword)
 
-<<<<<<< HEAD
 @app.route('/almacenespr/resource/<string:keyword>', methods = ['GET'])
 def viewResourceByKeyword(keyword):
     return ResourceHandler().getAllResourceByKeyword(keyword)
-=======
->>>>>>> 72bcbfb8e55c9128db0b5e849179444b9eddf4e2
+
 
 @app.route('/almacenespr/available', methods = ['GET'])
 def viewAvailable():
