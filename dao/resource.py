@@ -27,6 +27,17 @@ class ResourceDAO:
         result = cursor.fetchone()
         return result
 
+    def getResourcesInStock(self):
+        cursor = self.conn.cursor()
+        query = "select * " \
+                "from resource " \
+                "where resource_price > 0;"
+        cursor.execute(query)
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
+
     def getResourceByName(self, resource_first_name, resource_last_name):
         return self.getAllResource()
 
