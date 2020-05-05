@@ -37,6 +37,18 @@ class ResourceDAO:
         for row in cursor:
             result.append(row)
         return result
+        
+    def getResourceByKeyWord(self , keyword):
+        cursor = self.conn.cursor()
+        query = "select * " \
+                "from resource where resource_name  ~*  %s ; "
+
+        keyword = "(" + keyword + ")"
+        cursor.execute(query , ("(" + keyword + ")",))
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
 
     def getResourceByName(self, resource_first_name, resource_last_name):
         return self.getAllResource()
