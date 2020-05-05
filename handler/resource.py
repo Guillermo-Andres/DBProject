@@ -39,6 +39,15 @@ class ResourceHandler:
             resource = self.build_resource_dict(row)
             return jsonify(Resource=resource)
 
+    def getResourcesInStock(self):
+        dao = ResourceDAO()
+        resources_list = dao.getResourcesInStock()
+        result_list = []
+        for row in resources_list:
+            result = self.build_resource_dict(row)
+            result_list.append(result)
+        return jsonify(Resources=result_list)
+
     def insert(self, item):
         return jsonify(Resource=item), 200
 
