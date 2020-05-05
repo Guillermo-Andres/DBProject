@@ -20,14 +20,13 @@ class ResourceHandler:
 
 
     def build_resource_dict(self , row):
-        result = {} 
+        result = {}
         result['resource_i'] = row[0]
         result['resource_name'] = row[1]
         result['resource_price'] = row[2]
         result['resource_location'] = row[3]
         result['resource_quantity'] = row[4]
-        result['resource_available'] = row[5]
-        result['resource_description'] = row[7]
+        result['resource_description'] = row[5]
 
         return result
 
@@ -105,3 +104,23 @@ class ResourceHandler:
             result.append(toAdd)
 
         return jsonify(Resources = result)
+
+
+
+    def getAllResources(self):
+        dao = ResourceDAO()
+        resources_list = dao.getAllResource()
+        result_list = []
+        for row in resources_list:
+            result = self.build_resource_dict(row)
+            result_list.append(result)
+        return jsonify(Resources=result_list)
+
+    def getResourceById(self, resource_id):
+        dao = ResourceDAO()
+        row = dao.getResourceById(resource_id)
+        if not row:
+            return jsonify(Error='Resource not found'), 404
+        else:
+            resource = self.build_resource_dict(row)
+            return jsonify(Resource=resource)
