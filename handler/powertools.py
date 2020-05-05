@@ -6,12 +6,14 @@ from dao.powertools import ToolsDAO
 class PowerToolsHandler:
     def build_Tools_dict(self, row):
         result = {}
+        result['resource_id'] = row[0]
         result['tool_id'] = row[0]
         result['type'] = row[1]
-        result['description'] = row[2]
+        result['name']=row[2]
         result['price'] = row[3]
         result['location'] = row[4]
         result['quantity'] = row[5]
+        result['description'] = row[6]
 
         return result
 
@@ -26,9 +28,9 @@ class PowerToolsHandler:
             result_list.append(result)
         return jsonify(Tools=result_list)
 
-    def getToolById(self, pid):
+    def getToolById(self, id):
         dao = ToolsDAO()
-        tools_list = dao.getAllTools()
+        tools_list = dao.getToolById(id)
         result_list = []
         for row in tools_list:
             result = self.build_Tools_dict(row)
@@ -44,23 +46,23 @@ class PowerToolsHandler:
             result_list.append(result)
         return jsonify(Tools=result_list)
 
-    def getToolByPrice(self, color):
-        dao = ToolsDAO()
-        tools_list = dao.getAllTools()
-        result_list = []
-        for row in tools_list:
-            result = self.build_Tools_dict(row)
-            result_list.append(result)
-        return jsonify(Tools=result_list)
-
-    def getToolByLocation(self, color):
-        dao = ToolsDAO()
-        tools_list = dao.getAllTools()
-        result_list = []
-        for row in tools_list:
-            result = self.build_Tools_dict(row)
-            result_list.append(result)
-        return jsonify(Tools=result_list)
+    # def getToolByPrice(self, color):
+    #     dao = ToolsDAO()
+    #     tools_list = dao.getAllTools()
+    #     result_list = []
+    #     for row in tools_list:
+    #         result = self.build_Tools_dict(row)
+    #         result_list.append(result)
+    #     return jsonify(Tools=result_list)
+    #
+    # def getToolByLocation(self, color):
+    #     dao = ToolsDAO()
+    #     tools_list = dao.getAllTools()
+    #     result_list = []
+    #     for row in tools_list:
+    #         result = self.build_Tools_dict(row)
+    #         result_list.append(result)
+    #     return jsonify(Tools=result_list)
 
     def insert(self,item):
         return jsonify(Tools= item) ,200

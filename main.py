@@ -23,6 +23,7 @@ from handler.supplier import SupplierHandler
 from handler.supplies import suppliesHandler
 from handler.worksFor import WorksForHandler
 from handler.ResourceHandler import ResourceHandler
+from handler.water import WaterHandler
 from flask_cors import CORS, cross_origin
 
 # Activate
@@ -164,6 +165,24 @@ def getResourcesbyTypeId(resource_type, resource_type_id):
         return FuelHandler().getFuelById(resource_type_id)
     if resource_type == 'ice':
         return IceHandler().getIceById(resource_type_id)
+    if resource_type == 'clothing':
+        return ClothingHandler().getClothesgById(resource_type_id)
+    if resource_type == 'battery':
+        return BatteryHandler().getBatteryById(resource_type_id)
+    if resource_type == 'babyfood':
+        return babyFoodHandler().getbabyFoodById(resource_type_id)
+    if resource_type == 'cannedfood':
+        return cannedFoodHandler().getcannedFoodById(resource_type_id)
+    if resource_type == 'dryfood':
+        return dryFoodHandler().getdryFoodById(resource_type_id)
+    if resource_type == 'heavyequipment':
+        return HeavyEquipmentHandler().getHeavyEquimentById(resource_type_id)
+    if resource_type == 'medication':
+        return MedicationHandler().getMedicationById(resource_type_id)
+    if resource_type == 'tools':
+        return PowerToolsHandler().getToolById(resource_type_id)
+    if resource_type == 'water':
+        return WaterHandler().getWaterById(resource_type_id)
     else:
         return ResourceHandler().getAllByType(resource_type)
 

@@ -6,20 +6,29 @@ class HeavyEquipmentDAO:
 
     def __init__(self):
 
-        connection_url = "dbname=%s user=%s password=%s hot = 127.0.0.1" % (pg_config['dbname'],
+        connection_url = "dbname=%s user=%s password=%s host = 127.0.0.1" % (pg_config['dbname'],
                                                             pg_config['user'],
                                                             pg_config['passwd'])
         self.conn = psycopg2._connect(connection_url)
 
     def getAllHeavyEquipment(self):
-
-        result = [[1,'15-ft Camping Tents',0,'Bayamon',1],[2,'20-ft Tents',199.99,'Carolina',2]]
+        cursor = self.conn.cursor()
+        query = "select * from heavyEquipment natural inner join resource;"
+        cursor.execute(query)
+        result = []
+        for row in cursor:
+            result.append(row)
         return result
 
     def getHeavyEquimentById(self, id):
-        result = [[1,'15-ft Camping Tents',0,'Bayamon',1],[2,'20-ft Tents',199.99,'Carolina',2]]
+        cursor = self.conn.cursor()
+        query = "select * from heavyEquipment natural inner join resource where heavyEquipment_id = %s;"
+        cursor.execute(query, (id,))
+        result = []
+        for row in cursor:
+            result.append(row)
         return result
-
+        
     def getHeavyEquipmentByPrice(self, price):
         result = [[1,'15-ft Camping Tents',0,'Bayamon',1],[2,'20-ft Tents',199.99,'Carolina',2]]
         return result

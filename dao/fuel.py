@@ -4,7 +4,7 @@ class FuelDAO:
     #Fuel ATTTRIBUTES fid, type,unit_size,description,price,location,quantity
     def __init__(self):
 
-        connection_url = "dbname=%s user=%s password=%s host =127.0.0.1" % (pg_config['dbname'],
+        connection_url = "dbname=%s user=%s password=%s host = 127.0.0.1" % (pg_config['dbname'],
                                                             pg_config['user'],
                                                             pg_config['passwd'])
         self.conn = psycopg2._connect(connection_url)
@@ -76,7 +76,7 @@ class FuelDAO:
          for row in cursor:
              result.append(row)
          return result
-         
+
     def update(self, pid, pname, pcolor, pmaterial, pprice):
         cursor = self.conn.cursor()
         query = "select * from fuel natural inner join resource;"

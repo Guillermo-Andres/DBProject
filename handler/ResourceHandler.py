@@ -1,4 +1,6 @@
 from handler.babyFood import babyFoodHandler
+from handler.cannedFood import cannedFoodHandler
+from handler.dryFood import dryFoodHandler
 from handler.medication import MedicationHandler
 from handler.batteries import BatteryHandler
 from handler.clothing import ClothingHandler
@@ -15,8 +17,12 @@ from handler.water import WaterHandler
 class ResourceHandler:
 
     def getAllByType(self , type):
-        if(type == 'food'):
-            return babyFoodHandler().getAllFood()
+        if(type == 'babyfood'):
+            return babyFoodHandler().getAllbabyFood()
+        elif(type == 'dryfood'):
+            return dryFoodHandler().getAlldryFood()
+        elif(type == 'cannedfood'):
+            return cannedFoodHandler().getAllcannedFood()
         elif(type == 'medication'):
             return MedicationHandler().getAllMedication()
         elif(type == 'batteries'):
@@ -31,9 +37,9 @@ class ResourceHandler:
             return PowerToolsHandler().getAllTools()
         elif(type == 'fuel'):
             return FuelHandler().getAllFuel()
-        elif(type == 'diapers'):
+        elif(type == 'medicaldevices'):
             return MedicalDevicesHandler().getAllMedicalDevices()
-        elif(type == 'femeninehygiene'):
+        elif(type == 'powergenerator'):
             return PowerGeneratorHandler().getAllPowerGenerator()
         elif(type == 'hygiene'):
             return HygieneHandler().getAllHygiene()
@@ -42,6 +48,39 @@ class ResourceHandler:
 
         else:
             return MedicationHandler().getAllMedication()
+
+    def getHandler(self , type):
+        if(type == 'babyfood'):
+            return babyFoodHandler()
+        elif(type == 'dryfood'):
+            return dryFoodHandler()
+        elif(type == 'cannedfood'):
+            return cannedFoodHandler()
+        elif(type == 'medication'):
+            return MedicationHandler()
+        elif(type == 'batteries'):
+            return BatteryHandler()
+        elif(type == 'clothing'):
+            return ClothingHandler()
+        elif(type == 'heavyequipment'):
+            return HeavyEquipmentHandler()
+        elif(type == 'ice'):
+            return IceHandler()
+        elif(type == 'powertools'):
+            return PowerToolsHandler()
+        elif(type == 'fuel'):
+            return FuelHandler()
+        elif(type == 'medicaldevices'):
+            return MedicalDevicesHandler()
+        elif(type == 'powergenerator'):
+            return PowerGeneratorHandler()
+        elif(type == 'hygiene'):
+            return HygieneHandler()
+        elif(type == 'water'):
+            return WaterHandler()
+
+        else:
+            return MedicationHandler()
 
     def getAll(self):
         return {

@@ -1,7 +1,7 @@
 from config.dbconfig import pg_config
 import psycopg2
 class cannedFoodDAO:
-    cannedFood ATTTRIBUTES fid, type, isperishable,ingredientlist,unit_size,description, expiration, price , location , quantity
+    
     def __init__(self):
 
         connection_url = "dbname=%s user=%s password=%s host=127.0.0.1" % (pg_config['dbname'],

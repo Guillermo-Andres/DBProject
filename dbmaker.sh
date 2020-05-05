@@ -22,7 +22,7 @@ echo created person:"alma"  db:"almacen" and granted db to usr  ;
 cd /;
 sudo etc/init.d/postgresql restart ;
 echo "create table person(person_id serial primary key, person_firstname varchar(15), person_lastname varchar(15), person_dob varchar(10), person_address varchar(30), person_phone_number varchar(15), person_email varchar(30));
-      create table resource(resource_id serial primary key, resource_name varchar(15), resource_price float, resource_location varchar(30), resource_quantity integer , available boolean, resource_description varchar(25));
+      create table resource(resource_id serial primary key, resource_name varchar(15), resource_price float, resource_location varchar(30), resource_quantity integer , resource_description varchar(25));
       create table request(request_id serial primary key, resource_id integer references resource(resource_id), request_date varchar(10));
       create table consumer(consumer_id serial primary key, person_id integer references person(person_id), consumer_severety varchar(20));
       create table makesRequest(consumer_id integer references consumer(consumer_id), request_id integer references request(request_id), primary key (request_id,consumer_id));
@@ -41,7 +41,7 @@ echo "create table person(person_id serial primary key, person_firstname varchar
       create table cannedFood(cannedFood_id serial primary key, resource_id integer references resource(resource_id), cannedFood_type varchar(10), cannedFood_is_perishable boolean, cannedFood_ingrendients varchar(50), cannedFood_unitSize varchar(10), cannedFood_expDate varchar(10));
       create table heavyEquipment(heavyEquipment_id serial primary key, resource_id integer references resource(resource_id), heavyEquipment_type varchar(10));
       create table medicalDevices(medicalDevices_id serial primary key, resource_id integer references resource(resource_id), medicalDevices_type varchar(10));
-      create table medication(medication_id serial primary key, resource_id integer references resource(resource_id), medication_name varchar(10), medication_ingredients varchar(50), medication_type varchar(10), medication_expDate varchar(10));
+      create table medication(medication_id serial primary key, resource_id integer references resource(resource_id), medication_ingredients varchar(50), medication_type varchar(10), medication_expDate varchar(10));
       create table ice(ice_id serial primary key, resource_id integer references resource(resource_id), ice_size varchar(10));
       create table batteries(batteries_id serial primary key, resource_id integer references resource(resource_id), batteries_type varchar(10), batteries_quantityPerUnit integer);
       create table fuel(fuel_id serial primary key, resource_id integer references resource(resource_id), fuel_type varchar(10));

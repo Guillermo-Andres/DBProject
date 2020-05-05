@@ -6,14 +6,16 @@ from dao.medication import MedicationDAO
 class MedicationHandler:
     def build_Medication_dict(self, row):
         result = {}
-        result['medication_id'] = row[0]
-        result['name'] = row[1]
+        result['resource_id'] = row[0]
+        result['medication_id'] = row[1]
         result['ingredients'] = row[2]
         result['type'] = row[3]
         result['expiration_date'] = row[4]
-        result['price'] = row[5]
-        result['location'] = row[6]
-        result['quantity'] = row[7]
+        result['name'] = row[5]
+        result['price'] = row[6]
+        result['location'] = row[7]
+        result['quantity'] = row[8]
+        result['description'] = row[9]
         return result
 
 
@@ -28,7 +30,13 @@ class MedicationHandler:
         return jsonify(Medication=result_list)
 
     def getMedicationById(self, id):
-        return self.getAllMedication()
+        dao = MedicationDAO()
+        medication_list = dao.getMedicationById(id)
+        result_list = []
+        for row in medication_list:
+            result = self.build_Medication_dict(row)
+            result_list.append(result)
+        return jsonify(Medication=result_list)
 
     def getMedicationByName(self, name):
         return self.getAllMedication()
@@ -46,7 +54,13 @@ class MedicationHandler:
         return self.getAllMedication()
 
     def getMedicationByLocation(self, location):
-        return self.getAllMedication()
+        dao = MedicationDAO()
+        medication_list = dao.getMedicationByLocation(location)
+        result_list = []
+        for row in medication_list:
+            result = self.build_Medication_dict(row)
+            result_list.append(result)
+        return jsonify(Medication=result_list)
 
     def getMedicationByQuantity(self, quantity):
         return self.getAllMedication()

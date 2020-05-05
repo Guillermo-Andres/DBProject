@@ -11,21 +11,6 @@ class IceDAO:
         self.conn = psycopg2._connect(connection_url)
 
 
-    def build_ice_dict(self , row):
-        iceDict = {}
-
-        iceDict['resource_id'] = row[0]
-        iceDict['ice_id'] = row[1]
-        iceDict['ice_size'] = row[2]
-        iceDict['price'] = row[3]
-        iceDict['locations'] = row[4]
-        iceDict['quantity'] = row[5]
-
-
-
-        return iceDict
-
-
     def getAllIce(self):
         cursor = self.conn.cursor()
         query = "select * " \

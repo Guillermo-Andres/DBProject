@@ -7,15 +7,16 @@ class dryFoodHandler:
         result = {}
         result['resource id'] = row[0]
         result['baby_food_id'] = row[1]
-        result['dryFood_type'] = row[2]
+        result['babyfood_type'] = row[2]
         result['is_perishable?'] = row[3]
         result['ingredientlist'] = row[4]
         result['unit_size'] = row[5]
-        result['description'] = row[6]
-        result['Expiration_date'] = row[7]
+        result['Expiration_date'] = row[6]
+        result['name'] = row[7]
         result['price'] = row[8]
         result['location'] = row[9]
         result['quantity'] = row[10]
+        result['description']=row[11]
 
         return result
 

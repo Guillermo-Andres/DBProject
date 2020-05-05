@@ -12,10 +12,11 @@ class ClothingHandler:
         result['color'] = row[3]
         result['gender'] = row[4]
         result['material'] = row[5]
-        result['description'] = row[6]
+        result['name'] = row[6]
         result['price'] = row[7]
         result['location'] = row[8]
         result['quantity'] = row[9]
+        resource['descrition']=row[10]
 
         return result
 

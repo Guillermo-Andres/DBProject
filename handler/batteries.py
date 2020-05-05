@@ -9,9 +9,11 @@ class BatteryHandler:
         result['battery_id'] = row[1]
         result['type'] = row[2]
         result['unit_size'] = row[3]
-        result['price'] = row[4]
-        result['location'] = row[5]
-        result['quantity'] = row[5]
+        result['name'] = row[4]
+        result['price'] = row[5]
+        result['location'] = row[6]
+        result['quantity'] = row[7]
+        result['descrition'] = row[8]
 
         return result
 

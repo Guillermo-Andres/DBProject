@@ -9,9 +9,11 @@ class FuelHandler:
         result['resource_id'] = row[0]
         result['fuel_id'] = row[1]
         result['type'] = row[2]
-        result['price'] = row[3]
-        result['location'] = row[4]
-        result['quantity'] = row[5]
+        result['name'] = row[3]
+        result['price'] = row[4]
+        result['location'] = row[5]
+        result['quantity'] = row[6]
+        result['descrition']= row[7]
 
 
         return result

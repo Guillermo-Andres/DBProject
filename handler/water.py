@@ -3,27 +3,21 @@ from dao.water import WaterDAO
 from flask import jsonify
 import psycopg2
 class WaterHandler:
-    #ICE ATTTRIBUTES wiid, size,brand,type,unit_size, price,location,quantity
-
-    # def __init__(self):
-    #
-    #     connection_url = "dbname=%s user=%s password=%s" % (pg_config['dbname'],
-    #                                                         pg_config['user'],
-    #                                                         pg_config['passwd'])
-    #     self.conn = psycopg2._connect(connection_url)
-
 
     def build_water_dict(self , row):
         waterdict = {}
 
-        waterdict['id'] = row[0]
+        waterdict['resource_id'] = row[0]
+        waterdict['water_id'] = row[0]
         waterdict['size'] = row[1]
         waterdict['brand'] = row[2]
         waterdict['type'] = row[3]
         waterdict['unit_size'] = row[4]
-        waterdict['price'] = row[5]
-        waterdict['location'] = row[6]
-        waterdict['quantity'] = row[7]
+        waterdict['name'] = row[5]
+        waterdict['price'] = row[6]
+        waterdict['location'] = row[7]
+        waterdict['quantity'] = row[8]
+        waterdict['description'] = row[9]
 
         return waterdict
 
@@ -41,7 +35,7 @@ class WaterHandler:
 
     def getWaterById(self, id):
         dao = WaterDAO()
-        water = dao.getAllWater()
+        water = dao.getWaterById(id)
         result_list = []
         for row in water:
             result = self.build_water_dict(row)
@@ -50,48 +44,48 @@ class WaterHandler:
         return jsonify(Water=result_list)
 
 
-    def getWaterBySize(self, size):
-        dao = WaterDAO()
-        water = dao.getAllWater()
-        result_list = []
-        for row in water:
-            result = self.build_water_dict(row)
-            result_list.append(result)
-
-        return jsonify(Water=result_list)
-
-
-    def getWaterByPrice(self,price):
-        dao = WaterDAO()
-        water = dao.getAllWater()
-        result_list = []
-        for row in water:
-            result = self.build_water_dict(row)
-            result_list.append(result)
-
-        return jsonify(Water=result_list)
-
-
-    def getWaterByLocation(self,location):
-        dao = WaterDAO()
-        water = dao.getAllWater()
-        result_list = []
-        for row in water:
-            result = self.build_water_dict(row)
-            result_list.append(result)
-
-        return jsonify(Water=result_list)
-
-
-    def getWaterByType(self,location):
-        dao = WaterDAO()
-        water = dao.getAllWater()
-        result_list = []
-        for row in water:
-            result = self.build_water_dict(row)
-            result_list.append(result)
-
-        return jsonify(Water=result_list)
+    # def getWaterBySize(self, size):
+    #     dao = WaterDAO()
+    #     water = dao.getAllWater()
+    #     result_list = []
+    #     for row in water:
+    #         result = self.build_water_dict(row)
+    #         result_list.append(result)
+    #
+    #     return jsonify(Water=result_list)
+    #
+    #
+    # def getWaterByPrice(self,price):
+    #     dao = WaterDAO()
+    #     water = dao.getAllWater()
+    #     result_list = []
+    #     for row in water:
+    #         result = self.build_water_dict(row)
+    #         result_list.append(result)
+    #
+    #     return jsonify(Water=result_list)
+    #
+    #
+    # def getWaterByLocation(self,location):
+    #     dao = WaterDAO()
+    #     water = dao.getAllWater()
+    #     result_list = []
+    #     for row in water:
+    #         result = self.build_water_dict(row)
+    #         result_list.append(result)
+    #
+    #     return jsonify(Water=result_list)
+    #
+    #
+    # def getWaterByType(self,location):
+    #     dao = WaterDAO()
+    #     water = dao.getAllWater()
+    #     result_list = []
+    #     for row in water:
+    #         result = self.build_water_dict(row)
+    #         result_list.append(result)
+    #
+    #     return jsonify(Water=result_list)
 
 
     def insert(self,item):
