@@ -13,7 +13,7 @@ class RequestHandler:
                   'request_date': row[2]}
         return result
 
-    def build_request_and_resource_and_consumer_dict(self, row):
+    def build_request_and_resource_and_consumer_and_makesRequest_dict(self, row):
         result = {'resource_id': row[0],
                   'request_id': row[1],
                   'request_date': row[2],
