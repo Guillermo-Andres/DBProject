@@ -16,6 +16,9 @@ from handler.supplier import SupplierHandler
 from handler.ResourceHandler import ResourceHandler
 from handler.water import WaterHandler
 from handler.request import RequestHandler
+from handler.hygiene import HygieneHandler
+from handler.medicalDevices import MedicalDevicesHandler
+from handler.powerGenerator import PowerGeneratorHandler
 from flask_cors import CORS, cross_origin
 
 # Activate
@@ -196,6 +199,13 @@ def getResourcesByTypeId(resource_type, resource_type_id):
         return PowerToolsHandler().getToolById(resource_type_id)
     if resource_type == 'water':
         return WaterHandler().getWaterById(resource_type_id)
+    if resource_type == 'medicaldevices':
+        return MedicalDevicesHandler().getMedicalDevicesById(resource_type_id)
+    if resource_type == 'powergenerator':
+        return PowerGeneratorHandler().getPowerGeneratorById(resource_type_id)
+    if resource_type == 'hygiene':
+        return HygieneHandler().getHygieneById(resource_type_id)
+
     else:
         return ResourceHandler().getAllByType(resource_type)
 

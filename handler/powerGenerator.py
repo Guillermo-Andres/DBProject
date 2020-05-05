@@ -13,8 +13,7 @@ class PowerGeneratorHandler:
                   'resource_price': row[4],
                   'resource_location': row[5],
                   'resource_quantity': row[6],
-                  'available': row[7],
-                  'resource_description': row[8]
+                  'resource_description': row[7]
                   }
         return result
 
@@ -26,10 +25,10 @@ class PowerGeneratorHandler:
 
     def getAllPowerGenerator(self):
         dao = PowerGeneratorDAO()
-        resource_list = dao.getAllPowerGenerator()
+        resource_list = dao.getAllPowerGenerators()
         result_list = []
         for row in resource_list:
-            result = self.build_femenine_hygiene_dict(row)
+            result = self.build_powerGenerator_dict(row)
             result_list.append(result)
         return jsonify(powerGenerator=result_list)
 

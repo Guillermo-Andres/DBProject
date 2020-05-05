@@ -22,9 +22,9 @@ class MedicalDevicesDAO:
 
     def getMedicalDevicesById(self, medicalDevices_id):
         cursor = self.conn.cursor()
-        query = "select *" \
+        query = "select * " \
                 "from medicalDevices natural inner join resource" \
-                "where medicalDevices_id = %s;"
+                " where medicalDevices_id = %s;"
         # TODO - check joins
         cursor.execute(query, (medicalDevices_id,))
         result = cursor.fetchone()

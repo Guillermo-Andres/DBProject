@@ -24,7 +24,7 @@ class PowerGeneratorDAO:
         cursor = self.conn.cursor()
         query = "select * " \
                 "from powerGenerator natural inner join resource" \
-                "where powerGenerator_id = %s;"
+                " where powerGenerator_id = %s;"
         cursor.execute(query, (powerGenerator_id,))
         result = cursor.fetchone()
         return result

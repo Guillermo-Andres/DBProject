@@ -9,12 +9,11 @@ class MedicalDevicesHandler:
         result = {'resource_id': row[0],
                   'medicalDevices_id': row[1],
                   'medicalDevices_type': row[2],
-                  'resource_name': row[4],
-                  'resource_price': row[5],
-                  'resource_location': row[6],
-                  'resource_quantity': row[7],
-                  'available': row[8],
-                  'resource_description': row[9]
+                  'resource_name': row[3],
+                  'resource_price': row[4],
+                  'resource_location': row[5],
+                  'resource_quantity': row[6],
+                  'resource_description': row[7]
                   }
         return result
 

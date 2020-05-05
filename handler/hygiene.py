@@ -10,18 +10,17 @@ class HygieneHandler:
                   'hygiene_id': row[1],
                   'hygiene_quantityPerUnit': row[2],
                   'hygiene_brand': row[3],
-                  'hygiene_name': row[4],
-                  'hygiene_price': row[5],
-                  'hygiene_location': row[6],
+                  'resource_name': row[4],
+                  'resource_price': row[5],
+                  'resource_location': row[6],
                   'resource_quantity': row[7],
-                  'available': row[8],
-                  'resource_description': row[9]
+                  'resource_description': row[8]
                   }
         return result
 
     def build_hygiene_attributes(self, resource_id, hygiene_id, hygiene_description, hygiene_quantityPerUnit,
                                  hygiene_brand, hygiene_name, hygiene_price, hygiene_location, resource_quantity,
-                                 available):
+                                 resource_description):
         result = {'resource_id': resource_id,
                   'hygiene_id': hygiene_id,
                   'hygiene_description': hygiene_description,
@@ -31,7 +30,7 @@ class HygieneHandler:
                   'hygiene_price': hygiene_price,
                   'hygiene_location': hygiene_location,
                   'resource_quantity': resource_quantity,
-                  'available': available
+                 'resource_description':resource_description
                   }
         return result
 
@@ -45,7 +44,7 @@ class HygieneHandler:
         return jsonify(Hygiene=result_list)
 
     def getHygieneById(self, hygiene_id):
-        dao = HygieneHandler()
+        dao = HygieneDAO()
         row = dao.getHygieneById(hygiene_id)
         if not row:
             return jsonify(Error='Hygiene not found'), 404
