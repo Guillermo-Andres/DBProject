@@ -1,3 +1,4 @@
+from dao.request import RequestDAO
 from handler.babyFood import babyFoodHandler
 from handler.cannedFood import cannedFoodHandler
 from handler.dryFood import dryFoodHandler
@@ -133,3 +134,12 @@ class ResourceHandler:
             result = self.build_resource_dict(row)
             result_list.append(result)
         return jsonify(Resources=result_list)
+
+    def getResourceInRequest(self, request_id):
+        dao = RequestDAO()
+        row = dao.getResourceInRequest(request_id)
+        if not row:
+            return jsonify(Error='Resource not found'), 404
+        else:
+            resource = self.build_resource_dict(row)
+            return jsonify(Resource=resource)
