@@ -21,11 +21,10 @@ class RequestHandler:
                   'resource_price': row[4],
                   'resource_location': row[5],
                   'resource_quantity': row[6],
-                  'available': row[7],
-                  'resource_description': row[8],
-                  'consumer_id': row[9],
-                  'person_id': row[10],
-                  'consumer_severety': row[11]
+                  'resource_description': row[7],
+                  'consumer_id': row[8],
+                  'person_id': row[9],
+                  'consumer_severety': row[10]
                   }
         return result
 
@@ -53,6 +52,9 @@ class RequestHandler:
             result = self.build_request_and_resource_and_consumer_dict(row)
             result_list.append(result)
         return jsonify(requests=result_list)
+
+
+        
 
 
     def getRequestById(self, request_id):
