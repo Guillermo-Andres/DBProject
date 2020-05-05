@@ -54,6 +54,27 @@ class OrderHandler:
             order = self.build_order_dict(row)
             return jsonify(Order=order)
 
+    
+    def getReserved(self):
+        dao = OrderDAO()
+        order_list = dao.getReserved()
+        result_list = []
+        for row in order_list:
+            result = self.build_order_dict(row)
+            result_list.append(result)
+        return jsonify(Order=result_list)
+
+    def getPurchased(self):
+        dao = OrderDAO()
+        order_list = dao.getPurchased()
+        result_list = []
+        for row in order_list:
+            result = self.build_order_dict(row)
+            result_list.append(result)
+        return jsonify(Order=result_list)
+
+
+
     def getOrderByAmount(self, amount):
         return self.getAllOrders()
 

@@ -149,15 +149,25 @@ def newResource(sid):
 
 @app.route('/almacenespr/requested', methods = ['GET'])
 def viewRequested():
-    return RequestHandler().getAllRequestsAll()
+    return RequestHandler().getAllRequests()
 
 @app.route('/almacenespr/requested/<string:keyword>', methods = ['GET'])
 def viewRequestedByKeyword(keyword):
     return RequestHandler().getAllRequestByKeyword(keyword)
 
+
 @app.route('/almacenespr/available', methods = ['GET'])
 def viewAvailable():
     return ResourceHandler().getAll()
+
+@app.route('/almacenespr/orders/reserved', methods = ['GET'])
+def getReserved():
+    return OrderHandler().getReserved()
+
+@app.route('/almacenespr/orders/purchased', methods = ['GET'])
+def getPurchased():
+    return OrderHandler().getPurchased()
+
 
 # @app.route('/almacenespr/requested/<string:resource_type>', methods = ['GET'])
 # def searchRequested(resource_type,search_keyword):
