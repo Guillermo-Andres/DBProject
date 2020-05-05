@@ -22,10 +22,10 @@ class AdminDAO:
             result.append(row)
         return result
 
-    def getAdminByID(self , person_id):
+    def getAdminByID(self , admin_id):
         cursor = self.conn.cursor()
-        query = "select * from person natural join admin where person_id = %s;"
-        cursor.execute(query , (person_id,))
+        query = "select * from person natural join admin where admin_id = %s;"
+        cursor.execute(query , (admin_id,))
         result = []
         
         for row in cursor:
