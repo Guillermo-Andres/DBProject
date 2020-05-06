@@ -144,6 +144,10 @@ def viewRequestedByKeyword(keyword):
 def viewResourceByKeyword(keyword):
     return ResourceHandler().getAllResourceByKeyword(keyword)
 
+@app.route('/almacenespr/resource', methods=['GET'])
+def viewResourceAll():
+    return ResourceHandler().getAll()
+
 
 @app.route('/almacenespr/available', methods=['GET'])
 def viewAvailable():

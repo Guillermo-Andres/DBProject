@@ -40,10 +40,10 @@ class RequestDAO:
     def getRequestByKeyWord(self , keyword):
         cursor = self.conn.cursor()
         query = "select * " \
-                "from request natural join resource natural join consumer natural join makesRequest where resource_name  ~*  %s ; "
+                "from request natural join resource natural join consumer natural join makesRequest where resource_name  ~*  %s OR resource_description ~* %s; "
         
         keyword = "(" + keyword + ")"
-        cursor.execute(query , (keyword,))
+        cursor.execute(query , (keyword,keyword))
         result = []
         for row in cursor:
             result.append(row)
