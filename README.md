@@ -1,9 +1,9 @@
 # AlmacenesPR
 
-# Introduction
+## Introduction
 A database application consists of many different areas within the realm of software. Applications are interconnected by various frameworks that allow for quick database management systems to easily provide information to a client. A client is usually a barebones application that can make requests to a server that hosts the database to query the required information. To begin our journey in the realm of database systems we were tasked to employ a mock warehouse management system web application with the help of the python FLASK web framework and a POSTGRESQL database to house the required information.  To begin the preliminary design of the application we were given a list of resources and required operations our system needed to support. From there we needed to develop an E-R diagram of the logical model of our database and develop mock operation handlers to begin the preliminary design of our application. 
 
-# ER-Diagram
+## ER-Diagram
 
 
 ![Image of ER ](https://github.com/Guillermo-Andres/DBProject/blob/master/Blank%20Diagram.png)
