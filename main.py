@@ -148,6 +148,10 @@ def viewAvailable():
 def viewInStock():
     return ResourceHandler().getResourcesInStock()
 
+@app.route('/almacenespr/orders'  , methods = ['GET'])
+def getAllOrders():
+    return OrderHandler().getAllOrders()
+
 
 @app.route('/almacenespr/orders/reserved', methods=['GET'])
 def getReserved():
