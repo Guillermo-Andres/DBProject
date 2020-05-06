@@ -115,16 +115,6 @@ def orderResources(consumer_id):
         return OrderHandler().update(request.get_json())
 
 
-@app.route('/almacenespr/supplier/<int:sid>/newresource', methods=['POST', 'PUT', 'GET'])
-def newResource(sid):
-    if request.method == 'GET':
-        return babyFoodHandler().getAllFood()
-    elif request.method == 'POST':
-        return babyFoodHandler().insert(request.get_json())
-    elif request.method == 'PUT':
-        return babyFoodHandler().update(request.get_json())
-
-
 @app.route('/almacenespr/requested/<int:request_id>', methods=['GET'])
 def viewRequestedById(request_id):
     return ResourceHandler().getResourceInRequest(request_id)
@@ -169,7 +159,7 @@ def getPurchased():
     return OrderHandler().getPurchased()
 
 
-@app.route('/almacenespr/requested/<int:request_id>', methods=['GET'])
+@app.route('/almacenespr/request/<int:request_id>', methods=['GET'])
 def searchRequestedById(request_id):
     return RequestHandler().getRequestById(request_id)
 
@@ -214,7 +204,7 @@ def getResourcesByTypeId(resource_type, resource_type_id):
         return ResourceHandler().getAllByType(resource_type)
 
 
-@app.route('/almacenespr/resource/<string:resource_type>/', methods=['GET'])
+@app.route('/almacenespr/resource/<string:resource_type>', methods=['GET'])
 def getResources(resource_type):
     return ResourceHandler().getAllByType(resource_type)
 

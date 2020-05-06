@@ -95,7 +95,7 @@ insert into admin(person_id) values (30);
 Insert into resource (resource_name,resource_price,resource_location,resource_quantity,resource_description) values('skyhighbannanas',24.99,'Luquillo', 10, '300mg edible');
 insert into babyFood(resource_id,babyFood_type,babyFood_is_perishable,babyFood_ingrendients,babyFood_unitsize,babyFood_expDate) values ( (SELECT resource_id from resource where resource_id = '1'),'gerber',TRUE,'bannana,ganja',10,'12-12-2024');
 
-Insert into resource (resource_name,resource_price,resource_location,resource_quantity,resource_description) values('skyhighbannanas',24.99,'Luquillo', 10, '300mg edible');
+Insert into resource (resource_name,resource_price,resource_location,resource_quantity,resource_description) values('skyhighbannanas',0,'Luquillo', 10, '300mg edible');
 insert into babyFood(resource_id,babyFood_type,babyFood_is_perishable,babyFood_ingrendients,babyFood_unitsize,babyFood_expDate) values ( (SELECT resource_id from resource where resource_id = '2'),'gerber',TRUE,'bannana,ganja',10,'12-12-2024');
 Insert into resource (resource_name,resource_price,resource_location,resource_quantity,resource_description) values('skyhighbannanas',24.99,'Luquillo', 10, '300mg edible');
 insert into babyFood(resource_id,babyFood_type,babyFood_is_perishable,babyFood_ingrendients,babyFood_unitsize,babyFood_expDate) values ( (SELECT resource_id from resource where resource_id = '3'),'gerber',TRUE,'bannana,ganja',10,'12-12-2024');
