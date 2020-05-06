@@ -2,6 +2,9 @@
 echo "aaaaa"
 echo -n "Do you wish to reinstall postgresql for better perfmance ? [y/n] " ;
 read ans
+
+cwd=$(pwd)
+
 if [[ "y" == "$ans" ]]; then
 
     echo "Unistalling postgresqsl for fresh install "
@@ -12,7 +15,13 @@ if [[ "y" == "$ans" ]]; then
     echo "y" | sudo apt-get install postgresql postgresql-contrib > /dev/null 2>&1
     echo
     echo "Finished fresh install"
+
+elif [[ "n" == "$ans" ]]; then
+    echo "Deleting almacen for new population "
+    echo "dropdb almacen" | sudo -i -u postgres
+    
 fi
+
 
 
 cat postInitialize.txt | sudo -i -u postgres ;
@@ -50,3 +59,7 @@ echo "create table person(person_id serial primary key, person_firstname varchar
       create table clothing(clothing_id serial primary key, resource_id integer references resource(resource_id), clothing_size varchar(5), clothing_color varchar(10), clothing_gender varchar(3), clothing_material varchar(10));
       "| psql almacen -U alma -W -h 127.0.0.1 ;
 echo "finished db, added table of tables.txt";
+
+
+cd $cwd
+./dbinserter.sh;
