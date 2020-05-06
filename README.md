@@ -6,7 +6,7 @@ A database application consists of many different areas within the realm of soft
 ## ER-Diagram
 
 
-![Image of ER ](https://github.com/Guillermo-Andres/DBProject/blob/master/Blank%20Diagram.png)
+![](https://github.com/Guillermo-Andres/DBProject/blob/master/ER.png)
 
 ## Entities
 ### Person
