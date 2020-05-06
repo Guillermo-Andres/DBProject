@@ -20,6 +20,7 @@ from handler.hygiene import HygieneHandler
 from handler.medicalDevices import MedicalDevicesHandler
 from handler.powerGenerator import PowerGeneratorHandler
 from flask_cors import CORS, cross_origin
+from flask import render_template
 
 # Activate
 app = Flask(__name__)
@@ -29,7 +30,7 @@ CORS(app)
 
 @app.route('/')
 def sendToLogin():
-    return redirect(url_for('registerConsumer'))
+    return render_template("home.html")
 
 
 # Register user route Unused for phase 2
