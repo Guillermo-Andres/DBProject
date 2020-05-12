@@ -1,5 +1,6 @@
 from flask import jsonify
 from dao.request import RequestDAO
+from dao.resource import ResourceDAO
 
 
 # request attributes: request_id, request_price, request_location, request_quantity
@@ -66,7 +67,16 @@ class RequestHandler:
             request = self.build_request_and_resource_and_consumer_makesRequest_dict(row)
             return request
 
-    def insert(self, item):
+    def insert(self, type , consumer_id, date ):
+        dao = RequestDAO()
+        dao.insert(type , consumer_id ,  date)
+        
+        rdao = ResourceDAO()
+        #TODO check for resource to make order
+
+        resorces = 
+        
+
         return jsonify(request=item), 200
 
     def delete(self, item):

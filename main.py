@@ -28,9 +28,18 @@ app = Flask(__name__)
 CORS(app)
 
 
+#TODO 
+""" almacenespr/consumer/<consumerid>/request/<resourceid>
+    almacenespr/supplier/<supplierid>/announce
+    almacenespr/consumer/<consumerid>/addPaymentMethod """
+
 @app.route('/')
 def sendToLogin():
     return render_template("home.html")
+
+@app.route('almacenes/consumer/<int:consumer_id>/request/<int:resource_id>' , methods=['POST'])
+def requestResource(consumer_id , resource_id):
+    
 
 
 # Register user route Unused for phase 2

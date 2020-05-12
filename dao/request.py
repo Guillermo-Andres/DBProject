@@ -49,8 +49,12 @@ class RequestDAO:
             result.append(row)
         return result
 
-    def insert(self, item):
-        return self.getAllRequest()
+    def insert(self, type , consumer_id , date ):
+        cursor = self.conn.cursor()
+        query ="insert into request(resource_id , request_date) values (%s , %s) " \
+               "insert into makesRequest(consumer_id , request_id) values (%s , %s); " 
+        
+        cursor.execute(query , (type , date , consumer_id , type))
 
     def delete(self, cid):
         return self.getAllRequest()
