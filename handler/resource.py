@@ -2,16 +2,18 @@ from flask import jsonify
 from dao.resource import ResourceDAO
 
 
-# resource attributes: resource_id, resource_price, resource_location, resource_quantity
+# resource attributes: resource_id , resource_name , resource_price, resource_city, resource_quantity  ,
+# resource_description , resource_date
 
 class ResourceHandler:
     def build_resource_dict(self, row):
         result = {'resource_id': row[0],
                   'resource_name': row[1],
                   'resource_price': row[2],
-                  'resource_location': row[3],
+                  'resource_city': row[3],
                   'resource_quantity': row[4],
-                  'available': row[5]}
+                  'resource_description': row[5],
+                  'resource_date': row[6]}
         return result
 
     def build_resource_attributes(self, resource_id, resource_price, resource_location, resource_quantity):

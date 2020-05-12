@@ -2,6 +2,8 @@ from config.dbconfig import pg_config
 import psycopg2
 
 
+# resource_id , resource_name , resource_price, resource_city, resource_quantity  , resource_description , resource_date
+
 class ResourceDAO:
     def __init__(self):
         connection_url = "dbname=%s user=%s password=%s host=127.0.0.1" % (pg_config['dbname'],

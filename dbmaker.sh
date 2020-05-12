@@ -31,7 +31,7 @@ echo created person:"alma"  db:"almacen" and granted db to usr  ;
 cd /;
 sudo etc/init.d/postgresql restart ;
 echo "create table person(person_id serial primary key, person_firstname varchar(15) not null, person_lastname varchar(15) not null, person_dob varchar(10) not null, person_city varchar(30) not null, person_phone_number varchar(15), person_email varchar(30));
-      create table resource(resource_id serial primary key, resource_name varchar(15) not null, resource_price float not null, resource_city varchar(30) not null, resource_quantity integer not null , resource_description varchar(25) not null);
+      create table resource(resource_id serial primary key, resource_name varchar(15) not null, resource_price float not null, resource_city varchar(30) not null, resource_quantity integer not null , resource_description varchar(25) not null, resource_date date not null);
       create table request(request_id serial primary key, resource_id integer references resource(resource_id) not null, request_date date not null);
       create table consumer(consumer_id serial primary key, person_id integer references person(person_id) not null, consumer_severety varchar(20));
       create table makesRequest(consumer_id integer references consumer(consumer_id) not null, request_id integer references request(request_id) not null, primary key (request_id,consumer_id));
