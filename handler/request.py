@@ -28,6 +28,14 @@ class RequestHandler:
                   }
         return result
 
+    def build_reqs_stats_per_date_dict(self, row):
+        result = {
+            'resource_name': row[0],
+            'number_of_requests': row[1],
+            'request_date': row[2]
+        }
+        return result
+
     def build_request_attributes(self, request_id, request_price, request_location, request_quantity):
         result = {'request_id': request_id,
                   'request_price': request_price,
@@ -44,7 +52,7 @@ class RequestHandler:
             result_list.append(result)
         return jsonify(requests=result_list)
 
-    def getAllRequestByKeyword(self , keyword):
+    def getAllRequestByKeyword(self, keyword):
         dao = RequestDAO()
         requests_list = dao.getRequestByKeyWord(keyword)
         result_list = []
@@ -52,10 +60,6 @@ class RequestHandler:
             result = self.build_request_and_resource_and_consumer_makesRequest_dict(row)
             result_list.append(result)
         return jsonify(requests=result_list)
-
-
-        
-
 
     def getRequestById(self, request_id):
         dao = RequestDAO()
@@ -65,6 +69,24 @@ class RequestHandler:
         else:
             request = self.build_request_and_resource_and_consumer_makesRequest_dict(row)
             return request
+
+    def getRequestStatsPerDay(self):
+        dao = RequestDAO()
+        request_list = dao.getRequestStatsPerDay()
+        result_list = []
+        for row in request_list:
+            result = self.build_reqs_stats_per_date_dict(row)
+            result_list.append(result)
+        return jsonify(request=result_list)
+
+    def getRequestStatsPerWeek(self):
+        dao = RequestDAO()
+        request_list = dao.getRequestStatsPerWeek()
+        result_list = []
+        for row in request_list:
+            result = self.build_reqs_stats_per_date_dict(row)
+            result_list.append(result)
+        return jsonify(request=result_list)
 
     def insert(self, item):
         return jsonify(request=item), 200

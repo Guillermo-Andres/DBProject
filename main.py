@@ -69,6 +69,18 @@ def registerAdmin():
         return AdminHandler().insert(request.get_json())
 
 
+@app.route('/almacenespr/getDailyResourcesRequested', methods=['GET'])
+def getDailyReqs():
+    if request.method == 'GET':
+        return RequestHandler().getRequestStatsPerDay()
+
+
+@app.route('/almacenespr/getWeeklyResourcesRequested', methods=['GET'])
+def getWeeklyReqs():
+    if request.method == 'GET':
+        return RequestHandler().getRequestStatsPerWeek()
+
+
 @app.route('/almacenespr/admin', methods=['POST', 'GET'])
 def getAllAdmin():
     # orders specify if we are requesting, reserving or purchasing depending on its status
@@ -135,6 +147,7 @@ def viewRequestedByKeyword(keyword):
 def viewResourceByKeyword(keyword):
     return ResourceHandler().getAllResourceByKeyword(keyword)
 
+
 @app.route('/almacenespr/resource', methods=['GET'])
 def viewResourceAll():
     return ResourceHandler().getAll()
@@ -149,7 +162,8 @@ def viewAvailable():
 def viewInStock():
     return ResourceHandler().getResourcesInStock()
 
-@app.route('/almacenespr/orders'  , methods = ['GET'])
+
+@app.route('/almacenespr/orders', methods=['GET'])
 def getAllOrders():
     return OrderHandler().getAllOrders()
 
