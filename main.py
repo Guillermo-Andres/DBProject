@@ -101,6 +101,17 @@ def getWeeklyReqs():
     if request.method == 'GET':
         return RequestHandler().getRequestStatsPerWeek()
 
+@app.route('/almacenespr/getDailyResourcesMatching', methods=['GET'])
+def getDailyOrders():
+    if request.method == 'GET':
+        return OrderHandler().getOrderStatsPerDay()
+
+
+@app.route('/almacenespr/getWeeklyResourcesMatching', methods=['GET'])
+def getWeeklyOrders():
+    if request.method == 'GET':
+        return OrderHandler().getOrderStatsPerWeek()
+
 
 @app.route('/almacenespr/admin', methods=['POST', 'GET'])
 def getAllAdmin():
