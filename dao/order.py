@@ -64,6 +64,28 @@ class OrderDAO:
             result.append(row)
         return result
 
+    def getOrderStatsPerDay(self):
+        cursor = self.conn.cursor()
+        query = "select resource_name, count(resource_name) as matching_resources, date_trunc('day', " \
+                "order_date) as day from orders natural inner join resource group by day, resource_name " \
+                "order by day ; "
+        cursor.execute(query)
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
+
+    def getOrderStatsPerWeek(self):
+        cursor = self.conn.cursor()
+        query = "select resource_name, count(resource_name) as matching_resources, date_trunc('week', " \
+                "order_date) as week from orders natural inner join resource group by week, resource_name " \
+                "order by week ; "
+        cursor.execute(query)
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
+
     def getOrderByAmount(self, amount):
         return self.getAllOrders()
 
