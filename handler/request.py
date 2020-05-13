@@ -105,8 +105,9 @@ class RequestHandler:
             result_list.append(result)
         return jsonify(request=result_list)
 
-    def insert(self, item):
-        return jsonify(request=item), 200
+    def insert(self, consumer_id , resource_id):
+        request_dao =  RequestDAO()
+        return request_dao.insert(resource_id , consumer_id)
 
     def delete(self, item):
         return jsonify(request=item), 200

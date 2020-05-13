@@ -33,9 +33,18 @@ def sendToLogin():
     return render_template("home.html")
 
 
-@app.route('/almacenes/consumer/<int:consumer_id>/request/<string:resource_type>/<string:keyword>', methods=['POST'])
-def requestResource(consumer_id, resource_type, keyword):
-    return 200
+@app.route('/almacenespr/consumer/<int:consumer_id>/request/<string:resource_type>/<int:resource_id>', methods=['POST' , 'GET'])
+def requestResource(consumer_id, resource_type , resource_id):
+    
+    handler = RequestHandler()
+    resp =handler.insert(consumer_id ,resource_id)
+    print(resp[1])
+    if(resp[0] == True): #found match , return order
+        return OrderHandler().getOrderById(resp[1])
+    
+    return RequestHandler().getRequestById(resp[1])
+
+
 
 
 @app.route('/almacenespr/supplier/<int:supplierid>/<string:resource_type>/announce', methods=['POST'])
@@ -310,44 +319,44 @@ def searchAvailable(resource_type, search_keyword):
     return ResourceHandler().getAllByType(resource_type)
 
 
-@app.route('/almacenespr/dashboard/statistics/daily/<int:type>', methods=['GET'])
-def dailyStatistics(type):
-    if type == 0:
-        # return stats for in need
-        return babyFoodHandler().getAllFood()
-    elif type == 1:
-        # return sta
-        # ts for available
-        return babyFoodHandler().getAllFood()
-    else:
-        # return stats for match
-        return babyFoodHandler().getAllFood()
+# @app.route('/almacenespr/dashboard/statistics/daily/<int:type>', methods=['GET'])
+# def dailyStatistics(type):
+#     if type == 0:
+#         # return stats for in need
+#         return babyFoodHandler().getAllFood()
+#     elif type == 1:
+#         # return sta
+#         # ts for available
+#         return babyFoodHandler().getAllFood()
+#     else:
+#         # return stats for match
+#         return babyFoodHandler().getAllFood()
 
 
-@app.route('/almacenespr/dashboard/statistics/weekly/<int:type>', methods=['GET'])
-def weeklyStatistics(type):
-    if type == 0:
-        # return stats for in need
-        return babyFoodHandler().getAllFood()
-    elif type == 1:
-        # return stats for available
-        return babyFoodHandler().getAllFood()
-    else:
-        # return stats for match
-        return babyFoodHandler().getAllFood()
+# @app.route('/almacenespr/dashboard/statistics/weekly/<int:type>', methods=['GET'])
+# def weeklyStatistics(type):
+#     if type == 0:
+#         # return stats for in need
+#         return babyFoodHandler().getAllFood()
+#     elif type == 1:
+#         # return stats for available
+#         return babyFoodHandler().getAllFood()
+#     else:
+#         # return stats for match
+#         return babyFoodHandler().getAllFood()
 
 
-@app.route('/almacenespr/dashboard/statistics/region/<int:type>', methods=['GET'])
-def regionStatistics(type):
-    if type == 0:
-        # return stats for in need
-        return babyFoodHandler().getAllFood()
-    elif type == 1:
-        # return stats for available
-        return babyFoodHandler().getAllFood()
-    else:
-        # return stats for match
-        return babyFoodHandler().getAllFood()
+# @app.route('/almacenespr/dashboard/statistics/region/<int:type>', methods=['GET'])
+# def regionStatistics(type):
+#     if type == 0:
+#         # return stats for in need
+#         return babyFoodHandler().getAllFood()
+#     elif type == 1:
+#         # return stats for available
+#         return babyFoodHandler().getAllFood()
+#     else:
+#         # return stats for match
+#         return babyFoodHandler().getAllFood()
 
 
 if __name__ == '__main__':
