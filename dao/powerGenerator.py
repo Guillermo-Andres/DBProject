@@ -42,32 +42,14 @@ class PowerGeneratorDAO:
         result = cursor.fetchone()
         return result
 
-    def getPowerGeneratorsByPrice(self, price):
-        return self.getAllPowerGenerators()
-
-    def getPowerGeneratorsByLocation(self, location):
-        return self.getAllPowerGenerators()
-
-    def getPowerGeneratorsByQuantity(self, quantity):
-        return self.getAllPowerGenerators()
-
-    def getPowerGeneratorsByType(self, type):
-        return self.getAllPowerGenerators()
-
-    def getPowerGeneratorsByFlow(self, flow):
-        return self.getAllPowerGenerators()
-
-    def getPowerGeneratorsByBrand(self, brand):
-        return self.getAllPowerGenerators()
-
-    def getPowerGeneratorsByQuantityPerUnit(self, quantity_per_unit):
-        return self.getAllPowerGenerators()
-
-    def insert(self):
-        return self.getAllPowerGenerators()
-
-    def delete(self):
-        return self.getAllPowerGenerators()
-
-    def update(self):
-        return self.getAllPowerGenerators()
+    def insert(self, resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date,ptype):
+        cursor = self.conn.cursor()
+        query = "Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values (%s, %s, %s, %s, %s, %s) returning resource_id;"
+        cursor.execute(query, (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date,))
+        rid = cursor.fetchone()[0]
+        self.conn.commit()
+        query = "insert into powerGenerator (resource_id,powerGenerator_type) values (%s, %s);"
+        cursor.execute(query, (rid,ptype,))
+        self.conn.commit()
+        cursor.close()
+        return rid

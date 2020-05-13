@@ -46,7 +46,7 @@ def insertResource():
 @app.route('/almacenespr/consumer/<int:consumer_id>/addPaymentMethod' , methods=['POST'])
 def addPaymentMethod():
     return 200
-    
+
 @app.route('/almacenespr/searchByType/<string:resource_type>/<string:keyword>', methods=['GET'])
 def getByType(resource_type , keyword):
     handler = ResourceHandler().getHandler(resource_type)
@@ -267,11 +267,17 @@ def getResourcesByTypeId(resource_type, resource_type_id):
 def getResources(resource_type):
     if request.method == 'GET':
         return  ResourceHandler().getAllByType(resource_type)
-        
-        
+
     if request.method == 'POST':
+
         if resource_type == 'water':
             return WaterHandler().insert(request.json)
+        if resource_type == 'tools':
+            return PowerToolsHandler().insert(request.json)
+        if resource_type == 'powergenerator':
+            return PowerGeneratorHandler().insert(request.json)
+        if resource_type == 'ice':
+            return IceHandler().insert(request.json)
 
 
 @app.route('/almacenespr/available/<string:resource_type>/<string:search_keyword>', methods=['GET'])
@@ -320,4 +326,4 @@ def regionStatistics(type):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

@@ -7,13 +7,13 @@ class PowerToolsHandler:
     def build_Tools_dict(self, row):
         result = {}
         result['resource_id'] = row[0]
-        result['tool_id'] = row[0]
-        result['tools_type'] = row[1]
-        result['name']=row[2]
-        result['price'] = row[3]
-        result['location'] = row[4]
-        result['quantity'] = row[5]
-        result['description'] = row[6]
+        result['tool_id'] = row[1]
+        result['tools_type'] = row[2]
+        result['name']=row[3]
+        result['price'] = row[4]
+        result['location'] = row[5]
+        result['quantity'] = row[6]
+        result['description'] = row[7]
 
         return result
 
