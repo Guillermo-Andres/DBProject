@@ -32,6 +32,7 @@ class ResourceHandler:
         return result
 
     def getAllByType(self , type):
+        print(type)
         if(type == 'babyfood'):
             return babyFoodHandler().getAllbabyFood()
         elif(type == 'dryfood'):

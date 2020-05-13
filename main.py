@@ -175,7 +175,7 @@ def viewRequestedByKeyword(keyword):
     return RequestHandler().getAllRequestByKeyword(keyword)
 
 
-@app.route('/almacenespr/resource/<string:keyword>', methods=['GET'])
+@app.route('/almacenespr/resource/search/<string:keyword>', methods=['GET'])
 def viewResourceByKeyword(keyword):
     return ResourceHandler().getAllResourceByKeyword(keyword)
 
@@ -215,7 +215,7 @@ def searchRequestedById(request_id):
     return RequestHandler().getRequestById(request_id)
 
 
-@app.route('/almacenespr/resource/<int:resource_id>', methods=['GET'])
+@app.route('/almacenespr/resource/getByID/<int:resource_id>', methods=['GET'])
 def getResourcesbyId(resource_id):
     return ResourceHandler().getResourceById(resource_id)
 
@@ -261,7 +261,9 @@ def getResourcesByTypeId(resource_type, resource_type_id):
 @app.route('/almacenespr/resource/<string:resource_type>', methods=['GET', 'POST'])
 def getResources(resource_type):
     if request.method == 'GET':
-        return ResourceHandler().getAllByType(resource_type)
+        return  ResourceHandler().getAllByType(resource_type)
+        
+        
     if request.method == 'POST':
         if resource_type == 'water':
             return WaterHandler().insert(request.json)
