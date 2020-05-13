@@ -80,6 +80,18 @@ class RequestDAO:
             result.append(row)
         return result
 
+    def getRequestStatsPerRegion(self):
+        cursor = self.conn.cursor()
+        query = "select resource_name, count(resource_name) as request_per_region, get_region(person_city) as region" \
+                " from request natural inner join resource natural inner join makesRequest natural inner join consumer"\
+                " natural inner join person group by region, resource_name order by region;"
+        cursor.execute(query)
+        result = []
+        for row in cursor:
+            print(row)
+            result.append(row)
+        return result
+
     def insert(self, item):
         return self.getAllRequest()
 

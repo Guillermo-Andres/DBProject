@@ -36,6 +36,14 @@ class RequestHandler:
         }
         return result
 
+    def build_reqs_stats_per_region_dict(self, row):
+        result = {
+            'resource_name': row[0],
+            'number_of_requests': row[1],
+            'region': row[2]
+        }
+        return result
+
     def build_request_attributes(self, request_id, request_price, request_location, request_quantity):
         result = {'request_id': request_id,
                   'request_price': request_price,
@@ -85,6 +93,15 @@ class RequestHandler:
         result_list = []
         for row in request_list:
             result = self.build_reqs_stats_per_date_dict(row)
+            result_list.append(result)
+        return jsonify(request=result_list)
+
+    def getRequestStatsPerRegion(self):
+        dao = RequestDAO()
+        request_list = dao.getRequestStatsPerRegion()
+        result_list = []
+        for row in request_list:
+            result = self.build_reqs_stats_per_region_dict(row)
             result_list.append(result)
         return jsonify(request=result_list)
 

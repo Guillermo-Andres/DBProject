@@ -1,47 +1,47 @@
 #!/usr/bin/env bash
 echo "
-insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('Fabi', 'Bad', '14may98', 'quebra', '123456', 'fbr@yahoo.com');
+insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('Fabi', 'Bad', '14may98', 'Quebradillas', '123456', 'fbr@yahoo.com');
 insert into supplier(person_id) values (1);
 
-insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('Alma', 'Colon', '19ene89', 'ciales', '78787878', 'alma@hotmail.com');
+insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('Alma', 'Colon', '19ene89', 'Ciales', '78787878', 'alma@hotmail.com');
 insert into supplier(person_id) values (2);
 
-insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('Robert', 'Ruiz', '25dec56', 'dubai', '363636', 'rr@gmail.com');
+insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('Robert', 'Ruiz', '25dec56', 'Ponce', '363636', 'rr@gmail.com');
 insert into supplier(person_id) values (3);
 
-insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('Pablo', 'Escobar', '6junio66', 'Colombia', '123123123', 'pabloescobar@plakaplaka.com');
+insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('Pablo', 'Escobar', '6junio66', 'San Sebastian', '123123123', 'pabloescobar@plakaplaka.com');
 insert into supplier(person_id) values (4);
 
-insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('Tuto', 'Valle', '29ene54', 'Dinamarca', '123123123', 'tuto@peace.com');
+insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('Tuto', 'Valle', '29ene54', 'Barranquitas', '123123123', 'tuto@peace.com');
 insert into supplier(person_id) values (5);
 
 insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('Diego', 'Rivera', '30nov78', 'Ponce', '11223344', 'tuto@peace.com');
 insert into consumer(person_id, consumer_severety) values (6, 'high');
 
-insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('Darth', 'Vader', '08ago73', 'hawaii', '1414141', 'thefather@darkside.com');
+insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('Darth', 'Vader', '08ago73', 'Fajardo', '1414141', 'thefather@darkside.com');
 insert into consumer(person_id, consumer_severety) values (7, 'moderate');
 
-insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('Tom', 'Shelby', '12march12', 'England', '456456', 'ts@pb.com');
+insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('Tom', 'Shelby', '12march12', 'Lajas', '456456', 'ts@pb.com');
 insert into consumer(person_id, consumer_severety) values (8, 'high');
 
-insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('Rebeca', 'Diaz', '11jul73', 'NY', '987987', 'becky73@yahoo.com');
+insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('Rebeca', 'Diaz', '11jul73', 'Quebradillas', '987987', 'becky73@yahoo.com');
 insert into consumer(person_id, consumer_severety) values (9, 'low');
 
 
 insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('Luz', 'Verde', '18oct65', 'Hormigueros', '77887788', 'lucy@yahoo.com');
 insert into consumer(person_id, consumer_severety) values (10, 'low');
 
-insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('Yvy', 'Queen', '19-04-78', 'dorado', '123456', 'yq@hotmail.com');
+insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('Yvy', 'Queen', '19-04-78', 'Coamo', '123456', 'yq@hotmail.com');
 insert into admin(person_id) values (11);
 
 
-insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('Kike', 'Li', '29-10-68', 'SJ', '147852369', 'kl@hotmail.com');
+insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('Kike', 'Li', '29-10-68', 'Morovis', '147852369', 'kl@hotmail.com');
 insert into admin(person_id) values (12);
 
-insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('Michael', 'Scott', '14-08-60', 'Scranton', '123456', 'ms@dundermifflin.com');
+insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('Michael', 'Scott', '14-08-60', 'Camuy', '123456', 'ms@dundermifflin.com');
 insert into admin(person_id) values (13);
 
-insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('guanda', 'basket', '02-02-56', 'fortaleza', '123456', 'gb@corrupcion.com');
+insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('guanda', 'basket', '02-02-56', 'San Juan', '123456', 'gb@corrupcion.com');
 insert into admin(person_id) values (14);
 
 insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('Robby', 'Cruz', '11-17-60', 'Humacao', '123123', 'robby@admin.com');
@@ -156,4 +156,31 @@ insert into makesRequest(consumer_id , request_id) values (4 , 4);
 insert into supplies(supplier_id , resource_id) values(8,1);
 insert into orders(order_amount ,  order_date , order_status , supplier_id, resource_id) values((select resource_price from resource where resource_id = 1) , '2019-12-12', 'complete' , 8 , 1);
 insert into paysFor(paymentMethod_id , order_id) values (2,4);
+
+create or replace function get_region(person_city varchar(30)) returns varchar(30) as \$$
+          begin
+              if (person_city = 'San Juan' or person_city = 'Guaynabo' or person_city = 'Aguas Buenas') then
+	                return 'San Juan';
+              elsif (person_city = 'Bayamon' or person_city = 'Catano' or person_city = 'Toa Baja' or person_city = 'Toa Alta') then
+	                return 'Bayamon';
+              elsif (person_city = 'Arecibo' or person_city = 'Barceloneta' or person_city = 'Camuy' or person_city = 'Ciales' or person_city = 'Dorado' or person_city = 'Florida' or person_city = 'Hatillo' or person_city = 'Manati' or person_city = 'Morovis' or person_city = 'Quebradillas' or person_city = 'Vega Alta' or person_city = 'Vega Baja') then
+	                return 'Arecibo';
+              elsif (person_city = 'Aguada' or person_city = 'Aguadilla' or person_city = 'Anasco' or person_city = 'Cabo Rojo' or person_city = 'Hormigueros' or person_city = 'Isabela' or person_city = 'Las Marias' or person_city = 'Mayaguez' or person_city = 'Moca' or person_city = 'Rincon' or person_city = 'San German' or person_city = 'San Sebastian') then
+	                return 'Aguadilla';
+              elsif (person_city = 'Adjuntas' or person_city = 'Guanica' or person_city = 'Guayanilla' or person_city = 'Jayuya' or person_city = 'Lajas' or person_city = 'Lares' or person_city = 'Maricao' or person_city = 'Penuelas' or person_city = 'Ponce' or person_city = 'Sabana Grande' or person_city = 'Utuado' or person_city = 'Yauco' or person_city = 'Juana Diaz') then
+	                return 'Ponce';
+              elsif (person_city = 'Arroyo' or person_city = 'Aibonito' or person_city = 'Barranquitas' or person_city = 'Cayey' or person_city = 'Cidra' or person_city = 'Coamo' or person_city = 'Comerio' or person_city = 'Corozal' or person_city = 'Guayama' or person_city = 'Juana Diaz' or person_city = 'Naranjito' or person_city = 'Orocovis' or person_city = 'Salinas' or person_city = 'Santa Isabel' or person_city = 'Villalba') then
+	                return 'Guayama';
+              elsif (person_city = 'Caguas' or person_city = 'Gurabo' or person_city = 'Humacao' or person_city = 'Juncos' or person_city = 'Las Piedras' or person_city = 'Maunabo' or person_city = 'Naguabo' or person_city = 'Patillas' or person_city = 'San Lorenzo' or person_city = 'Yabucoa') then
+	                return 'Humacao';
+              elsif (person_city = 'Canovanas' or person_city = 'Carolina' or person_city = 'Ceiba' or person_city = 'Culebra' or person_city = 'Fajardo' or person_city = 'Loiza' or person_city = 'Luquillo' or person_city = 'Rio Grande' or person_city = 'Trujillo Alto' or person_city = 'Vieques' ) then
+	                return 'Carolina';
+              else
+                	return 'Cannot determine region';
+              end if;
+          end;
+          \$$ language plpgsql;
+
+
 "|psql almacen -U alma -W -h 127.0.0.1 ;
+

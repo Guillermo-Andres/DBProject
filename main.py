@@ -101,6 +101,11 @@ def getWeeklyReqs():
     if request.method == 'GET':
         return RequestHandler().getRequestStatsPerWeek()
 
+@app.route('/almacenespr/getResourcesRequestedPerRegion', methods=['GET'])
+def getReqsPerRegion():
+    if request.method == 'GET':
+        return RequestHandler().getRequestStatsPerRegion()
+
 @app.route('/almacenespr/getDailyResourcesMatching', methods=['GET'])
 def getDailyOrders():
     if request.method == 'GET':
