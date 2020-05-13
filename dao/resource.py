@@ -52,6 +52,49 @@ class ResourceDAO:
             result.append(row)
         return result
 
+    def getResourceAvailablePerDay(self):
+        cursor = self.conn.cursor()
+        query = "select resource_name, count(resource_name) as available, date_trunc('day'," \
+                "resource_date) as day " \
+                "from resource " \
+                "where resource_quantity > 0 " \
+                "group by day, resource_name " \
+                "order by day;"
+        cursor.execute(query)
+        result = []
+        for row in cursor:
+            print(row)
+            result.append(row)
+        return result
+
+    def getResourceAvailablePerWeek(self):
+        cursor = self.conn.cursor()
+        query = "select resource_name, count(resource_name) as available, date_trunc('week'," \
+                "resource_date) as week " \
+                "from resource " \
+                "where resource_quantity > 0 " \
+                "group by week, resource_name " \
+                "order by week;"
+        cursor.execute(query)
+        result = []
+        for row in cursor:
+            print(row)
+            result.append(row)
+        return result
+
+    def getResourceAvailablePerRegion(self):
+        cursor = self.conn.cursor()
+        query = "select resource_name, count(resource_name) as available, get_region(resource_city) as region " \
+                "from resource " \
+                "group by region, resource_name " \
+                "order by region;"
+        cursor.execute(query)
+        result = []
+        for row in cursor:
+            print(row)
+            result.append(row)
+        return result
+
     def getResourceByName(self, resource_first_name, resource_last_name):
         return self.getAllResource()
 

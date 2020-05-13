@@ -13,7 +13,7 @@ from handler.admin import AdminHandler
 from handler.consumer import ConsumerHandler
 from handler.order import OrderHandler
 from handler.supplier import SupplierHandler
-from handler.ResourceHandler import ResourceHandler
+from handler.resource import ResourceHandler
 from handler.water import WaterHandler
 from handler.request import RequestHandler
 from handler.hygiene import HygieneHandler
@@ -91,40 +91,58 @@ def registerAdmin():
         return AdminHandler().insert(request.get_json())
 
 
-@app.route('/almacenespr/getDailyResourcesRequested', methods=['GET'])
+@app.route('/almacenespr/dailyResourcesRequested', methods=['GET'])
 def getDailyReqs():
     if request.method == 'GET':
         return RequestHandler().getRequestStatsPerDay()
 
 
-@app.route('/almacenespr/getWeeklyResourcesRequested', methods=['GET'])
+@app.route('/almacenespr/weeklyResourcesRequested', methods=['GET'])
 def getWeeklyReqs():
     if request.method == 'GET':
         return RequestHandler().getRequestStatsPerWeek()
 
 
-@app.route('/almacenespr/getResourcesRequestedPerRegion', methods=['GET'])
+@app.route('/almacenespr/resourcesRequestedPerRegion', methods=['GET'])
 def getReqsPerRegion():
     if request.method == 'GET':
         return RequestHandler().getRequestStatsPerRegion()
 
 
-@app.route('/almacenespr/getDailyResourcesMatching', methods=['GET'])
+@app.route('/almacenespr/dailyResourcesMatching', methods=['GET'])
 def getDailyOrders():
     if request.method == 'GET':
         return OrderHandler().getOrderStatsPerDay()
 
 
-@app.route('/almacenespr/getWeeklyResourcesMatching', methods=['GET'])
+@app.route('/almacenespr/weeklyResourcesMatching', methods=['GET'])
 def getWeeklyOrders():
     if request.method == 'GET':
         return OrderHandler().getOrderStatsPerWeek()
 
 
-@app.route('/almacenespr/getResourcesMatchingPerRegion', methods=['GET'])
+@app.route('/almacenespr/resourcesMatchingPerRegion', methods=['GET'])
 def getOrdersPerRegion():
     if request.method == 'GET':
         return OrderHandler().getOrderStatsPerRegion()
+
+
+@app.route('/almacenespr/dailyResourcesAvailable', methods=['GET'])
+def getAvailablePerDay():
+    if request.method == 'GET':
+        return ResourceHandler().getResourceAvailablePerDay()
+
+
+@app.route('/almacenespr/weeklyResourcesAvailable', methods=['GET'])
+def getAvailablePerWeek():
+    if request.method == 'GET':
+        return ResourceHandler().getResourceAvailablePerWeek()
+
+
+@app.route('/almacenespr/resourceAvailablePerRegion', methods=['GET'])
+def getAvailablePerRegion():
+    if request.method == 'GET':
+        return ResourceHandler().getResourceAvailablePerRegion()
 
 
 @app.route('/almacenespr/admin', methods=['POST', 'GET'])
