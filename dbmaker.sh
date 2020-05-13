@@ -40,7 +40,7 @@ echo "create table person(person_id serial primary key, person_firstname varchar
       create table admin(admin_id serial primary key, person_id integer references person(person_id) not null);
       create table company(company_id serial primary key, company_name varchar(15) not null, company_description varchar(20));
       create table worksFor(company_id integer references company(company_id) not null, supplier_id integer references supplier(supplier_id) not null, primary key (company_id, supplier_id));
-      create table orders(order_id serial primary key, order_amount float not null, order_date date not null, order_status varchar(10) not null, supplier_id integer references supplier(supplier_id) not null);
+      create table orders(order_id serial primary key, order_amount float not null, order_date date not null, order_status varchar(10) not null, supplier_id integer references supplier(supplier_id) not null , resource_id integer references resource(resource_id));
       create table paymentMethod(paymentMethod_id serial primary key, paymentMethod_type varchar(10) not null, consumer_id integer references consumer(consumer_id) not null);
       create table paysFor(paymentMethod_id integer references paymentMethod(paymentMethod_id) not null, order_id integer references orders(order_id) not null, primary key (paymentMethod_id, order_id));
       create table water(water_id serial primary key, resource_id integer references resource(resource_id) not null, water_size varchar(10), water_brand varchar(10), water_type varchar(10), water_unitSize varchar(10));

@@ -135,27 +135,25 @@ insert into request(resource_id , request_date) values (4 ,'2019-11-11');
 insert into makesRequest(consumer_id , request_id) values (3 , 1);
 insert into supplies(supplier_id , resource_id) values(5,4);
 insert into paymentMethod (paymentMethod_type , consumer_id) values ('cash' , 3);
-insert into orders(order_amount ,  order_date , order_status , supplier_id) values((select resource_price from resource where resource_id = 4) , '2019-12-12', 'complete' , 5);
+insert into orders(order_amount ,  order_date , order_status , supplier_id , resource_id) values((select resource_price from resource where resource_id = 4) , '2019-12-12', 'complete' , 5 , 4);
 insert into paysFor(paymentMethod_id , order_id) values (1,1);
 
 insert into request(resource_id , request_date) values (2 ,'2019-10-15');
 insert into makesRequest(consumer_id , request_id) values (4 , 2);
 insert into supplies(supplier_id , resource_id) values(7,2);
 insert into paymentMethod (paymentMethod_type , consumer_id) values ('visa' , 4);
-insert into orders(order_amount ,  order_date , order_status , supplier_id) values((select resource_price from resource where resource_id = 2) , '2019-12-12', 'complete' , 7);
+insert into orders(order_amount ,  order_date , order_status , supplier_id , resource_id) values((select resource_price from resource where resource_id = 2) , '2019-12-12', 'complete' , 7 , 2);
 insert into paysFor(paymentMethod_id , order_id) values (2,2);
 
 insert into request(resource_id , request_date) values (7 ,'2019-12-12');
 insert into makesRequest(consumer_id , request_id) values (4 , 3);
 insert into supplies(supplier_id , resource_id) values(8,7);
-insert into paymentMethod (paymentMethod_type , consumer_id) values ('visa' , 4);
-insert into orders(order_amount ,  order_date , order_status , supplier_id) values((select resource_price from resource where resource_id = 7) , '2019-12-12', 'complete' , 8);
+insert into orders(order_amount ,  order_date , order_status , supplier_id, resource_id) values((select resource_price from resource where resource_id = 7) , '2019-12-12', 'complete' , 8 , 7 );
 insert into paysFor(paymentMethod_id , order_id) values (2,3);
 
 insert into request(resource_id , request_date) values (1 ,'2019-10-16');
 insert into makesRequest(consumer_id , request_id) values (4 , 4);
 insert into supplies(supplier_id , resource_id) values(8,1);
-insert into paymentMethod (paymentMethod_type , consumer_id) values ('visa' , 4);
-insert into orders(order_amount ,  order_date , order_status , supplier_id) values((select resource_price from resource where resource_id = 1) , '2019-12-12', 'complete' , 8);
+insert into orders(order_amount ,  order_date , order_status , supplier_id, resource_id) values((select resource_price from resource where resource_id = 1) , '2019-12-12', 'complete' , 8 , 1);
 insert into paysFor(paymentMethod_id , order_id) values (2,4);
 "|psql almacen -U alma -W -h 127.0.0.1 ;

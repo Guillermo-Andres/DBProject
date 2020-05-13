@@ -1,6 +1,6 @@
 from flask import jsonify
 from dao.request import RequestDAO
-from dao.resource import ResourceDAO
+from handler.ResourceHandler import ResourceHandler
 
 
 # request attributes: request_id, request_price, request_location, request_quantity
@@ -67,14 +67,30 @@ class RequestHandler:
             request = self.build_request_and_resource_and_consumer_makesRequest_dict(row)
             return request
 
-    def insert(self, type , consumer_id, date ):
+    def insert(self, type , keyword , consumer_id, date ):
+        """ Flow of events of adding request 
+        1) user makes the request 
+        2) add the request
+        3) is item in inventory ? 
+            yes) make order
+                2) mark request as fufilled 
+                1)return order 
+            no ) return request 
+        """
+
         dao = RequestDAO()
         dao.insert(type , consumer_id ,  date)
-        
-        rdao = ResourceDAO()
+        handler = ResourceHandler().getHandler(type)
+        resources = handler.getByKeyword() # esto es un json , como desmontarlo ?
+
+  
+
+
+
         #TODO check for resource to make order
 
-        resorces = 
+        
+
         
 
         return jsonify(request=item), 200
