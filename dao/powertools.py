@@ -19,19 +19,6 @@ class ToolsDAO:
             result.append(row)
         return result
 
-    def getResourceByKeyWord(self , keyword):
-        cursor = self.conn.cursor()
-        query = "select * " \
-                "from tools natural join resource where resource_name  ~*  %s  OR resource_description ~* %s; "
-
-        keyword = "(" + keyword + ")"
-        cursor.execute(query , (keyword,keyword,))
-        result = []
-        for row in cursor:
-            result.append(row)
-        return result
-
-
     def getToolById(self, pid):
         cursor = self.conn.cursor()
         query = "select * from tools natural inner join resource where fuel_id = %s;"
@@ -41,24 +28,14 @@ class ToolsDAO:
             result.append(row)
         return result
 
-
-    def getToolByType(self, color):
-        result = [[1,'Power Tool','Electric Drill',49.99,'Caguas',1],[2,'Hand Tool','Hammer',49.99,'Caguas',1],[3,'Power Tool','Electric Blower',49.99,'Caguas',1]]
-        return result
-
-    def getToolByPrice(self, color):
-        result = [[1,'Power Tool','Electric Drill',49.99,'Caguas',1],[2,'Hand Tool','Hammer',49.99,'Caguas',1],[3,'Power Tool','Electric Blower',49.99,'Caguas',1]]
-        return result
-    def getToolByLocation(self, color):
-        result = [[1,'Power Tool','Electric Drill',49.99,'Caguas',1],[2,'Hand Tool','Hammer',49.99,'Caguas',1],[3,'Power Tool','Electric Blower',49.99,'Caguas',1]]
-        return result
-
-    def insert(self, pname, pcolor, pmaterial, pprice):
-        result = [[1,'Power Tool','Electric Drill',49.99,'Caguas',1],[2,'Hand Tool','Hammer',49.99,'Caguas',1],[3,'Power Tool','Electric Blower',49.99,'Caguas',1]]
-        return result
-    def delete(self, pid):
-        result = [[1,'Power Tool','Electric Drill',49.99,'Caguas',1],[2,'Hand Tool','Hammer',49.99,'Caguas',1],[3,'Power Tool','Electric Blower',49.99,'Caguas',1]]
-        return result
-    def update(self, pid, pname, pcolor, pmaterial, pprice):
-        result = [[1,'Power Tool','Electric Drill',49.99,'Caguas',1],[2,'Hand Tool','Hammer',49.99,'Caguas',1],[3,'Power Tool','Electric Blower',49.99,'Caguas',1]]
-        return result
+    def insert(self, resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date,ttype):
+        cursor = self.conn.cursor()
+        query = "Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values (%s, %s, %s, %s, %s, %s) returning resource_id;"
+        cursor.execute(query, (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date,))
+        rid = cursor.fetchone()[0]
+        self.conn.commit()
+        query = "insert into tools (resource_id,tools_type) values (%s, %s);"
+        cursor.execute(query, (rid,ttype,))
+        self.conn.commit()
+        cursor.close()
+        return rid
