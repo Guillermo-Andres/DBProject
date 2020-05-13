@@ -43,6 +43,14 @@ class OrderHandler:
         }
         return result
 
+    def build_reqs_stats_per_region_dict(self, row):
+        result = {
+            'resource_name': row[0],
+            'number_of_requests': row[1],
+            'region': row[2]
+        }
+        return result
+
     def getAllOrders(self):
         dao = OrderDAO()
         order_list = dao.getAllOrders()
@@ -61,8 +69,14 @@ class OrderHandler:
             result_list.append(result)
         return jsonify(Order=result_list)
 
-
-
+    def getOrderStatsPerRegion(self):
+        dao = OrderDAO()
+        order_list = dao.getOrderStatsPerRegion()
+        result_list = []
+        for row in order_list:
+            result = self.build_reqs_stats_per_region_dict(row)
+            result_list.append(result)
+        return jsonify(Order=result_list)
 
     def getOrderById(self, order_id):
         dao = OrderDAO()

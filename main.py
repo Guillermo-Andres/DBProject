@@ -28,27 +28,28 @@ app = Flask(__name__)
 CORS(app)
 
 
-
-
 @app.route('/')
 def sendToLogin():
     return render_template("home.html")
 
 
-@app.route('/almacenes/consumer/<int:consumer_id>/request/<string:resource_type>/<string:keyword>' , methods=['POST'])
-def requestResource(consumer_id , resource_type , keyword):
+@app.route('/almacenes/consumer/<int:consumer_id>/request/<string:resource_type>/<string:keyword>', methods=['POST'])
+def requestResource(consumer_id, resource_type, keyword):
     return 200
 
-@app.route('/almacenespr/supplier/<int:supplierid>/<string:resource_type>/announce' , methods= ['POST'])
+
+@app.route('/almacenespr/supplier/<int:supplierid>/<string:resource_type>/announce', methods=['POST'])
 def insertResource():
     return 200
 
-@app.route('/almacenespr/consumer/<int:consumer_id>/addPaymentMethod' , methods=['POST'])
+
+@app.route('/almacenespr/consumer/<int:consumer_id>/addPaymentMethod', methods=['POST'])
 def addPaymentMethod():
     return 200
 
+
 @app.route('/almacenespr/searchByType/<string:resource_type>/<string:keyword>', methods=['GET'])
-def getByType(resource_type , keyword):
+def getByType(resource_type, keyword):
     handler = ResourceHandler().getHandler(resource_type)
 
     return handler.getAllResourceByKeyword(keyword)
@@ -101,10 +102,12 @@ def getWeeklyReqs():
     if request.method == 'GET':
         return RequestHandler().getRequestStatsPerWeek()
 
+
 @app.route('/almacenespr/getResourcesRequestedPerRegion', methods=['GET'])
 def getReqsPerRegion():
     if request.method == 'GET':
         return RequestHandler().getRequestStatsPerRegion()
+
 
 @app.route('/almacenespr/getDailyResourcesMatching', methods=['GET'])
 def getDailyOrders():
@@ -116,6 +119,12 @@ def getDailyOrders():
 def getWeeklyOrders():
     if request.method == 'GET':
         return OrderHandler().getOrderStatsPerWeek()
+
+
+@app.route('/almacenespr/getResourcesMatchingPerRegion', methods=['GET'])
+def getOrdersPerRegion():
+    if request.method == 'GET':
+        return OrderHandler().getOrderStatsPerRegion()
 
 
 @app.route('/almacenespr/admin', methods=['POST', 'GET'])
@@ -261,12 +270,10 @@ def getResourcesByTypeId(resource_type, resource_type_id):
             return ResourceHandler().getAllByType(resource_type)
 
 
-
-
 @app.route('/almacenespr/resource/<string:resource_type>', methods=['GET', 'POST'])
 def getResources(resource_type):
     if request.method == 'GET':
-        return  ResourceHandler().getAllByType(resource_type)
+        return ResourceHandler().getAllByType(resource_type)
 
     if request.method == 'POST':
 

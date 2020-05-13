@@ -28,37 +28,34 @@ class OrderDAO:
         result = cursor.fetchone()
         return result
 
-
     def getReserved(self):
         cursor = self.conn.cursor()
         query = "select * " \
                 "from orders natural join supplier natural join resource natural join supplies natural join request natural join makesRequest natural join (select consumer_id , consumer_severety from consumer)as cons natural join paymentMethod natural join paysFor " \
                 "where order_amount = 0;"
-        cursor.execute(query,)
+        cursor.execute(query, )
         result = []
         for row in cursor:
             result.append(row)
         return result
-
-
 
     def getPurchased(self):
         cursor = self.conn.cursor()
         query = "select * " \
                 "from orders natural join (select supplier_id from supplier) as sup natural join resource natural join supplies natural join request natural join makesRequest natural join (select consumer_id , consumer_severety from consumer)as cons natural join paymentMethod natural join paysFor " \
                 "where order_amount <> 0;"
-        cursor.execute(query,)
+        cursor.execute(query, )
         result = []
         for row in cursor:
             result.append(row)
         return result
 
-    def getOrderByConsumerId(self , consumer_id):
+    def getOrderByConsumerId(self, consumer_id):
         cursor = self.conn.cursor()
         query = "select * " \
                 "from orders natural join supplier natural join resource natural join supplies natural join request natural join makesRequest natural join (select consumer_id , consumer_severety from consumer)as cons natural join paymentMethod natural join paysFor " \
                 "where consumer_id = %s;"
-        cursor.execute(query,(consumer_id ,))
+        cursor.execute(query, (consumer_id,))
         result = []
         for row in cursor:
             result.append(row)
@@ -83,6 +80,19 @@ class OrderDAO:
         cursor.execute(query)
         result = []
         for row in cursor:
+            result.append(row)
+        return result
+
+    def getOrderStatsPerRegion(self):
+        cursor = self.conn.cursor()
+        query = "select resource_name, count(resource_name) as order_per_region, get_region(person_city) as region" \
+                " from orders natural inner join resource natural inner join supplier natural inner join person" \
+                " group by region, resource_name " \
+                " order by region;"
+        cursor.execute(query)
+        result = []
+        for row in cursor:
+            print(row)
             result.append(row)
         return result
 
