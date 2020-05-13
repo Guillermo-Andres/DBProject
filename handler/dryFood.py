@@ -20,7 +20,14 @@ class dryFoodHandler:
 
         return result
 
-
+    def getAllResourceByKeyword(self , keyword):
+        dao = dryFoodDAO()
+        Resources_list = dao.getResourceByKeyWord(keyword)
+        result_list = []
+        for row in Resources_list:
+            result = self.build_dryFood_dict(row)
+            result_list.append(result)
+        return jsonify(Resources=result_list)
 
     def getAlldryFood(self):
         dao = dryFoodDAO()

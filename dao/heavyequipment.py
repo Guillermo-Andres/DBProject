@@ -20,6 +20,18 @@ class HeavyEquipmentDAO:
             result.append(row)
         return result
 
+    def getResourceByKeyWord(self , keyword):
+        cursor = self.conn.cursor()
+        query = "select * " \
+                "from heavyEquipment natural join resource where resource_name  ~*  %s  OR resource_description ~* %s; "
+
+        keyword = "(" + keyword + ")"
+        cursor.execute(query , (keyword,keyword,))
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
+
     def getHeavyEquimentById(self, id):
         cursor = self.conn.cursor()
         query = "select * from heavyEquipment natural inner join resource where heavyEquipment_id = %s;"

@@ -17,6 +17,14 @@ class BatteryHandler:
 
         return result
 
+    def getAllResourceByKeyword(self , keyword):
+        dao = BatteryDao()
+        Resources_list = dao.getResourceByKeyWord(keyword)
+        result_list = []
+        for row in Resources_list:
+            result = self.build_battery_dict(row)
+            result_list.append(result)
+        return jsonify(Resources=result_list)
 
 
     def getAllbattery(self):

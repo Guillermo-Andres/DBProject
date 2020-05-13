@@ -11,13 +11,23 @@ class WaterDAO:
         self.conn = psycopg2._connect(connection_url)
 
 
+    def getResourceByKeyWord(self , keyword):
+        cursor = self.conn.cursor()
+        query = "select * " \
+                "from water natural join resource where resource_name  ~*  %s  OR resource_description ~* %s; "
 
+        keyword = "(" + keyword + ")"
+        cursor.execute(query , (keyword,keyword,))
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
 
 
     def getAllWater(self):
         cursor = self.conn.cursor()
         query = "select * from water natural inner join resource;"
-        cursor.execute(query, (id,))
+        cursor.execute(query)
         result = []
         for row in cursor:
             result.append(row)
@@ -32,30 +42,15 @@ class WaterDAO:
             result.append(row)
         return result
 
-    # def getWaterBySize(self, size):
-    #     result = [[1,'8 Oz','Dasani', 'Bottled',12,6.99,'Guayanilla',1],[2,'16 Oz','Evian', 'Bottled',24,90.95,'Guaynabo',48]]
-    #     return result
 
-    # def getWaterByPrice(self,price):
-    #     result = [[1,'8 Oz','Dasani', 'Bottled',12,6.99,'Guayanilla',1],[2,'16 Oz','Evian', 'Bottled',24,90.95,'Guaynabo',48]]
-    #     return result
-    #
-    # def getWaterByLocation(self,location):
-    #     result = [[1,'8 Oz','Dasani', 'Bottled',12,6.99,'Guayanilla',1],[2,'16 Oz','Evian', 'Bottled',24,90.95,'Guaynabo',48]]
-    #     return result
-    #
-    # def getWaterByType(self,location):
-    #     result = [[1,'8 Oz','Dasani', 'Bottled',12,6.99,'Guayanilla',1],[2,'16 Oz','Evian', 'Bottled',24,90.95,'Guaynabo',48]]
-    #     return result
-
-    def insert(self, pname, pcolor, pmaterial, pprice):
-        result = [[1,'8 Oz','Dasani', 'Bottled',12,6.99,'Guayanilla',1],[2,'16 Oz','Evian', 'Bottled',24,90.95,'Guaynabo',48]]
-        return result
-
-    def delete(self, pid):
-        result = [[1,'8 Oz','Dasani', 'Bottled',12,6.99,'Guayanilla',1],[2,'16 Oz','Evian', 'Bottled',24,90.95,'Guaynabo',48]]
-        return result
-
-    def update(self, pid, pname, pcolor, pmaterial, pprice):
-        result = [[1,'8 Oz','Dasani', 'Bottled',12,6.99,'Guayanilla',1],[2,'16 Oz','Evian', 'Bottled',24,90.95,'Guaynabo',48]]
-        return result
+    def insert(self, resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date,water_size,water_brand,water_type,water_unitsize):
+        cursor = self.conn.cursor()
+        query = "Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values (%s, %s, %s, %s, %s, %s) returning resource_id;"
+        cursor.execute(query, (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date,))
+        rid = cursor.fetchone()[0]
+        self.conn.commit()
+        query = "insert into water(resource_id,water_size,water_brand,water_type,water_unitsize) values(%s, %s, %s, %s, %s)"
+        cursor.execute(query, (rid,water_size,water_brand,water_type,water_unitsize,))
+        self.conn.commit()
+        cursor.close()
+        return rid

@@ -28,6 +28,18 @@ class cannedFoodDAO:
             result.append(row)
         return result
 
+    def getResourceByKeyWord(self , keyword):
+        cursor = self.conn.cursor()
+        query = "select * " \
+                "from cannedFood natural join resource where resource_name  ~*  %s  OR resource_description ~* %s; "
+
+        keyword = "(" + keyword + ")"
+        cursor.execute(query , (keyword,keyword,))
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
+
     # def getcannedFoodByType(self, color):
     #     result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat','yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]]
     #     return result

@@ -47,6 +47,11 @@ def insertResource():
 def addPaymentMethod():
     return 200
     
+@app.route('/almacenespr/searchByType/<string:resource_type>/<string:keyword>', methods=['GET'])
+def getByType(resource_type , keyword):
+    handler = ResourceHandler().getHandler(resource_type)
+
+    return handler.getAllResourceByKeyword(keyword)
 
 
 # Register user route Unused for phase 2
@@ -206,42 +211,49 @@ def getResourcesbyId(resource_id):
 
 @app.route('/almacenespr/resource/<string:resource_type>/<int:resource_type_id>', methods=['GET'])
 def getResourcesByTypeId(resource_type, resource_type_id):
-    if resource_type == 'fuel':
-        return FuelHandler().getFuelById(resource_type_id)
-    if resource_type == 'ice':
-        return IceHandler().getIceById(resource_type_id)
-    if resource_type == 'clothing':
-        return ClothingHandler().getClothesgById(resource_type_id)
-    if resource_type == 'battery':
-        return BatteryHandler().getBatteryById(resource_type_id)
-    if resource_type == 'babyfood':
-        return babyFoodHandler().getbabyFoodById(resource_type_id)
-    if resource_type == 'cannedfood':
-        return cannedFoodHandler().getcannedFoodById(resource_type_id)
-    if resource_type == 'dryfood':
-        return dryFoodHandler().getdryFoodById(resource_type_id)
-    if resource_type == 'heavyequipment':
-        return HeavyEquipmentHandler().getHeavyEquimentById(resource_type_id)
-    if resource_type == 'medication':
-        return MedicationHandler().getMedicationById(resource_type_id)
-    if resource_type == 'tools':
-        return PowerToolsHandler().getToolById(resource_type_id)
-    if resource_type == 'water':
-        return WaterHandler().getWaterById(resource_type_id)
-    if resource_type == 'medicaldevices':
-        return MedicalDevicesHandler().getMedicalDevicesById(resource_type_id)
-    if resource_type == 'powergenerator':
-        return PowerGeneratorHandler().getPowerGeneratorById(resource_type_id)
-    if resource_type == 'hygiene':
-        return HygieneHandler().getHygieneById(resource_type_id)
+    if request.method == 'GET':
+        if resource_type == 'fuel':
+            return FuelHandler().getFuelById(resource_type_id)
+        if resource_type == 'ice':
+            return IceHandler().getIceById(resource_type_id)
+        if resource_type == 'clothing':
+            return ClothingHandler().getClothesgById(resource_type_id)
+        if resource_type == 'battery':
+            return BatteryHandler().getBatteryById(resource_type_id)
+        if resource_type == 'babyfood':
+            return babyFoodHandler().getbabyFoodById(resource_type_id)
+        if resource_type == 'cannedfood':
+            return cannedFoodHandler().getcannedFoodById(resource_type_id)
+        if resource_type == 'dryfood':
+            return dryFoodHandler().getdryFoodById(resource_type_id)
+        if resource_type == 'heavyequipment':
+            return HeavyEquipmentHandler().getHeavyEquimentById(resource_type_id)
+        if resource_type == 'medication':
+            return MedicationHandler().getMedicationById(resource_type_id)
+        if resource_type == 'tools':
+            return PowerToolsHandler().getToolById(resource_type_id)
+        if resource_type == 'water':
+            return WaterHandler().getWaterById(resource_type_id)
+        if resource_type == 'medicaldevices':
+            return MedicalDevicesHandler().getMedicalDevicesById(resource_type_id)
+        if resource_type == 'powergenerator':
+            return PowerGeneratorHandler().getPowerGeneratorById(resource_type_id)
+        if resource_type == 'hygiene':
+            return HygieneHandler().getHygieneById(resource_type_id)
 
-    else:
-        return ResourceHandler().getAllByType(resource_type)
+        else:
+            return ResourceHandler().getAllByType(resource_type)
 
 
-@app.route('/almacenespr/resource/<string:resource_type>', methods=['GET'])
+
+
+@app.route('/almacenespr/resource/<string:resource_type>', methods=['GET', 'POST'])
 def getResources(resource_type):
-    return ResourceHandler().getAllByType(resource_type)
+    if request.method == 'GET':
+        return ResourceHandler().getAllByType(resource_type)
+    if request.method == 'POST':
+        if resource_type == 'water':
+            return WaterHandler().insert(request.json)
 
 
 @app.route('/almacenespr/available/<string:resource_type>/<string:search_keyword>', methods=['GET'])
