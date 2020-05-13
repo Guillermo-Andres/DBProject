@@ -1,6 +1,5 @@
 from flask import jsonify
 from dao.request import RequestDAO
-from handler.ResourceHandler import ResourceHandler
 
 
 # request attributes: request_id, request_price, request_location, request_quantity
@@ -29,6 +28,14 @@ class RequestHandler:
                   }
         return result
 
+    def build_reqs_stats_per_date_dict(self, row):
+        result = {
+            'resource_name': row[0],
+            'number_of_requests': row[1],
+            'request_date': row[2]
+        }
+        return result
+
     def build_request_attributes(self, request_id, request_price, request_location, request_quantity):
         result = {'request_id': request_id,
                   'request_price': request_price,
@@ -45,7 +52,7 @@ class RequestHandler:
             result_list.append(result)
         return jsonify(requests=result_list)
 
-    def getAllRequestByKeyword(self , keyword):
+    def getAllRequestByKeyword(self, keyword):
         dao = RequestDAO()
         requests_list = dao.getRequestByKeyWord(keyword)
         result_list = []
@@ -53,10 +60,6 @@ class RequestHandler:
             result = self.build_request_and_resource_and_consumer_makesRequest_dict(row)
             result_list.append(result)
         return jsonify(requests=result_list)
-
-
-        
-
 
     def getRequestById(self, request_id):
         dao = RequestDAO()
@@ -67,32 +70,25 @@ class RequestHandler:
             request = self.build_request_and_resource_and_consumer_makesRequest_dict(row)
             return request
 
-    def insert(self, type , keyword , consumer_id, date ):
-        """ Flow of events of adding request 
-        1) user makes the request 
-        2) add the request
-        3) is item in inventory ? 
-            yes) make order
-                2) mark request as fufilled 
-                1)return order 
-            no ) return request 
-        """
-
+    def getRequestStatsPerDay(self):
         dao = RequestDAO()
-        dao.insert(type , consumer_id ,  date)
-        handler = ResourceHandler().getHandler(type)
-        resources = handler.getByKeyword() # esto es un json , como desmontarlo ?
+        request_list = dao.getRequestStatsPerDay()
+        result_list = []
+        for row in request_list:
+            result = self.build_reqs_stats_per_date_dict(row)
+            result_list.append(result)
+        return jsonify(request=result_list)
 
-  
+    def getRequestStatsPerWeek(self):
+        dao = RequestDAO()
+        request_list = dao.getRequestStatsPerWeek()
+        result_list = []
+        for row in request_list:
+            result = self.build_reqs_stats_per_date_dict(row)
+            result_list.append(result)
+        return jsonify(request=result_list)
 
-
-
-        #TODO check for resource to make order
-
-        
-
-        
-
+    def insert(self, item):
         return jsonify(request=item), 200
 
     def delete(self, item):
