@@ -8,7 +8,7 @@ class PowerToolsHandler:
         result = {}
         result['resource_id'] = row[0]
         result['tool_id'] = row[0]
-        result['type'] = row[1]
+        result['tools_type'] = row[1]
         result['name']=row[2]
         result['price'] = row[3]
         result['location'] = row[4]
@@ -17,15 +17,17 @@ class PowerToolsHandler:
 
         return result
 
+    def build_attribute_dict (self, ttype,rname,rprice,resource_location,resource_quantity,resource_date, resource_description):
+        item = {}
+        item['tools_type'] = ttype
+        item['resource_name'] = rname
+        item['resource_price'] = rprice
+        item['resource_location'] = resource_location
+        item['resource_quantity'] = resource_quantity
+        item['resource_date'] = resource_date
+        item['resource_description'] = resource_description
 
-    def getAllResourceByKeyword(self , keyword):
-        dao = ToolsDAO()
-        Resources_list = dao.getResourceByKeyWord(keyword)
-        result_list = []
-        for row in Resources_list:
-            result = self.build_Tools_dict(row)
-            result_list.append(result)
-        return jsonify(Resources=result_list)
+
 
 
     def getAllTools(self):
@@ -55,30 +57,18 @@ class PowerToolsHandler:
             result_list.append(result)
         return jsonify(Tools=result_list)
 
-    # def getToolByPrice(self, color):
-    #     dao = ToolsDAO()
-    #     tools_list = dao.getAllTools()
-    #     result_list = []
-    #     for row in tools_list:
-    #         result = self.build_Tools_dict(row)
-    #         result_list.append(result)
-    #     return jsonify(Tools=result_list)
-    #
-    # def getToolByLocation(self, color):
-    #     dao = ToolsDAO()
-    #     tools_list = dao.getAllTools()
-    #     result_list = []
-    #     for row in tools_list:
-    #         result = self.build_Tools_dict(row)
-    #         result_list.append(result)
-    #     return jsonify(Tools=result_list)
 
-    def insert(self,item):
-        return jsonify(Tools= item) ,200
-
-    def delete(self,item):
-        return jsonify(Tools= item) ,200
-
-
-    def update(self,item):
-        return jsonify(Tools= item) ,200
+    def insert(self, item):
+        ttype = item['tools_type']
+        rname = item['resource_name']
+        rprice = item['resource_price']
+        resource_location = item['resource_location']
+        resource_quantity = item['resource_quantity']
+        resource_date = item['resource_date']
+        resource_description = item['resource_description']
+        if ttype and rname and rprice and resource_location and resource_quantity and resource_date and resource_description:
+            dao = ToolsDAO()
+            rid = dao.insert(rname, rprice,resource_location,resource_quantity,resource_description,resource_date,ttype)
+            return jsonify(Tools=self.build_attribute_dict(ttype,rname,rprice,resource_location,resource_quantity,resource_date, resource_description)), 201
+        else:
+            return jsonify(Error="Unexpected attributes in post request"), 400

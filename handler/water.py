@@ -42,6 +42,7 @@ class WaterHandler:
         water = dao.getAllWater()
         result_list = []
         for row in water:
+            print(row)
             result = self.build_water_dict(row)
             result_list.append(result)
 
@@ -76,3 +77,13 @@ class WaterHandler:
             return jsonify(water=self.build_attribute_dict(wsize,wbrand,wtype,wunitsz,rname,rprice,resource_location,resource_quantity,resource_date, resource_description)), 201
         else:
             return jsonify(Error="Unexpected attributes in post request"), 400
+
+
+    def getAllResourceByKeyword(self , keyword):
+        dao = WaterDAO()
+        Resources_list = dao.getResourceByKeyWord(keyword)
+        result_list = []
+        for row in Resources_list:
+            result = self.build_Water_dict(row)
+            result_list.append(result)
+        return jsonify(Resources=result_list)

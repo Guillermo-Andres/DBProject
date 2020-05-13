@@ -19,7 +19,6 @@ from flask import jsonify
 
 class ResourceHandler:
 
-
     def build_resource_dict(self , row):
         result = {}
         result['resource_i'] = row[0]
@@ -32,6 +31,7 @@ class ResourceHandler:
         return result
 
     def getAllByType(self , type):
+        print(type)
         if(type == 'babyfood'):
             return babyFoodHandler().getAllbabyFood()
         elif(type == 'dryfood'):
@@ -63,39 +63,6 @@ class ResourceHandler:
 
         else:
             return MedicationHandler().getAllMedication()
-
-    def getHandler(self , type):
-        if(type == 'babyfood'):
-            return babyFoodHandler()
-        elif(type == 'dryfood'):
-            return dryFoodHandler()
-        elif(type == 'cannedfood'):
-            return cannedFoodHandler()
-        elif(type == 'medication'):
-            return MedicationHandler()
-        elif(type == 'batteries'):
-            return BatteryHandler()
-        elif(type == 'clothing'):
-            return ClothingHandler()
-        elif(type == 'heavyequipment'):
-            return HeavyEquipmentHandler()
-        elif(type == 'ice'):
-            return IceHandler()
-        elif(type == 'powertools'):
-            return PowerToolsHandler()
-        elif(type == 'fuel'):
-            return FuelHandler()
-        elif(type == 'medicaldevices'):
-            return MedicalDevicesHandler()
-        elif(type == 'powergenerator'):
-            return PowerGeneratorHandler()
-        elif(type == 'hygiene'):
-            return HygieneHandler()
-        elif(type == 'water'):
-            return WaterHandler()
-
-        else:
-            return MedicationHandler()
 
     def getAll(self):
         items = ResourceDAO().getAllResource()
@@ -153,4 +120,3 @@ class ResourceHandler:
             result = self.build_resource_dict(row)
             result_list.append(result)
         return jsonify(Resources=result_list)
-
