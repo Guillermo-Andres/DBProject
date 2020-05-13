@@ -21,6 +21,15 @@ class WaterHandler:
 
         return waterdict
 
+    def getAllResourceByKeyword(self , keyword):
+        dao = WaterDAO()
+        Resources_list = dao.getResourceByKeyWord(keyword)
+        result_list = []
+        for row in Resources_list:
+            result = self.build_water_dict(row)
+            result_list.append(result)
+        return jsonify(Resources=result_list)
+
 
     def getAllWater(self):
         dao = WaterDAO()

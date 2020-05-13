@@ -18,6 +18,15 @@ class PowerToolsHandler:
         return result
 
 
+    def getAllResourceByKeyword(self , keyword):
+        dao = ToolsDAO()
+        Resources_list = dao.getResourceByKeyWord(keyword)
+        result_list = []
+        for row in Resources_list:
+            result = self.build_Tools_dict(row)
+            result_list.append(result)
+        return jsonify(Resources=result_list)
+
 
     def getAllTools(self):
         dao = ToolsDAO()

@@ -27,6 +27,18 @@ class BatteryDAO:
             result.append(row)
         return result
 
+    def getResourceByKeyWord(self , keyword):
+        cursor = self.conn.cursor()
+        query = "select * " \
+                "from batteries natural join resource where resource_name  ~*  %s  OR resource_description ~* %s; "
+
+        keyword = "(" + keyword + ")"
+        cursor.execute(query , (keyword,keyword,))
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
+
     # def getBatteryByType(self, type):
     #     result = [[1,'AA',12,3.99,'bayamon',1],[2,'DD',4,5.99,'carolina', 5],[3,'AAA',12,6.99,'ponce',24]]
     #     return result

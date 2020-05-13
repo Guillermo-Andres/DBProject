@@ -32,6 +32,19 @@ class HygieneDAO:
         result = cursor.fetchone()
         return result
 
+
+    def getResourceByKeyWord(self , keyword):
+        cursor = self.conn.cursor()
+        query = "select * " \
+                "from hygiene natural join resource where resource_name  ~*  %s  OR resource_description ~* %s; "
+
+        keyword = "(" + keyword + ")"
+        cursor.execute(query , (keyword,keyword,))
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
+
     def getHygieneByExpirationDate(self, expiration_date):
         return self.getAllHygiene()
 

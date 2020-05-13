@@ -37,6 +37,17 @@ class ClothingDAO:
             result.append(row)
         return result
 
+    def getResourceByKeyWord(self , keyword):
+        cursor = self.conn.cursor()
+        query = "select * " \
+                "from clothing natural join resource where resource_name  ~*  %s  OR resource_description ~* %s; "
+
+        keyword = "(" + keyword + ")"
+        cursor.execute(query , (keyword,keyword,))
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
     # def getClothesByType(self, color):
     #     result = [[1,'small','blue','unisex','cotton','solid blue short',6.99,'gurabo',1],[2,'medium','blue','unisex','jean','regular denim jeans',15.99,'caguas',2],[3,'XL','black','Male','cotton','solid Polo tee',0,'Quebadillas',1]]
     #     return result

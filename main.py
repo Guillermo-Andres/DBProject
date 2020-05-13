@@ -47,6 +47,11 @@ def insertResource():
 def addPaymentMethod():
     return 200
     
+@app.route('/almacenespr/searchByType/<string:resource_type>/<string:keyword>', methods=['GET'])
+def getByType(resource_type , keyword):
+    handler = ResourceHandler().getHandler(resource_type)
+
+    return handler.getAllResourceByKeyword(keyword)
 
 
 # Register user route Unused for phase 2

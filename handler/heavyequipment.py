@@ -15,12 +15,17 @@ class HeavyEquipmentHandler:
         result['quantity'] = row[6]
         result['description'] = row[7]
 
-
-
-
-
-
         return result
+
+
+    def getAllResourceByKeyword(self , keyword):
+        dao = HeavyEquipmentDAO()
+        Resources_list = dao.getResourceByKeyWord(keyword)
+        result_list = []
+        for row in Resources_list:
+            result = self.build_heavyE_dict(row)
+            result_list.append(result)
+        return jsonify(Resources=result_list)
 
     def getAllHeavyEquipment(self):
 
