@@ -19,9 +19,9 @@ class ToolsDAO:
             result.append(row)
         return result
 
-    def getToolById(self, pid):
+    def getToolById(self, id):
         cursor = self.conn.cursor()
-        query = "select * from tools natural inner join resource where fuel_id = %s;"
+        query = "select * from tools natural inner join resource where tools_id = %s;"
         cursor.execute(query, (id,))
         result = []
         for row in cursor:

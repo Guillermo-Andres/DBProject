@@ -48,7 +48,7 @@ class ResourceHandler:
             return HeavyEquipmentHandler().getAllHeavyEquipment()
         elif(type == 'ice'):
             return IceHandler().getAllIce()
-        elif(type == 'powertools'):
+        elif(type == 'tools'):
             return PowerToolsHandler().getAllTools()
         elif(type == 'fuel'):
             return FuelHandler().getAllFuel()

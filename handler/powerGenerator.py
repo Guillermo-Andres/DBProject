@@ -13,14 +13,13 @@ class PowerGeneratorHandler:
                   'resource_price': row[4],
                   'resource_location': row[5],
                   'resource_quantity': row[6],
-                  'resource_description': row[7]
+                  'resource_description': row[7],
+                  'resource_date': row[8]
                   }
         return result
 
-    def build_powerGenerator_attributes(self, powerGenerator_id, resource_id, powerGenerator_type):
-        result = {'powerGenerator_id': powerGenerator_id,
-                  'resource_id': resource_id,
-                  'powerGenerator_type': powerGenerator_type}
+    def build_powerGenerator_attributes(self, powerGenerator_type):
+        result = {   'powerGenerator_type': powerGenerator_type   }
         return result
 
 
@@ -53,10 +52,16 @@ class PowerGeneratorHandler:
             return powerGen
 
     def insert(self, item):
-        return jsonify(powerGenerator=item), 200
-
-    def delete(self, item):
-        return jsonify(powerGenerator=item), 200
-
-    def update(self, item):
-        return jsonify(powerGenerator=item), 200
+        ptype = item['powerGenerator_type']
+        rname = item['resource_name']
+        rprice = item['resource_price']
+        resource_location = item['resource_location']
+        resource_quantity = item['resource_quantity']
+        resource_date = item['resource_date']
+        resource_description = item['resource_description']
+        if ptype and rname and rprice and resource_location and resource_quantity and resource_date and resource_description:
+            dao = PowerGeneratorDAO()
+            rid = dao.insert(rname, rprice,resource_location,resource_quantity,resource_description,resource_date,ptype)
+            return jsonify(PowerGenerator=self.build_powerGenerator_attributes(ptype)), 201
+        else:
+            return jsonify(Error="Unexpected attributes in post request"), 400

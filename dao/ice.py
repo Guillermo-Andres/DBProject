@@ -52,23 +52,14 @@ class IceDAO:
             result.append(row)
         return result
 
-    # def getIceBySize(self, size):
-    #     result = [[1,'8 Oz',1, '8 Oz bag of ice',0,'Guayanilla'],[2,'6 Oz',1, '6 Oz bag of ice',4.99,'Humacao'],[3,'12 Oz',6, '12 Oz bag of ice',0,'Coamo',0]]
-    #     return result
-    #
-    # def getIceByPrice(self,price):
-    #     result = [[1,'8 Oz',1, '8 Oz bag of ice',0,'Guayanilla'],[2,'6 Oz',1, '6 Oz bag of ice',4.99,'Humacao'],[3,'12 Oz',6, '12 Oz bag of ice',0,'Coamo',0]]
-    #     return result
-    #
-
-    def insert(self, pname, pcolor, pmaterial, pprice):
-        result = [[1,'8 Oz',1, '8 Oz bag of ice',0,'Guayanilla'],[2,'6 Oz',1, '6 Oz bag of ice',4.99,'Humacao'],[3,'12 Oz',6, '12 Oz bag of ice',0,'Coamo',0]]
-        return result
-
-    def delete(self, pid):
-        result = [[1,'8 Oz',1, '8 Oz bag of ice',0,'Guayanilla'],[2,'6 Oz',1, '6 Oz bag of ice',4.99,'Humacao'],[3,'12 Oz',6, '12 Oz bag of ice',0,'Coamo',0]]
-        return result
-
-    def update(self, pid, pname, pcolor, pmaterial, pprice):
-        result = [[1,'8 Oz',1, '8 Oz bag of ice',0,'Guayanilla'],[2,'6 Oz',1, '6 Oz bag of ice',4.99,'Humacao'],[3,'12 Oz',6, '12 Oz bag of ice',0,'Coamo',0]]
-        return result
+    def insert(self, size, resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date):
+        cursor = self.conn.cursor()
+        query = "Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values (%s, %s, %s, %s, %s, %s) returning resource_id;"
+        cursor.execute(query, (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date,))
+        rid = cursor.fetchone()[0]
+        self.conn.commit()
+        query = "insert into ice (resource_id,ice_size) values (%s, %s);"
+        cursor.execute(query, (rid,size,))
+        self.conn.commit()
+        cursor.close()
+        return rid
