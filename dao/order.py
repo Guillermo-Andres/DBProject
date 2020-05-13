@@ -12,7 +12,7 @@ class OrderDAO:
 
     def getAllOrders(self):
         cursor = self.conn.cursor()
-        query = "select * from orders natural join supplier natural join resource natural join supplies natural join request natural join makesRequest natural join (select consumer_id , consumer_severety from consumer)as cons natural join paymentMethod natural join paysFor;"
+        query = "select * from orders natural join (select supplier_id from supplier) as sup natural join resource natural join supplies natural join request natural join makesRequest natural join (select consumer_id , consumer_severety from consumer)as cons natural join paymentMethod natural join paysFor; "
         cursor.execute(query)
         result = []
         for row in cursor:
@@ -45,7 +45,7 @@ class OrderDAO:
     def getPurchased(self):
         cursor = self.conn.cursor()
         query = "select * " \
-                "from orders natural join supplier natural join resource natural join supplies natural join request natural join makesRequest natural join (select consumer_id , consumer_severety from consumer)as cons natural join paymentMethod natural join paysFor " \
+                "from orders natural join (select supplier_id from supplier) as sup natural join resource natural join supplies natural join request natural join makesRequest natural join (select consumer_id , consumer_severety from consumer)as cons natural join paymentMethod natural join paysFor " \
                 "where order_amount <> 0;"
         cursor.execute(query,)
         result = []

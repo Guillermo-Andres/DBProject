@@ -45,6 +45,17 @@ class MedicalDevicesHandler:
     def getMedicalDevicesByPrice(self, price):
         return self.getAllmedicalDevices()
 
+
+
+    def getAllResourceByKeyword(self , keyword):
+        dao = MedicalDevicesDAO()
+        Resources_list = dao.getResourceByKeyWord(keyword)
+        result_list = []
+        for row in Resources_list:
+            result = self.build_medicalDevices_dict(row)
+            result_list.append(result)
+        return jsonify(Resources=result_list)
+
     def getMedicalDevicesByLocation(self, location):
         return self.getAllmedicalDevices()
 

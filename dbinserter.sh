@@ -92,63 +92,68 @@ insert into admin(person_id) values (29);
 insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values ('Jenny', 'Humphrey', '12-06-75', 'San Lorenzo', '123123', 'jh@yahoo.com');
 insert into admin(person_id) values (30);
 
-Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('skyhighbannanas',24.99,'Luquillo', 10, '300mg edible', '2024-12-12');
-insert into babyFood(resource_id,babyFood_type,babyFood_is_perishable,babyFood_ingrendients,babyFood_unitsize,babyFood_expDate) values ( (SELECT resource_id from resource where resource_id = '1'),'gerber',TRUE,'bannana,ganja',10,'2024-12-12');
+Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('skyhighbannanas',24.99,'Luquillo', 10, '300mg edible', '2019-12-12');
+insert into babyFood(resource_id,babyFood_type,babyFood_is_perishable,babyFood_ingrendients,babyFood_unitsize,babyFood_expDate) values ( (SELECT resource_id from resource where resource_id = '1'),'gerber',TRUE,'bannana,ganja',10,'2019-12-12');
 
-Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('skyhighbannanas',0,'Luquillo', 10, '300mg edible', '2024-12-12');
-insert into babyFood(resource_id,babyFood_type,babyFood_is_perishable,babyFood_ingrendients,babyFood_unitsize,babyFood_expDate) values ( (SELECT resource_id from resource where resource_id = '2'),'gerber',TRUE,'bannana,ganja',10,'2024-12-12');
-Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('skyhighbannanas',24.99,'Luquillo', 10, '300mg edible', '2024-12-12');
-insert into babyFood(resource_id,babyFood_type,babyFood_is_perishable,babyFood_ingrendients,babyFood_unitsize,babyFood_expDate) values ( (SELECT resource_id from resource where resource_id = '3'),'gerber',TRUE,'bannana,ganja',10,'2024-12-12');
-Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('Salch',4.99,'Luquillo', 10, 'saben fo', '2024-12-12');
-insert into cannedFood(resource_id,cannedFood_type,cannedFood_is_perishable,cannedFood_ingrendients,cannedFood_unitsize,cannedFood_expDate) values ( (SELECT resource_id from resource where resource_id = '4'),'Carmela',TRUE,'no vaca,no pork',10,'2024-12-12');
-Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('beef jerky',7.99,'Caguas', 10, 'saben cool', '2024-12-12');
-insert into dryFood(resource_id,dryFood_type,dryFood_is_perishable,dryFood_ingrendients,dryFood_unitsize,dryFood_expDate) values ( (SELECT resource_id from resource where resource_id = '5'),'Wills',FALSE,' vaca, pork',10,'2024-12-12');
-Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('heavy stuff',179.99,'Caguas', 15, 'puff pass', '2024-12-12');
+Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('skyhighbannanas',0,'Luquillo', 10, '300mg edible', '2019-12-12');
+insert into babyFood(resource_id,babyFood_type,babyFood_is_perishable,babyFood_ingrendients,babyFood_unitsize,babyFood_expDate) values ( (SELECT resource_id from resource where resource_id = '2'),'gerber',TRUE,'bannana,ganja',10,'2019-12-12');
+Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('skyhighbannanas',24.99,'Luquillo', 10, '300mg edible', '2019-12-12');
+insert into babyFood(resource_id,babyFood_type,babyFood_is_perishable,babyFood_ingrendients,babyFood_unitsize,babyFood_expDate) values ( (SELECT resource_id from resource where resource_id = '3'),'gerber',TRUE,'bannana,ganja',10,'2019-12-12');
+Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('Salch',4.99,'Luquillo', 10, 'saben fo', '2019-12-12');
+insert into cannedFood(resource_id,cannedFood_type,cannedFood_is_perishable,cannedFood_ingrendients,cannedFood_unitsize,cannedFood_expDate) values ( (SELECT resource_id from resource where resource_id = '4'),'Carmela',TRUE,'no vaca,no pork',10,'2019-12-12');
+Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('beef jerky',7.99,'Caguas', 10, 'saben cool', '2019-12-12');
+insert into dryFood(resource_id,dryFood_type,dryFood_is_perishable,dryFood_ingrendients,dryFood_unitsize,dryFood_expDate) values ( (SELECT resource_id from resource where resource_id = '5'),'Wills',FALSE,' vaca, pork',10,'2019-12-12');
+Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('heavy stuff',179.99,'Caguas', 15, 'puff pass', '2019-12-12');
 insert into heavyEquipment (resource_id,heavyequipment_type) values( (SELECT resource_id from resource where resource_id = '6'),'veryheavy');
-Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('Gelato OG',40.00,'La Perla', 15, 'azota', '2024-12-12');
+Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('Gelato OG',40.00,'La Perla', 15, 'azota', '2019-12-12');
 insert into medication
 (resource_id,medication_ingredients,medication_type,medication_expdate) values ((SELECT resource_id from resource where resource_id = 7), 'ganja','natural','NA');
-Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('Taladro brr',140.00,'Carolina', 25, 'suena duro', '2024-12-12');
+Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('Taladro brr',140.00,'Carolina', 25, 'suena duro', '2019-12-12');
 insert into tools
 (resource_id,tools_type) values ((SELECT resource_id from resource where resource_id = 8), 'power');
-Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('Evian',40.00,'Guaynabo', 35, 'hidrata', '2024-12-12');
+Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('Evian',40.00,'Guaynabo', 35, 'hidrata', '2019-12-12');
 insert into water
 (resource_id,water_size,water_brand,water_type,water_unitsize)
 values ((SELECT resource_id from resource where resource_id = 9),'big','Fiji','liquid','small');
-Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('Hot Ice',140.00,'Loiza', 45, 'witchcraft', '2024-12-12');
+Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('Hot Ice',140.00,'Loiza', 45, 'witchcraft', '2019-12-12');
 Insert into ice (resource_id,ice_size) values ((SELECT resource_id from resource where resource_id=10), '12 Oz.' );
-Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('Durakacell ',7.00,'Fajardo', 15, 'azota', '2024-12-12');
+Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('Durakacell ',7.00,'Fajardo', 15, 'azota', '2019-12-12');
 insert into batteries (resource_id,batteries_type,batteries_quantityPerUnit) values((SELECT resource_id from resource where resource_id=11),'AA',8);
-Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('Camisa linda',15.00,'Ponce', 45, 'buena tela', '2024-12-12');
+Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('Camisa linda',15.00,'Ponce', 45, 'buena tela', '2019-12-12');
 insert into clothing (resource_id,clothing_size,clothing_color,clothing_gender,clothing_material) values ((SELECT resource_id from resource where resource_id ='12'), 'M','Blue','M','Cotton');
-Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('Gasolina',15.00,'Ponce', 45, 'jode motor', '2024-12-12');
+Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('Gasolina',15.00,'Ponce', 45, 'jode motor', '2019-12-12');
 insert into fuel (resource_id, fuel_type) values((SELECT resource_id from resource where resource_id ='13'), 'Liquid');
-Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('Marcapaso',285.00,'Maya', 80, 'guillo need', '2024-12-12');
+Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('Marcapaso',285.00,'Maya', 80, 'guillo need', '2019-12-12');
 insert into medicalDevices (resource_id, medicalDevices_type) values ((SELECT resource_id from resource where resource_id =14),'Electronic');
-Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('ToallaS',10.00,'Ponce', 45, 'esencial', '2024-12-12');
+Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('ToallaS',10.00,'Ponce', 45, 'esencial', '2019-12-12');
 insert into hygiene (resource_id,hygiene_quantityperunit,hygiene_brand) values((select resource_id from resource where resource_id='15'),13,'Nosotras');
-Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('Paneles',150.00,'Tokyo', 45, 'bueno', '2024-12-12');
+Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('Paneles',150.00,'Tokyo', 45, 'bueno', '2019-12-12');
 insert into powerGenerator (resource_id,powerGenerator_type) values ((SELECT resource_id from resource where resource_id = '16'),'Planta');
 
 
-insert into request(resource_id , request_date) values (4 ,'2024-12-12');
+insert into request(resource_id , request_date) values (4 ,'2019-11-11');
 insert into makesRequest(consumer_id , request_id) values (3 , 1);
 insert into supplies(supplier_id , resource_id) values(5,4);
 insert into paymentMethod (paymentMethod_type , consumer_id) values ('cash' , 3);
-insert into orders(order_amount ,  order_date , order_status , supplier_id) values((select resource_price from resource where resource_id = 4) , '2024-12-12', 'complete' , 5);
+insert into orders(order_amount ,  order_date , order_status , supplier_id , resource_id) values((select resource_price from resource where resource_id = 4) , '2019-12-12', 'complete' , 5 , 4);
 insert into paysFor(paymentMethod_id , order_id) values (1,1);
 
-insert into request(resource_id , request_date) values (2 ,'2024-12-12');
+insert into request(resource_id , request_date) values (2 ,'2019-10-15');
 insert into makesRequest(consumer_id , request_id) values (4 , 2);
 insert into supplies(supplier_id , resource_id) values(7,2);
 insert into paymentMethod (paymentMethod_type , consumer_id) values ('visa' , 4);
-insert into orders(order_amount ,  order_date , order_status , supplier_id) values((select resource_price from resource where resource_id = 2) , '2024-12-12', 'complete' , 7);
+insert into orders(order_amount ,  order_date , order_status , supplier_id , resource_id) values((select resource_price from resource where resource_id = 2) , '2019-12-12', 'complete' , 7 , 2);
 insert into paysFor(paymentMethod_id , order_id) values (2,2);
 
-insert into request(resource_id , request_date) values (7 ,'2024-12-12');
+insert into request(resource_id , request_date) values (7 ,'2019-12-12');
 insert into makesRequest(consumer_id , request_id) values (4 , 3);
 insert into supplies(supplier_id , resource_id) values(8,7);
-insert into paymentMethod (paymentMethod_type , consumer_id) values ('visa' , 4);
-insert into orders(order_amount ,  order_date , order_status , supplier_id) values((select resource_price from resource where resource_id = 7) , '2024-12-12', 'complete' , 8);
+insert into orders(order_amount ,  order_date , order_status , supplier_id, resource_id) values((select resource_price from resource where resource_id = 7) , '2019-12-12', 'complete' , 8 , 7 );
 insert into paysFor(paymentMethod_id , order_id) values (2,3);
+
+insert into request(resource_id , request_date) values (1 ,'2019-10-16');
+insert into makesRequest(consumer_id , request_id) values (4 , 4);
+insert into supplies(supplier_id , resource_id) values(8,1);
+insert into orders(order_amount ,  order_date , order_status , supplier_id, resource_id) values((select resource_price from resource where resource_id = 1) , '2019-12-12', 'complete' , 8 , 1);
+insert into paysFor(paymentMethod_id , order_id) values (2,4);
 "|psql almacen -U alma -W -h 127.0.0.1 ;

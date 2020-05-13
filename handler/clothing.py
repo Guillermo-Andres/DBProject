@@ -21,6 +21,18 @@ class ClothingHandler:
         return result
 
 
+
+
+
+    def getAllResourceByKeyword(self , keyword):
+        dao = ClothingDAO()
+        Resources_list = dao.getResourceByKeyWord(keyword)
+        result_list = []
+        for row in Resources_list:
+            result = self.build_Clothes_dict(row)
+            result_list.append(result)
+        return jsonify(Resources=result_list)
+
     def getAllClothes(self):
         dao = ClothingDAO()
         clothes_list = dao.getAllClothes()

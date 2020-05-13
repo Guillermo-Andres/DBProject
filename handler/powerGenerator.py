@@ -23,6 +23,17 @@ class PowerGeneratorHandler:
                   'powerGenerator_type': powerGenerator_type}
         return result
 
+
+
+    def getAllResourceByKeyword(self , keyword):
+        dao = PowerGeneratorDAO()
+        Resources_list = dao.getResourceByKeyWord(keyword)
+        result_list = []
+        for row in Resources_list:
+            result = self.build_powerGenerator_dict(row)
+            result_list.append(result)
+        return jsonify(Resources=result_list)
+
     def getAllPowerGenerator(self):
         dao = PowerGeneratorDAO()
         resource_list = dao.getAllPowerGenerators()

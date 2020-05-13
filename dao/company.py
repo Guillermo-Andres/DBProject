@@ -17,6 +17,7 @@ class CompanyDAO:
             result.append(row)
         return result
     
+    
 
     def getCompanyByID(self , cid):
         cursor = self.conn.cursor()

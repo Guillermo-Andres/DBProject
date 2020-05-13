@@ -28,9 +28,30 @@ app = Flask(__name__)
 CORS(app)
 
 
+
+
 @app.route('/')
 def sendToLogin():
     return render_template("home.html")
+
+
+@app.route('/almacenes/consumer/<int:consumer_id>/request/<string:resource_type>/<string:keyword>' , methods=['POST'])
+def requestResource(consumer_id , resource_type , keyword):
+    return 200
+
+@app.route('/almacenespr/supplier/<int:supplierid>/<string:resource_type>/announce' , methods= ['POST'])
+def insertResource():
+    return 200
+
+@app.route('/almacenespr/consumer/<int:consumer_id>/addPaymentMethod' , methods=['POST'])
+def addPaymentMethod():
+    return 200
+    
+@app.route('/almacenespr/searchByType/<string:resource_type>/<string:keyword>', methods=['GET'])
+def getByType(resource_type , keyword):
+    handler = ResourceHandler().getHandler(resource_type)
+
+    return handler.getAllResourceByKeyword(keyword)
 
 
 # Register user route Unused for phase 2
@@ -67,6 +88,18 @@ def registerAdmin():
         return AdminHandler().getAllAdmins()
     elif request.method == 'POST':
         return AdminHandler().insert(request.get_json())
+
+
+@app.route('/almacenespr/getDailyResourcesRequested', methods=['GET'])
+def getDailyReqs():
+    if request.method == 'GET':
+        return RequestHandler().getRequestStatsPerDay()
+
+
+@app.route('/almacenespr/getWeeklyResourcesRequested', methods=['GET'])
+def getWeeklyReqs():
+    if request.method == 'GET':
+        return RequestHandler().getRequestStatsPerWeek()
 
 
 @app.route('/almacenespr/admin', methods=['POST', 'GET'])
@@ -108,7 +141,7 @@ def getAllSuppliers():
 def orderResources(consumer_id):
     # orders specify if we are requesting, reserving or purchasing depending on its status
     if request.method == 'GET':
-        return OrderHandler().geOrdersByConsumerID(consumer_id)
+        return OrderHandler().getOrdersByConsumerID(consumer_id)
     elif request.method == 'POST':
         # TODO aqui en el futuero hay que llamar varios inserts (orden , contains  , etc...)
         return OrderHandler().insert(request.get_json())
@@ -135,6 +168,7 @@ def viewRequestedByKeyword(keyword):
 def viewResourceByKeyword(keyword):
     return ResourceHandler().getAllResourceByKeyword(keyword)
 
+
 @app.route('/almacenespr/resource', methods=['GET'])
 def viewResourceAll():
     return ResourceHandler().getAll()
@@ -149,7 +183,8 @@ def viewAvailable():
 def viewInStock():
     return ResourceHandler().getResourcesInStock()
 
-@app.route('/almacenespr/orders'  , methods = ['GET'])
+
+@app.route('/almacenespr/orders', methods=['GET'])
 def getAllOrders():
     return OrderHandler().getAllOrders()
 

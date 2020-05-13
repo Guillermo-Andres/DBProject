@@ -17,6 +17,18 @@ class MedicationDAO:
             result.append(row)
         return result
 
+    def getResourceByKeyWord(self , keyword):
+        cursor = self.conn.cursor()
+        query = "select * " \
+                "from medication natural join resource where resource_name  ~*  %s  OR resource_description ~* %s; "
+
+        keyword = "(" + keyword + ")"
+        cursor.execute(query , (keyword,keyword,))
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
+
     def getMedicationById(self, id):
         cursor = self.conn.cursor()
         query = "select * from medication natural inner join resource where medication_id = %s;"

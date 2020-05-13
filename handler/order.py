@@ -14,13 +14,13 @@ class OrderHandler:
                   'order_status': row[8],
                   'request_id': row[3],
                   'resource_id': row[4],
-                  'resource_name':row[10],
-                  'resource_price':row[11],
-                  'resource_location':row[12],
-                  'resource_quantity':row[13],
-                  'resource_description':row[14],
+                  'resource_name':row[9],
+                  'resource_price':row[10],
+                  'resource_location':row[11],
+                  'resource_quantity':row[12],
+                  'resource_description':row[13],
+                  'resource_date':row[14],
                   'request_date': row[15],
-                  'supplier_person_id' : row[9],
                   'paymentmethod_id':row[1],
                   'consumer_id':row[2],
                   'consumer_severity':row[16],
@@ -52,6 +52,9 @@ class OrderHandler:
             result = self.build_order_dict(row)
             result_list.append(result)
         return jsonify(Order=result_list)
+
+
+
 
     def getOrderById(self, order_id):
         dao = OrderDAO()
