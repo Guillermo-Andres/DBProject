@@ -61,8 +61,20 @@ class MedicalDevicesDAO:
     def getMedicalDevicesByBrand(self, brand):
         return self.getAllDiapers()
 
-    def insert(self):
-        return self.getAllDiapers()
+    def insert(self, medicalDevices_type, resource_name, resource_price, resource_city, resource_quantity, resource_description,
+               resource_date):
+        cursor = self.conn.cursor()
+        query = "insert into resource (resource_name,resource_price,resource_city,resource_quantity," \
+                "resource_description, resource_date) values (%s, %s, %s, %s, %s, %s) returning resource_id; "
+        cursor.execute(query, (resource_name, resource_price, resource_city, resource_quantity, resource_description,
+                               resource_date,))
+        rid = cursor.fetchone()[0]
+        self.conn.commit()
+        query = "insert into medicalDevices (resource_id, medicalDevices_type) values (%s, %s);"
+        cursor.execute(query, (rid, medicalDevices_type,))
+        self.conn.commit()
+        cursor.close()
+        return rid
 
     def delete(self):
         return self.getAllDiapers()

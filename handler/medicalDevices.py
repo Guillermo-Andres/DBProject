@@ -24,6 +24,18 @@ class MedicalDevicesHandler:
                   'medicalDevices_description': medicalDevices_description}
         return result
 
+    def build_medicalDevices_attrs(self, medicalDevices_type, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date):
+        result = {
+            'medicalDevices_type': medicalDevices_type,
+            'resource_name': resource_name,
+            'resource_price': resource_price,
+            'resource_city': resource_city,
+            'resource_quantity': resource_quantity,
+            'resource_description': resource_description,
+            'resource_date': resource_date
+        }
+        return result
+
     def getAllMedicalDevices(self):
         dao = MedicalDevicesDAO()
         resource_list = dao.getAllMedicalDevices()
@@ -72,7 +84,19 @@ class MedicalDevicesHandler:
         return self.getAllmedicalDevices()
 
     def insert(self, item):
-        return jsonify(medicalDevices=item), 200
+        medicalDevices_type = item['medicalDevices_type']
+        resource_name = item['resource_name']
+        resource_price = item['resource_price']
+        resource_city = item['resource_city']
+        resource_quantity = item['resource_quantity']
+        resource_description = item['resource_description']
+        resource_date = item['resource_date']
+        if medicalDevices_type and resource_name and resource_price and resource_city and resource_quantity and resource_description and resource_date:
+            dao = MedicalDevicesDAO()
+            rid = dao.insert(medicalDevices_type, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date)
+            return jsonify(medicalDevices=self.build_medicalDevices_attrs(medicalDevices_type, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date))
+        else:
+            return jsonify(Error="Unexpected attributes in POST request"), 400
 
     def delete(self, item):
         return jsonify(medicalDevices=item), 200
