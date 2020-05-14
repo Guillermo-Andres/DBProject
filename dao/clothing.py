@@ -48,29 +48,23 @@ class ClothingDAO:
         for row in cursor:
             result.append(row)
         return result
-    # def getClothesByType(self, color):
-    #     result = [[1,'small','blue','unisex','cotton','solid blue short',6.99,'gurabo',1],[2,'medium','blue','unisex','jean','regular denim jeans',15.99,'caguas',2],[3,'XL','black','Male','cotton','solid Polo tee',0,'Quebadillas',1]]
-    #     return result
-    #
-    # def getClothesByGender(self, material):
-    #     result = [[1,'small','blue','unisex','cotton','solid blue short',6.99,'gurabo',1],[2,'medium','blue','unisex','jean','regular denim jeans',15.99,'caguas',2],[3,'XL','black','Male','cotton','solid Polo tee',0,'Quebadillas',1]]
-    #     return result
-    #
-    # def getClothesByColor(self, material):
-    #     result = [[1,'small','blue','unisex','cotton','solid blue short',6.99,'gurabo',1],[2,'medium','blue','unisex','jean','regular denim jeans',15.99,'caguas',2],[3,'XL','black','Male','cotton','solid Polo tee',0,'Quebadillas',1]]
-    #     return result
-    #
-    # def getClothesByMaterial(self, material):
-    #     result = [[1,'small','blue','unisex','cotton','solid blue short',6.99,'gurabo',1],[2,'medium','blue','unisex','jean','regular denim jeans',15.99,'caguas',2],[3,'XL','black','Male','cotton','solid Polo tee',0,'Quebadillas',1]]
-    #     return result
-    #
-    # def ClothesByPrice(self,price):
-    #     result = [[1,'small','blue','unisex','cotton','solid blue short',6.99,'gurabo',1],[2,'medium','blue','unisex','jean','regular denim jeans',15.99,'caguas',2],[3,'XL','black','Male','cotton','solid Polo tee',0,'Quebadillas',1]]
-    #     return result
 
-    def insert(self, pname, pcolor, pmaterial, pprice):
-        result = [[1,'small','blue','unisex','cotton','solid blue short',6.99,'gurabo',1],[2,'medium','blue','unisex','jean','regular denim jeans',15.99,'caguas',2],[3,'XL','black','Male','cotton','solid Polo tee',0,'Quebadillas',1]]
-        return result
+    def insert(self, clothing_size, clothing_color, clothing_gender, clothing_material, resource_name, resource_price,
+               resource_city, resource_quantity, resource_description, resource_date):
+        cursor = self.conn.cursor()
+        query = "insert into resource (resource_name,resource_price,resource_city,resource_quantity," \
+                "resource_description, resource_date) values (%s, %s, %s, %s, %s, %s) returning resource_id; "
+        cursor.execute(query, (resource_name, resource_price, resource_city, resource_quantity, resource_description,
+                               resource_date,))
+        rid = cursor.fetchone()[0]
+        self.conn.commit()
+        query = "insert into clothing (resource_id, clothing_size, clothing_color, clothing_gender, " \
+                "clothing_material) values (%s, %s, %s, %s, %s) "
+        cursor.execute(query, (rid, clothing_size, clothing_color, clothing_gender, clothing_material,))
+        self.conn.commit()
+        cursor.close()
+        return rid
+
 
     def delete(self, pid):
         result = [[1,'small','blue','unisex','cotton','solid blue short',6.99,'gurabo',1],[2,'medium','blue','unisex','jean','regular denim jeans',15.99,'caguas',2],[3,'XL','black','Male','cotton','solid Polo tee',0,'Quebadillas',1]]

@@ -54,43 +54,6 @@ class babyFoodHandler:
             result_list.append(result)
         return jsonify(babyFood=result_list)
 
-    # def getbabyFoodByType(self, color):
-    #     dao = babyFoodDAO()
-    #     babyFood_list = dao.getAllbabyFood()
-    #     result_list = []
-    #     for row in babyFood_list:
-    #         result = self.build_babyFood_dict(row)
-    #         result_list.append(result)
-    #     return jsonify(babyFood=result_list)
-    #
-    # def getbabyFoodByIngredient(self, material):
-    #     dao = babyFoodDAO()
-    #     babyFood_list = dao.getAllbabyFood()
-    #     result_list = []
-    #     for row in babyFood_list:
-    #         result = self.build_babyFood_dict(row)
-    #         result_list.append(result)
-    #     return jsonify(babyFood=result_list)
-    #
-    # def getbabyFoodByEXP(self,date):
-    #     dao = babyFoodDAO()
-    #     babyFood_list = dao.getAllbabyFood()
-    #     result_list = []
-    #     for row in babyFood_list:
-    #         result = self.build_babyFood_dict(row)
-    #         result_list.append(result)
-    #     return jsonify(babyFood=result_list)
-    #
-    #
-    # def getbabyFoodByPrice(self,price):
-    #     dao = babyFoodDAO()
-    #     babyFood_list = dao.getAllbabyFood()
-    #     result_list = []
-    #     for row in babyFood_list:
-    #         result = self.build_babyFood_dict(row)
-    #         result_list.append(result)
-    #     return jsonify(babyFood=result_list)
-
     def getbabyFoodByLocation(self, location):
         dao = babyFoodDAO()
         babyFood_list = dao.getbabyFoodByLocation(location)
