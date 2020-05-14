@@ -49,9 +49,20 @@ class HeavyEquipmentDAO:
         result = [[1,'15-ft Camping Tents',0,'Bayamon',1],[2,'20-ft Tents',199.99,'Carolina',2]]
         return result
 
-    def insert(self, sname, scity, sphone):
-        result = [[1,'15-ft Camping Tents',0,'Bayamon',1],[2,'20-ft Tents',199.99,'Carolina',2]]
-        return result
+    def insert(self, heavyEquipment_type, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date):
+        cursor = self.conn.cursor()
+        query = "insert into resource (resource_name,resource_price,resource_city,resource_quantity," \
+                "resource_description, resource_date) values (%s, %s, %s, %s, %s, %s) returning resource_id; "
+        cursor.execute(query, (resource_name, resource_price, resource_city, resource_quantity, resource_description,
+                               resource_date,))
+        rid = cursor.fetchone()[0]
+        self.conn.commit()
+        query = "insert into heavyEquipment (resource_id, heavyEquipment_type) values (%s, %s);"
+        cursor.execute(query, (rid, heavyEquipment_type,))
+        self.conn.commit()
+        cursor.close()
+        return rid
+
     def update(self):
         result = [[1,'15-ft Camping Tents',0,'Bayamon',1],[2,'20-ft Tents',199.99,'Carolina',2]]
         return result
