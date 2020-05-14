@@ -325,6 +325,8 @@ def getResources(resource_type):
             return FuelHandler().insert(request.json)
         if resource_type == 'heavyEquipment':
             return HeavyEquipmentHandler().insert(request.json)
+        if resource_type == 'hygiene':
+            return HygieneHandler().insert(request.json)
 
 
 @app.route('/almacenespr/available/<string:resource_type>/<string:search_keyword>', methods=['GET'])

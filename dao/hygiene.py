@@ -66,8 +66,20 @@ class HygieneDAO:
     def getHygieneByBrand(self, brand):
         return self.getAllHygiene()
 
-    def insert(self):
-        return self.getAllHygiene()
+    def insert(self, hygiene_quantityPerUnit, hygiene_brand, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date):
+        cursor = self.conn.cursor()
+        query = "insert into resource (resource_name,resource_price,resource_city,resource_quantity," \
+                "resource_description, resource_date) values (%s, %s, %s, %s, %s, %s) returning resource_id; "
+        cursor.execute(query, (resource_name, resource_price, resource_city, resource_quantity, resource_description,
+                               resource_date,))
+        rid = cursor.fetchone()[0]
+        self.conn.commit()
+        query = "insert into hygiene (resource_id, hygiene_quantityPerUnit, hygiene_brand) values (%s, %s, %s)"
+        cursor.execute(query, (rid, hygiene_quantityPerUnit, hygiene_brand,))
+        self.conn.commit()
+        cursor.close()
+        return rid
+
 
     def delete(self):
         return self.getAllHygiene()

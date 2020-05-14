@@ -18,24 +18,18 @@ class HygieneHandler:
                   }
         return result
 
-    def build_hygiene_attributes(self, resource_id, hygiene_id, hygiene_description, hygiene_quantityPerUnit,
-                                 hygiene_brand, hygiene_name, hygiene_price, hygiene_location, resource_quantity,
-                                 resource_description):
-        result = {'resource_id': resource_id,
-                  'hygiene_id': hygiene_id,
-                  'hygiene_description': hygiene_description,
-                  'hygiene_quantityPerUnit': hygiene_quantityPerUnit,
-                  'hygiene_brand': hygiene_brand,
-                  'hygiene_name': hygiene_name,
-                  'hygiene_price': hygiene_price,
-                  'hygiene_location': hygiene_location,
-                  'resource_quantity': resource_quantity,
-                 'resource_description':resource_description
-                  }
+    def build_hygiene_attributes(self, hygiene_quantityPerUnit, hygiene_brand, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date):
+        result = {
+            'hygiene_quantityPerUnit': hygiene_quantityPerUnit,
+            'hygiene_brand': hygiene_brand,
+            'resource_name': resource_name,
+            'resource_price': resource_price,
+            'resource_city': resource_city,
+            'resource_quantity': resource_quantity,
+            'resource_description': resource_description,
+            'resource_date': resource_date
+        }
         return result
-
-
-
 
     def getAllResourceByKeyword(self , keyword):
         dao = HygieneDAO()
@@ -86,7 +80,20 @@ class HygieneHandler:
         return self.getAllHygiene()
 
     def insert(self, item):
-        return jsonify(Hygiene=item), 200
+        hygiene_quantityPerUnit = item['hygiene_quantityPerUnit']
+        hygiene_brand = item['hygiene_brand']
+        resource_name = item['resource_name']
+        resource_price = item['resource_price']
+        resource_city = item['resource_city']
+        resource_quantity = item['resource_quantity']
+        resource_description = item['resource_description']
+        resource_date = item['resource_date']
+        if hygiene_quantityPerUnit and hygiene_brand and resource_name and resource_price and resource_city and resource_quantity and resource_description and resource_date:
+            dao = HygieneDAO()
+            rid = dao.insert(hygiene_quantityPerUnit, hygiene_brand, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date)
+            return jsonify(Hygiene=self.build_hygiene_attributes(hygiene_quantityPerUnit, hygiene_brand, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date))
+        else:
+            return jsonify(Error="Unexpected attributes in POST request"), 400
 
     def delete(self, item):
         return jsonify(Hygiene=item), 200
