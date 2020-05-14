@@ -56,9 +56,19 @@ class BatteryDAO:
             result.append(row)
         return result
 
-    def insert(self, pname, pcolor, pmaterial, pprice):
-        result = [[1,'AA',12,3.99,'bayamon',1],[2,'DD',4,5.99,'carolina', 5],[3,'AAA',12,6.99,'ponce',24]]
-        return result
+    def insert(self, batteries_type, batteries_quantityPerUnit, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date):
+        cursor = self.conn.cursor()
+        query = "insert into resource (resource_name,resource_price,resource_city,resource_quantity," \
+                "resource_description, resource_date) values (%s, %s, %s, %s, %s, %s) returning resource_id; "
+        cursor.execute(query, (resource_name, resource_price, resource_city, resource_quantity, resource_description,
+                               resource_date,))
+        rid = cursor.fetchone()[0]
+        self.conn.commit()
+        query = "insert into batteries (resource_id, batteries_type, batteries_quantityPerUnit) values (%s, %s, %s)"
+        cursor.execute(query, (rid, batteries_type, batteries_quantityPerUnit,))
+        self.conn.commit()
+        cursor.close()
+        return rid
 
     def delete(self, pid):
         result = [[1,'AA',12,3.99,'bayamon',1],[2,'DD',4,5.99,'carolina', 5],[3,'AAA',12,6.99,'ponce',24]]

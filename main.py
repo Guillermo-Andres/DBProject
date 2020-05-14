@@ -317,7 +317,8 @@ def getResources(resource_type):
             return babyFoodHandler().insert(request.json)
         if resource_type == 'dryfood':
             return dryFoodHandler().insert(request.json)
-
+        if resource_type == 'batteries':
+            return BatteryHandler().insert(request.json)
 
 
 @app.route('/almacenespr/available/<string:resource_type>/<string:search_keyword>', methods=['GET'])
