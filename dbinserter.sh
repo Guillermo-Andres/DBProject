@@ -97,7 +97,7 @@ insert into babyFood(resource_id,babyFood_type,babyFood_is_perishable,babyFood_i
 
 Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('skyhighbannanas',0,'Luquillo', 10, '300mg edible', '2019-12-02');
 insert into babyFood(resource_id,babyFood_type,babyFood_is_perishable,babyFood_ingrendients,babyFood_unitsize,babyFood_expDate) values ( (SELECT resource_id from resource where resource_id = '2'),'gerber',TRUE,'bannana,ganja',10,'2019-12-12');
-Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('skyhighbannanas',24.99,'Luquillo', 10, '300mg edible', '2019-12-03');
+Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('skyhighbannanas',24.99,'Luquillo', 0, '300mg edible', '2019-12-03');
 insert into babyFood(resource_id,babyFood_type,babyFood_is_perishable,babyFood_ingrendients,babyFood_unitsize,babyFood_expDate) values ( (SELECT resource_id from resource where resource_id = '3'),'gerber',TRUE,'bannana,ganja',10,'2019-12-12');
 Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('Salch',4.99,'Luquillo', 10, 'saben fo', '2019-12-04');
 insert into cannedFood(resource_id,cannedFood_type,cannedFood_is_perishable,cannedFood_ingrendients,cannedFood_unitsize,cannedFood_expDate) values ( (SELECT resource_id from resource where resource_id = '4'),'Carmela',TRUE,'no vaca,no pork',10,'2019-12-12');
@@ -130,32 +130,18 @@ insert into hygiene (resource_id,hygiene_quantityperunit,hygiene_brand) values((
 Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('Paneles',150.00,'Tokyo', 45, 'bueno', '2019-12-16');
 insert into powerGenerator (resource_id,powerGenerator_type) values ((SELECT resource_id from resource where resource_id = '16'),'Planta');
 
-
-insert into request(resource_id , request_date) values (4 ,'2019-11-11');
-insert into makesRequest(consumer_id , request_id) values (3 , 1);
 insert into supplies(supplier_id , resource_id) values(5,4);
 insert into paymentMethod (paymentMethod_type , consumer_id) values ('cash' , 3);
-insert into orders(order_amount ,  order_date , order_status , supplier_id , resource_id) values((select resource_price from resource where resource_id = 4) , '2019-12-12', 'complete' , 5 , 4);
-insert into paysFor(paymentMethod_id , order_id) values (1,1);
 
-insert into request(resource_id , request_date) values (2 ,'2019-10-15');
-insert into makesRequest(consumer_id , request_id) values (4 , 2);
+
+
 insert into supplies(supplier_id , resource_id) values(7,2);
 insert into paymentMethod (paymentMethod_type , consumer_id) values ('visa' , 4);
-insert into orders(order_amount ,  order_date , order_status , supplier_id , resource_id) values((select resource_price from resource where resource_id = 2) , '2019-12-12', 'complete' , 7 , 2);
-insert into paysFor(paymentMethod_id , order_id) values (2,2);
 
-insert into request(resource_id , request_date) values (7 ,'2019-12-12');
-insert into makesRequest(consumer_id , request_id) values (4 , 3);
+
 insert into supplies(supplier_id , resource_id) values(8,7);
-insert into orders(order_amount ,  order_date , order_status , supplier_id, resource_id) values((select resource_price from resource where resource_id = 7) , '2019-12-12', 'complete' , 8 , 7 );
-insert into paysFor(paymentMethod_id , order_id) values (2,3);
 
-insert into request(resource_id , request_date) values (1 ,'2019-10-16');
-insert into makesRequest(consumer_id , request_id) values (4 , 4);
 insert into supplies(supplier_id , resource_id) values(8,1);
-insert into orders(order_amount ,  order_date , order_status , supplier_id, resource_id) values((select resource_price from resource where resource_id = 1) , '2019-12-12', 'complete' , 8 , 1);
-insert into paysFor(paymentMethod_id , order_id) values (2,4);
 
 create or replace function get_region(person_city varchar(30)) returns varchar(30) as \$$
           begin

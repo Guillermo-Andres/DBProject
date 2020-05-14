@@ -1,4 +1,6 @@
 from config.dbconfig import pg_config
+from dao.resource import ResourceDAO
+from dao.order import OrderDAO
 import psycopg2
 
 
@@ -50,12 +52,49 @@ class RequestDAO:
             result.append(row)
         return result
 
-    def insert(self, type , consumer_id , date ):
+    def insert(self, resource_id , consumer_id ):
         cursor = self.conn.cursor()
-        query ="insert into request(resource_id , request_date) values (%s , %s) " \
-               "insert into makesRequest(consumer_id , request_id) values (%s , %s); " 
+        query ="insert into request(resource_id , request_date) values (%s , CURRENT_DATE ) returning request_id;"
+        cursor.execute(query , (resource_id ,))
+        request  = cursor.fetchone()[0]
+        self.conn.commit()
+
+        cursor = self.conn.cursor()
+        query = "insert into makesRequest(consumer_id , request_id) values (%s , %s); "
+        cursor.execute(query , (consumer_id , request))
+        self.conn.commit()
+        """ check for match """ 
         
-        cursor.execute(query , (type , date , consumer_id , type))
+        resources = ResourceDAO().getResourceById(resource_id)
+
+        if(resources[4] > 0 ):
+            
+            #found match , create order
+            order = OrderDAO().insert(resource_id)
+           
+            cursor = self.conn.cursor()
+            #attach a paymentMethod
+            query =  "select paymentMethod_id from paymentMethod where consumer_id = %s;"
+            cursor.execute(query , (consumer_id , ))
+            paymentMethod_id =  cursor.fetchone()[0]
+            print(paymentMethod_id)
+            self.conn.commit()
+            cursor = self.conn.cursor()
+            print(str(paymentMethod_id) + " " + str(order))
+            query = "insert into paysFor(paymentMethod_id , order_id) values (%s ,%s);"
+            cursor.execute(query , ( paymentMethod_id , order))
+            self.conn.commit()
+            print (True , order)
+            return (True , order)
+        
+        else:
+            return (False , request)
+
+       
+
+        
+
+
     def getRequestStatsPerDay(self):
         cursor = self.conn.cursor()
         query = "select resource_name, count(resource_name) as number_of_requests_per_resource, date_trunc('day', " \
@@ -92,8 +131,6 @@ class RequestDAO:
             result.append(row)
         return result
 
-    def insert(self, item):
-        return self.getAllRequest()
 
     def delete(self, cid):
         return self.getAllRequest()

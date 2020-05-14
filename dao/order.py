@@ -26,6 +26,7 @@ class OrderDAO:
                 "where order_id = %s;"
         cursor.execute(query, (order_id,))
         result = cursor.fetchone()
+        print(result)
         return result
 
     def getReserved(self):
@@ -105,8 +106,14 @@ class OrderDAO:
     def getOrderByStatus(self, status):
         return self.getAllOrders()
 
-    def insert(self):
-        return self.getAllOrders()
+    def insert(self , resource_id):
+        cursor = self.conn.cursor()
+
+        query = "insert into orders(order_amount ,  order_date , order_status , supplier_id , resource_id) values((select resource_price from resource where resource_id = %s) , CURRENT_DATE , 'match' , (select supplier_id from supplier natural join supplies where resource_id = %s) , %s) returning order_id;"
+        cursor.execute(query , (resource_id , resource_id , resource_id))
+        order = cursor.fetchone()[0]
+        self.conn.commit()
+        return order
 
     def delete(self):
         return self.getAllOrders()
