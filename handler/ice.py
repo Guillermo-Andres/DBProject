@@ -35,7 +35,6 @@ class IceHandler:
 
 
     def getAllIce(self):
-
         dao = IceDAO()
         ice_list = dao.getAllIce()
         result_list = []
