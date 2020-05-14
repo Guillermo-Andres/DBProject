@@ -303,7 +303,6 @@ def getResources(resource_type):
         return ResourceHandler().getAllByType(resource_type)
 
     if request.method == 'POST':
-
         if resource_type == 'water':
             return WaterHandler().insert(request.json)
         if resource_type == 'tools':
@@ -312,6 +311,13 @@ def getResources(resource_type):
             return PowerGeneratorHandler().insert(request.json)
         if resource_type == 'ice':
             return IceHandler().insert(request.json)
+        if resource_type == 'cannedfood':
+            return cannedFoodHandler().insert(request.json)
+        if resource_type == 'babyfood':
+            return babyFoodHandler().insert(request.json)
+        if resource_type == 'dryfood':
+            return dryFoodHandler().insert(request.json)
+
 
 
 @app.route('/almacenespr/available/<string:resource_type>/<string:search_keyword>', methods=['GET'])

@@ -52,9 +52,9 @@ class cannedFoodDAO:
     #     result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat','yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]]
     #     return result
     #
-    # def getcannedFoodByPrice(self,price):
-    #     result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat','yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]]
-    #     return result
+    # def getcannedFoodByPrice(self,price): result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,
+    # 'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat',
+    # 'yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]] return result
 
     def getcannedFoodByLocation(self,location):
         cursor = self.conn.cursor()
@@ -65,10 +65,23 @@ class cannedFoodDAO:
             result.append(row)
         return result
 
-
-    def insert(self, pname, pcolor, pmaterial, pprice):
-        result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat','yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]]
-        return result
+    def insert(self, cannedFood_type, cannedFood_is_perishable, cannedFood_ingredients, cannedFood_unitSize,
+               cannedFood_expDate, resource_name, resource_price, resource_city, resource_quantity,
+               resource_description, resource_date):
+        cursor = self.conn.cursor()
+        query = "insert into resource (resource_name,resource_price,resource_city,resource_quantity," \
+                "resource_description, resource_date) values (%s, %s, %s, %s, %s, %s) returning resource_id; "
+        cursor.execute(query, (resource_name, resource_price, resource_city, resource_quantity, resource_description,
+                               resource_date,))
+        rid = cursor.fetchone()[0]
+        self.conn.commit()
+        query = "insert into cannedFood (resource_id, cannedFood_type, cannedFood_is_perishable, " \
+                "cannedFood_ingredients, cannedFood_unitSize, cannedFood_expDate) values (%s, %s, %s, %s, %s, %s); "
+        cursor.execute(query, (rid, cannedFood_type, cannedFood_is_perishable, cannedFood_ingredients,
+                               cannedFood_unitSize, cannedFood_expDate,))
+        self.conn.commit()
+        cursor.close()
+        return rid
 
     def delete(self, pid):
         result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat','yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]]

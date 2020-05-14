@@ -93,16 +93,16 @@ insert into person (person_firstname, person_lastname, person_dob, person_city, 
 insert into admin(person_id) values (30);
 
 Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('skyhighbannanas',24.99,'Luquillo', 10, '300mg edible', '2019-12-01');
-insert into babyFood(resource_id,babyFood_type,babyFood_is_perishable,babyFood_ingrendients,babyFood_unitsize,babyFood_expDate) values ( (SELECT resource_id from resource where resource_id = '1'),'gerber',TRUE,'bannana,ganja',10,'2019-12-12');
+insert into babyFood(resource_id,babyFood_type,babyFood_is_perishable,babyFood_ingredients,babyFood_unitsize,babyFood_expDate) values ( (SELECT resource_id from resource where resource_id = '1'),'gerber',TRUE,'bannana,ganja',10,'2019-12-12');
 
 Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('skyhighbannanas',0,'Luquillo', 10, '300mg edible', '2019-12-02');
-insert into babyFood(resource_id,babyFood_type,babyFood_is_perishable,babyFood_ingrendients,babyFood_unitsize,babyFood_expDate) values ( (SELECT resource_id from resource where resource_id = '2'),'gerber',TRUE,'bannana,ganja',10,'2019-12-12');
+insert into babyFood(resource_id,babyFood_type,babyFood_is_perishable,babyFood_ingredients,babyFood_unitsize,babyFood_expDate) values ( (SELECT resource_id from resource where resource_id = '2'),'gerber',TRUE,'bannana,ganja',10,'2019-12-12');
 Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('skyhighbannanas',24.99,'Luquillo', 0, '300mg edible', '2019-12-03');
-insert into babyFood(resource_id,babyFood_type,babyFood_is_perishable,babyFood_ingrendients,babyFood_unitsize,babyFood_expDate) values ( (SELECT resource_id from resource where resource_id = '3'),'gerber',TRUE,'bannana,ganja',10,'2019-12-12');
+insert into babyFood(resource_id,babyFood_type,babyFood_is_perishable,babyFood_ingredients,babyFood_unitsize,babyFood_expDate) values ( (SELECT resource_id from resource where resource_id = '3'),'gerber',TRUE,'bannana,ganja',10,'2019-12-12');
 Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('Salch',4.99,'Luquillo', 10, 'saben fo', '2019-12-04');
-insert into cannedFood(resource_id,cannedFood_type,cannedFood_is_perishable,cannedFood_ingrendients,cannedFood_unitsize,cannedFood_expDate) values ( (SELECT resource_id from resource where resource_id = '4'),'Carmela',TRUE,'no vaca,no pork',10,'2019-12-12');
+insert into cannedFood(resource_id,cannedFood_type,cannedFood_is_perishable,cannedFood_ingredients,cannedFood_unitsize,cannedFood_expDate) values ( (SELECT resource_id from resource where resource_id = '4'),'Carmela',TRUE,'no vaca,no pork',10,'2019-12-12');
 Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('beef jerky',7.99,'Caguas', 10, 'saben cool', '2019-12-05');
-insert into dryFood(resource_id,dryFood_type,dryFood_is_perishable,dryFood_ingrendients,dryFood_unitsize,dryFood_expDate) values ( (SELECT resource_id from resource where resource_id = '5'),'Wills',FALSE,' vaca, pork',10,'2019-12-12');
+insert into dryFood(resource_id,dryFood_type,dryFood_is_perishable,dryFood_ingredients,dryFood_unitsize,dryFood_expDate) values ( (SELECT resource_id from resource where resource_id = '5'),'Wills',FALSE,' vaca, pork',10,'2019-12-12');
 Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('heavy stuff',179.99,'Caguas', 15, 'puff pass', '2019-12-06');
 insert into heavyEquipment (resource_id,heavyequipment_type) values( (SELECT resource_id from resource where resource_id = '6'),'veryheavy');
 Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values('Gelato OG',40.00,'La Perla', 15, 'azota', '2019-12-07');
