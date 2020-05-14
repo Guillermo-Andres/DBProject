@@ -71,14 +71,20 @@ class FuelDAO:
             result.append(row)
         return result
 
-    def insert(self, pname, pcolor, pmaterial, pprice):
+    def insert(self, fuel_type, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date):
         cursor = self.conn.cursor()
-        query = "select * from fuel natural inner join resource;"
-        cursor.execute(query)
-        result = []
-        for row in cursor:
-            result.append(row)
-        return result
+        query = "insert into resource (resource_name,resource_price,resource_city,resource_quantity," \
+                "resource_description, resource_date) values (%s, %s, %s, %s, %s, %s) returning resource_id; "
+        cursor.execute(query, (resource_name, resource_price, resource_city, resource_quantity, resource_description,
+                               resource_date,))
+        rid = cursor.fetchone()[0]
+        self.conn.commit()
+        query = "insert into fuel (resource_id, fuel_type) values (%s, %s);"
+        cursor.execute(query, (rid, fuel_type,))
+        self.conn.commit()
+        cursor.close()
+        return rid
+
 
     def delete(self, pid):
          cursor = self.conn.cursor()
