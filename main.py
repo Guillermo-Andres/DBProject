@@ -329,6 +329,8 @@ def getResources(resource_type):
             return HygieneHandler().insert(request.json)
         if resource_type == 'medicalDevices':
             return MedicalDevicesHandler().insert(request.json)
+        if resource_type == 'medication':
+            return MedicationHandler().insert(request.json)
 
 
 @app.route('/almacenespr/available/<string:resource_type>/<string:search_keyword>', methods=['GET'])
