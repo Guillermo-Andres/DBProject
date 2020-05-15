@@ -1,5 +1,19 @@
 from config.dbconfig import pg_config
 import psycopg2
+from dao.babyFood import babyFoodDAO
+from dao.cannedFood import cannedFoodDAO
+from dao.dryFood import dryFoodDAO
+from dao.medication import MedicationDAO
+from dao.batteries import BatteryDAO
+from dao.clothing import ClothingDAO
+from dao.heavyequipment import HeavyEquipmentDAO
+from dao.ice import IceDAO
+from dao.powertools import ToolsDAO
+from dao.fuel import FuelDAO
+from dao.medicalDevices import MedicalDevicesDAO
+from dao.powerGenerator import PowerGeneratorDAO
+from dao.hygiene import HygieneDAO
+from dao.water import WaterDAO
 
 
 # resource_id , resource_name , resource_price, resource_city, resource_quantity  , resource_description , resource_date
@@ -94,6 +108,37 @@ class ResourceDAO:
             print(row)
             result.append(row)
         return result
+
+
+    def getDAO(self , type):
+        if(type == 'babyfood'):
+            return babyFoodDAO()
+        elif(type == 'dryfood'):
+            return dryFoodDAO()
+        elif(type == 'cannedfood'):
+            return cannedFoodDAO()
+        elif(type == 'medication'):
+            return MedicationDAO()
+        elif(type == 'batteries'):
+            return BatteryDAO()
+        elif(type == 'clothing'):
+            return ClothingDAO()
+        elif(type == 'heavyequipment'):
+            return HeavyEquipmentDAO()
+        elif(type == 'ice'):
+            return IceDAO()
+        elif(type == 'powertools'):
+            return PowerToolsDAO()
+        elif(type == 'fuel'):
+            return FuelDAO()
+        elif(type == 'medicaldevices'):
+            return MedicalDevicesDAO()
+        elif(type == 'powergenerator'):
+            return PowerGeneratorDAO()
+        elif(type == 'hygiene'):
+            return HygieneDAO()
+        elif(type == 'water'):
+            return WaterDAO()
 
     def getResourceByName(self, resource_first_name, resource_last_name):
         return self.getAllResource()

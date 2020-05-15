@@ -33,16 +33,16 @@ def sendToLogin():
     return render_template("home.html")
 
 
-@app.route('/almacenespr/consumer/<int:consumer_id>/request/<string:resource_type>/<int:resource_id>', methods=['POST' , 'GET'])
-def requestResource(consumer_id, resource_type , resource_id):
+@app.route('/almacenespr/consumer/<int:consumer_id>/request/<string:resource_type>/<string:resource_keyword>', methods=['POST' , 'GET'])
+def requestResource(consumer_id, resource_type , resource_keyword):
     
     handler = RequestHandler()
-    resp =handler.insert(consumer_id ,resource_id)
-    print(resp[1])
+    resp =handler.insert(resource_keyword , resource_type , consumer_id)
+    
     if(resp[0] == True): #found match , return order
         return OrderHandler().getOrderById(resp[1])
     
-    return RequestHandler().getRequestById(resp[1])
+    return handler.getRequestById(resp[1])
 
 
 
