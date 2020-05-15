@@ -167,3 +167,36 @@ class ResourceHandler:
             result = self.build_reqs_stats_per_region_dict(row)
             result_list.append(result)
         return jsonify(Resource=result_list)
+
+    def getHandler(self , type):
+        if(type == 'babyfood'):
+            return babyFoodHandler()
+        elif(type == 'dryfood'):
+            return dryFoodHandler()
+        elif(type == 'cannedfood'):
+            return cannedFoodHandler()
+        elif(type == 'medication'):
+            return MedicationHandler()
+        elif(type == 'batteries'):
+            return BatteryHandler()
+        elif(type == 'clothing'):
+            return ClothingHandler()
+        elif(type == 'heavyequipment'):
+            return HeavyEquipmentHandler()
+        elif(type == 'ice'):
+            return IceHandler()
+        elif(type == 'powertools'):
+            return PowerToolsHandler()
+        elif(type == 'fuel'):
+            return FuelHandler()
+        elif(type == 'medicaldevices'):
+            return MedicalDevicesHandler()
+        elif(type == 'powergenerator'):
+            return PowerGeneratorHandler()
+        elif(type == 'hygiene'):
+            return HygieneHandler()
+        elif(type == 'water'):
+            return WaterHandler()
+
+        else:
+            return MedicationHandler()
