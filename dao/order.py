@@ -22,7 +22,7 @@ class OrderDAO:
     def getOrderById(self, order_id):
         cursor = self.conn.cursor()
         query = "select * " \
-                "from orders natural join supplier natural join resource natural join supplies natural join request natural join makesRequest natural join (select consumer_id , consumer_severety from consumer)as cons natural join paymentMethod natural join paysFor " \
+                "from orders natural join (select supplier_id from supplier) as sup natural join resource natural join supplies natural join request natural join makesRequest natural join (select consumer_id , consumer_severety from consumer)as cons natural join paymentMethod natural join paysFor " \
                 "where order_id = %s;"
         cursor.execute(query, (order_id,))
         result = cursor.fetchone()
@@ -54,7 +54,7 @@ class OrderDAO:
     def getOrderByConsumerId(self, consumer_id):
         cursor = self.conn.cursor()
         query = "select * " \
-                "from orders natural join supplier natural join resource natural join supplies natural join request natural join makesRequest natural join (select consumer_id , consumer_severety from consumer)as cons natural join paymentMethod natural join paysFor " \
+                "from orders natural join (select supplier_id from supplier) as sup natural join resource natural join supplies natural join request natural join makesRequest natural join (select consumer_id , consumer_severety from consumer)as cons natural join paymentMethod natural join paysFor " \
                 "where consumer_id = %s;"
         cursor.execute(query, (consumer_id,))
         result = []

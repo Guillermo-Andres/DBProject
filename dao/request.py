@@ -97,7 +97,7 @@ class RequestDAO:
         cursor = self.conn.cursor()
         query = "select * " \
                 "from request  natural inner join consumer natural inner join makesRequest "\
-                "where %s  ~*  resource_keyword OR %s ~* resource_keyword; "
+                "where resource_keyword  ~*  %s OR resource_keyword ~* %s; "
 
         cursor.execute(query , (resource_name , resource_description))
         result = []
