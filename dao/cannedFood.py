@@ -40,8 +40,6 @@ class cannedFoodDAO:
             result.append(row)
         return result
 
-    # 'yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]] return result
-
     def getcannedFoodByLocation(self,location):
         cursor = self.conn.cursor()
         query = "select * from cannedFood natural inner join resource where rlocation = %s;"
