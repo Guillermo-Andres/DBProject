@@ -97,7 +97,7 @@ class RequestHandler:
             result_list.append(result)
         return jsonify(request=result_list)
 
-    def checkMa(resource_name  , resource_description  ):
+    def checkMa(self , resource_name  , resource_description  ):
         RequestDAO().checkForMatch(resource_name  , resource_description  )
 
     def getRequestStatsPerWeek(self):

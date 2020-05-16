@@ -116,6 +116,8 @@ def insertResource(resource_type,supplier_id):
         tbr =  ResourceHandler().getHandler(resource_type).insert(jsonfo,supplier_id)
         RequestHandler().checkMa(jsonfo['resource_name'] , jsonfo['resource_description'])
 
+    return tbr
+    
 @app.route('/almacenespr/searchByType/<string:resource_type>/<string:keyword>', methods=['GET'])
 def getByType(resource_type, keyword):
     handler = ResourceHandler().getHandler(resource_type)
