@@ -34,7 +34,7 @@ Represents the request made by a consumer for a specific resource. It contains t
 Represents the payment method used by the consumer to acquire the desired resource. The consumer can pay for the order in cash, debit, credit, via remote payments or if the resource is donated, the payment method is none. 
 
 ### Resources
-Generalization of the resources to be supplied to the consumers. It contains the resource name, price, the location from where is provided, the quantity and a brief description of the product. If the resource is to be donated, instead of purchased, the price is zero. 
+Generalization of the resources to be supplied to the consumers. It contains the resource name, price, the location from where is provided, the quantity, a brief description of the product and a date that states when it became available. If the resource is to be donated, instead of purchased, the price is zero. 
 
 ### Water
 Specification of resources that represents drinking water. It contains the size (galloned, bottled, etc.), the brand, the type (regular, alkaline, carbonated, etc) and the unit size (number of bottles/gallons per package). 
