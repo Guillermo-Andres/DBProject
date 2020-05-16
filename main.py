@@ -33,23 +33,53 @@ def sendToLogin():
     return render_template("home.html")
 
 
-@app.route('/almacenespr/consumer/<int:consumer_id>/request/<string:resource_type>/<string:resource_keyword>', methods=['POST' , 'GET'])
-def requestResource(consumer_id, resource_type , resource_keyword):
-    
+@app.route('/almacenespr/consumer/<int:consumer_id>/request/<string:resource_type>/<int:resource_id>', methods=['POST' , 'GET'])
+def requestResource(consumer_id, resource_type , resource_id):
+
     handler = RequestHandler()
-    resp =handler.insert(resource_keyword , resource_type , consumer_id)
-    
+    resp =handler.insert(consumer_id ,resource_id)
+    print(resp[1])
     if(resp[0] == True): #found match , return order
         return OrderHandler().getOrderById(resp[1])
-    
-    return handler.getRequestById(resp[1])
+
+    return RequestHandler().getRequestById(resp[1])
 
 
+@app.route('/almacenespr/supplier/<int:supplier_id>/<string:resource_type>/announce', methods=['POST'])
+def insertResource(supplier_id):
+    if request.method == 'GET':
 
+        return ResourceHandler().getAllByType(resource_type)
 
-@app.route('/almacenespr/supplier/<int:supplierid>/<string:resource_type>/announce', methods=['POST'])
-def insertResource():
-    return 200
+    if request.method == 'POST':
+        if resource_type == 'water':
+            return WaterHandler().insert(request.json,supplier_id)
+        if resource_type == 'tools':
+            return PowerToolsHandler().insert(request.json,supplier_id)
+        if resource_type == 'powergenerator':
+            return PowerGeneratorHandler().insert(request.json,supplier_id)
+        if resource_type == 'ice':
+            return IceHandler().insert(request.json,supplier_id)
+        if resource_type == 'cannedfood':
+            return cannedFoodHandler().insert(request.json,supplier_id)
+        if resource_type == 'babyfood':
+            return babyFoodHandler().insert(request.json,supplier_id)
+        if resource_type == 'dryfood':
+            return dryFoodHandler().insert(request.json,supplier_id)
+        if resource_type == 'batteries':
+            return BatteryHandler().insert(request.json,supplier_id)
+        if resource_type == "clothing":
+            return ClothingHandler().insert(request.json,supplier_id)
+        if resource_type == 'fuel':
+            return FuelHandler().insert(request.json,supplier_id)
+        if resource_type == 'heavyEquipment':
+            return HeavyEquipmentHandler().insert(request.json,supplier_id)
+        if resource_type == 'hygiene':
+            return HygieneHandler().insert(request.json,supplier_id)
+        if resource_type == 'medicalDevices':
+            return MedicalDevicesHandler().insert(request.json,supplier_id)
+        if resource_type == 'medication':
+            return MedicationHandler().insert(request.json,supplier_id)
 
 
 @app.route('/almacenespr/consumer/<int:consumer_id>/addPaymentMethod', methods=['POST'])
@@ -64,7 +94,7 @@ def getByType(resource_type, keyword):
     return handler.getAllResourceByKeyword(keyword)
 
 
-# Register user route Unused for phase 2
+# Register consumer
 @app.route('/almacenespr/register/consumer', methods=['POST', 'GET'])
 def registerConsumer():
     # orders specify if we are requesting, reserving or purchasing depending on its status
@@ -85,21 +115,29 @@ def getConsumerById(consumer_id):
 # view all consumers
 @app.route('/almacenespr/consumer', methods=['GET'])
 def getAllConsumer():
-    # orders specify if we are requesting, reserving or purchasing depending on its status
+
     if request.method == 'GET':
         return ConsumerHandler().getAllConsumers()
 
-
+#register admin
 @app.route('/almacenespr/register/admin', methods=['POST', 'GET'])
 def registerAdmin():
-    # orders specify if we are requesting, reserving or purchasing depending on its status
+
     arg = request.get_json()
     if request.method == 'GET':
         return AdminHandler().getAllAdmins()
     elif request.method == 'POST':
         return AdminHandler().insert(request.get_json())
 
+@app.route('/almacenespr/admin', methods=['GET'])
+def getAllAdmin():
+    # orders specify if we are requesting, reserving or purchasing depending on its status
+    arg = request.get_json()
+    if request.method == 'GET':
+        return AdminHandler().getAllAdmins()
 
+
+########################################################################## Aggregate end points
 @app.route('/almacenespr/dailyResourcesRequested', methods=['GET'])
 def getDailyReqs():
     if request.method == 'GET':
@@ -152,16 +190,9 @@ def getAvailablePerWeek():
 def getAvailablePerRegion():
     if request.method == 'GET':
         return ResourceHandler().getResourceAvailablePerRegion()
+#######################################################################################################################
 
 
-@app.route('/almacenespr/admin', methods=['POST', 'GET'])
-def getAllAdmin():
-    # orders specify if we are requesting, reserving or purchasing depending on its status
-    arg = request.get_json()
-    if request.method == 'GET':
-        return AdminHandler().getAllAdmins()
-    elif request.method == 'POST':
-        return AdminHandler().insert(request.get_json())
 
 
 # search admin by id
@@ -228,12 +259,12 @@ def viewResourceAll():
 
 @app.route('/almacenespr/available', methods=['GET'])
 def viewAvailable():
-    return ResourceHandler().getAll()
-
-
-@app.route('/almacenespr/instock', methods=['GET'])
-def viewInStock():
     return ResourceHandler().getResourcesInStock()
+
+
+@app.route('/almacenespr/catalog', methods=['GET'])
+def viewCatalog():
+    return ResourceHandler().getAll()
 
 
 @app.route('/almacenespr/orders', methods=['GET'])
@@ -296,41 +327,13 @@ def getResourcesByTypeId(resource_type, resource_type_id):
         else:
             return ResourceHandler().getAllByType(resource_type)
 
-
-@app.route('/almacenespr/resource/<string:resource_type>', methods=['GET', 'POST'])
+# insert and get all by resource type.
+@app.route('/almacenespr/resource/<string:resource_type>', methods=['GET'])
 def getResources(resource_type):
     if request.method == 'GET':
         return ResourceHandler().getAllByType(resource_type)
 
-    if request.method == 'POST':
-        if resource_type == 'water':
-            return WaterHandler().insert(request.json)
-        if resource_type == 'tools':
-            return PowerToolsHandler().insert(request.json)
-        if resource_type == 'powergenerator':
-            return PowerGeneratorHandler().insert(request.json)
-        if resource_type == 'ice':
-            return IceHandler().insert(request.json)
-        if resource_type == 'cannedfood':
-            return cannedFoodHandler().insert(request.json)
-        if resource_type == 'babyfood':
-            return babyFoodHandler().insert(request.json)
-        if resource_type == 'dryfood':
-            return dryFoodHandler().insert(request.json)
-        if resource_type == 'batteries':
-            return BatteryHandler().insert(request.json)
-        if resource_type == "clothing":
-            return ClothingHandler().insert(request.json)
-        if resource_type == 'fuel':
-            return FuelHandler().insert(request.json)
-        if resource_type == 'heavyEquipment':
-            return HeavyEquipmentHandler().insert(request.json)
-        if resource_type == 'hygiene':
-            return HygieneHandler().insert(request.json)
-        if resource_type == 'medicalDevices':
-            return MedicalDevicesHandler().insert(request.json)
-        if resource_type == 'medication':
-            return MedicationHandler().insert(request.json)
+
 
 
 @app.route('/almacenespr/available/<string:resource_type>/<string:search_keyword>', methods=['GET'])
@@ -338,44 +341,6 @@ def searchAvailable(resource_type, search_keyword):
     return ResourceHandler().getAllByType(resource_type)
 
 
-# @app.route('/almacenespr/dashboard/statistics/daily/<int:type>', methods=['GET'])
-# def dailyStatistics(type):
-#     if type == 0:
-#         # return stats for in need
-#         return babyFoodHandler().getAllFood()
-#     elif type == 1:
-#         # return sta
-#         # ts for available
-#         return babyFoodHandler().getAllFood()
-#     else:
-#         # return stats for match
-#         return babyFoodHandler().getAllFood()
-
-
-# @app.route('/almacenespr/dashboard/statistics/weekly/<int:type>', methods=['GET'])
-# def weeklyStatistics(type):
-#     if type == 0:
-#         # return stats for in need
-#         return babyFoodHandler().getAllFood()
-#     elif type == 1:
-#         # return stats for available
-#         return babyFoodHandler().getAllFood()
-#     else:
-#         # return stats for match
-#         return babyFoodHandler().getAllFood()
-
-
-# @app.route('/almacenespr/dashboard/statistics/region/<int:type>', methods=['GET'])
-# def regionStatistics(type):
-#     if type == 0:
-#         # return stats for in need
-#         return babyFoodHandler().getAllFood()
-#     elif type == 1:
-#         # return stats for available
-#         return babyFoodHandler().getAllFood()
-#     else:
-#         # return stats for match
-#         return babyFoodHandler().getAllFood()
 
 
 if __name__ == '__main__':

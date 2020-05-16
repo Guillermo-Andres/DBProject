@@ -68,22 +68,8 @@ class MedicalDevicesHandler:
             result_list.append(result)
         return jsonify(Resources=result_list)
 
-    def getMedicalDevicesByLocation(self, location):
-        return self.getAllmedicalDevices()
 
-    def getMedicalDevicesByQuantity(self, quantity):
-        return self.getAllmedicalDevices()
-
-    def getMedicalDevicesBySize(self, size):
-        return self.getAllmedicalDevices()
-
-    def getMedicalDevicesByMaterial(self, material):
-        return self.getAllmedicalDevices()
-
-    def getMedicalDevicesByBrand(self, brand):
-        return self.getAllmedicalDevices()
-
-    def insert(self, item):
+    def insert(self, item,supplier_id):
         medicalDevices_type = item['medicalDevices_type']
         resource_name = item['resource_name']
         resource_price = item['resource_price']
@@ -93,7 +79,7 @@ class MedicalDevicesHandler:
         resource_date = item['resource_date']
         if medicalDevices_type and resource_name and resource_price and resource_city and resource_quantity and resource_description and resource_date:
             dao = MedicalDevicesDAO()
-            rid = dao.insert(medicalDevices_type, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date)
+            rid = dao.insert(medicalDevices_type, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date,supplier_id)
             return jsonify(medicalDevices=self.build_medicalDevices_attrs(medicalDevices_type, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date))
         else:
             return jsonify(Error="Unexpected attributes in POST request"), 400

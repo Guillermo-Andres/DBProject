@@ -50,7 +50,7 @@ class ClothingDAO:
         return result
 
     def insert(self, clothing_size, clothing_color, clothing_gender, clothing_material, resource_name, resource_price,
-               resource_city, resource_quantity, resource_description, resource_date):
+               resource_city, resource_quantity, resource_description, resource_date,supplier_id):
         cursor = self.conn.cursor()
         query = "insert into resource (resource_name,resource_price,resource_city,resource_quantity," \
                 "resource_description, resource_date) values (%s, %s, %s, %s, %s, %s) returning resource_id; "
@@ -61,6 +61,9 @@ class ClothingDAO:
         query = "insert into clothing (resource_id, clothing_size, clothing_color, clothing_gender, " \
                 "clothing_material) values (%s, %s, %s, %s, %s) "
         cursor.execute(query, (rid, clothing_size, clothing_color, clothing_gender, clothing_material,))
+        self.conn.commit()
+        query = 'insert into supplies(supplier_id , resource_id) values(%s,%s);'
+        cursor.execute(query, (supplier_id,rid,))
         self.conn.commit()
         cursor.close()
         return rid

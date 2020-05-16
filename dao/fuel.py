@@ -26,7 +26,7 @@ class FuelDAO:
         for row in cursor:
             result.append(row)
         return result
-   
+
     def getResourceByKeyWord(self , keyword):
         cursor = self.conn.cursor()
         query = "select * " \
@@ -71,7 +71,7 @@ class FuelDAO:
             result.append(row)
         return result
 
-    def insert(self, fuel_type, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date):
+    def insert(self, fuel_type, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date,supplier_id):
         cursor = self.conn.cursor()
         query = "insert into resource (resource_name,resource_price,resource_city,resource_quantity," \
                 "resource_description, resource_date) values (%s, %s, %s, %s, %s, %s) returning resource_id; "
@@ -82,24 +82,8 @@ class FuelDAO:
         query = "insert into fuel (resource_id, fuel_type) values (%s, %s);"
         cursor.execute(query, (rid, fuel_type,))
         self.conn.commit()
+        query = 'insert into supplies(supplier_id , resource_id) values(%s,%s);'
+        cursor.execute(query, (supplier_id,rid,))
+        self.conn.commit()
         cursor.close()
         return rid
-
-
-    def delete(self, pid):
-         cursor = self.conn.cursor()
-         query = "select * from fuel natural inner join resource;"
-         cursor.execute(query)
-         result = []
-         for row in cursor:
-             result.append(row)
-         return result
-
-    def update(self, pid, pname, pcolor, pmaterial, pprice):
-        cursor = self.conn.cursor()
-        query = "select * from fuel natural inner join resource;"
-        cursor.execute(query)
-        result = []
-        for row in cursor:
-            result.append(row)
-        return result

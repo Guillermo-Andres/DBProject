@@ -42,7 +42,7 @@ class PowerGeneratorDAO:
         result = cursor.fetchone()
         return result
 
-    def insert(self, resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date,ptype):
+    def insert(self, resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date,ptype,supplier_id):
         cursor = self.conn.cursor()
         query = "Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values (%s, %s, %s, %s, %s, %s) returning resource_id;"
         cursor.execute(query, (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date,))
@@ -50,6 +50,9 @@ class PowerGeneratorDAO:
         self.conn.commit()
         query = "insert into powerGenerator (resource_id,powerGenerator_type) values (%s, %s);"
         cursor.execute(query, (rid,ptype,))
+        self.conn.commit()
+        query = 'insert into supplies(supplier_id , resource_id) values(%s,%s);'
+        cursor.execute(query, (supplier_id,rid,))
         self.conn.commit()
         cursor.close()
         return rid

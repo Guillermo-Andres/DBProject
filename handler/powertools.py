@@ -58,7 +58,7 @@ class PowerToolsHandler:
         return jsonify(Tools=result_list)
 
 
-    def insert(self, item):
+    def insert(self, item,supplier_id):
         ttype = item['tools_type']
         rname = item['resource_name']
         rprice = item['resource_price']
@@ -68,7 +68,7 @@ class PowerToolsHandler:
         resource_description = item['resource_description']
         if ttype and rname and rprice and resource_location and resource_quantity and resource_date and resource_description:
             dao = ToolsDAO()
-            rid = dao.insert(rname, rprice,resource_location,resource_quantity,resource_description,resource_date,ttype)
+            rid = dao.insert(rname, rprice,resource_location,resource_quantity,resource_description,resource_date,ttype,supplier_id)
             return jsonify(Tools=self.build_attribute_dict(ttype,rname,rprice,resource_location,resource_quantity,resource_date, resource_description)), 201
         else:
             return jsonify(Error="Unexpected attributes in post request"), 400

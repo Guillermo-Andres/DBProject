@@ -58,28 +58,8 @@ class HygieneHandler:
             hygiene = self.build_hygiene_dict(row)
             return jsonify(Hygiene=hygiene)
 
-    def getHygieneByExpirationDate(self, expiration_date):
-        return self.getAllHygiene()
 
-    def getHygieneByPrice(self, price):
-        return self.getAllHygiene()
-
-    def getHygieneByLocation(self, location):
-        return self.getAllHygiene()
-
-    def getHygieneByUnits(self, units):
-        return self.getAllHygiene()
-
-    def getHygieneByDescription(self, description):
-        return self.getAllHygiene()
-
-    def getHygieneByQuantityPerUnit(self, quantity_per_unit):
-        return self.getAllHygiene()
-
-    def getHygieneByBrand(self, brand):
-        return self.getAllHygiene()
-
-    def insert(self, item):
+    def insert(self, item,supplier_id):
         hygiene_quantityPerUnit = item['hygiene_quantityPerUnit']
         hygiene_brand = item['hygiene_brand']
         resource_name = item['resource_name']
@@ -90,7 +70,7 @@ class HygieneHandler:
         resource_date = item['resource_date']
         if hygiene_quantityPerUnit and hygiene_brand and resource_name and resource_price and resource_city and resource_quantity and resource_description and resource_date:
             dao = HygieneDAO()
-            rid = dao.insert(hygiene_quantityPerUnit, hygiene_brand, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date)
+            rid = dao.insert(hygiene_quantityPerUnit, hygiene_brand, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date,supplier_id)
             return jsonify(Hygiene=self.build_hygiene_attributes(hygiene_quantityPerUnit, hygiene_brand, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date))
         else:
             return jsonify(Error="Unexpected attributes in POST request"), 400

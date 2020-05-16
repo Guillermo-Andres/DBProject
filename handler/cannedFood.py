@@ -54,42 +54,6 @@ class cannedFoodHandler:
             result_list.append(result)
         return jsonify(cannedFood=result_list)
 
-    # def getcannedFoodByType(self, color):
-    #     dao = cannedFoodDAO()
-    #     cannedFood_list = dao.getAllcannedFood()
-    #     result_list = []
-    #     for row in cannedFood_list:
-    #         result = self.build_cannedFood_dict(row)
-    #         result_list.append(result)
-    #     return jsonify(cannedFood=result_list)
-    #
-    # def getcannedFoodByIngredient(self, material):
-    #     dao = cannedFoodDAO()
-    #     cannedFood_list = dao.getAllcannedFood()
-    #     result_list = []
-    #     for row in cannedFood_list:
-    #         result = self.build_cannedFood_dict(row)
-    #         result_list.append(result)
-    #     return jsonify(cannedFood=result_list)
-    #
-    # def getcannedFoodByEXP(self,date):
-    #     dao = cannedFoodDAO()
-    #     cannedFood_list = dao.getAllcannedFood()
-    #     result_list = []
-    #     for row in cannedFood_list:
-    #         result = self.build_cannedFood_dict(row)
-    #         result_list.append(result)
-    #     return jsonify(cannedFood=result_list)
-    #
-    #
-    # def getcannedFoodByPrice(self,price):
-    #     dao = cannedFoodDAO()
-    #     cannedFood_list = dao.getAllcannedFood()
-    #     result_list = []
-    #     for row in cannedFood_list:
-    #         result = self.build_cannedFood_dict(row)
-    #         result_list.append(result)
-    #     return jsonify(cannedFood=result_list)
 
     def getcannedFoodByLocation(self, location):
         dao = cannedFoodDAO()
@@ -100,7 +64,7 @@ class cannedFoodHandler:
             result_list.append(result)
         return jsonify(cannedFood=result_list)
 
-    def insert(self, item):
+    def insert(self, item,supplier_id):
         cannedFood_type = item['cannedFood_type']
         cannedFood_is_perishable = item['cannedFood_is_perishable']
         cannedFood_ingredients = item['cannedFood_ingredients']
@@ -118,7 +82,7 @@ class cannedFoodHandler:
             dao = cannedFoodDAO()
             rid = dao.insert(cannedFood_type, cannedFood_is_perishable, cannedFood_ingredients, cannedFood_unitSize,
                              cannedFood_expDate, resource_name, resource_price, resource_city, resource_quantity,
-                             resource_description, resource_date)
+                             resource_description, resource_date,supplier_id)
             return jsonify(
                 cannedFood=self.build_cannedFood_attributes(cannedFood_type, cannedFood_is_perishable,
                                                             cannedFood_ingredients, cannedFood_unitSize,

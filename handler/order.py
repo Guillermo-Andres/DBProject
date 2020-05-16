@@ -122,21 +122,3 @@ class OrderHandler:
             result = self.build_order_stats_per_date_dict(row)
             result_list.append(result)
         return jsonify(order=result_list)
-
-    def getOrderByAmount(self, amount):
-        return self.getAllOrders()
-
-    def getOrderByDate(self, date):
-        return self.getAllOrders()
-
-    def getOrderByStatus(self, status):
-        return self.getAllOrders()
-
-    def insert(self, item):
-        return jsonify(Order=item), 200
-
-    def delete(self, item):
-        return jsonify(Order=item), 200
-
-    def update(self, item):
-        return jsonify(Order=item), 200

@@ -43,7 +43,7 @@ class WaterDAO:
         return result
 
 
-    def insert(self, resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date,water_size,water_brand,water_type,water_unitsize):
+    def insert(self, resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date,water_size,water_brand,water_type,water_unitsize,supplier_id):
         cursor = self.conn.cursor()
         query = "Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values (%s, %s, %s, %s, %s, %s) returning resource_id;"
         cursor.execute(query, (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date,))
@@ -52,5 +52,7 @@ class WaterDAO:
         query = "insert into water(resource_id,water_size,water_brand,water_type,water_unitsize) values(%s, %s, %s, %s, %s)"
         cursor.execute(query, (rid,water_size,water_brand,water_type,water_unitsize,))
         self.conn.commit()
-        cursor.close()
+        query = 'insert into supplies(supplier_id , resource_id) values(%s,%s);'
+        cursor.execute(query, (supplier_id,rid,))
+        self.conn.commit()
         return rid

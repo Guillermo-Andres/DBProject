@@ -109,7 +109,7 @@ class ClothingHandler:
             result_list.append(result)
         return jsonify(Clothes=result_list)
 
-    def insert(self, item):
+    def insert(self, item,supplier_id):
         clothing_size = item['clothing_size']
         clothing_color = item['clothing_color']
         clothing_gender = item['clothing_gender']
@@ -124,7 +124,7 @@ class ClothingHandler:
                 and resource_price and resource_city and resource_quantity and resource_description and resource_date:
             dao = ClothingDAO()
             rid = dao.insert(clothing_size, clothing_color, clothing_gender, clothing_material, resource_name,
-                             resource_price, resource_city, resource_quantity, resource_description, resource_date)
+                             resource_price, resource_city, resource_quantity, resource_description, resource_date,supplier_id)
             return jsonify(Clothing=self.build_clothes_attrs(clothing_size, clothing_color, clothing_gender,
                                                              clothing_material, resource_name, resource_price,
                                                              resource_city, resource_quantity, resource_description,

@@ -51,21 +51,6 @@ class MedicationHandler:
             result_list.append(result)
         return jsonify(Medication=result_list)
 
-    def getMedicationByName(self, name):
-        return self.getAllMedication()
-
-    def getMedicationByIngredients(self, ingredients):
-        return self.getAllMedication()
-
-    def getMedicationByType(self, type):
-        return self.getAllMedication()
-
-    def getMedicationByExpirationDate(self, expiration_date):
-        return self.getAllMedication()
-
-    def getMedicationByPrice(self, price):
-        return self.getAllMedication()
-
     def getMedicationByLocation(self, location):
         dao = MedicationDAO()
         medication_list = dao.getMedicationByLocation(location)
@@ -78,7 +63,7 @@ class MedicationHandler:
     def getMedicationByQuantity(self, quantity):
         return self.getAllMedication()
 
-    def insert(self,item):
+    def insert(self,item,supplier_id):
         medication_ingredients = item['medication_ingredients']
         medication_type = item['medication_type']
         medication_expDate = item['medication_expDate']
@@ -91,14 +76,7 @@ class MedicationHandler:
         if medication_ingredients and medication_type and medication_expDate and resource_name and resource_price and resource_city and resource_quantity and resource_description and resource_date:
             dao = MedicationDAO()
             rid = dao.insert(medication_ingredients, medication_type, medication_expDate, resource_name, resource_price,
-                             resource_city, resource_quantity, resource_description, resource_date)
+                             resource_city, resource_quantity, resource_description, resource_date,supplier_id)
             return jsonify(Medication=self.build_medication_attrs(medication_ingredients, medication_type, medication_expDate, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date))
         else:
             return jsonify(Error="Unexpected attributes in POST request"), 400
-
-    def delete(self,item):
-        return jsonify(Medication= item) ,200
-
-
-    def update(self,item):
-        return jsonify(Medication= item) ,200

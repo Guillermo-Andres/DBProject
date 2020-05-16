@@ -52,7 +52,7 @@ class IceDAO:
             result.append(row)
         return result
 
-    def insert(self, size, resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date):
+    def insert(self, size, resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date,supplier_id):
         cursor = self.conn.cursor()
         query = "Insert into resource (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date) values (%s, %s, %s, %s, %s, %s) returning resource_id;"
         cursor.execute(query, (resource_name,resource_price,resource_city,resource_quantity,resource_description, resource_date,))
@@ -60,6 +60,9 @@ class IceDAO:
         self.conn.commit()
         query = "insert into ice (resource_id,ice_size) values (%s, %s);"
         cursor.execute(query, (rid,size,))
+        self.conn.commit()
+        query = 'insert into supplies(supplier_id , resource_id) values(%s,%s);'
+        cursor.execute(query, (supplier_id,rid,))
         self.conn.commit()
         cursor.close()
         return rid
