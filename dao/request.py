@@ -43,7 +43,7 @@ class RequestDAO:
         cursor = self.conn.cursor()
         query = "select * " \
                 "from request  natural inner join consumer natural inner join makesRequest "\
-                "where resource_name  ~*  %s OR resource_description ~* %s; "
+                "where resource_keyword  ~*  %s; "
 
         keyword = "(" + keyword + ")"
         cursor.execute(query , (keyword,keyword))
@@ -90,15 +90,62 @@ class RequestDAO:
 
         return ( False , request)
 
-       
 
+
+
+    def getRequestByKeyWordForMatch(self , resource_name , resource_description):
+        cursor = self.conn.cursor()
+        query = "select * " \
+                "from request  natural inner join consumer natural inner join makesRequest "\
+                "where %s  ~*  resource_name OR % ~* resource_description; "
+
+        keyword = "(" + keyword + ")"
+        cursor.execute(query , (keyword,keyword))
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
+
+    def checkForMatch(self , resource_name , resource_description , resource_id):
+
+        """find a request for this resource"""
+
+        requested = self.getRequestByKeyWordForMatch( resource_name, resource_description)
+    
+        if(len(requested) > 0 ):
+            
+            cursor = self.conn.cursor()
+            query = " select consumer_id from request natural inner join makesRequest where request_id = %s;"
+            cursor.execute(query , (requested[0][0] , ))
+            consumer_id = cursor.fetchone()[0]
+            self.conn.commit()
+
+            #found resource for order , create order
+            order = OrderDAO().insert(resource_id)
         
+            cursor = self.conn.cursor()
+
+            #attach paymentmethod
+            query =  "select paymentMethod_id from paymentMethod where consumer_id = %s;"
+            cursor.execute(query , (consumer_id , ))
+            paymentMethod_id =  cursor.fetchone()[0]
+
+            self.conn.commit()
+            cursor = self.conn.cursor()
+            query = "insert into paysFor(paymentMethod_id , order_id) values (%s ,%s);"
+            cursor.execute(query , ( paymentMethod_id , order))
+            self.conn.commit()
+                
+                
+            
+            
+
 
 
     def getRequestStatsPerDay(self):
         cursor = self.conn.cursor()
-        query = "select resource_name, count(resource_name) as number_of_requests_per_resource, date_trunc('day', " \
-                "request_date) as day from request  group by day, resource_name " \
+        query = "select resource_keyword, count(resource_keyword) as number_of_requests_per_resource, date_trunc('day', " \
+                "request_date) as day from request  group by day, resource_keyword " \
                 "order by date_trunc('day', request_date) ; "
         cursor.execute(query)
         result = []
@@ -109,8 +156,8 @@ class RequestDAO:
 
     def getRequestStatsPerWeek(self):
         cursor = self.conn.cursor()
-        query = "select resource_name, count(resource_name) as number_of_requests_per_resource, date_trunc('week', " \
-                "request_date) as week from request  group by week, resource_name " \
+        query = "select resource_keyword, count(resource_keyword) as number_of_requests_per_resource, date_trunc('week', " \
+                "request_date) as week from request  group by week, resource_keyword " \
                 "order by week; "
         cursor.execute(query)
         result = []
@@ -121,9 +168,9 @@ class RequestDAO:
 
     def getRequestStatsPerRegion(self):
         cursor = self.conn.cursor()
-        query = "select resource_name, count(resource_name) as request_per_region, get_region(person_city) as region" \
+        query = "select resource_keyword, count(resource_keyword) as request_per_region, get_region(person_city) as region" \
                 " from request  natural inner join makesRequest natural inner join consumer"\
-                " natural inner join person group by region, resource_name order by region;"
+                " natural inner join person group by region, resource_keyword order by region;"
         cursor.execute(query)
         result = []
         for row in cursor:
