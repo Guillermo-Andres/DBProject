@@ -10,12 +10,24 @@ class AdminHandler:
         result['person_firstname'] = row[1]
         result['person_lastname'] = row[2]
         result['person_dob'] = row[3]
-        result['person_address'] = row[4]
+        result['person_city'] = row[4]
         result['person_phone'] = row[5]
         result['person_email'] = row[6]
         result['admin_id'] = row[7]
 
         return result
+
+    def build_attribute_dict(self,pfname,plname,pdob,pcity,pphone,pemail):
+        result = {}
+
+        result['person_firstname'] = pfname
+        result['person_lastname'] = plname
+        result['person_dob'] = pdob
+        result['person_city'] = pcity
+        result['person_phone'] = pphone
+        result['person_email'] = pemail
+        return result
+
 
     def getAllAdmins(self):
         dao = AdminDAO()
@@ -86,4 +98,16 @@ class AdminHandler:
         return jsonify(User = users)
 
     def insert(self , item):
-        return jsonify(Admin= item) ,200
+        pfname = item['person_firstname']
+        plname = item['person_lastname']
+        pdob = item['person_dob']
+        pcity = item['person_city']
+        pphone = item['person_phone_number']
+        pemail = item['person_email']
+
+        if pfname and plname and pdob and pcity and pphone and pemail :
+            dao = AdminDAO()
+            dao.insert(pfname,plname,pdob,pcity,pphone,pemail)
+            return jsonify(admin=self.build_attribute_dict(pfname,plname,pdob,pcity,pphone,pemail)), 201
+        else:
+            return jsonify(Error="Unexpected attributes in post request"), 400

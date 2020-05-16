@@ -31,25 +31,11 @@ class SupplierDAO:
         result = cursor.fetchone()
         return result
 
-    def getSupplierByName(self, first_name, last_name):
-        return self.getAllSuppliers()
-
-    def getSupplierByDOB(self, dob):
-        return self.getAllSuppliers()
-
-    def getSupplierByAddress(self, address):
-        return self.getAllSuppliers()
-
-    def getSupplierByPhone(self, phone):
-        return self.getAllSuppliers()
-
-    def getSupplierByEmail(self, email):
-        return self.getAllSuppliers()
 
     def insert(self, first_name, last_name, dob, address, phone_number, email):
         cursor = self.conn.cursor()
-        query = "insert into person(person_firstname, person_lastname , person_dob , person_address , " \
-                "person_phone_number, person_email ) values(%s , %s , %s , %s , %s , %s); "
+        query = "insert into person(person_firstname, person_lastname , person_dob , person_city , " \
+                "person_phone_number, person_email ) values(%s , %s , %s , %s , %s , %s) returning person_id; "
         cursor.execute(query, (first_name, last_name, dob, address, phone_number, email,))
         user_id = cursor.fetchone()[0]
         self.conn.commit()
@@ -58,9 +44,3 @@ class SupplierDAO:
         cursor.execute(query, (user_id,))
         self.conn.commit()
         return user_id
-
-    def delete(self):
-        return self.getAllSuppliers()
-
-    def update(self):
-        return self.getAllSuppliers()

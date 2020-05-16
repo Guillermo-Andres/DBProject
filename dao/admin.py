@@ -27,7 +27,7 @@ class AdminDAO:
         query = "select * from person natural join admin where admin_id = %s;"
         cursor.execute(query , (admin_id,))
         result = []
-        
+
         for row in cursor:
             result.append(row)
         return result
@@ -38,43 +38,45 @@ class AdminDAO:
         for user in self.getAllAdmins():
             if(user[1] == name):
                 return user
-        
+
         return None
 
     def getAdminByDOB(self  , DOB):
         for user in self.getAllAdmins():
             if(user[2] == DOB):
                     return user
-        
+
         return None
 
-    
+
     def getAdminByLocation(self  , location):
         for user in self.getAllAdmins():
             if(user[3] == location):
                     return user
-        
+
         return None
 
     def getAdminByPhone(self  , phone):
         for user in self.getAllAdmins():
             if(user[4] == phone):
                     return user
-        
+
         return None
 
     def getAdminByEmail(self  , email):
         for user in self.getAllAdmins():
             if(user[4] == email):
                     return user
-        
+
         return None
 
 
-    def insert(self , item):
-        return 1
-    def delete(self , id):
-        return 1
-    def update(self , item):
-        return 1
-
+    def insert(self , pfname,plname,pdob,pcity,pphone,pemail):
+        cursor = self.conn.cursor()
+        query = "insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values (%s, %s, %s, %s, %s, %s) returning person_id;"
+        cursor.execute(query, (pfname,plname,pdob,pcity,pphone, pemail,))
+        self.conn.commit()
+        pid = cursor.fetchone()[0]
+        query = "insert into admin(person_id) values (%s);"
+        cursor.execute(query, (pid,))
+        self.conn.commit()

@@ -189,6 +189,15 @@ def getAllSuppliers():
     if request.method == 'GET':
         return SupplierHandler().getAllSuppliers()
 
+@app.route('/almacenespr/register/supplier', methods=['POST', 'GET'])
+def registerSupplier():
+
+    arg = request.get_json()
+    if request.method == 'GET':
+        return SupplierHandler().getAllSuppliers()
+    elif request.method == 'POST':
+        return SupplierHandler().insert(request.json)
+
 ########################################################################## Aggregate end points
 @app.route('/almacenespr/dailyResourcesRequested', methods=['GET'])
 def getDailyReqs():

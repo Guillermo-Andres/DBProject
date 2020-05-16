@@ -40,26 +40,13 @@ class ConsumerDAO:
             result.append(row)
         return result
 
-    def getConsumerByDOB(self, dob):
-        return self.getAllConsumers()
 
-    def getConsumerByAddress(self, address):
-        return self.getAllConsumers()
-
-    def getConsumerByPhoneNumber(self, phone_number):
-        return self.getAllConsumers()
-
-    def getConsumerByEmail(self, email):
-        return self.getAllConsumers()
-
-    def getConsumerBySeverity(self, severity):
-        return self.getAllConsumers()
-
-    def insert(self, item):
-        return self.getAllConsumers()
-
-    def delete(self, cid):
-        return self.getAllConsumers()
-
-    def update(self, consumer_id):
-        return self.getAllConsumers()
+    def insert(self,pfname,plname,pdob,pcity,pphone, pemail,consumer_severity):
+        cursor = self.conn.cursor()
+        query = "insert into person (person_firstname, person_lastname, person_dob, person_city, person_phone_number, person_email) values (%s, %s, %s, %s, %s, %s) returning person_id;"
+        cursor.execute(query, (pfname,plname,pdob,pcity,pphone, pemail,))
+        self.conn.commit()
+        pid = cursor.fetchone()[0]
+        query = "insert into consumer(person_id,consumer_severety) values (%s,%s);"
+        cursor.execute(query, (pid,consumer_severity))
+        self.conn.commit()
