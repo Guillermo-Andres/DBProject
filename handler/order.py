@@ -60,7 +60,7 @@ class OrderHandler:
             result_list.append(result)
         return jsonify(Order=result_list)
 
-    def geOrdersByConsumerID(self, consumer_id):
+    def getOrdersByConsumerID(self, consumer_id):
         dao = OrderDAO()
         order_list = dao.getOrderByConsumerId(consumer_id)
         result_list = []

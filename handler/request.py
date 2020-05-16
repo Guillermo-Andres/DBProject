@@ -40,7 +40,7 @@ class RequestHandler:
 
     def build_reqs_stats_per_date_dict(self, row):
         result = {
-            'resource_name': row[0],
+            'resource_keyword': row[0],
             'number_of_requests': row[1],
             'request_date': row[2]
         }
@@ -48,7 +48,7 @@ class RequestHandler:
 
     def build_reqs_stats_per_region_dict(self, row):
         result = {
-            'resource_name': row[0],
+            'resource_keyword': row[0],
             'number_of_requests': row[1],
             'region': row[2]
         }
