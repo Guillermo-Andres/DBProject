@@ -63,7 +63,7 @@ class babyFoodHandler:
             result_list.append(result)
         return jsonify(babyFood=result_list)
 
-    def insert(self, item):
+    def insert(self, item,supplier_id):
         babyFood_type = item['babyFood_type']
         babyFood_is_perishable = item['babyFood_is_perishable']
         babyFood_ingredients = item['babyFood_ingredients']
@@ -81,7 +81,7 @@ class babyFoodHandler:
             dao = babyFoodDAO()
             rid = dao.insert(babyFood_type, babyFood_is_perishable, babyFood_ingredients, babyFood_unitSize,
                              babyFood_expDate, resource_name, resource_price, resource_city, resource_quantity,
-                             resource_description, resource_date)
+                             resource_description, resource_date,supplier_id)
             return jsonify(BabyFood=self.build_babyFood_attributes(babyFood_type, babyFood_is_perishable,
                             babyFood_ingredients, babyFood_unitSize, babyFood_expDate, resource_name, resource_price,
                             resource_city, resource_quantity, resource_description, resource_date)), 201

@@ -60,7 +60,7 @@ class WaterHandler:
         return jsonify(Water=result_list)
 
 
-    def insert(self, item):
+    def insert(self, item,supplier_id):
         wsize = item['water_size']
         wbrand = item['water_brand']
         wtype = item['water_type']
@@ -73,7 +73,7 @@ class WaterHandler:
         resource_description = item['resource_description']
         if wsize and wbrand and wtype and wunitsz and rname and rprice and resource_location and resource_quantity and resource_date and resource_description:
             dao = WaterDAO()
-            rid = dao.insert(rname, rprice,resource_location,resource_quantity,resource_description,resource_date,wsize,wbrand,wtype,wunitsz)
+            rid = dao.insert(rname, rprice,resource_location,resource_quantity,resource_description,resource_date,wsize,wbrand,wtype,wunitsz,supplier_id)
             return jsonify(water=self.build_attribute_dict(wsize,wbrand,wtype,wunitsz,rname,rprice,resource_location,resource_quantity,resource_date, resource_description)), 201
         else:
             return jsonify(Error="Unexpected attributes in post request"), 400

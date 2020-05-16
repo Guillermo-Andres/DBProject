@@ -51,7 +51,7 @@ class PowerGeneratorHandler:
             powerGen = self.build_powerGenerator_dict(row)
             return powerGen
 
-    def insert(self, item):
+    def insert(self, item,supplier_id):
         ptype = item['powerGenerator_type']
         rname = item['resource_name']
         rprice = item['resource_price']
@@ -61,7 +61,7 @@ class PowerGeneratorHandler:
         resource_description = item['resource_description']
         if ptype and rname and rprice and resource_location and resource_quantity and resource_date and resource_description:
             dao = PowerGeneratorDAO()
-            rid = dao.insert(rname, rprice,resource_location,resource_quantity,resource_description,resource_date,ptype)
+            rid = dao.insert(rname, rprice,resource_location,resource_quantity,resource_description,resource_date,ptype,supplier_id)
             return jsonify(PowerGenerator=self.build_powerGenerator_attributes(ptype)), 201
         else:
             return jsonify(Error="Unexpected attributes in post request"), 400

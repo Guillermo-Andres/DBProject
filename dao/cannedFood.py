@@ -1,7 +1,7 @@
 from config.dbconfig import pg_config
 import psycopg2
 class cannedFoodDAO:
-    
+
     def __init__(self):
 
         connection_url = "dbname=%s user=%s password=%s host=127.0.0.1" % (pg_config['dbname'],
@@ -39,21 +39,7 @@ class cannedFoodDAO:
         for row in cursor:
             result.append(row)
         return result
-
-    # def getcannedFoodByType(self, color):
-    #     result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat','yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]]
-    #     return result
-    #
-    # def getcannedFoodByIngredient(self, material):
-    #     result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat','yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]]
-    #     return result
-    #
-    # def getcannedFoodByEXP(self,date):
-    #     result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat','yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]]
-    #     return result
-    #
-    # def getcannedFoodByPrice(self,price): result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,
-    # 'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat',
+,'meat',
     # 'yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]] return result
 
     def getcannedFoodByLocation(self,location):
@@ -67,7 +53,7 @@ class cannedFoodDAO:
 
     def insert(self, cannedFood_type, cannedFood_is_perishable, cannedFood_ingredients, cannedFood_unitSize,
                cannedFood_expDate, resource_name, resource_price, resource_city, resource_quantity,
-               resource_description, resource_date):
+               resource_description, resource_date,supplier_id):
         cursor = self.conn.cursor()
         query = "insert into resource (resource_name,resource_price,resource_city,resource_quantity," \
                 "resource_description, resource_date) values (%s, %s, %s, %s, %s, %s) returning resource_id; "
@@ -80,13 +66,8 @@ class cannedFoodDAO:
         cursor.execute(query, (rid, cannedFood_type, cannedFood_is_perishable, cannedFood_ingredients,
                                cannedFood_unitSize, cannedFood_expDate,))
         self.conn.commit()
+        query = 'insert into supplies(supplier_id , resource_id) values(%s,%s);'
+        cursor.execute(query, (supplier_id,rid,))
+        self.conn.commit()
         cursor.close()
         return rid
-
-    def delete(self, pid):
-        result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat','yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]]
-        return result
-
-    def update(self, pid, pname, pcolor, pmaterial, pprice):
-        result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat','yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]]
-        return result

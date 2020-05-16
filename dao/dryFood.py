@@ -1,7 +1,7 @@
 from config.dbconfig import pg_config
 import psycopg2
 class dryFoodDAO:
-    
+
     def __init__(self):
 
         connection_url = "dbname=%s user=%s password=%s host=127.0.0.1" % (pg_config['dbname'],
@@ -18,7 +18,7 @@ class dryFoodDAO:
         for row in cursor:
             result.append(row)
         return result
-   
+
     def getResourceByKeyWord(self , keyword):
         cursor = self.conn.cursor()
         query = "select * " \
@@ -39,21 +39,7 @@ class dryFoodDAO:
             result.append(row)
         return result
 
-    # def getdryFoodByType(self, color):
-    #     result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat','yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]]
-    #     return result
-    #
-    # def getdryFoodByIngredient(self, material):
-    #     result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat','yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]]
-    #     return result
-    #
-    # def getdryFoodByEXP(self,date):
-    #     result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat','yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]]
-    #     return result
-    #
-    # def getdryFoodByPrice(self,price):
-    #     result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat','yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]]
-    #     return result
+
 
     def getdryFoodByLocation(self,location):
         cursor = self.conn.cursor()
@@ -65,7 +51,7 @@ class dryFoodDAO:
         return result
 
     def insert(self, dryFood_type, dryFood_is_perishable, dryFood_ingredients, dryFood_unitSize, dryFood_expDate,
-               resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date):
+               resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date,supplier_id):
         cursor = self.conn.cursor()
         query = "insert into resource (resource_name,resource_price,resource_city,resource_quantity," \
                 "resource_description, resource_date) values (%s, %s, %s, %s, %s, %s) returning resource_id; "
@@ -77,6 +63,9 @@ class dryFoodDAO:
                 "dryFood_unitSize, dryFood_expDate) values (%s, %s, %s, %s, %s, %s); "
         cursor.execute(query, (
         rid, dryFood_type, dryFood_is_perishable, dryFood_ingredients, dryFood_unitSize, dryFood_expDate,))
+        self.conn.commit()
+        query = 'insert into supplies(supplier_id , resource_id) values(%s,%s);'
+        cursor.execute(query, (supplier_id,rid,))
         self.conn.commit()
         cursor.close()
         return rid

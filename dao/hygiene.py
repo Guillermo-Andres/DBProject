@@ -45,28 +45,8 @@ class HygieneDAO:
             result.append(row)
         return result
 
-    def getHygieneByExpirationDate(self, expiration_date):
-        return self.getAllHygiene()
 
-    def getHygieneByPrice(self, price):
-        return self.getAllHygiene()
-
-    def getHygieneByLocation(self, location):
-        return self.getAllHygiene()
-
-    def getHygieneByUnits(self, units):
-        return self.getAllHygiene()
-
-    def getHygieneByDescription(self, description):
-        return self.getAllHygiene()
-
-    def getHygieneByQuantityPerUnit(self, quantity_per_unit):
-        return self.getAllHygiene()
-
-    def getHygieneByBrand(self, brand):
-        return self.getAllHygiene()
-
-    def insert(self, hygiene_quantityPerUnit, hygiene_brand, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date):
+    def insert(self, hygiene_quantityPerUnit, hygiene_brand, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date,supplier_id):
         cursor = self.conn.cursor()
         query = "insert into resource (resource_name,resource_price,resource_city,resource_quantity," \
                 "resource_description, resource_date) values (%s, %s, %s, %s, %s, %s) returning resource_id; "
@@ -77,12 +57,8 @@ class HygieneDAO:
         query = "insert into hygiene (resource_id, hygiene_quantityPerUnit, hygiene_brand) values (%s, %s, %s)"
         cursor.execute(query, (rid, hygiene_quantityPerUnit, hygiene_brand,))
         self.conn.commit()
+        query = 'insert into supplies(supplier_id , resource_id) values(%s,%s);'
+        cursor.execute(query, (supplier_id,rid,))
+        self.conn.commit()
         cursor.close()
         return rid
-
-
-    def delete(self):
-        return self.getAllHygiene()
-
-    def update(self):
-        return self.getAllHygiene()

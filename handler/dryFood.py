@@ -54,42 +54,7 @@ class dryFoodHandler:
             result_list.append(result)
         return jsonify(dryFood=result_list)
 
-    # def getdryFoodByType(self, color):
-    #     dao = dryFoodDAO()
-    #     dryFood_list = dao.getAlldryFood()
-    #     result_list = []
-    #     for row in dryFood_list:
-    #         result = self.build_dryFood_dict(row)
-    #         result_list.append(result)
-    #     return jsonify(dryFood=result_list)
-    #
-    # def getdryFoodByIngredient(self, material):
-    #     dao = dryFoodDAO()
-    #     dryFood_list = dao.getAlldryFood()
-    #     result_list = []
-    #     for row in dryFood_list:
-    #         result = self.build_dryFood_dict(row)
-    #         result_list.append(result)
-    #     return jsonify(dryFood=result_list)
-    #
-    # def getdryFoodByEXP(self,date):
-    #     dao = dryFoodDAO()
-    #     dryFood_list = dao.getAlldryFood()
-    #     result_list = []
-    #     for row in dryFood_list:
-    #         result = self.build_dryFood_dict(row)
-    #         result_list.append(result)
-    #     return jsonify(dryFood=result_list)
-    #
-    #
-    # def getdryFoodByPrice(self,price):
-    #     dao = dryFoodDAO()
-    #     dryFood_list = dao.getAlldryFood()
-    #     result_list = []
-    #     for row in dryFood_list:
-    #         result = self.build_dryFood_dict(row)
-    #         result_list.append(result)
-    #     return jsonify(dryFood=result_list)
+
 
     def getdryFoodByLocation(self, location):
         dao = dryFoodDAO()
@@ -100,7 +65,7 @@ class dryFoodHandler:
             result_list.append(result)
         return jsonify(dryFood=result_list)
 
-    def insert(self, item):
+    def insert(self, item,supplier_id):
         dryFood_type = item['dryFood_type']
         dryFood_is_perishable = item['dryFood_is_perishable']
         dryFood_ingredients = item['dryFood_ingredients']
@@ -116,7 +81,7 @@ class dryFoodHandler:
             dao = dryFoodDAO()
             rid = dao.insert(dryFood_type, dryFood_is_perishable, dryFood_ingredients, dryFood_unitSize,
                              dryFood_expDate, resource_name, resource_price, resource_city, resource_quantity,
-                             resource_description, resource_date)
+                             resource_description, resource_date,supplier_id)
             return jsonify(
                 dryFood=self.build_dryFood_attributes(dryFood_type, dryFood_is_perishable, dryFood_ingredients,
                                                       dryFood_unitSize, dryFood_expDate, resource_name,

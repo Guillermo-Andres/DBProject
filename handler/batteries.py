@@ -58,7 +58,7 @@ class BatteryHandler:
             result_list.append(result)
         return jsonify(battery=result_list)
 
-    def insert(self, item):
+    def insert(self, item,supplier_id):
         batteries_type = item['batteries_type']
         batteries_quantityPerUnit = item['batteries_quantityPerUnit']
         resource_name = item['resource_name']
@@ -69,13 +69,9 @@ class BatteryHandler:
         resource_date = item['resource_date']
         if batteries_type and batteries_quantityPerUnit and resource_name and resource_price and resource_city and resource_quantity and resource_description and resource_date:
             dao = BatteryDAO()
-            rid = dao.insert(batteries_type, batteries_quantityPerUnit, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date)
+            rid = dao.insert(batteries_type, batteries_quantityPerUnit, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date,supplier_id)
             return jsonify(Batteries=self.build_battery_attrs(batteries_type, batteries_quantityPerUnit, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date))
         else:
             return jsonify(Error="Unexpected attributes in POST request"), 400
 
-    def delete(self, item):
-        return jsonify(Batteries=item), 200
-
-    def update(self, item):
-        return jsonify(Batteries=item), 200
+    

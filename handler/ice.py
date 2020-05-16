@@ -62,7 +62,7 @@ class IceHandler:
             result_list.append(result)
         return jsonify(Ice=result_list)
 
-    def insert(self, item):
+    def insert(self, item,supplier_id):
         size = item['ice_size']
         rname = item['resource_name']
         rprice = item['resource_price']
@@ -72,7 +72,7 @@ class IceHandler:
         resource_description = item['resource_description']
         if size and rname and rprice and resource_location and resource_quantity and resource_date and resource_description:
             dao = IceDAO()
-            rid = dao.insert(size, rname, rprice,resource_location,resource_quantity,resource_description,resource_date)
+            rid = dao.insert(size, rname, rprice,resource_location,resource_quantity,resource_description,resource_date,supplier_id)
             return jsonify(Ice=self.build_ice_attributes(size)), 201
         else:
             return jsonify(Error="Unexpected attributes in post request"), 400

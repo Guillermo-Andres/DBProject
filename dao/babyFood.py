@@ -43,21 +43,6 @@ class babyFoodDAO:
             result.append(row)
         return result
 
-    # def getbabyFoodByType(self, color):
-    #     result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat','yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]]
-    #     return result
-    #
-    # def getbabyFoodByIngredient(self, material):
-    #     result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat','yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]]
-    #     return result
-    #
-    # def getbabyFoodByEXP(self,date):
-    #     result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat','yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]]
-    #     return result
-    #
-    # def getbabyFoodByPrice(self,price):
-    #     result = [[1,'canned','no','beans','12oz','red beans','12/25/2022',0,'SanJuan',3],[2,'fruit','yes','organic bannanas','5 lb','bannana','12/25/2022', 4.99,'Ponce',6],[3,'meat','yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]]
-    #     return result
 
     def getbabyFoodByLocation(self, location):
         cursor = self.conn.cursor()
@@ -69,7 +54,7 @@ class babyFoodDAO:
         return result
 
     def insert(self, babyFood_type, babyFood_is_perishable, babyFood_ingredients, babyFood_unitSize, babyFood_expDate,
-               resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date):
+               resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date,supplier_id):
         cursor = self.conn.cursor()
         query = "insert into resource (resource_name,resource_price,resource_city,resource_quantity," \
                 "resource_description, resource_date) values (%s, %s, %s, %s, %s, %s) returning resource_id; "
@@ -80,6 +65,9 @@ class babyFoodDAO:
         query = "insert into babyFood (resource_id, babyFood_type, babyFood_is_perishable, babyFood_ingredients, " \
                 "babyFood_unitSize, babyFood_expDate) values (%s, %s, %s, %s, %s, %s); "
         cursor.execute(query, (rid, babyFood_type, babyFood_is_perishable, babyFood_ingredients, babyFood_unitSize, babyFood_expDate,))
+        self.conn.commit()
+        query = 'insert into supplies(supplier_id , resource_id) values(%s,%s);'
+        cursor.execute(query, (supplier_id,rid,))
         self.conn.commit()
         cursor.close()
         return rid

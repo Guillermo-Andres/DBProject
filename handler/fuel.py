@@ -58,7 +58,7 @@ class FuelHandler:
             result_list.append(result)
         return jsonify(Fuel=result_list)
 
-    def insert(self, item):
+    def insert(self, item,supplier_id):
         fuel_type = item['fuel_type']
         resource_name = item['resource_name']
         resource_price = item['resource_price']
@@ -68,7 +68,7 @@ class FuelHandler:
         resource_date = item['resource_date']
         if fuel_type and resource_name and resource_price and resource_city and resource_quantity and resource_description and resource_date:
             dao = FuelDAO()
-            rid = dao.insert(fuel_type, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date)
+            rid = dao.insert(fuel_type, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date,supplier_id)
             return jsonify(Fuel=self.build_fuel_attrs(fuel_type, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date))
         else:
             return jsonify(Error="Unexpected attributes in POST request"), 400

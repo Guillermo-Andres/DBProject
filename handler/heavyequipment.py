@@ -68,7 +68,7 @@ class HeavyEquipmentHandler:
             result_list.append(result)
         return jsonify(Heavy_Equipment=result_list)
 
-    def insert(self, item):
+    def insert(self, item,supplier_id):
         heavyEquipment_type = item['heavyEquipment_type']
         resource_name = item['resource_name']
         resource_price = item['resource_price']
@@ -78,14 +78,7 @@ class HeavyEquipmentHandler:
         resource_date = item['resource_date']
         if heavyEquipment_type and resource_name and resource_price and resource_city and resource_quantity and resource_description and resource_date:
             dao = HeavyEquipmentDAO()
-            rid = dao.insert(heavyEquipment_type, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date)
+            rid = dao.insert(heavyEquipment_type, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date,supplier_id)
             return jsonify(HeavyEquipment=self.build_heavyEquipment_attrs(heavyEquipment_type, resource_name, resource_price, resource_city, resource_quantity, resource_description, resource_date))
         else:
             return jsonify(Error="Unexpected attributes in POST request"), 400
-
-
-    def update(self,item):
-        return jsonify(HeavyEquiment= item) ,200
-
-    def delete(self,item):
-        return jsonify(HeavyEquiment= item) ,200
