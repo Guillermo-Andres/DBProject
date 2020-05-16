@@ -39,8 +39,6 @@ class cannedFoodDAO:
         for row in cursor:
             result.append(row)
         return result
-,'meat',
-    # 'yes','codero flesh','8 Oz','Corderito','12/25/2022',0,'Aguadilla',1]] return result
 
     def getcannedFoodByLocation(self,location):
         cursor = self.conn.cursor()
