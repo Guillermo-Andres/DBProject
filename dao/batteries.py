@@ -62,10 +62,7 @@ class BatteryDAO:
         self.conn.commit()
         query = 'insert into supplies(supplier_id , resource_id) values(%s,%s);'
         cursor.execute(query, (supplier_id,rid,))
-        self.conn.commit()
-        query = 'insert into supplies(supplier_id , resource_id) values(%s,%s);'
-        cursor.execute(query, (supplier_id,rid,))
-        self.conn.commit()
+
         cursor.close()
         return rid
 
