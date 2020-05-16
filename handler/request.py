@@ -27,7 +27,7 @@ class RequestHandler:
                   'consumer_severety': row[10]
                   }
         return result
-    
+
     def build_reqs_makes_consumer_dict(self , row):
         result = {
             'request_id': row[0],
