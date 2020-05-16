@@ -26,7 +26,7 @@ class PowerToolsHandler:
         item['resource_quantity'] = resource_quantity
         item['resource_date'] = resource_date
         item['resource_description'] = resource_description
-
+        return item
 
 
 
@@ -62,7 +62,7 @@ class PowerToolsHandler:
         ttype = item['tools_type']
         rname = item['resource_name']
         rprice = item['resource_price']
-        resource_location = item['resource_location']
+        resource_location = item['resource_city']
         resource_quantity = item['resource_quantity']
         resource_date = item['resource_date']
         resource_description = item['resource_description']

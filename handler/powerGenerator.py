@@ -55,7 +55,7 @@ class PowerGeneratorHandler:
         ptype = item['powerGenerator_type']
         rname = item['resource_name']
         rprice = item['resource_price']
-        resource_location = item['resource_location']
+        resource_location = item['resource_city']
         resource_quantity = item['resource_quantity']
         resource_date = item['resource_date']
         resource_description = item['resource_description']
