@@ -99,8 +99,8 @@ class RequestDAO:
                 "from request  natural inner join consumer natural inner join makesRequest "\
                 "where %s  ~*  resource_name OR % ~* resource_description; "
 
-        keyword = "(" + keyword + ")"
-        cursor.execute(query , (keyword,keyword))
+        
+        cursor.execute(query , (resource_name , resource_description))
         result = []
         for row in cursor:
             result.append(row)
