@@ -38,26 +38,8 @@ class SupplierHandler:
             supplier = self.build_supplier_dict(row)
             return jsonify(Supplier=supplier)
 
-    def getSupplierByName(self, first_name, last_name):
-        return self.getAllSuppliers()
 
-    def getSupplierByDOB(self, dob):
-        return self.getAllSuppliers()
-
-    def getSupplierByAddress(self, address):
-        return self.getAllSuppliers()
-
-    def getSupplierByPhone(self, phone):
-        return self.getAllSuppliers()
-
-    def getSupplierByEmail(self, email):
         return self.getAllSuppliers()
 
     def insert(self, item):
-        return jsonify(Supplier=item), 200
-
-    def delete(self, item):
-        return jsonify(Supplier=item), 200
-
-    def update(self, item):
         return jsonify(Supplier=item), 200

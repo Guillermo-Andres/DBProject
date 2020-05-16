@@ -46,29 +46,5 @@ class ConsumerHandler:
             consumer = self.build_consumer_dictionary(row)
             return consumer
 
-    def getConsumerByName(self, consumer_first_name, consumer_last_name):
-        return self.getAllConsumers()
-
-    def getConsumerByDOB(self, dob):
-        return self.getAllConsumers()
-
-    def getConsumerByAddress(self, address):
-        return self.getAllConsumers()
-
-    def getConsumerByPhoneNumber(self, phone_number):
-        return self.getAllConsumers()
-
-    def getConsumerByEmail(self, email):
-        return self.getAllConsumers()
-
-    def getConsumerBySeverity(self, severity):
-        return self.getAllConsumers()
-
     def insert(self, item):
-        return jsonify(Consumer=item), 200
-
-    def delete(self, item):
-        return jsonify(Consumer=item), 200
-
-    def update(self, item):
         return jsonify(Consumer=item), 200

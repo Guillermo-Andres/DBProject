@@ -16,7 +16,7 @@ class AdminHandler:
         result['admin_id'] = row[7]
 
         return result
-    
+
     def getAllAdmins(self):
         dao = AdminDAO()
         users = []
@@ -25,7 +25,7 @@ class AdminHandler:
         for i in items:
             result = self.build_admin_dict(i)
             users.append(result)
-        
+
         return jsonify(User = users)
 
 
@@ -37,10 +37,10 @@ class AdminHandler:
         for i in items:
             result = self.build_admin_dict(i)
             users.append(result)
-        
+
         return jsonify(User = users)
 
-    
+
     def getAdminByName(self , name ):
         dao = AdminDAO()
         users = []
@@ -49,7 +49,7 @@ class AdminHandler:
         for i in items:
             result = self.build_admin_dict(i)
             users.append(result)
-        
+
         return jsonify(User = users)
 
     def getAdminByAddress(self ,  location):
@@ -60,7 +60,7 @@ class AdminHandler:
         for i in items:
             result = self.build_admin_dict(i)
             users.append(result)
-        
+
         return jsonify(User = users)
 
     def getAdminByPhone(self , phone ):
@@ -71,7 +71,7 @@ class AdminHandler:
         for i in items:
             result = self.build_admin_dict(i)
             users.append(result)
-        
+
         return jsonify(User = users)
 
     def getAdminByEmail(self , email):
@@ -82,14 +82,8 @@ class AdminHandler:
         for i in items:
             result = self.build_admin_dict(i)
             users.append(result)
-        
+
         return jsonify(User = users)
 
     def insert(self , item):
-        return jsonify(Admin= item) ,200
-    
-    def delete(self , id):
-        return jsonify(Admin= id) ,200
-    
-    def update(self , item):
         return jsonify(Admin= item) ,200

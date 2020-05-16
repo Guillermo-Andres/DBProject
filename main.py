@@ -37,7 +37,6 @@ def sendToLogin():
 def getResourcesbyId(resource_id):
     return ResourceHandler().getResourceById(resource_id)
 
-
 @app.route('/almacenespr/resource/<string:resource_type>/<int:resource_type_id>', methods=['GET'])
 def getResourcesByTypeId(resource_type, resource_type_id):
     if request.method == 'GET':
@@ -98,11 +97,9 @@ def requestResource(consumer_id, resource_type , resource_keyword):
 def viewResourceAll():
     return ResourceHandler().getAll()
 
-
 @app.route('/almacenespr/available', methods=['GET'])
 def viewAvailable():
     return ResourceHandler().getResourcesInStock()
-
 
 @app.route('/almacenespr/catalog', methods=['GET'])
 def viewCatalog():
@@ -150,7 +147,6 @@ def getAllConsumer():
 def addPaymentMethod():
     return 200
 
-
 #register admin
 @app.route('/almacenespr/register/admin', methods=['POST', 'GET'])
 def registerAdmin():
@@ -191,13 +187,11 @@ def getAllSuppliers():
     if request.method == 'GET':
         return SupplierHandler().getAllSuppliers()
 
-
 ########################################################################## Aggregate end points
 @app.route('/almacenespr/dailyResourcesRequested', methods=['GET'])
 def getDailyReqs():
     if request.method == 'GET':
         return RequestHandler().getRequestStatsPerDay()
-
 
 @app.route('/almacenespr/weeklyResourcesRequested', methods=['GET'])
 def getWeeklyReqs():
@@ -228,18 +222,15 @@ def getOrdersPerRegion():
     if request.method == 'GET':
         return OrderHandler().getOrderStatsPerRegion()
 
-
 @app.route('/almacenespr/dailyResourcesAvailable', methods=['GET'])
 def getAvailablePerDay():
     if request.method == 'GET':
         return ResourceHandler().getResourceAvailablePerDay()
 
-
 @app.route('/almacenespr/weeklyResourcesAvailable', methods=['GET'])
 def getAvailablePerWeek():
     if request.method == 'GET':
         return ResourceHandler().getResourceAvailablePerWeek()
-
 
 @app.route('/almacenespr/resourceAvailablePerRegion', methods=['GET'])
 def getAvailablePerRegion():
@@ -258,36 +249,29 @@ def orderResources(consumer_id):
     elif request.method == 'PUT':
         return OrderHandler().update(request.get_json())
 
-
 @app.route('/almacenespr/requested/<int:request_id>', methods=['GET'])
 def viewRequestedById(request_id):
     return ResourceHandler().getResourceInRequest(request_id)
-
 
 @app.route('/almacenespr/requested', methods=['GET'])
 def viewRequested():
     return RequestHandler().getAllRequests()
 
-
 @app.route('/almacenespr/requested/<string:keyword>', methods=['GET'])
 def viewRequestedByKeyword(keyword):
     return RequestHandler().getAllRequestByKeyword(keyword)
-
 
 @app.route('/almacenespr/orders', methods=['GET'])
 def getAllOrders():
     return OrderHandler().getAllOrders()
 
-
 @app.route('/almacenespr/orders/reserved', methods=['GET'])
 def getReserved():
     return OrderHandler().getReserved()
 
-
 @app.route('/almacenespr/orders/purchased', methods=['GET'])
 def getPurchased():
     return OrderHandler().getPurchased()
-
 
 @app.route('/almacenespr/request/<int:request_id>', methods=['GET'])
 def searchRequestedById(request_id):
