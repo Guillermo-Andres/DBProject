@@ -106,9 +106,15 @@ class RequestDAO:
             result.append(row)
         return result
 
-    def checkForMatch(self , resource_name , resource_description , resource_id):
+    def checkForMatch(self , resource_name , resource_description ):
 
         """find a request for this resource"""
+
+        cursor = self.conn.cursor()
+        query = " select resource_id from resource where resource_name = %s and resource_description = %s;"
+        cursor.execute(query , (resource_name, resource_description ))
+        resource_id = cursor.fetchone()[0]
+        self.conn.commit()
 
         requested = self.getRequestByKeyWordForMatch( resource_name, resource_description)
     
