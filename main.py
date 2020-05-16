@@ -115,7 +115,9 @@ def insertResource(resource_type,supplier_id):
         return ResourceHandler().getAllByType(resource_type)
 
     if request.method == 'POST':
-        return ResourceHandler().getHandler(resource_type).insert(request.json,supplier_id)
+        jsonfo = request.json
+        tbr =  ResourceHandler().getHandler(resource_type).insert(jsonfo,supplier_id)
+        RequestHandler().checkMa(jsonfo['resource_name'] , jsonfo['resource_description'])
 
 @app.route('/almacenespr/searchByType/<string:resource_type>/<string:keyword>', methods=['GET'])
 def getByType(resource_type, keyword):
